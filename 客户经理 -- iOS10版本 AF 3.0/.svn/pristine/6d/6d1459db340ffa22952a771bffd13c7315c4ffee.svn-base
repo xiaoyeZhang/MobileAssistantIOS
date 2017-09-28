@@ -1,0 +1,32 @@
+//
+//  Oder_DemandEntity.h
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 2016/10/28.
+//  Copyright © 2016年 avatek. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface Oder_DemandEntity : NSObject
+
+@property (nonatomic, copy) NSString *company_name;
+@property (nonatomic, copy) NSString *company_num;
+@property (nonatomic, copy) NSString *create_time;
+@property (nonatomic, copy) NSString *dep_name;
+@property (nonatomic, copy) NSString *imgs;
+@property (nonatomic, copy) NSString *order_id;
+@property (nonatomic, copy) NSString *product_name;
+@property (nonatomic, copy) NSString *tel;
+@property (nonatomic, copy) NSString *user_id;
+@property (nonatomic, copy) NSString *user_name;
+@property (nonatomic, copy) NSString *marks;
+@property (nonatomic, copy) NSString *addition_info;
+@property (nonatomic, copy) NSString *state;
+@property (nonatomic, copy) NSString *limit_time;
+@property (nonatomic, copy) NSString *processor_infos;
+@property (nonatomic, copy) NSString *to_do_flag;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
+@end

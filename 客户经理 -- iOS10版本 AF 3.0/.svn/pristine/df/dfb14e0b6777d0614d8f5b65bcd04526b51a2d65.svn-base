@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TxtFieldTableViewCell" rowHeight="47" id="KGk-i7-Jjw" customClass="TxtFieldTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="316" height="47"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="316" height="46"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pbG-lP-BAs">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="32S-4o-mQc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    </textField>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="c_down" translatesAutoresizingMaskIntoConstraints="NO" id="mBk-3b-oc7">
+                        <frame key="frameInset" minX="287" minY="15" width="16" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCz-Ku-2CS">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="brW-EY-MCm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pbG-lP-BAs" firstAttribute="leading" secondItem="WCz-Ku-2CS" secondAttribute="trailing" constant="5" id="79R-r3-YFF"/>
+                    <constraint firstItem="WCz-Ku-2CS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="88I-8U-Ynu"/>
+                    <constraint firstAttribute="centerY" secondItem="pbG-lP-BAs" secondAttribute="centerY" id="JKA-2U-0UZ"/>
+                    <constraint firstAttribute="centerY" secondItem="WCz-Ku-2CS" secondAttribute="centerY" id="fp3-wq-EB9"/>
+                    <constraint firstAttribute="trailing" secondItem="pbG-lP-BAs" secondAttribute="trailing" constant="8" id="rzV-AX-hbr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="downArrowImageView" destination="mBk-3b-oc7" id="7LS-aE-oL6"/>
+                <outlet property="titleLbl" destination="WCz-Ku-2CS" id="mnf-dU-HN3"/>
+                <outlet property="txtField" destination="pbG-lP-BAs" id="q5u-pF-qik"/>
+            </connections>
+            <point key="canvasLocation" x="18" y="119.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="c_down" width="20" height="20"/>
+    </resources>
+</document>

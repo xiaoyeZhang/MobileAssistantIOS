@@ -1,0 +1,241 @@
+//
+//  UploadPictureService.m
+//  MobileAssistant
+//
+//  Created by 许孝平 on 14-5-10.
+//  Copyright (c) 2014年 XiaoPing. All rights reserved.
+//
+
+#import "UploadPictureService.h"
+#import "UserEntity.h"
+#import "FMDBHelper.h"
+#import "PictureEntity.h"
+
+@implementation UploadPictureService
+
+- (BOOL)uploadPicture:(NSString *)fileName Image:(NSData *)imageData
+{
+    //NSString *url = @"http://112.4.89.82/dev/zycmm/upload.php";
+    NSString *url_root = @"http://211.139.4.111/cmm/cmm.php?method=upload_order";
+    NSString *url = [NSString stringWithFormat:@"%@&order_id=%@" ,url_root, fileName ];
+    
+    //根据url初始化request
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                       timeoutInterval:10];
+    
+    NSString *lineEnd = @"\r\n";
+    NSString *twoHyphens = @"--";
+    NSString *boundary = @"------------------------7dc2fd5c0894";
+    
+    NSMutableString *mString = [[NSMutableString alloc] init];
+    [mString appendString:twoHyphens];
+    [mString appendString:boundary];
+    [mString appendString:lineEnd];
+    [mString appendString:@"Content-Disposition: form-data; name=\"order_id[]\"\r\n\r\n"];
+    [mString appendString:fileName];
+    [mString appendString:lineEnd];
+    [mString appendString:twoHyphens];
+    [mString appendString:boundary];
+    [mString appendString:lineEnd];
+    //[mString appendFormat:@"Content-Disposition: form-data; name=\"headerImage\"; filename=\"%@\"\r\n",fileName];
+    [mString appendFormat:@"Content-Disposition: form-data; name=\"file[]\";filename=\"%@\"%@",fileName,lineEnd];
+    [mString appendString:@"Content-Type:image/jpeg"];
+    [mString appendString:lineEnd];
+    [mString appendString:lineEnd];
+    
+    NSString *body = [NSString stringWithString:mString ];
+    
+    NSString *end = [NSString stringWithFormat:@"%@%@%@%@%@",lineEnd,twoHyphens,boundary,twoHyphens,lineEnd];
+    
+    NSMutableData *myRequestData=[NSMutableData data];
+    //将body字符串转化为UTF8格式的二进制
+    [myRequestData appendData:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    //将image的data加入
+    [myRequestData appendData:imageData];
+    //加入结束符--AaB03x--
+    [myRequestData appendData:[end dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //设置HTTPHeader中Content-Type的值
+    NSString *content=[[NSString alloc]initWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    //设置HTTPHeader
+    [request setValue:content forHTTPHeaderField:@"Content-Type"];
+    //设置Content-Length
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[myRequestData length]] forHTTPHeaderField:@"Content-Length"];
+    //设置http body
+    [request setHTTPBody:myRequestData];
+    //http method
+    [request setHTTPMethod:@"POST"];
+    
+    [request setValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
+    
+    
+    NSError *error = nil;
+    NSURLResponse *theResponse = nil;
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&theResponse error:&error];
+    NSError *e;
+    //NSString *strRes = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+    NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&e];
+    
+    NSDictionary *res = [resultDictionary objectForKey:@"result"];
+    
+    NSNumber *state = [res valueForKeyPath:fileName];
+    NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
+    
+    if (strState == nil || [strState isEqualToString:@"-2"]) {
+        return NO;
+    } else {
+        return YES;
+    }
+    //return [[resultDictionary objectForKey:@"result"] boolValue];
+}
+
+- (BOOL)uploadPicture:(NSString *)state ImageFileName:(NSString *)fileName Image:(NSData *)imageData
+{
+    //NSString *url = @"http://112.4.89.82/dev/zycmm/upload.php";
+
+//    NSString *url = @"http://211.139.4.111/cmm/cmm.php?method=picupload";
+//    NSString *url = @"http://211.139.4.111/cmm/cmm_boss.php?method=picupload";
+    NSString *url = [NSString stringWithFormat:@"%@%@?method=picupload",BASEURL,PATH];
+    
+    //根据url初始化request
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                       timeoutInterval:10];
+    
+    NSString *lineEnd = @"\r\n";
+    NSString *twoHyphens = @"--";
+    NSString *boundary = @"------------------------7dc2fd5c0894";
+    
+    UserEntity *user = [UserEntity sharedInstance];
+    
+    NSMutableString *mString = [[NSMutableString alloc] init];
+    [mString appendString:twoHyphens];
+    [mString appendString:boundary];
+    [mString appendString:lineEnd];
+    [mString appendString:@"Content-Disposition: form-data; name=\"userid[]\"\r\n\r\n"];
+    [mString appendString:user.user_id];
+    [mString appendString:lineEnd];
+    [mString appendString:twoHyphens];
+    [mString appendString:boundary];
+    [mString appendString:lineEnd];
+    [mString appendString:@"Content-Disposition: form-data; name=\"time[]\"\r\n\r\n"];
+    [mString appendString:[self NSDateTimeToNSString:[NSDate date]]];
+    [mString appendString:lineEnd];
+    [mString appendString:twoHyphens];
+    [mString appendString:boundary];
+    [mString appendString:lineEnd];
+    [mString appendString:@"Content-Disposition: form-data; name=\"visitId[]\"\r\n\r\n"];
+    [mString appendString:state];
+    [mString appendString:lineEnd];
+    [mString appendString:twoHyphens];
+    [mString appendString:boundary];
+    [mString appendString:lineEnd];
+    //[mString appendFormat:@"Content-Disposition: form-data; name=\"headerImage\"; filename=\"%@\"\r\n",fileName];
+    [mString appendFormat:@"Content-Disposition: form-data; name=\"file[]\";filename=\"%@\"%@",fileName,lineEnd];
+    [mString appendString:@"Content-Type:image/jpeg"];
+    [mString appendString:lineEnd];
+    [mString appendString:lineEnd];
+    
+    NSString *body = [NSString stringWithString:mString ];
+    
+    NSString *end = [NSString stringWithFormat:@"%@%@%@%@%@",lineEnd,twoHyphens,boundary,twoHyphens,lineEnd];
+    
+    NSMutableData *myRequestData=[NSMutableData data];
+    //将body字符串转化为UTF8格式的二进制
+    [myRequestData appendData:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    //将image的data加入
+    [myRequestData appendData:imageData];
+    //加入结束符--AaB03x--
+    [myRequestData appendData:[end dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //设置HTTPHeader中Content-Type的值
+    NSString *content=[[NSString alloc]initWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    //设置HTTPHeader
+    [request setValue:content forHTTPHeaderField:@"Content-Type"];
+    //设置Content-Length
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[myRequestData length]] forHTTPHeaderField:@"Content-Length"];
+    //设置http body
+    [request setHTTPBody:myRequestData];
+    //http method
+    [request setHTTPMethod:@"POST"];
+    
+    [request setValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
+    
+    
+    NSError *error = nil;
+    NSURLResponse *theResponse = nil;
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&theResponse error:&error];
+    NSError *e;
+    NSString *strRes = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+    //NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&e];
+    NSLog(@"%@", strRes);
+    if (strRes == nil || strRes.length == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+    //return [[resultDictionary objectForKey:@"result"] boolValue];
+}
+
+
+- (NSArray *)loadAllPictureFromDB
+{
+    NSString *sqlString = @"SELECT PictureID,PictureName,State,PicturePath FROM tblUploadPicture ";
+    
+    FMResultSet *result = [[FMDBHelper instance] executeQuery:sqlString];
+    
+    if ([[FMDBHelper instance] hadError]) {
+        return nil;
+    }
+    
+    NSMutableArray *mArray = [[NSMutableArray alloc] init];
+    @try {
+        while ([result next]) {
+
+            PictureEntity *entity = [[PictureEntity alloc] init];
+            entity.pictureID = [result stringForColumn:@"PictureID"];
+            entity.pictureName = [result stringForColumn:@"PictureName"];
+            entity.state = [result stringForColumn:@"State"];
+            entity.picturePath = [result stringForColumn:@"PicturePath"];
+            [mArray addObject:entity];
+        }
+    }
+    @catch (NSException *exception) {
+        return  nil;
+    }
+    @finally {
+        
+    }
+    
+    return mArray ;
+
+}
+
+- (BOOL)deletePictureFromDBWithID:(NSString *)pictureID
+{
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM tblUploadPicture WHERE PictureID = '%@'",pictureID];
+    
+    return [[FMDBHelper instance] executeUpdate:sqlString];
+}
+
+- (BOOL)addPictureToDB:(PictureEntity *)entity
+{
+    NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO tblUploadPicture (PictureID,PictureName,State,PicturePath) VALUES ('%@','%@','%@','%@')",entity.pictureID,entity.pictureName,entity.state,entity.picturePath];
+    [[FMDBHelper instance] executeUpdate:sqlString];
+    if ([[FMDBHelper instance] hadError]) {
+        return NO;
+    }
+    return YES;
+}
+
+
+- (NSString *) NSDateTimeToNSString:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yy/MM/dd"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return strDate;
+}
+
+@end

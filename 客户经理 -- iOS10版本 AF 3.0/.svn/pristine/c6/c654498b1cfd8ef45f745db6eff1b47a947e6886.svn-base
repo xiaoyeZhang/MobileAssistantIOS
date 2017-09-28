@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Reommended_DetailViewController">
+            <connections>
+                <outlet property="tableView" destination="AMs-va-WL6" id="E10-ZF-o7M"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AMs-va-WL6">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="508"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="kKf-u9-hYq"/>
+                        <outlet property="delegate" destination="-1" id="Nmb-fc-Wnj"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJB-Zs-glx">
+                    <rect key="frame" x="20" y="518" width="280" height="40"/>
+                    <color key="backgroundColor" red="0.13678950071334839" green="0.63779711723327637" blue="0.95162504911422729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="hcj-hJ-tDP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="发送至联系人">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="ClickBtn:" destination="-1" eventType="touchUpInside" id="JvI-OG-a3D"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="AJB-Zs-glx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="13Z-PP-bmh"/>
+                <constraint firstItem="AMs-va-WL6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="S62-i3-NUb"/>
+                <constraint firstAttribute="trailing" secondItem="AJB-Zs-glx" secondAttribute="trailing" constant="20" id="aOr-x2-Z3F"/>
+                <constraint firstItem="AJB-Zs-glx" firstAttribute="top" secondItem="AMs-va-WL6" secondAttribute="bottom" constant="10" id="grW-vE-W7D"/>
+                <constraint firstItem="AMs-va-WL6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jwK-og-iSS"/>
+                <constraint firstAttribute="trailing" secondItem="AMs-va-WL6" secondAttribute="trailing" id="mG3-oX-qWB"/>
+                <constraint firstAttribute="bottom" secondItem="AJB-Zs-glx" secondAttribute="bottom" constant="10" id="wfM-Kf-Y38"/>
+                <constraint firstItem="AJB-Zs-glx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ypy-1C-U9v"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="241" y="322"/>
+        </view>
+    </objects>
+</document>

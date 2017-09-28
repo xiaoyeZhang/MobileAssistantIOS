@@ -1,0 +1,790 @@
+//
+//  LoginViewController.m
+//  MobileAssistant
+//
+//  Created by 房 国生 on 14-9-13.
+//  Copyright (c) 2014年 avatek. All rights reserved.
+//
+
+#import "LoginViewController.h"
+#import "MainViewController.h"
+#import "UserService.h"
+#import "UserEntity.h"
+#import "Verify.h"
+#import "Utilies.h"
+#import "MBProgressHUD.h"
+#import "ForgetPwdViewController.h"
+#import "CommonService.h"
+#import "DXAlertView.h"
+#include "OpenUDID.h"
+#import "iToast.h"
+#import "JPUSHService.h"
+#import "ChangePwdViewController.h"
+#import "AppDelegate.h"
+#import <CommonCrypto/CommonDigest.h>
+
+@interface LoginViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>
+{
+    MBProgressHUD *HUD;
+    UserEntity *userEntity;
+    
+}
+@property(nonatomic,strong) NSTimer* timer1;
+@property (nonatomic, strong) NSString *strUrlUpdate;
+@property (assign) BOOL bMustUpdate;
+@end
+
+@implementation LoginViewController
+
+@synthesize textFieldName, textFieldPWD, scrollView;
+@synthesize bMustUpdate;
+@synthesize btnVerifySMS, textFieldSMS;
+@synthesize timer1;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIColor whiteColor],
+                                NSForegroundColorAttributeName, nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+//    self.title = @"客户经理助手";
+    
+//    NSData *userData=[[NSUserDefaults standardUserDefaults] objectForKey:@"UserEntity"];
+//    if (userData != nil) {
+//        UserEntity *userEntity = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+//        
+//        if (userEntity != nil) {
+////            textFieldName.text= userEntity.tel;
+//            textFieldName.text = userEntity.num;
+//        }
+//    }
+    
+   userEntity = [UserEntity sharedInstance];
+    
+    if (userEntity.num.length > 0) {
+        
+        textFieldName.text = userEntity.num;
+    }else{
+        
+        textFieldName.text = userEntity.tel;
+    }
+    
+//    NSString *passWord =  [SFHFKeychainUtils getPasswordForUsername:@"dd"andServiceName:@"cn.com.Avatek.ChinaMobile.MobileAssistant" error:nil];
+    
+    //sha1加密
+    
+    textFieldPWD.text = userEntity.password;
+    [textFieldPWD setSecureTextEntry:YES];
+    bMustUpdate = NO;
+//    [self checkVersion];
+    
+    btnVerifySMS.hidden = YES;
+    textFieldSMS.hidden = YES;
+    
+    self.LoginBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+
+    UIImageView *bgimage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    bgimage.image = [UIImage imageNamed:@"背景"];
+    
+    [self.view addSubview:bgimage];
+    [self.view addSubview:self.scrollView];
+    self.navigationController.navigationBarHidden = YES;
+    
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:@"LoginViewController"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [MobClick endLogPageView:@"LoginViewController"];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    
+    [textFieldName resignFirstResponder];
+    [textFieldPWD resignFirstResponder];
+    [textFieldSMS resignFirstResponder];
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+}
+
+- (IBAction)textFieldShouldReturn:(UITextField *)theTextField {
+    
+    if (theTextField == self.textFieldPWD) {
+        [theTextField resignFirstResponder];
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    } else if (theTextField == self.textFieldName) {
+        [textFieldPWD becomeFirstResponder];
+    }
+}
+
+- (IBAction)doModifyPwd:(id)sender
+{
+    ForgetPwdViewController *vc = [[ForgetPwdViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+//忘记密码
+- (IBAction)doForgetPwd:(id)sender
+{
+//    if (textFieldName.text.length == 0) {
+//        ALERT_ERR_MSG(@"请先输入工号或手机号");
+//        [textFieldName becomeFirstResponder];
+//        
+//        return;
+//    }
+//    
+//    if (textFieldName.text.length == 11) {
+//        NSDictionary *dict = @{@"method":@"forgotpassword",
+//                 @"tel":textFieldName.text};
+//        [self.view endEditing:YES];
+//        
+//        CommonService *service = [[CommonService alloc] init];
+//        
+//        [service getNetWorkData:dict
+//                      Successed:^(id entity) {
+//                          
+//                          [self.view endEditing:YES];
+//                          
+//                          id content = entity[@"reason"];
+//                          
+//                          iToast *toast = [iToast makeText:content];
+//                          [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+//                          [toast setDuration:3000];
+//                          [toast show:iToastTypeNotice];
+//                          
+//                      } Failed:^(int errorCode, NSString *message) {
+//                          
+//                          [self.view endEditing:YES];
+//                          
+//                          iToast *toast = [iToast makeText:@"网络连接失败"];
+//                          [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+//                          [toast setDuration:3000];
+//                          [toast show:iToastTypeNotice];
+//                      }];
+//        
+//        return;
+//    }
+//    
+//    
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"忘记密码"
+//                                                    message:nil
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"取消"
+//                                          otherButtonTitles:@"提交", nil];
+//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    alert.tag = -1;
+//    UITextField *textField = [alert textFieldAtIndex:0];
+//    textField.keyboardType = UIKeyboardTypeNumberPad;
+//    textField.placeholder = @"请输入您的手机号码";
+//
+//    [alert show];
+    
+    
+    UIAlertController *contoller = [UIAlertController alertControllerWithTitle:@"忘记密码" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [contoller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
+        textField.placeholder = @"请输入您的工号";
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertTextFieldDidChange:) name:UITextFieldTextDidChangeNotification object:textField];
+    }];
+  
+    [contoller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
+        textField.placeholder = @"请输入您的手机号码";
+        textField.keyboardType = UIKeyboardTypePhonePad;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertTextFieldDidChange:) name:UITextFieldTextDidChangeNotification object:textField];
+    }];
+    
+    [contoller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
+        textField.placeholder = @"请输入您的姓名";
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertTextFieldDidChange:) name:UITextFieldTextDidChangeNotification object:textField];
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"提交" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+       
+        UITextField *num = contoller.textFields.firstObject;
+        UITextField *phone = contoller.textFields[1];
+        UITextField *name = contoller.textFields.lastObject;
+        
+
+        NSDictionary *dict = @{@"method":@"m_forget",
+                               @"num":num.text,
+                               @"tel":phone.text,
+                               @"name":name.text};
+        [self.view endEditing:YES];
+
+        CommonService *service = [[CommonService alloc] init];
+
+        [service getNetWorkData:dict
+                      Successed:^(id entity) {
+
+                          id state = entity[@"state"];
+                          
+                          if ([state integerValue]== 1) {
+                          
+                              iToast *toast = [iToast makeText:@"您的密码已修改为手机号后6位"];
+                              [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+                              [toast setDuration:3000];
+                              [toast show:iToastTypeNotice];
+                          
+                          }else{
+                              iToast *toast = [iToast makeText:@"重置失败"];
+                              [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+                              [toast setDuration:3000];
+                              [toast show:iToastTypeNotice];
+                          }
+
+
+                     } Failed:^(int errorCode, NSString *message) {
+                         
+                         iToast *toast = [iToast makeText:@"网络连接失败"];
+                         [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+                         [toast setDuration:3000];
+                         [toast show:iToastTypeNotice];
+                     }];
+        
+    }];
+    
+    otherAction.enabled = NO;
+    
+    [contoller addAction:cancelAction];
+    [contoller addAction:otherAction];
+    [self presentViewController:contoller animated:YES completion:nil];//弹出提醒框
+    
+    
+}
+
+- (void)alertTextFieldDidChange:(NSNotification *)notification{
+    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+    if (alertController) {
+        
+        UITextField *num = alertController.textFields.firstObject;
+        UITextField *phone = alertController.textFields[1];
+        UITextField *name = alertController.textFields.lastObject;
+        
+        UIAlertAction *okAction = alertController.actions.lastObject;
+        
+        okAction.enabled = num.text.length > 0 && phone.text.length == 11 && name.text.length > 0;
+        
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        if (alertView.tag == -1) {
+            
+            UITextField *textField = [alertView textFieldAtIndex:0];
+
+            NSDictionary *dict = @{@"method":@"forgotpassword_new",
+                                   @"num":textFieldName.text,
+                                   @"tel":textField.text};
+            if (textFieldName.text.length == 11) {
+                dict = @{@"method":@"forgotpassword",
+                         @"tel":textField.text};
+            }
+            
+            [self.view endEditing:YES];
+            
+            CommonService *service = [[CommonService alloc] init];
+            
+            [service getNetWorkData:dict
+                          Successed:^(id entity) {
+                              
+                              [self.view endEditing:YES];
+                              id content = entity[@"reason"];
+                              
+                              iToast *toast = [iToast makeText:content];
+                              [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+                              [toast setDuration:5000];
+                              [toast show:iToastTypeNotice];
+
+                          } Failed:^(int errorCode, NSString *message) {
+                              
+                              [self.view endEditing:YES];
+                              
+                              iToast *toast = [iToast makeText:@"网络连接失败"];
+                              [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+                              [toast setDuration:3000];
+                              [toast show:iToastTypeNotice];
+                          }];
+        }
+    }
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
+{
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    if (textField.text.length < 11 || textField.text.length > 11) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark -
+
+- (IBAction)doLogin:(id)sender
+{
+    if (bMustUpdate == YES) {
+        DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"提示" contentText:@"发现新版本，必须更新后才能使用" leftButtonTitle:nil rightButtonTitle:@"确定" TextAlignment:1 FontSize:15.0f];
+        [alert show];
+        alert.leftBlock = ^() {
+            
+        };
+        alert.rightBlock = ^() {
+            self.bMustUpdate = YES;
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+        };
+        return;
+    }
+    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    if ([textFieldName.text length] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你尚未输入手机号码，请输入手机号码！" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if ([textFieldPWD.text length] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你尚未输入密码，请输入密码！" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    [textFieldName resignFirstResponder];
+    [textFieldPWD resignFirstResponder];
+    
+    if (textFieldSMS.hidden == NO) {
+
+        if ([textFieldSMS.text isEqualToString:userEntity.reason] == YES) {
+            //update uuid
+            HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            HUD.delegate = self;
+            HUD.labelText = @"努力加载中...";
+            [self loginTask:@"update_uuid"];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"验证码输入错误！" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+    } else {
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.delegate = self;
+        HUD.labelText = @"努力加载中...";
+//        [self loginTask:@"login_sms"];
+        [self loginTask:@"login"];
+    }
+    
+    //[HUD showWhileExecuting:@selector(loginTask) onTarget:self withObject:nil animated:YES];
+//    if ([Verify validateMobile:textFieldName.text]) {
+//        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        HUD.delegate = self;
+//        HUD.labelText = @"Loading";
+//        
+//        [HUD showWhileExecuting:@selector(loginTask) onTarget:self withObject:nil animated:YES];
+//        
+//    } else {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"手机号码格式错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//        [alert show];
+//    }
+}
+
+- (void)handleKeyboardWillHide:(NSNotification *)notification
+{
+    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+- (void)handleKeyboardDidShow:(NSNotification *)notification
+{
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    if(screenHeight==568.0f){//iphone5
+        [scrollView setContentOffset:CGPointMake(0, 60) animated:YES];
+    }else{//
+        [scrollView setContentOffset:CGPointMake(0, 60) animated:YES];
+    }
+}
+
+- (NSInteger)getBoardHeight:(BOOL)isShowNavigationBar
+{
+    if (isShowNavigationBar) {
+        float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+        if (version >= 7.0f) {
+            return self.view.frame.size.height - 64.0f;
+        }
+        else
+            return self.view.frame.size.height - 44.0;
+        
+    }
+    else {
+        return self.view.frame.size.height;
+    }
+}
+
+- (void) loginTask:(NSString *)method
+{
+//    NSLog(@"%@", [OpenUDID value]);
+    
+    NSDictionary *clientInfoDict =[[NSBundle mainBundle] infoDictionary];
+    NSString *clientVersion = clientInfoDict[@"CFBundleVersion"];
+    
+//    NSString *UUID = [SFHFKeychainUtils getPasswordForUsername:@"UUID" andServiceName:@"cn.com.Avatek.ChinaMobile.MobileAssistant" error:nil];
+//    
+//    if (UUID.length > 0) {
+//        
+//    }else{
+//        
+//        NSString *uuid = [[NSUUID UUID] UUIDString];
+//        
+//        [SFHFKeychainUtils storeUsername:@"UUID" andPassword:uuid forServiceName:@"cn.com.Avatek.ChinaMobile.MobileAssistant" updateExisting:1 error:nil];
+//        
+//        UUID = [SFHFKeychainUtils getPasswordForUsername:@"UUID" andServiceName:@"cn.com.Avatek.ChinaMobile.MobileAssistant" error:nil];
+//    }
+    
+    NSString *password;
+    
+    if (userEntity.password.length > 0) {
+        
+        password = textFieldPWD.text;
+        
+    }else{
+        
+        password = [self sha1:textFieldPWD.text];
+    
+    }
+
+    
+    UserService *service = [[UserService alloc] init];
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+                           textFieldName.text, @"tel",
+                           password, @"password",
+                           clientVersion, @"version",
+                           method, @"method",
+//                           UUID,@"uuid",
+//                           @"login_uuid", @"method",
+                           nil];
+    
+    [service loginWithPassword:param  Successed:^(UserEntity *entity) {
+        
+        if ([entity.state isEqualToString:@"2"] == YES ) {
+
+            //删除Keychain
+//            [SFHFKeychainUtils deleteItemForUsername:@"UUID" andServiceName:@"cn.com.Avatek.ChinaMobile.MobileAssistant" error:nil];
+            
+            NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:entity];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:myEncodedObject forKey:@"UserEntity"];
+            
+            UserEntity *userInfo = [UserEntity sharedInstance];
+//            [JPUSHService setAlias:userInfo.tel callbackSelector:@selector(userSetAliasCallBack:) object:nil];
+//            
+            [JPUSHService setAlias:userInfo.tel completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                
+                DebugLog(@"%@",iAlias);
+                
+            } seq:[userInfo.num intValue]];
+            
+
+            
+            self.navigationController.navigationBarHidden = NO;
+
+            MainViewController *vc = [[MainViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        } else if ([entity.state isEqualToString:@"3"] == YES) {
+            
+            NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:entity];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:myEncodedObject forKey:@"UserEntity"];
+            
+            UserEntity *userInfo = [UserEntity sharedInstance];
+//            [JPUSHService setAlias:userInfo.tel callbackSelector:@selector(userSetAliasCallBack:) object:nil];
+
+            [JPUSHService setAlias:userInfo.tel completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                
+                DebugLog(@"%@",iAlias);
+                
+            } seq:[userInfo.num intValue]];
+            
+            ChangePwdViewController *vc = [[ChangePwdViewController alloc]init];
+            
+            vc.type = 3;
+            self.navigationController.navigationBarHidden = NO;
+
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        } else {
+            
+//            UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:entity.reason delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alert show];
+
+            UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:entity.reason delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+                
+                if ([entity.reason rangeOfString:@"该版本已停用"].location != NSNotFound | [entity.reason rangeOfString:@"最新版本"].location != NSNotFound) {
+//                    exit(0);
+                    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    HUD.delegate = self;
+                    HUD.labelText = @"努力加载中...";
+                    
+                    [self checkUpdate];
+                }
+                
+            }];
+
+            
+            
+        }
+        [HUD hide:YES];
+    } Failed:^(int errorCode, NSString *message) {
+        [HUD hide:YES];
+        
+        ALERT_ERR_MSG(@"网络连接错误");
+    }];
+}
+
+- (void)checkUpdate
+{
+    //#ifndef DEBUG
+    //    ALERT_ERR_MSG(@"这条信息不会影响功能仅显示一下");
+    //#endif
+    //当前版本
+    NSDictionary *clientInfoDict =[[NSBundle mainBundle] infoDictionary];
+    NSString *clientVersion = clientInfoDict[@"CFBundleVersion"]; //build版本
+    //    NSString *version = clientInfoDict[@"CFBundleShortVersionString"];
+    
+    NSDictionary *dict = @{@"method":@"update_ios_version",
+                           @"version":clientVersion};
+    
+    CommonService *service = [[CommonService alloc] init];
+    
+    [service getNetWorkData:dict
+                  Successed:^(id entity) {
+                      int state = [entity[@"result"] intValue];
+                      if (state == 2) {
+                          
+                          NSDictionary *info = entity[@"info"];
+                          if ([info isKindOfClass:[NSDictionary class]]) {
+                              
+                              NSString *content = info[@"content"];
+                              NSString *urlStr = info[@"url"];
+                              
+                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示"
+                                                                              message:content
+                                                                             delegate:nil
+                                                                    cancelButtonTitle:@"取消"
+                                                                    otherButtonTitles:@"确定", nil];
+                              
+                              [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+                                  if (buttonIndex != alert.cancelButtonIndex) {
+                                      NSURL *url = [NSURL URLWithString:urlStr];
+                                      
+                                      [[UIApplication sharedApplication] openURL:url];
+                                  }
+                              }];
+                          }
+                      }else if(state == 3){ //强制更新
+                          NSDictionary *info = entity[@"info"];
+                          if ([info isKindOfClass:[NSDictionary class]]) {
+                              
+                              NSString *content = info[@"content"];
+                              NSString *urlStr = info[@"url"];
+                              
+                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示"
+                                                                              message:content
+                                                                             delegate:nil
+                                                                    cancelButtonTitle:nil
+                                                                    otherButtonTitles:@"确定", nil];
+                              [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+                                  NSURL *url = [NSURL URLWithString:urlStr];
+                                  [[UIApplication sharedApplication] openURL:url];
+                              }];
+                          }
+                      }
+                      [HUD hide:YES];
+                  } Failed:^(int errorCode, NSString *message) {
+                      [HUD hide:YES];
+                  }];
+}
+
+#pragma mark - 用户设置推送别名回调
+
+- (void)userSetAliasCallBack:(id)sender
+{
+    DebugLog(@"%@",sender);
+}
+
+/*
+- (void) checkVersion
+{
+    CommonService *service = [[CommonService alloc] init];
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+                           @"102", @"version",
+                           @"update_ios", @"method", nil];
+    
+    [service getNetWorkData:param  Successed:^(UserEntity *entity) {
+        
+        NSNumber *result = [entity valueForKeyPath:@"result"];
+        NSDictionary *info = [entity valueForKeyPath:@"info"];
+        NSString *content = [info valueForKeyPath:@"content"];
+        
+        if ([result intValue] == 1) {
+            DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"更新提示" contentText:content leftButtonTitle:nil rightButtonTitle:@"确定" TextAlignment:1 FontSize:15.0f];
+            [alert show];
+        } else if ([result intValue] == 2) {
+            DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"更新提示" contentText:content leftButtonTitle:@"取消" rightButtonTitle:@"确定" TextAlignment:1 FontSize:15.0f];
+            [alert show];
+            alert.leftBlock = ^() {
+            };
+            alert.rightBlock = ^() {
+                //NSString *flag = [info valueForKeyPath:@"flag"];
+                self.strUrlUpdate = [info valueForKeyPath:@"url"];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+//                if ([flag isEqualToString:@"0"] == YES) {
+//                    self.strUrlUpdate = [info valueForKeyPath:@"url_appstore"];
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+//                } else {
+//                    self.strUrlUpdate = [info valueForKeyPath:@"url_enterprise"];
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+//                }
+                
+            };
+        } else if ([result intValue] == 3) {
+            DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"更新提示" contentText:content leftButtonTitle:nil rightButtonTitle:@"确定" TextAlignment:1 FontSize:15.0f];
+            [alert show];
+            alert.leftBlock = ^() {
+                
+            };
+            alert.rightBlock = ^() {
+                self.bMustUpdate = YES;
+                //NSString *flag = [info valueForKeyPath:@"flag"];
+                self.strUrlUpdate = [info valueForKeyPath:@"url"];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+//                if ([flag isEqualToString:@"0"] == YES) {
+//                    self.strUrlUpdate = [info valueForKeyPath:@"url_appstore"];
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+//                } else {
+//                    self.strUrlUpdate = [info valueForKeyPath:@"url_enterprise"];
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.strUrlUpdate]];
+//                }
+            };
+        }
+    
+    } Failed:^(int errorCode, NSString *message) {
+
+    }];
+}*/
+
+- (IBAction)doGetSMS:(id)sender
+{
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.labelText = @"努力加载中...";
+    [HUD show:YES];
+    
+    CommonService *service = [[CommonService alloc] init];
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+                           textFieldName.text, @"tel",
+                           @"replay_sms", @"method",
+                           nil];
+    
+    [service getNetWorkData:param  Successed:^(id entity) {
+        
+        NSNumber *state = [entity valueForKeyPath:@"state"];
+        userEntity.reason = [NSString stringWithFormat:@"%d", [state intValue]];
+        
+        btnVerifySMS.enabled = NO;
+        timer1 = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(showRepeatButton)
+                                                userInfo:nil
+                                                 repeats:YES];
+        [btnVerifySMS setBackgroundColor:[UIColor lightGrayColor]];
+        [timer1 fire];
+        
+        [HUD hide:YES];
+    } Failed:^(int errorCode, NSString *message) {
+        [HUD hide:YES];
+    }];
+}
+
+- (void) showRepeatButton {
+    static int count = 0;
+    if (count++ >= 300) {
+        btnVerifySMS.enabled = YES;
+        [timer1 invalidate];
+        count = 0;
+        [btnVerifySMS setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [btnVerifySMS setBackgroundColor:[UIColor colorWithRed:0.11 green:0.60 blue:0.8 alpha:1]];
+        return;
+    }
+    
+    [btnVerifySMS setTitle:[NSString stringWithFormat:@"%i秒可重发",60-count] forState:UIControlStateNormal];
+}
+
+//sha1 encode
+-(NSString*) sha1:(NSString *)str
+{
+    const char *cstr = [str cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:str.length];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
+    
+    NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return output;
+}
+
+@end

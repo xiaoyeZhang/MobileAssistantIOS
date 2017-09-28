@@ -1,0 +1,213 @@
+//
+//  Case_DetailViewController.m
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 16/7/19.
+//  Copyright © 2016年 avatek. All rights reserved.
+//
+
+#import "Case_DetailViewController.h"
+
+@interface Case_DetailViewController ()<UIScrollViewDelegate>
+
+@end
+
+@implementation Case_DetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.title = self.name;
+    
+    UIButton *backBtn = [self setNaviCommonBackBtn];
+    [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSURL *url = [NSURL URLWithString:self.entity.icon];
+    [self.iconImage setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+    
+    self.titleLabel.text = self.entity.name;
+    self.messageLabel.text = self.entity.title;
+    
+    self.messageLabel.textColor = RGBA(147, 147, 147, 1);
+    
+    ////////////////////////////定义标题页面//////////////////////////
+    _titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, self.iconImage.frame.size.height + self.iconImage.frame.origin.y + 10, SCREEN_WIDTH / 4 * 3, 44)];
+    _titleScrollView.contentSize = CGSizeMake(SCREEN_WIDTH / 4, 44);
+    _titleScrollView.showsHorizontalScrollIndicator = NO;
+    _titleScrollView.showsVerticalScrollIndicator = NO;
+    _titleScrollView.delegate = self;
+    
+    //    横向分割线
+    self.lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(14, self.iconImage.frame.size.height + self.iconImage.frame.origin.y + 10 + 38, SCREEN_WIDTH / 4 - 14, 2)];
+    self.lineLabel.backgroundColor = RGBA(225, 123, 171, 1);
+    
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;//防止留白
+    ////////////////////////////定义主页面//////////////////////////
+    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,self.lineLabel.frame.origin.y + 10, SCREEN_WIDTH, SCREEN_HEIGHT - self.lineLabel.frame.origin.y - 2)];
+    _mainScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 3, SCREEN_HEIGHT - self.lineLabel.frame.origin.y - 2);
+    _mainScrollView.pagingEnabled = YES;//整个页面翻页
+    _mainScrollView.showsHorizontalScrollIndicator = NO;
+    _mainScrollView.showsVerticalScrollIndicator = NO;
+    _mainScrollView.delegate = self;
+    
+    
+    [self addMyButtons];
+    [self addMyViews];
+    
+    [self.view addSubview:self.lineLabel];
+    [self.view addSubview:_mainScrollView];
+    [self.view addSubview:_titleScrollView];
+
+    
+}
+
+//返回
+- (void)backBtnClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)addMyButtons
+{
+    _button1 = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 4, 38)];
+    [_button1 setTitle:@"案例介绍" forState:UIControlStateNormal];
+    [_button1 setTitleColor:RGBA(96, 171, 186, 1) forState:UIControlStateNormal];
+    _button2 = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 4 + 1, 0, SCREEN_WIDTH / 4, 38)];
+    [_button2 setTitle:@"重点讲解" forState:UIControlStateNormal];
+    [_button2 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+    
+    _button3 = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH / 4 )*2 + 2, 0, SCREEN_WIDTH / 4, 38)];
+    [_button3 setTitle:@"相关案例" forState:UIControlStateNormal];
+    [_button3 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+    
+    
+    _button1.titleLabel.font = [UIFont systemFontOfSize:18];
+    _button2.titleLabel.font = [UIFont systemFontOfSize:18];
+    _button3.titleLabel.font = [UIFont systemFontOfSize:18];
+    
+    _button1.tag = 1;
+    _button2.tag = 2;
+    _button3.tag = 3;
+    
+    [_button1 addTarget:self action:@selector(turn:) forControlEvents:UIControlEventTouchUpInside];
+    [_button2 addTarget:self action:@selector(turn:) forControlEvents:UIControlEventTouchUpInside];
+    [_button3 addTarget:self action:@selector(turn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_titleScrollView addSubview:_button1];
+    [_titleScrollView addSubview:_button2];
+    [_titleScrollView addSubview:_button3];
+}
+
+- (void)addMyViews
+{
+    
+    
+    _webView1 = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - self.lineLabel.frame.origin.y - 4)];
+    _webView1.backgroundColor = [UIColor whiteColor];
+    
+    _webView2 = [[UIWebView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT - self.lineLabel.frame.origin.y - 4)];
+    _webView2.backgroundColor = [UIColor whiteColor];
+    
+    _webView3 = [[UIWebView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * 2, 0, SCREEN_WIDTH, self.view.frame.size.height - self.lineLabel.frame.origin.y - 4)];
+    _webView3.backgroundColor = [UIColor whiteColor];
+    
+    [_mainScrollView addSubview:_webView1];
+    [_mainScrollView addSubview:_webView2];
+    [_mainScrollView addSubview:_webView3];
+    
+    NSString *url1 = [NSString stringWithFormat:@"%@%@?method=%@&page=%@&id=%@&field=%@",BASEURL,PATH,@"common_page",@"case",self.entity.product_id,@"content1"];
+    NSURLRequest *request1 = [NSURLRequest requestWithURL:[NSURL URLWithString:url1]];
+    
+    NSString *url2 = [NSString stringWithFormat:@"%@%@?method=%@&page=%@&id=%@&field=%@",BASEURL,PATH,@"common_page",@"case",self.entity.product_id,@"content2"];
+    NSURLRequest *request2 = [NSURLRequest requestWithURL:[NSURL URLWithString:url2]];
+    
+    NSString *url3 = [NSString stringWithFormat:@"%@%@?method=%@&page=%@&id=%@&field=%@",BASEURL,PATH,@"common_page",@"case",self.entity.product_id,@"content3"];
+    NSURLRequest *request3 = [NSURLRequest requestWithURL:[NSURL URLWithString:url3]];
+    
+    
+    [_webView1 loadRequest:request1];
+    [_webView2 loadRequest:request2];
+    [_webView3 loadRequest:request3];
+}
+
+#pragma mark ------- scrollView的滚动事件
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    _x = _mainScrollView.contentOffset.x;
+    
+    if (_x > 0 && _x < SCREEN_WIDTH /2) {
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.lineLabel.frame = CGRectMake( _x/self.mainScrollView.contentSize.width*SCREEN_WIDTH + 15, self.iconImage.frame.size.height + self.iconImage.frame.origin.y + 10 + 38 , SCREEN_WIDTH/4 - 12, 2);
+        }];
+        
+    }else if(_x > SCREEN_WIDTH /2 && _x < SCREEN_WIDTH)
+    {
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.lineLabel.frame = CGRectMake( _x/self.mainScrollView.contentSize.width*SCREEN_WIDTH - 8, self.iconImage.frame.size.height + self.iconImage.frame.origin.y + 10 + 38 , SCREEN_WIDTH/4 - 14, 2);
+        }];
+        
+        
+    }
+    else if(_x >= SCREEN_WIDTH && _x <= (3/2) * SCREEN_WIDTH)
+    {
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.lineLabel.frame = CGRectMake( _x/self.mainScrollView.contentSize.width*SCREEN_WIDTH - 8, self.iconImage.frame.size.height + self.iconImage.frame.origin.y + 10 + 38, SCREEN_WIDTH/4- 14, 2);
+        }];
+        
+        
+    }else if(_x > (3/2) * SCREEN_WIDTH && _x < 2 * SCREEN_WIDTH)
+    {
+        
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.lineLabel.frame = CGRectMake( _x/self.mainScrollView.contentSize.width*SCREEN_WIDTH - 35, self.iconImage.frame.size.height + self.iconImage.frame.origin.y + 10 + 38, SCREEN_WIDTH/4- 14, 2);
+        }];
+        
+        
+    }
+    
+    
+    if (_x == 0) {
+        
+        [_button1 setTitleColor:RGBA(96, 171, 186, 1) forState:UIControlStateNormal];
+        [_button2 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+        [_button3 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+        
+    }else if(_x == SCREEN_WIDTH){
+        
+        [_button1 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+        [_button2 setTitleColor:RGBA(96, 171, 186, 1) forState:UIControlStateNormal];
+        [_button3 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+        
+    }else if(_x == 2 * SCREEN_WIDTH){
+        
+        [_button1 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+        [_button2 setTitleColor:RGBA(147, 147, 147, 1) forState:UIControlStateNormal];
+        [_button3 setTitleColor:RGBA(96, 171, 186, 1) forState:UIControlStateNormal];
+    }
+    
+}
+
+- (void)turn:(UIButton*)sender{
+    
+    NSInteger i = sender.tag - 1;
+    
+    [_mainScrollView setContentOffset:CGPointMake(i * SCREEN_WIDTH, 0) animated:YES];
+    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

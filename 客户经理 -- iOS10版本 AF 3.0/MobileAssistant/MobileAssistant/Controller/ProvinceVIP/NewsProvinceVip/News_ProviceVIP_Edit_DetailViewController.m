@@ -1,0 +1,887 @@
+//
+//  News_ProviceVIP_Edit_DetailViewController.m
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 16/3/25.
+//  Copyright © 2016年 avatek. All rights reserved.
+//
+
+#import "News_ProviceVIP_Edit_DetailViewController.h"
+#import "CommonService.h"
+#import "News_ProvinceVIP_Edit_DetailEntity.h"
+#import "TxtFieldTableViewCell.h"
+#import "CheckBoxTableViewCell.h"
+#import "ThreeCheckBoxTableViewCell.h"
+#import "News_ClickBtnTableViewCell.h"
+#import "UIAlertView+Blocks.h"
+#import "UIActionSheet+Block.h"
+#import "News_CustomerViewController.h"
+#import "MBProgressHUD.h"
+#import "News_ProviceVIP_ListViewController.h"
+#import "ThreeLabelsTableViewCell.h"
+#import "AFNetworking.h"
+
+#define COMPANY_NUM_TABLE_INDEX 5 //集团编号
+
+@interface News_ProviceVIP_Edit_DetailViewController ()<UITextFieldDelegate,News_CustomerViewControllerDelegate,MBProgressHUDDelegate,CheckBoxTableViewCellDelegate,ThreeCheckBoxTableViewCellDelegate>{
+    
+    MBProgressHUD *HUD;
+    UserEntity *userEntity;
+    TxtFieldTableViewCell *cell1;
+    CheckBoxTableViewCell *cell2;
+    ThreeCheckBoxTableViewCell *cell3;
+    News_ClickBtnTableViewCell *cell4;
+    NSString *data_str;
+    NSArray *data_arr;
+    NSMutableDictionary *txtFieldDic;
+    NSArray *fill_infoArr;
+    NSMutableDictionary *submitDic;
+    NSString *order_form_type;
+}
+@property (strong, nonatomic) NSMutableArray *arrayCutomer;
+
+@property (strong, nonatomic) NSMutableArray *arrayCutomerTmpe;
+@property (copy, nonatomic) NSString *fill_info;
+
+@property(nonatomic, copy) NSString *CheckBoxFile;//归档情况
+
+@property(nonatomic, copy) NSString *CheckOneBoxFile;
+
+@end
+
+@implementation News_ProviceVIP_Edit_DetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    userEntity = [UserEntity sharedInstance];
+    
+    self.arrayCutomer = [[NSMutableArray alloc]init];
+    self.arrayCutomerTmpe = [[NSMutableArray alloc]init];
+    
+    data_arr = [[NSMutableArray alloc]init];
+    txtFieldDic = [[NSMutableDictionary alloc]init];
+    submitDic = [[NSMutableDictionary alloc]init];
+    
+    self.navigationItem.title = self.name;
+    
+    [self getDate];
+    
+}
+
+//提交
+- (void)submitBtnClicked:(id)sender
+{
+    [self.view endEditing:YES];
+    
+    static BOOL isDone = YES;
+    if (!isDone) {
+        return;
+    }
+    
+    isDone = NO;
+    
+    for (NSString *key in submitDic) {
+        
+        NSString *str = [submitDic objectForKey:key];
+        if (str.length == 0) {
+            
+            for ( News_ProvinceVIP_Edit_DetailEntity *entity in self.arrayCutomer) {
+                if ([entity.submit_num isEqualToString:key] && [entity.form_type intValue] != 5
+                    && ![entity.form_type isEqualToString:@"6"] && [entity.constraint isEqualToString:@"-1"]) {
+                    NSString *strr = [NSString stringWithFormat:@"%@不能为空",entity.name];
+                    ALERT_ERR_MSG(strr);
+                    isDone = YES;
+                    return;
+                }
+                
+                if (self.uploadImagesArr.count == 0 && [entity.form_type isEqualToString:@"5"] && [entity.constraint isEqualToString:@"-1"]) {
+                    
+                    ALERT_ERR_MSG(@"请上传图片");
+                    isDone = YES;
+                    return;
+                }
+                
+                if (self.order_info.length == 0 && [entity.form_type isEqualToString:@"6"] && [entity.constraint isEqualToString:@"-1"]) {
+                    
+                    ALERT_ERR_MSG(@"请上传机型");
+                    isDone = YES;
+                    return;
+                }
+                
+            }
+            
+        }
+    }
+    
+    NSString *type;
+    NSString *submit_num;
+    for ( News_ProvinceVIP_Edit_DetailEntity *entity in self.arrayCutomer) {
+        
+        if ([entity.form_type isEqualToString:@"5"]) {
+            
+            type = @"5";
+            submit_num = entity.submit_num;
+        }
+        
+    }
+    
+    CommonService *service = [[CommonService alloc]init];
+    
+    [submitDic setObject:userEntity.user_id forKey:@"create_id"];
+    [submitDic setObject:@"m_business_update" forKey:@"method"];
+    [submitDic setObject:self.business_id forKey:@"business_id"];
+    [submitDic setObject:userEntity.dep_id forKey:@"dep_id"];
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.labelText = @"努力加载中...";
+    
+    [service getNetWorkData:submitDic Successed:^(id entity) {
+        NSNumber *state = [entity valueForKeyPath:@"state"];
+        
+        if (state > 0) {
+            
+            
+            if ([type isEqualToString:@"5"]) {
+                
+                for (int i = 0; i < [self.uploadImagesArr count]; i++) {
+                    if ([self.uploadImagesArr[i] isKindOfClass:[UIImage class]]) {
+                        //取出重新上传的图片
+                         [self uploadImagesWithIndex:i withBusinessId:entity[@"state"] andwithSubmit_num:submit_num];
+                        break;
+                    }
+                }
+                
+            }else{
+                UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"提交成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+                    
+                    News_ProviceVIP_ListViewController *vc = [[News_ProviceVIP_ListViewController alloc]init];
+                    for (UIViewController *temp in self.navigationController.viewControllers) {
+                        if ([temp isKindOfClass:[vc class]]) {
+                            [self.navigationController popToViewController:temp animated:YES];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
+                        }
+                        
+                    }
+                    
+                    
+                }];
+            }
+            
+           
+            
+        }
+        
+        [HUD hide:YES];
+        isDone = YES;
+    } Failed:^(int errorCode, NSString *message) {
+        isDone = YES;
+        [HUD hide:YES];
+        
+    }];
+    
+}
+
+- (void)uploadImagesWithIndex:(int)index withBusinessId:(NSString *)businessId andwithSubmit_num:(NSString *)submit_num
+{
+    
+    if (![self.uploadImagesArr[index] isKindOfClass:[UIImage class]]) {
+        return;
+    }
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@_%d",businessId,index];
+    
+    NSData *imageData = UIImageJPEGRepresentation(self.uploadImagesArr[index], 0.5f);
+    
+    NSDictionary *dict = @{@"method":@"business_pic_upload",
+                           @"business_id":businessId,
+                           @"submit_num":submit_num,
+                           @"picname":imageName,
+                           @"file":imageData,
+                           };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];//初始化请求对象
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//设置服务器允许的请求格式内容
+    
+    //上传图片/文字，只能同POST
+    
+    [manager POST:BASEURL parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        //对于图片进行压缩
+        NSData *data = UIImageJPEGRepresentation(self.uploadImagesArr[index],0.5);
+        //NSData *data = UIImagePNGRepresentation(image);
+        //第一个代表文件转换后data数据，第二个代表图片的名字，第三个代表图片放入文件夹的名字，第四个代表文件的类型
+        [formData appendPartWithFileData:data name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg",imageName] mimeType:@"image/jpg"];
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        NSLog(@"responseObject = %@, task = %@",responseObject,task);
+        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        
+        if ([[obj objectForKey:@"state"] intValue]== 1) {
+                if (index < self.uploadImagesArr.count-1) {
+                    [self uploadImagesWithIndex:index+1 withBusinessId:businessId andwithSubmit_num:submit_num];
+
+                }else{
+                    UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"提交成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+                        News_ProviceVIP_ListViewController *vc = [[News_ProviceVIP_ListViewController alloc]init];
+                    for (UIViewController *temp in self.navigationController.viewControllers) {
+                        if ([temp isKindOfClass:[vc class]]) {
+                            [self.navigationController popToViewController:temp animated:YES];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
+                        }
+                        
+                    }
+                }];
+            }
+        }else{
+//            ALERT_ERR_MSG(@"上传图片失败");
+            
+            
+            UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"图片上传失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+                News_ProviceVIP_ListViewController *vc = [[News_ProviceVIP_ListViewController alloc]init];
+                for (UIViewController *temp in self.navigationController.viewControllers) {
+                    if ([temp isKindOfClass:[vc class]]) {
+                        [self.navigationController popToViewController:temp animated:YES];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
+                    }
+                    
+                }
+            }];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error);
+    }];
+
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = nil;
+
+    if (section == 1 && self.order_info.length > 0) {
+        
+
+        title = @"机型列表";
+
+        
+    }
+    return title;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    NSInteger rows = 0;
+    if (section == 0) {
+        rows = self.arrayCutomer.count + 2;
+    }else{
+        NSArray *arr = [self.order_info componentsSeparatedByString:@";"];
+        
+        rows = [arr count]>0?[arr count]+1:0;
+    }
+    return rows;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier1 = @"TxtFieldTableViewCell";
+    static NSString *identifier2 = @"CheckBoxTableViewCell";
+    static NSString *identifier3 = @"ThreeLabelsTableViewCell";
+    static NSString *identifier4 = @"ThreeCheckBoxTableViewCell";
+    static NSString *identifier5 = @"News_ClickBtnTableViewCell";
+    
+    cell1 = [tableView dequeueReusableCellWithIdentifier:identifier1];
+    cell2 = [tableView dequeueReusableCellWithIdentifier:identifier2];
+    cell3 = [tableView dequeueReusableCellWithIdentifier:identifier4];
+    cell4 = [tableView dequeueReusableCellWithIdentifier:identifier5];
+    
+//    if (!cell1) {
+        cell1 = [[[NSBundle mainBundle] loadNibNamed:identifier1 owner:nil options:nil] firstObject];
+        cell1.txtField.delegate = self;
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell1.txtField.rightViewMode = UITextFieldViewModeAlways;
+//    }
+    
+    if (!cell2) {
+        cell2 = [[[NSBundle mainBundle] loadNibNamed:identifier2 owner:nil options:nil] firstObject];
+        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell2.delegate = self;
+    }
+    
+    if (!cell3) {
+        cell3 = [[[NSBundle mainBundle] loadNibNamed:identifier4 owner:nil options:nil] firstObject];
+        cell3.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell3.delegate = self;
+    }
+    if (!cell4) {
+        cell4 = [[[NSBundle mainBundle] loadNibNamed:identifier5 owner:nil options:nil] firstObject];
+        cell4.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    
+    cell1.txtField.tag = indexPath.row;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell1.titleLbl.text = @"客户经理";
+            cell1.txtField.text = userEntity.name;
+            
+        }else if (indexPath.row == 1){
+            cell1.titleLbl.text = @"申请部门";
+            cell1.txtField.text = userEntity.dep_name;
+            
+        }else{
+            News_ProvinceVIP_Edit_DetailEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row - 2];
+            
+            cell1.titleLbl.text = entity.name;
+            
+            
+            for (NSString *key in submitDic) {
+                
+                if ([entity.submit_num isEqualToString:key]) {
+                    if ([[submitDic objectForKey:key] isEqualToString:@"-1"]) {
+                        
+                        cell1.txtField.text = @"";
+
+                    }else{
+                        cell1.txtField.text = [submitDic objectForKey:key];
+
+                    }
+                }
+            }
+       
+            for (NSString *key in txtFieldDic) {
+                
+                if ([entity.submit_num isEqualToString:key]) {
+                    cell1.txtField.text = [txtFieldDic objectForKey:key];
+                }
+            }
+            
+            
+            if ([entity.form_type isEqualToString:@"1"]) {
+                
+                NSArray *arr = [entity.data_source componentsSeparatedByString:@";"];
+                
+                cell2.titleLbl.text = entity.name;
+                cell2.titleLbl.tag = indexPath.row;
+                
+                if (arr.count == 1) {
+                    
+                    cell4.titleLabel.text = entity.name;
+                    cell4.clickBtn.selected = YES;
+                    
+                    cell4.clickBtn.tag = indexPath.row;
+                    
+                    [cell4.clickBtn setImage:[UIImage imageNamed:@"check_pressed"] forState:UIControlStateNormal];
+                    
+                    [cell4.clickBtn setTitle:arr[0] forState:UIControlStateNormal];
+                    
+                    return cell4;
+                }else if (arr.count == 2) {
+                    
+                    [cell2 setSelectDataWithArray:@[arr[0],arr[1]]];
+                    
+                    if ([[submitDic objectForKey:entity.submit_num] isEqualToString:arr[0]]) {
+                        [cell2 setSelectBtnIndex:1];
+                    }else if ([[submitDic objectForKey:entity.submit_num] isEqualToString:arr[1]]){
+                        [cell2 setSelectBtnIndex:2];
+                    }else{
+                        
+                    }
+                    
+                    return cell2;
+                }else if (arr.count == 3){
+                    
+                    cell3.titleLbl.text = entity.name;
+                    cell3.titleLbl.tag = indexPath.row;
+                    [cell3 setSelectDataWithArray:@[arr[0],arr[1],arr[2]]];
+                                        
+                    if ([self.CheckBoxFile isEqualToString:arr[0]]) {
+                        [cell3 setSelectBtnIndex:1];
+                    }else if ([self.CheckBoxFile isEqualToString:arr[1]]){
+                        [cell3 setSelectBtnIndex:2];
+                    }else if ([self.CheckBoxFile isEqualToString:arr[2]]){
+                        [cell3 setSelectBtnIndex:3];
+                    }
+                    
+                    return cell3;
+                }
+            }else if ([entity.form_type isEqualToString:@"2"]) {
+                
+                cell1.downArrowImageView.hidden = NO;
+                
+            }else if ([entity.form_type isEqualToString:@"3"]) {
+                
+                cell1.downArrowImageView.hidden = NO;
+                
+                cell1.downArrowImageView.image = [UIImage imageNamed:@"arrow"];
+                
+            }else if ([entity.form_type isEqualToString:@"4"]) {
+                
+                cell1.downArrowImageView.hidden = NO;
+                if (self.order_time.length > 0) {
+                    cell1.txtField.text = self.order_time;
+                }
+                
+            }else if ([entity.form_type isEqualToString:@"5"]){
+
+                cell1.txtField.text = @"查看上传资料";
+                
+            }else if ([entity.form_type isEqualToString:@"6"]){
+                
+                cell1.txtField.text = @"查看机型";
+            }
+            
+            if (![entity.form_type isEqualToString:@"1"] && ![entity.form_type isEqualToString:@"5"]&& ![entity.form_type isEqualToString:@"6"]) {
+                
+                [submitDic setObject:cell1.txtField.text forKey:entity.submit_num];
+                
+            }
+            
+            if ([entity.form_type isEqualToString:@"6"]) {
+                [submitDic setObject:self.order_info forKey:entity.submit_num];
+            }
+            
+        }
+    return cell1;
+    }else{
+        ThreeLabelsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier3];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:identifier3 owner:nil options:nil] firstObject];
+        }
+        
+        if (indexPath.row == 0) {
+            cell.leftLbl.text = @"需求机型";
+            cell.middleLbl.text = @"数量";
+            cell.rightLbl.text = @"颜色";
+            
+            if ([self.order_type isEqualToString:@"赠送礼品"]|
+                [self.order_type isEqualToString:@"业务"]) {
+                cell.leftLbl.text = @"业务名称";
+            }
+            
+        }else{
+            NSArray *deviceArr = [self.order_info componentsSeparatedByString:@";"];
+            NSString *deviceStr = deviceArr[indexPath.row-1];
+            
+            NSArray *infoArr = [deviceStr componentsSeparatedByString:@","];
+            if (infoArr.count >= 3) {
+                cell.leftLbl.text = infoArr[0];
+                cell.middleLbl.text = infoArr[1];
+                cell.rightLbl.text = infoArr[2];
+            }
+        }
+        
+        return cell;
+    }
+    
+}
+
+- (void)getDate{
+    
+    
+    CommonService *service = [[CommonService alloc]init];
+    
+    NSDictionary *dic = @{
+                          @"method":@"m_business_edit_detail",
+                          @"business_id":self.business_id,
+                          
+                          };
+    
+    [service getNetWorkData:dic Successed:^(id entity) {
+        NSNumber *state = [entity valueForKeyPath:@"state"];
+        NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
+        
+        if ([strState isEqualToString:@"0"]) {
+            
+            
+        }else{
+            
+            NSMutableArray *arr = [entity objectForKey:@"content"];
+            
+            for (NSDictionary *attributes in arr) {
+                News_ProvinceVIP_Edit_DetailEntity *entity = [[News_ProvinceVIP_Edit_DetailEntity alloc]init];
+                entity = [entity initWithAttributes:attributes];
+                
+                [submitDic setObject:entity.value forKey:entity.submit_num];
+                
+                [self.arrayCutomer addObject:entity];
+                [self.arrayCutomerTmpe addObject:entity];
+                
+                if ([entity.form_type intValue] == FORM_TYPE_SIX) {
+                    _order_info = [entity valueForKey:@"value"];
+                    
+                }
+                
+                if ([entity.form_type intValue] == FORM_TYPE_FIVE) {
+                    
+                    _uploadImagesArr = [entity.value componentsSeparatedByString:@";"];
+                }
+                
+                
+            }
+        
+            for (News_ProvinceVIP_Edit_DetailEntity *entity in self.arrayCutomerTmpe) {
+                if ([entity.form_type isEqualToString:@"1"] && ![entity.hidden_info isEqualToString:@"-1"] && [entity.value isEqualToString:@"是"]) {
+                    
+                    NSArray *arr = [entity.hidden_info componentsSeparatedByString:@"=>"];
+                    for (News_ProvinceVIP_Edit_DetailEntity *entity in self.arrayCutomerTmpe) {
+                    
+                        if ([entity.submit_num isEqualToString:arr[1]]) {
+                             [self.arrayCutomer removeObject:entity];
+                            
+                            [_tableView reloadData];
+                            
+                            return ;
+                        }
+
+                    }
+                }
+            }
+            
+            [_tableView reloadData];
+        }
+        
+    } Failed:^(int errorCode, NSString *message) {
+        
+        
+    }];
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+    News_ProvinceVIP_Edit_DetailEntity *entity = [self.arrayCutomer objectAtIndex:textField.tag - 2];
+    
+    for (NSString *key in submitDic) {
+        
+        if ([entity.submit_num isEqualToString:key]) {
+            
+            [submitDic setObject:textField.text forKey:key];
+            return;
+        }
+        
+    }
+    
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    //    NSLog(@"textField.tag=%d",textField.tag);
+    //测试时切勿按tab键 此处有bug 暂未解决
+    News_ProvinceVIP_Edit_DetailEntity *entity;
+    
+    if (!(textField.tag == 0 |
+          textField.tag == 1)) {
+        
+        entity = [self.arrayCutomer objectAtIndex:textField.tag - 2];
+        
+        data_str = entity.data_source;
+        
+        data_arr= [data_str componentsSeparatedByString:@";"];
+        
+    }
+    
+    if (textField.tag == 0 |
+        textField.tag == 1 |
+        [entity.submit_num isEqualToString:@"gz_jtbh"]) {
+        
+        return NO;
+    }
+    
+    
+    
+    if ([entity.form_type intValue] == FORM_TYPE_ZERO) {
+        
+        if ([entity.constraint integerValue] == 2) {
+            return NO;
+        }
+        
+    }else if([entity.form_type intValue] == FORM_TYPE_ONE) {
+        
+    }else if([entity.form_type intValue] == FORM_TYPE_TWO) {
+        [self.view endEditing:YES];
+        
+        
+        [UIActionSheet showInView:self.view
+                        withTitle:entity.name
+                cancelButtonTitle:@"取消"
+           destructiveButtonTitle:nil
+                otherButtonTitles:data_arr
+                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                             for (int i = 0; i < data_arr.count; i ++ ) {
+                                 if (buttonIndex == i) {
+                                     for (NSString *key in submitDic) {
+                                         
+                                         if ([entity.submit_num isEqualToString:key]) {
+                                             
+                                             [submitDic setObject:data_arr[i] forKey:key];
+                                             
+                                             [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:textField.tag inSection:0]]
+                                                               withRowAnimation:UITableViewRowAnimationFade];
+                                             return ;
+                                         }
+                                         
+                                     }
+                                     
+                                 }
+                             }
+                         }];
+        
+        return NO;
+        
+    }else if([entity.form_type intValue] == FORM_TYPE_THREE) {
+        
+        [self.view endEditing:YES];
+        
+        News_CustomerViewController *vc = [[News_CustomerViewController alloc]init];
+        
+        vc.delegate = self;
+        
+        vc.data_source = entity.data_source;
+        vc.data_source_addition = entity.data_source_addition;
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        
+        if ([entity.data_source_type isEqualToString:@"2"]) {
+            NSArray *arr = [entity.data_source componentsSeparatedByString:@":"];
+            vc.data_source = arr[0];
+            NSArray *arr1 = [arr[1] componentsSeparatedByString:@";"];
+            
+            for (NSString *str in arr1) {
+                for (NSString *key in submitDic) {
+                    
+                    if ([str isEqualToString:key]) {
+                        
+                        [dic setObject:[submitDic objectForKey:key] forKey:str];
+                        NSString *obj = [dic objectForKey:str];
+                        if (obj.length > 0) {
+                            
+                        }else{
+                            ALERT_ERR_MSG(@"请先选择前一项");
+                            return NO;
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+        
+        vc.dic = dic;
+        vc.name = entity.name;
+        
+        self.fill_info = entity.fill_info;
+        
+        [vc getData];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return NO;
+    }else if([entity.form_type intValue] == FORM_TYPE_FOUR) {
+        [self.view endEditing:YES];
+        
+        //预约时间
+        XYDatePicker *datePicker = [XYDatePicker datePicker];
+        datePicker.delegate = self;
+        datePicker.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+        [datePicker show];
+        
+        return NO;
+
+    }else if([entity.form_type intValue] == FORM_TYPE_FIVE) {
+        
+        [self.view endEditing:YES];
+        
+        P_AddPhotoViewController *vc = [[P_AddPhotoViewController alloc] init];
+        vc.imagesArr = self.uploadImagesArr;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return NO;
+        
+    }else if([entity.form_type intValue] == FORM_TYPE_SIX) {
+        
+        [self.view endEditing:YES];
+        
+        P_AddDevicesViewController *vc = [[P_AddDevicesViewController alloc] init];
+        vc.device_info = self.order_info;
+        vc.order_type = self.order_type;
+        vc.delegate = self;
+        order_form_type = entity.submit_num;
+        [self.navigationController pushViewController:vc animated:YES];
+        return NO;
+    }
+    
+    
+    return YES;
+    
+}
+
+- (void)News_CustomerViewControllerViewController:(News_CustomerViewController *)vc didSelectCompany:(NSMutableDictionary *)dic{
+    
+    fill_infoArr = [self.fill_info componentsSeparatedByString:@";"];
+    for (NSString *str in fill_infoArr) {
+        
+        NSRange range;
+        range = [str rangeOfString:@"=>"];
+        
+        if (range.location != NSNotFound) {
+            
+            [txtFieldDic setObject:[dic objectForKey:[str substringToIndex:range.location]] forKey:[str substringFromIndex:range.location+range.length]];
+            
+        }else{
+            
+            NSLog(@"Not Found");
+            
+        }
+        
+    }
+    
+    [_tableView reloadData];
+    
+}
+
+- (void)checkBoxTableViewCell:(CheckBoxTableViewCell *)cell checkDidChanged:(int)selectedIndex
+{
+    News_ProvinceVIP_Edit_DetailEntity *entity = [self.arrayCutomer objectAtIndex:cell.titleLbl.tag - 2];
+    NSArray *arr = [entity.data_source componentsSeparatedByString:@";"];
+    if (selectedIndex == 1) {
+        [submitDic setValue:arr[0] forKey:entity.submit_num];
+
+        
+        if (![entity.hidden_info isEqualToString:@"-1"]) {
+            
+            NSArray *arr = [entity.hidden_info componentsSeparatedByString:@"=>"];
+            for (News_ProvinceVIP_Edit_DetailEntity *entity in self.arrayCutomer) {
+                
+                if ([entity.submit_num isEqualToString:arr[1]]) {
+                    
+                    [self.arrayCutomer removeObject:entity];
+                    
+                    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                              withRowAnimation:UITableViewRowAnimationNone];
+                    
+                    return;
+                    
+                }
+            }
+        }
+    }else{
+        [submitDic setValue:arr[1] forKey:entity.submit_num];
+
+        if (![entity.hidden_info isEqualToString:@"-1"]) {
+            if (self.arrayCutomer.count != self.arrayCutomerTmpe.count) {
+                
+                [self.arrayCutomer removeAllObjects];
+                
+                for (NSDictionary *attributes in self.arrayCutomerTmpe) {
+                    
+                    News_ProvinceVIP_Edit_DetailEntity *entity = [[News_ProvinceVIP_Edit_DetailEntity alloc]init];
+                    entity = [entity initWithAttributes:attributes];
+                    
+                    [self.arrayCutomer addObject:entity];
+                }
+                
+                
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationNone];
+            }
+        }
+        
+    }
+    
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cell.titleLbl.tag inSection:0]]
+                      withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - AddPhotoViewControllerDelegate
+
+- (void)addPhotoViewController:(P_AddPhotoViewController *)vc didSelectImages:(NSArray *)imagesArr{
+    
+    
+    self.uploadImagesArr = imagesArr;
+    [_tableView reloadData];
+}
+
+#pragma mark - XYDatePickerDelegate
+
+- (void)datePickerDonePressed:(XYDatePicker *)datePicker
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString *dateStr = [dateFormatter stringFromDate:datePicker.date];
+    
+    self.order_time = dateStr;
+    
+    [_tableView reloadData];
+}
+
+- (void)addDevicesViewController:(P_AddDevicesViewController *)vc addDevicesInfo:(NSString *)info
+{
+    self.order_info = info;
+    [submitDic setObject:self.order_info forKey:order_form_type];
+    
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+              withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)ThreecheckBoxTableViewCell:(ThreeCheckBoxTableViewCell *)cell checkDidChanged:(int)selectedIndex
+{
+    News_ProvinceVIP_Edit_DetailEntity *entity = [self.arrayCutomer objectAtIndex:cell.titleLbl.tag - 2];
+    NSArray *arr = [entity.data_source componentsSeparatedByString:@";"];
+    
+    if (selectedIndex == 1) {
+        self.CheckBoxFile = arr[0];
+        [submitDic setValue:arr[0] forKey:entity.submit_num];
+        
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationNone];
+    }else if(selectedIndex == 2){
+        
+        self.CheckBoxFile = arr[1];
+        [submitDic setValue:arr[1] forKey:entity.submit_num];
+        
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationNone];
+    }else{
+        
+        self.CheckBoxFile = arr[2];
+        [submitDic setValue:arr[2] forKey:entity.submit_num];
+        
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    
+}
+
+
+@end

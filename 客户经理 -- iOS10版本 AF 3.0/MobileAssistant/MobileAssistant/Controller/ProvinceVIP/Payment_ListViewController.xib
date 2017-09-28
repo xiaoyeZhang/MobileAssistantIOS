@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Payment_ListViewController">
+            <connections>
+                <outlet property="dateBtn" destination="dzA-2K-RZz" id="SOY-Ax-qtr"/>
+                <outlet property="tableView" destination="Gti-Ed-1c8" id="i6u-hu-JOs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AN8-0J-erL">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzA-2K-RZz" userLabel="2015-09-04 ~ 2015-10-04">
+                            <rect key="frame" x="78" y="-1" width="220" height="37"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="dpb-lZ-bde"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="     2015-09-04 ~ 2015-10-04" image="rili">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="dateBtnClicked:" destination="-1" eventType="touchUpInside" id="dhx-8f-Sc3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dzA-2K-RZz" firstAttribute="centerX" secondItem="AN8-0J-erL" secondAttribute="centerX" id="D0P-cY-pmt"/>
+                        <constraint firstItem="dzA-2K-RZz" firstAttribute="centerY" secondItem="AN8-0J-erL" secondAttribute="centerY" id="RI8-Yf-MHr"/>
+                        <constraint firstAttribute="height" constant="35" id="veD-Gr-gxa"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-Ed-1c8">
+                    <rect key="frame" x="0.0" y="35" width="375" height="632"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="fn5-wg-nol"/>
+                        <outlet property="delegate" destination="-1" id="OUB-1H-UWJ"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="AN8-0J-erL" secondAttribute="trailing" id="196-2e-brZ"/>
+                <constraint firstItem="Gti-Ed-1c8" firstAttribute="top" secondItem="AN8-0J-erL" secondAttribute="bottom" id="3KK-kf-dIz"/>
+                <constraint firstItem="AN8-0J-erL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Jw-CO-edy"/>
+                <constraint firstItem="Gti-Ed-1c8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Ph-3n-qT4"/>
+                <constraint firstAttribute="bottom" secondItem="Gti-Ed-1c8" secondAttribute="bottom" id="9fw-yz-RoH"/>
+                <constraint firstAttribute="trailing" secondItem="Gti-Ed-1c8" secondAttribute="trailing" id="hek-Ir-dlk"/>
+                <constraint firstItem="AN8-0J-erL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wij-rt-7bi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="400.5" y="-18.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="rili" width="16" height="16"/>
+    </resources>
+</document>

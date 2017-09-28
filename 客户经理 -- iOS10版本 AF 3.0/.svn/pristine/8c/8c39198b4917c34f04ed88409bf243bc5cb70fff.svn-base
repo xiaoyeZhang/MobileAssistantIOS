@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionReusableView" id="U6b-Vx-4bR" customClass="ImageCollectionReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_01" translatesAutoresizingMaskIntoConstraints="NO" id="ShE-YS-Sa8">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="ShE-YS-Sa8" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="2p7-9c-7a8"/>
+                <constraint firstAttribute="bottom" secondItem="ShE-YS-Sa8" secondAttribute="bottom" id="bfL-Md-9i9"/>
+                <constraint firstAttribute="trailing" secondItem="ShE-YS-Sa8" secondAttribute="trailing" id="oHJ-BB-Z6E"/>
+                <constraint firstItem="ShE-YS-Sa8" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="tC0-F7-fXp"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="ShE-YS-Sa8" id="7K6-BB-7Pf"/>
+            </connections>
+            <point key="canvasLocation" x="357" y="494.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="banner_01" width="720" height="240"/>
+    </resources>
+</document>

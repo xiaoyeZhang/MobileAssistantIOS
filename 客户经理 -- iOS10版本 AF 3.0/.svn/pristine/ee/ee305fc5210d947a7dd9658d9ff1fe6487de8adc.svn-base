@@ -1,0 +1,19 @@
+//
+//  InformationViewViewController.h
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 2017/7/6.
+//  Copyright © 2017年 avatek. All rights reserved.
+//
+
+#import "XYBaseViewController.h"
+
+@interface InformationViewViewController : XYBaseViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *Btn1;
+@property (weak, nonatomic) IBOutlet UIButton *Btn2;
+@property (weak, nonatomic) IBOutlet UIButton *Btn3;
+@property (weak, nonatomic) IBOutlet UIView *CenterView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIView* viewCondition;
+@end

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>集团V网</string>
+		<key>ImageName</key>
+		<string>bm_vnetwork</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>彩铃</string>
+		<key>ImageName</key>
+		<string>bm_bell</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>集团号簿</string>
+		<key>ImageName</key>
+		<string>bm_directory</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>国际漫游</string>
+		<key>ImageName</key>
+		<string>bm_inter</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>成员管理</string>
+		<key>ImageName</key>
+		<string>bm_addclient-1</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>产品查询退订</string>
+		<key>ImageName</key>
+		<string>bm_order</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>集团账单</string>
+		<key>ImageName</key>
+		<string>bm_bill</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>营销活动</string>
+		<key>ImageName</key>
+		<string>bm_activity</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>可办理营销活动查询</string>
+		<key>ImageName</key>
+		<string>list_search</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>用户画像信息</string>
+		<key>ImageName</key>
+		<string>分合户</string>
+	</dict>
+</array>
+</plist>

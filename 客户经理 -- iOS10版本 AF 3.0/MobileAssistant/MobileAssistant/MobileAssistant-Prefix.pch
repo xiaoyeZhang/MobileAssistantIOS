@@ -1,0 +1,112 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+    #import "QHViewTag.h"
+    #import "MobClick.h"
+    #import "ZXYBaseViewController.h"
+    #import "XYBaseViewController.h"
+    #import "XYTableBaseViewController.h"
+    #import "Marco.h"
+    #import "iToast.h"
+    #import "WZLBadgeImport.h"
+    #import "UserEntity.h"
+    #import "LogModule.h"
+    #import "UIImageView+WebCache.h"
+    #import "DataSql.h"
+    #import "SFHFKeychainUtils.h"
+
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
+
+#import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>//引入云检索功能所有的头文件
+
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
+
+#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
+
+#import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
+
+#import <BaiduMapAPI_Map/BMKMapView.h>//只引入所需的单个头文件
+
+#endif
+
+#define IMAGE_URL @"http://gzcmm.dayo.net.cn/cmm/ad/"
+#define PRODUCT_IMAGE_URL @"http://gzcmm.dayo.net.cn/cmm/upload/"
+
+//boss服务器
+#define BASEURL @"http://gzcmm.dayo.net.cn/cmm/cmm_boss_token.php"
+#define TERMINAL_PHOTO_URL @"http://gzcmm.dayo.net.cn/cmm/terminal_photo/"
+#define NEWS_URL @"http://gzcmm.dayo.net.cn/cmm/note_app.php"
+
+//boss服务器https协议
+//#define BASEURL @"https://gzcmm.dayo.net.cn/cmm/cmm_boss_token.php"
+//#define TERMINAL_PHOTO_URL @"http://gzcmm.dayo.net.cn/cmm/terminal_photo/"
+//#define NEWS_URL @"http://gzcmm.dayo.net.cn/cmm/note_app.php"
+
+//#define PATH @"cmm_boss_token.php"
+
+//测试服务器
+//#define BASEURL @"http://120.24.63.90/gzcms/cmm_boss.php"
+//#define TERMINAL_PHOTO_URL @"http://120.24.63.90/gzcms/terminal_photo/"
+//#define NEWS_URL @"http://120.24.63.90/gzcms/note_app.php"
+//#define PATH @"cmm_boss.php"
+//#define PATH @"cmm_boss_unify.php"
+
+//#define BASEURL @"http://39.108.101.166/cmm/cmm_boss_token.php"
+//#define TERMINAL_PHOTO_URL @"http://39.108.101.166/cmm/terminal_photo/"
+//#define NEWS_URL @"http://39.108.101.166/cmm/note_app.php"
+
+//动态配置服务器
+//#define BASEURL @"http://192.168.1.187/cmm/cmm_boss.php"
+
+#define TYPE_EDIT @"编辑" //编辑
+
+#define TYPE_SUBMIT @"提交"  //提交
+
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
+#define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)
+
+//导航栏和状态栏高度
+#define BARFRAME_NAVBAR_HEIGHT app.nav.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height
+
+//RGB Color
+#define RGBCOLOR(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+#pragma mark - 设备型号识别
+#define is_IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
+#define ALERT_ERR_MSG(MSG) ([[[UIAlertView alloc] initWithTitle:@"提示" message:MSG delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil] show])
+
+#define ALERT_MSG(TITLE,MSG) ([[[UIAlertView alloc] initWithTitle:TITLE message:MSG delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil] show])
+
+#ifndef NDEBUG
+#define DebugLog(message, ...) NSLog(@"%s: " message, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#else
+#define DebugLog(message, ...)
+#endif
+
+typedef enum
+{
+    Press_1 = 0,
+    Press_2,
+    Press_3,
+    Press_4
+}Presstype;

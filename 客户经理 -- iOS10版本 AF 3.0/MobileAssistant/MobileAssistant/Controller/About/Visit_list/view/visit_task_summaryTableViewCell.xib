@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="167" id="KGk-i7-Jjw" customClass="visit_task_summaryTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="286" height="167"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="客户：" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdd-yj-T5c">
+                        <rect key="frame" x="8" y="8" width="271" height="33"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="客户经理：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhG-Je-mkK">
+                        <rect key="frame" x="8" y="41" width="222" height="21"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                        <color key="textColor" red="0.2666666667" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="客户经理：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zye-Hp-aVU">
+                        <rect key="frame" x="8" y="89" width="222" height="21"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                        <color key="textColor" red="0.2666666667" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="客户经理：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3w-q1-rG4">
+                        <rect key="frame" x="8" y="111" width="222" height="21"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                        <color key="textColor" red="0.2666666667" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="客户经理：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIH-IO-gfF">
+                        <rect key="frame" x="8" y="60" width="222" height="21"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                        <color key="textColor" red="0.2666666667" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hdd-yj-T5c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="1vT-Vg-cEf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hdd-yj-T5c" secondAttribute="trailing" id="AP2-re-cKd"/>
+                    <constraint firstItem="XIH-IO-gfF" firstAttribute="top" secondItem="ZhG-Je-mkK" secondAttribute="bottom" constant="3" id="CRX-df-bNs"/>
+                    <constraint firstItem="ZhG-Je-mkK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="OTB-te-jN9"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="XIH-IO-gfF" secondAttribute="leading" id="OvN-Od-lZT"/>
+                    <constraint firstItem="zye-Hp-aVU" firstAttribute="top" secondItem="XIH-IO-gfF" secondAttribute="bottom" constant="3" id="ToI-s5-c4g"/>
+                    <constraint firstItem="ZhG-Je-mkK" firstAttribute="top" secondItem="hdd-yj-T5c" secondAttribute="bottom" constant="5" id="Wew-yS-wwy"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="T3w-q1-rG4" secondAttribute="leading" id="ht7-DE-hHt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ZhG-Je-mkK" secondAttribute="trailing" id="jQg-at-VBx"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="zye-Hp-aVU" secondAttribute="leading" id="lU2-9t-DDm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zye-Hp-aVU" secondAttribute="trailing" id="m1P-8d-WiH"/>
+                    <constraint firstItem="hdd-yj-T5c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="sIp-0c-od6"/>
+                    <constraint firstItem="T3w-q1-rG4" firstAttribute="top" secondItem="zye-Hp-aVU" secondAttribute="bottom" constant="3" id="tuw-V8-Q2p"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="T3w-q1-rG4" secondAttribute="trailing" id="udu-pd-NIJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="XIH-IO-gfF" secondAttribute="trailing" id="vYt-9h-0c0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="actor_num" destination="ZhG-Je-mkK" id="2Sr-QF-6Wm"/>
+                <outlet property="company_nameLabel" destination="hdd-yj-T5c" id="RCg-lJ-ZVi"/>
+                <outlet property="visitNum_one" destination="XIH-IO-gfF" id="bND-YW-XCO"/>
+                <outlet property="visitNum_three" destination="T3w-q1-rG4" id="AXL-PR-cP2"/>
+                <outlet property="visitNum_two" destination="zye-Hp-aVU" id="uH8-aZ-lyv"/>
+            </connections>
+            <point key="canvasLocation" x="-251" y="255.5"/>
+        </tableViewCell>
+    </objects>
+</document>

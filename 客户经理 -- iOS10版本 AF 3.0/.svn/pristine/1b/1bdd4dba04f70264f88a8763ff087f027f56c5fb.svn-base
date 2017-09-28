@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7961904e-ce4e-42fe-adb4-7181ca141aee++6063",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "7961904e-ce4e-42fe-adb4-7181ca141aee++6063" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7961904e-ce4e-42fe-adb4-7181ca141aee++6063" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BDFAF1A0-1127-43A9-A0E2-A6E2DB2C7F92",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7961904e-ce4e-42fe-adb4-7181ca141aee++6063" : "%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MobileAssistant",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MobileAssistant\/MobileAssistant.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.66\/home\/svnroot\/cmm",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7961904e-ce4e-42fe-adb4-7181ca141aee++6063"
+    }
+  ]
+}

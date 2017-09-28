@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="KGk-i7-Jjw" customClass="ContactTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="315" height="53"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="keyclient" translatesAutoresizingMaskIntoConstraints="NO" id="BHK-nQ-AcC">
+                        <rect key="frame" x="19" y="19" width="25" height="25"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbP-Dh-nZV">
+                        <rect key="frame" x="58" y="9" width="243" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEA-MI-a0R">
+                        <rect key="frame" x="58" y="34" width="243" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSi-Tm-fz9">
+                        <rect key="frame" x="282" y="23" width="19" height="15"/>
+                    </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-68-Eq5">
+                        <rect key="frame" x="233" y="9" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="T45-W8-c1o"/>
+                        </constraints>
+                        <state key="normal" image="delete"/>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2I-bF-8O9">
+                        <rect key="frame" x="276" y="14" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="S7Y-xD-Mf5"/>
+                        </constraints>
+                        <state key="normal" image="edit"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="w2I-bF-8O9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-10" id="0zZ-A8-dwk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="w2I-bF-8O9" secondAttribute="bottom" constant="-10" id="Jba-9G-dJz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7bg-68-Eq5" secondAttribute="bottom" constant="-10" id="YSf-vN-5Z6"/>
+                    <constraint firstItem="w2I-bF-8O9" firstAttribute="leading" secondItem="7bg-68-Eq5" secondAttribute="trailing" id="tnq-71-06f"/>
+                    <constraint firstItem="7bg-68-Eq5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-10" id="uy6-Xc-E2D"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="w2I-bF-8O9" secondAttribute="trailing" constant="-10" id="zdr-ef-x9u"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="IconImage" destination="SSi-Tm-fz9" id="zMd-2u-dQP"/>
+                <outlet property="deleteBtn" destination="7bg-68-Eq5" id="jhV-I5-c36"/>
+                <outlet property="editBtn" destination="w2I-bF-8O9" id="EBv-Sj-MWJ"/>
+                <outlet property="imageView" destination="BHK-nQ-AcC" id="7ep-eq-0Qa"/>
+                <outlet property="labelName" destination="DbP-Dh-nZV" id="0PQ-vM-qkP"/>
+                <outlet property="labelSubName" destination="vEA-MI-a0R" id="748-2x-gBC"/>
+            </connections>
+            <point key="canvasLocation" x="356.5" y="322"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="delete" width="25" height="25"/>
+        <image name="edit" width="25" height="25"/>
+        <image name="keyclient" width="25" height="25"/>
+    </resources>
+</document>

@@ -1,0 +1,124 @@
+//
+//  DataSql.m
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 16/1/19.
+//  Copyright © 2016年 zxy. All rights reserved.
+//
+
+#import "DataSql.h"
+
+@implementation DataSql
+
+
+- (NSString *)getDbpath{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *dbpath = [path stringByAppendingPathComponent:@"MobileAssistant.db"];
+
+//     NSString *path = @"/Users/zhangxiaoye/Desktop/";
+//
+//     NSString *dbpath = [path stringByAppendingString:@"MobileAssistant.db"];
+
+    return dbpath;
+    
+}
+
+#pragma mark 创建数据库
+- (void)createMyDB{
+    
+    
+    self.db = [FMDatabase databaseWithPath:[self getDbpath]];
+    [self.db open];
+    
+    // 动态配置表
+    [self.db executeUpdate:@"CREATE TABLE t_configureBtn( tag text, Btn_name text, Btn_image text,is_show text)"];
+    
+    [self.db close];
+    
+    
+}
+
+
+-(void)addConfigure:(NSMutableDictionary *)messageDic{
+    
+    self.db = [FMDatabase databaseWithPath:[self getDbpath]];
+    [self.db open];
+
+    
+    [self.db executeUpdate:@"INSERT INTO t_configureBtn(tag,Btn_name,Btn_image,is_show) VALUES (?,?,?,?)",[messageDic objectForKey:@"tag"],[messageDic objectForKey:@"Btn_name"],[messageDic objectForKey:@"Btn_image"],[messageDic objectForKey:@"is_show"]];
+    
+    [self.db close];
+    
+}
+
+- (NSMutableArray *)selectConfigure{
+    
+    
+    self.db = [FMDatabase databaseWithPath:[self getDbpath]];
+    [self.db open];
+    FMResultSet *rs = [self.db executeQuery:@"SELECT * FROM t_configureBtn"];
+    
+    NSMutableArray *array = [[NSMutableArray alloc]init];
+    while ([rs next]){
+        
+        NSString *tag = [rs stringForColumn:@"tag"];
+        NSString *Btn_name = [rs stringForColumn:@"Btn_name"];
+        NSString *Btn_image = [rs stringForColumn:@"Btn_image"];
+        NSString *is_show = [rs stringForColumn:@"is_show"];
+        
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        
+        [dic setValue:tag forKey:@"tag"];
+        [dic setValue:Btn_name forKey:@"Btn_name"];
+        [dic setValue:Btn_image forKey:@"Btn_image"];
+        [dic setValue:is_show forKey:@"is_show"];
+        
+        [array addObject:dic];
+    }
+    [self.db close];
+    
+    return array;
+    
+}
+
+- (BOOL)isConfigure:(NSString *)message inTable:(NSString *)table{
+    
+    self.db = [FMDatabase databaseWithPath:[self getDbpath]];
+    [self.db open];
+    
+    NSString *sqlstr = [NSString stringWithFormat:@"SELECT * FROM %@",table];
+    
+    FMResultSet *rs = [self.db executeQuery:sqlstr];
+    
+    BOOL boo = false;
+    
+    while ([rs next]) {
+        NSString *str1 = [rs stringForColumn:@"Btn_name"];
+        
+        if ([str1 isEqualToString:message]) {
+            boo = YES;
+            break;
+        }else{
+            
+            boo = NO;
+        }
+    }
+    return boo;
+}
+
+- (BOOL)removeConfigure:(NSString *)message{
+    
+    self.db = [FMDatabase databaseWithPath:[self getDbpath]];
+    [self.db open];
+    [self.db executeUpdate:@"DELETE FROM t_configureBtn WHERE Btn_name = ?",message];
+    
+    [self.db close];
+    
+    return YES;
+    
+}
+
+@end

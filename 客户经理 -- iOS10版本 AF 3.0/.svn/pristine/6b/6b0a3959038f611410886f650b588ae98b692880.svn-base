@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="146" id="KGk-i7-Jjw" customClass="Bussiness_CustomerTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="94"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-ZC-CO7">
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c_right" translatesAutoresizingMaskIntoConstraints="NO" id="84A-PP-WUL">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="BdX-N2-YtS"/>
+                            <constraint firstAttribute="height" constant="15" id="cfl-JS-Prt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izV-g9-jyx">
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVo-QR-RSn">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="CML-3Z-7TM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="tVo-QR-RSn" secondAttribute="trailing" constant="6" id="2NC-H4-fWJ"/>
+                    <constraint firstItem="zOe-ZC-CO7" firstAttribute="top" secondItem="izV-g9-jyx" secondAttribute="bottom" constant="3" id="5gh-aC-WKg"/>
+                    <constraint firstItem="84A-PP-WUL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7db-uc-Xst"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zOe-ZC-CO7" secondAttribute="trailing" constant="6" id="BKk-7I-Sac"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="84A-PP-WUL" secondAttribute="trailing" constant="10" id="DB1-sj-Ip1"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="izV-g9-jyx" secondAttribute="leading" id="MWD-ea-TLR"/>
+                    <constraint firstItem="izV-g9-jyx" firstAttribute="top" secondItem="tVo-QR-RSn" secondAttribute="bottom" constant="2" id="Vi0-Bq-6YI"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="tVo-QR-RSn" secondAttribute="leading" id="Waw-IO-XnQ"/>
+                    <constraint firstAttribute="topMargin" secondItem="tVo-QR-RSn" secondAttribute="top" id="YOJ-kf-jIe"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="izV-g9-jyx" secondAttribute="trailing" constant="6" id="a2h-1T-dcw"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="zOe-ZC-CO7" secondAttribute="leading" id="nQM-Pg-oTX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="CustomerAddress" destination="zOe-ZC-CO7" id="q9g-eg-pWZ"/>
+                <outlet property="CustomerName" destination="tVo-QR-RSn" id="dvo-GF-suZ"/>
+                <outlet property="CustomerNum" destination="izV-g9-jyx" id="Ygb-h4-Hzc"/>
+                <outlet property="IconImage" destination="84A-PP-WUL" id="PXQ-Gl-xWi"/>
+            </connections>
+            <point key="canvasLocation" x="444" y="337.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="c_right" width="20" height="20"/>
+    </resources>
+</document>

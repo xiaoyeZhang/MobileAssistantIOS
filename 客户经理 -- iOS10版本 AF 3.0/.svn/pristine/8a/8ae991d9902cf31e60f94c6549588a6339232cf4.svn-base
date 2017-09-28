@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Birthday_listViewController">
+            <connections>
+                <outlet property="tableView" destination="1SN-wb-AMt" id="OKN-pa-aa3"/>
+                <outlet property="textFieldKey" destination="krn-Do-kgq" id="ODq-f5-jkq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1SN-wb-AMt">
+                    <rect key="frame" x="0.0" y="46" width="320" height="522"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="mXI-vn-73g"/>
+                        <outlet property="delegate" destination="-1" id="soF-qk-hjn"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqp-Jr-6OP">
+                    <rect key="frame" x="260" y="7" width="52" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Zbn-hp-olU"/>
+                    </constraints>
+                    <state key="normal" title="查询"/>
+                    <connections>
+                        <action selector="doSelectByKey:" destination="-1" eventType="touchUpInside" id="b1x-Lo-Dqq"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入集团名称或客户名称" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="krn-Do-kgq">
+                    <rect key="frame" x="8" y="8" width="218" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="krn-Do-kgq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="17N-jX-gJe"/>
+                <constraint firstAttribute="trailing" secondItem="1SN-wb-AMt" secondAttribute="trailing" id="BPs-mk-EQS"/>
+                <constraint firstItem="1SN-wb-AMt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HQC-RM-HWY"/>
+                <constraint firstAttribute="trailing" secondItem="Kqp-Jr-6OP" secondAttribute="trailing" id="Mom-d2-3M6"/>
+                <constraint firstItem="Kqp-Jr-6OP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="Nhn-wG-flM"/>
+                <constraint firstItem="krn-Do-kgq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="fW3-aa-mmp"/>
+                <constraint firstItem="Kqp-Jr-6OP" firstAttribute="leading" secondItem="krn-Do-kgq" secondAttribute="trailing" constant="5" id="flo-dO-lX7"/>
+                <constraint firstAttribute="bottom" secondItem="1SN-wb-AMt" secondAttribute="bottom" id="oLN-gD-OY2"/>
+                <constraint firstItem="1SN-wb-AMt" firstAttribute="top" secondItem="krn-Do-kgq" secondAttribute="bottom" constant="3" id="x24-6c-6TP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="59" y="208"/>
+        </view>
+    </objects>
+</document>

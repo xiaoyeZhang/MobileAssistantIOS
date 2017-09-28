@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+            timestampString = "509530245.272995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "-submitBtnClicked:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Order_Demand_SumiltViewController submitBtnClicked:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+                  timestampString = "509939333.077846"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "476"
+                  endingLineNumber = "476"
+                  offsetFromSymbolStart = "6058">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__54-[Order_Demand_SumiltViewController submitBtnClicked:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+                  timestampString = "509939333.079167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "478"
+                  endingLineNumber = "478"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+            timestampString = "509530246.440845"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
+            landmarkName = "-submitBtnClicked:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+            timestampString = "509535314.174748"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/small_piece_paper/small_piece_paperSubmitViewController.m"
+            timestampString = "509536028.069096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/small_piece_paper/small_piece_paperSubmitViewController.m"
+            timestampString = "509536028.069096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/small_piece_paper/small_piece_paperSubmitViewController.m"
+            timestampString = "509536028.069096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/small_piece_paper/small_piece_paperSubmitViewController.m"
+            timestampString = "509536028.069096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[small_piece_paperSubmitViewController uploadImagesWithIndex:withBusinessId:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/small_piece_paper/small_piece_paperSubmitViewController.m"
+                  timestampString = "509939333.09392"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "994">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__78-[small_piece_paperSubmitViewController uploadImagesWithIndex:withBusinessId:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/small_piece_paper/small_piece_paperSubmitViewController.m"
+                  timestampString = "509939333.095195"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/ProvinceVIP/P_Vertical_industry_collaboration/P_Vertical_industry_collaborationSubmitViewController.m"
+            timestampString = "509535878.970209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+            timestampString = "509860334.677685"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
+            landmarkName = "-uploadImagesWithIndex:withBusinessId:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Order_Demand_SumiltViewController uploadImagesWithIndex:withBusinessId:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+                  timestampString = "509939333.100613"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "553"
+                  endingLineNumber = "553"
+                  offsetFromSymbolStart = "994">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__74-[Order_Demand_SumiltViewController uploadImagesWithIndex:withBusinessId:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_Demand_SumiltViewController.m"
+                  timestampString = "509939333.101991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "553"
+                  endingLineNumber = "553"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_Demand_DetailViewController.m"
+            timestampString = "509875724.658049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "-urgeBtnClicked:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_Demand_DetailViewController.m"
+            timestampString = "509875725.178178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "-urgeBtnClicked:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Order_Demand_DetailViewController urgeBtnClicked:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_Demand_DetailViewController.m"
+                  timestampString = "509939333.107058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "482">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[Order_Demand_DetailViewController urgeBtnClicked:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_Demand_DetailViewController.m"
+                  timestampString = "509939333.108453"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/Order_ScoreViewController.m"
+            timestampString = "509938946.666757"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-submitBtnClicked:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Order_ScoreViewController submitBtnClicked:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_ScoreViewController.m"
+                  timestampString = "509939333.111136"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "1650">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[Order_ScoreViewController submitBtnClicked:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/Order_ScoreViewController.m"
+                  timestampString = "509939333.112417"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

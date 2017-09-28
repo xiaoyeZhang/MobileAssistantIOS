@@ -1,0 +1,13 @@
+//
+//  LocationViewViewController.h
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 2017/7/6.
+//  Copyright © 2017年 avatek. All rights reserved.
+//
+
+#import "XYBaseViewController.h"
+
+@interface LocationViewViewController : XYBaseViewController
+
+@end

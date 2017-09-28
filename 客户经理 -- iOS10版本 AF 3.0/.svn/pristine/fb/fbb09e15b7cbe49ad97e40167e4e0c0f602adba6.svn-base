@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="Product_classificCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="204" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="204" height="67"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asl-Tg-Ydc">
+                        <rect key="frame" x="0.0" y="38" width="129" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="umi-aR-eRz">
+                        <rect key="frame" x="139" y="10" width="55" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="sY4-k9-AXZ"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="umi-aR-eRz" secondAttribute="trailing" constant="10" id="3U7-eY-jrL"/>
+                <constraint firstAttribute="bottom" secondItem="umi-aR-eRz" secondAttribute="bottom" constant="10" id="E0Q-T7-oRv"/>
+                <constraint firstItem="umi-aR-eRz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Mk1-cC-7RG"/>
+                <constraint firstAttribute="bottom" secondItem="Asl-Tg-Ydc" secondAttribute="bottom" constant="8" id="WaM-23-gYf"/>
+                <constraint firstItem="Asl-Tg-Ydc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dnH-rd-Mmj"/>
+                <constraint firstItem="umi-aR-eRz" firstAttribute="leading" secondItem="Asl-Tg-Ydc" secondAttribute="trailing" constant="10" id="nhB-o3-8Mj"/>
+            </constraints>
+            <size key="customSize" width="204" height="67"/>
+            <connections>
+                <outlet property="iconImageView" destination="umi-aR-eRz" id="LGZ-5A-XlM"/>
+                <outlet property="titleLbl" destination="Asl-Tg-Ydc" id="IWw-ip-4SL"/>
+            </connections>
+            <point key="canvasLocation" x="581" y="403.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

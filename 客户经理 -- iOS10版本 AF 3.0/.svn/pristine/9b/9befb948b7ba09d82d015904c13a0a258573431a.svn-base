@@ -1,0 +1,21 @@
+//
+//  Business_BillDetailViewController.h
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 15/12/14.
+//  Copyright © 2015年 avatek. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "BillSubInfoModel.h"
+#import "GroupIDModel.h"
+
+@interface Business_BillDetailViewController : XYBaseViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *output;
+@property (nonatomic, strong) GroupIDModel *GroupIDentity;
+@property (nonatomic, strong) NSMutableArray *arrayCutomer;
+@property (nonatomic, strong) NSMutableArray *arrayCustomerTemp;
+@property (nonatomic, strong) NSString *groupId;
+@end

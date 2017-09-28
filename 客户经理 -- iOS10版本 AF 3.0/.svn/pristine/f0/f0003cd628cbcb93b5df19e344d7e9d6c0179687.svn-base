@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Product_classification_DetailViewController">
+            <connections>
+                <outlet property="iconImage" destination="ez9-Lp-E7I" id="jEr-ja-3hB"/>
+                <outlet property="messageLabel" destination="4xZ-oF-ESC" id="2mh-Nc-pys"/>
+                <outlet property="titleLabel" destination="UMO-NY-KQi" id="QPm-Ib-YhF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Lp-E7I">
+                    <rect key="frame" x="20" y="15" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="Cc3-nc-kRm"/>
+                        <constraint firstAttribute="height" constant="64" id="Ec3-Yc-cWl"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMO-NY-KQi">
+                    <rect key="frame" x="104" y="23" width="206" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xZ-oF-ESC">
+                    <rect key="frame" x="104" y="49" width="208" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="UMO-NY-KQi" secondAttribute="trailing" constant="10" id="A0P-3J-Enu"/>
+                <constraint firstItem="4xZ-oF-ESC" firstAttribute="top" secondItem="UMO-NY-KQi" secondAttribute="bottom" constant="5" id="JTp-rQ-xkb"/>
+                <constraint firstItem="UMO-NY-KQi" firstAttribute="leading" secondItem="ez9-Lp-E7I" secondAttribute="trailing" constant="20" id="QHb-xm-Dgr"/>
+                <constraint firstAttribute="trailing" secondItem="4xZ-oF-ESC" secondAttribute="trailing" constant="5" id="dDb-TL-3vp"/>
+                <constraint firstItem="ez9-Lp-E7I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="onk-cS-pd2"/>
+                <constraint firstItem="ez9-Lp-E7I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="qHK-Rd-6Cm"/>
+                <constraint firstItem="4xZ-oF-ESC" firstAttribute="leading" secondItem="ez9-Lp-E7I" secondAttribute="trailing" constant="20" id="qpO-55-HRX"/>
+                <constraint firstItem="UMO-NY-KQi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="zlI-EI-Vcm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="388" y="369"/>
+        </view>
+    </objects>
+</document>

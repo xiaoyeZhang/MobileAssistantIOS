@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestScoresViewController">
+            <connections>
+                <outlet property="Btn" destination="NSW-NZ-FD0" id="2lS-Tf-Uqf"/>
+                <outlet property="messageLabel" destination="4ug-Cz-hml" id="ksP-zB-wBn"/>
+                <outlet property="scoresLabel" destination="m5t-7D-RCH" id="yK7-qI-SkU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="矢量智能对象" translatesAutoresizingMaskIntoConstraints="NO" id="tgz-3L-RYZ">
+                    <rect key="frame" x="111.5" y="40" width="152" height="185"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="92分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5t-7D-RCH">
+                    <rect key="frame" x="122.5" y="245" width="130" height="72"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <color key="textColor" red="0.94997149709999995" green="0.026673368060000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜你通过考试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ug-Cz-hml">
+                    <rect key="frame" x="123.5" y="332" width="128.5" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSW-NZ-FD0">
+                    <rect key="frame" x="156" y="597" width="62" height="30"/>
+                    <state key="normal" title="查看试卷"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="tgz-3L-RYZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BNJ-71-sUA"/>
+                <constraint firstAttribute="bottom" secondItem="NSW-NZ-FD0" secondAttribute="bottom" constant="40" id="L0b-Rg-LtK"/>
+                <constraint firstItem="tgz-3L-RYZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="TVS-w5-jcz"/>
+                <constraint firstItem="NSW-NZ-FD0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z1y-Jr-RVq"/>
+                <constraint firstItem="m5t-7D-RCH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kf0-tx-Nka"/>
+                <constraint firstItem="4ug-Cz-hml" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tsp-dI-eYi"/>
+                <constraint firstItem="m5t-7D-RCH" firstAttribute="top" secondItem="tgz-3L-RYZ" secondAttribute="bottom" constant="20" id="wvx-8x-v85"/>
+                <constraint firstItem="4ug-Cz-hml" firstAttribute="top" secondItem="m5t-7D-RCH" secondAttribute="bottom" constant="15" id="yeE-0s-AVP"/>
+            </constraints>
+            <point key="canvasLocation" x="-212" y="-5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="矢量智能对象" width="152" height="185"/>
+    </resources>
+</document>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_demandViewController.m"
+            timestampString = "514707519.044111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-getData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_demandViewController.m"
+            timestampString = "514707520.092113"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-getData:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[M_Order_demandViewController getData:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/News/M_Order_demandViewController.m"
+                  timestampString = "514801434.061506"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "452">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[M_Order_demandViewController getData:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/News/M_Order_demandViewController.m"
+                  timestampString = "514801434.063112"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_demandViewController.m"
+            timestampString = "514707539.788908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-getData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_Demand_DetailViewController.m"
+            timestampString = "514715773.458792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-getDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_Demand_DetailViewController.m"
+            timestampString = "514715781.35496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-getDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_Demand_DetailViewController.m"
+            timestampString = "514777415.467305"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-getDate"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[M_Order_Demand_DetailViewController getDate]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/News/M_Order_Demand_DetailViewController.m"
+                  timestampString = "514801434.074776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "712">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[M_Order_Demand_DetailViewController getDate]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/Order_demand/News/M_Order_Demand_DetailViewController.m"
+                  timestampString = "514801434.07618"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_Order_Demand_DetailViewController.m"
+            timestampString = "514779584.88947"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-getDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/Order_demand/News/M_OrderUserViewController.m"
+            timestampString = "514778694.102035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileAssistant/Controller/No_visit/No_visit_Detail_ListViewController.m"
+            timestampString = "514795166.759917"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-getDataNum:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[No_visit_Detail_ListViewController getDataNum:]"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/No_visit/No_visit_Detail_ListViewController.m"
+                  timestampString = "514801434.085051"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "554">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[No_visit_Detail_ListViewController getDataNum:]_block_invoke"
+                  moduleName = "MobileAssistant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoye/Desktop/%E5%AE%A2%E6%88%B7%E7%BB%8F%E7%90%86%20--%20iOS10%E7%89%88%E6%9C%AC%20AF%203.0/MobileAssistant/MobileAssistant/Controller/No_visit/No_visit_Detail_ListViewController.m"
+                  timestampString = "514801434.086454"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "102">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rhk-FQ-jzE" customClass="ViewCondition">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tak-ii-rnj">
+                    <rect key="frame" x="135" y="10" width="110" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="pqh-hA-vUD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="重置">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0B-R0-QQf">
+                    <rect key="frame" x="15" y="10" width="110" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Y4W-1x-jVE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="返回">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GNv-Ol-1MQ">
+                    <rect key="frame" x="15" y="63" width="345" height="604"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-jB-dn0">
+                    <rect key="frame" x="255" y="10" width="110" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="yQf-rk-tc6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="确定">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="GNv-Ol-1MQ" firstAttribute="top" secondItem="Tak-ii-rnj" secondAttribute="bottom" constant="8" id="0ug-Zv-6dM"/>
+                <constraint firstItem="GNv-Ol-1MQ" firstAttribute="leading" secondItem="rhk-FQ-jzE" secondAttribute="leading" constant="15" id="BzL-Zq-gqf"/>
+                <constraint firstItem="Tak-ii-rnj" firstAttribute="width" secondItem="gyB-jB-dn0" secondAttribute="width" id="Gem-7m-o93"/>
+                <constraint firstItem="m0B-R0-QQf" firstAttribute="top" secondItem="rhk-FQ-jzE" secondAttribute="top" constant="10" id="Jdv-67-ti5"/>
+                <constraint firstAttribute="bottom" secondItem="GNv-Ol-1MQ" secondAttribute="bottom" id="Snm-ju-srU"/>
+                <constraint firstItem="Tak-ii-rnj" firstAttribute="leading" secondItem="m0B-R0-QQf" secondAttribute="trailing" constant="10" id="Z9h-GK-xKB"/>
+                <constraint firstItem="gyB-jB-dn0" firstAttribute="top" secondItem="rhk-FQ-jzE" secondAttribute="top" constant="10" id="bc3-Uc-wNI"/>
+                <constraint firstItem="m0B-R0-QQf" firstAttribute="leading" secondItem="rhk-FQ-jzE" secondAttribute="leading" constant="15" id="jK6-pp-jtN"/>
+                <constraint firstItem="Tak-ii-rnj" firstAttribute="top" secondItem="rhk-FQ-jzE" secondAttribute="top" constant="10" id="ndH-XQ-T7A"/>
+                <constraint firstItem="m0B-R0-QQf" firstAttribute="width" secondItem="Tak-ii-rnj" secondAttribute="width" id="q0t-ZC-Emh"/>
+                <constraint firstItem="gyB-jB-dn0" firstAttribute="leading" secondItem="Tak-ii-rnj" secondAttribute="trailing" constant="10" id="qMk-3t-Arg"/>
+                <constraint firstAttribute="trailing" secondItem="GNv-Ol-1MQ" secondAttribute="trailing" constant="15" id="rWL-dH-Ug3"/>
+                <constraint firstAttribute="trailing" secondItem="gyB-jB-dn0" secondAttribute="trailing" constant="10" id="xtx-Ou-AcN"/>
+            </constraints>
+            <connections>
+                <outlet property="ComfirmBtn" destination="gyB-jB-dn0" id="JsB-BJ-HlI"/>
+                <outlet property="ConditionTabelView" destination="GNv-Ol-1MQ" id="emz-ex-E8Z"/>
+                <outlet property="HideSearchBtn" destination="m0B-R0-QQf" id="MTL-Qf-N1f"/>
+                <outlet property="ResetBtn" destination="Tak-ii-rnj" id="Bmx-ZD-E7n"/>
+            </connections>
+            <point key="canvasLocation" x="-201" y="-291"/>
+        </view>
+    </objects>
+</document>

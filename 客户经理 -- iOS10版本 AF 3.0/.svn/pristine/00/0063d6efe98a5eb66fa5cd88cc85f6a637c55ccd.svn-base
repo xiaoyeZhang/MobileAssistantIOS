@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Business_Group_V_Net_DetailViewController">
+            <connections>
+                <outlet property="tableView" destination="b0n-7D-qyk" id="Xfl-tg-ipo"/>
+                <outlet property="textFieldKey" destination="1Cu-yd-o4e" id="NPd-8T-9Km"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b0n-7D-qyk">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="9cn-wi-dtv"/>
+                        <outlet property="delegate" destination="-1" id="kfC-Sq-c7C"/>
+                    </connections>
+                </tableView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cu-yd-o4e">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fur-hq-qCv">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="dsz-d9-ZGH"/>
+                        <constraint firstAttribute="width" constant="46" id="wH9-4Y-6Ak"/>
+                    </constraints>
+                    <state key="normal" title="查询"/>
+                    <connections>
+                        <action selector="doSelectByKey:" destination="-1" eventType="touchUpInside" id="KGG-Pv-LBx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fZ-hf-oVF">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Yo6-0m-wfo"/>
+                        <constraint firstAttribute="width" constant="46" id="qnE-Dc-G0j"/>
+                    </constraints>
+                    <state key="normal" image="add"/>
+                    <connections>
+                        <action selector="doAdd_V_Contact:" destination="-1" eventType="touchUpInside" id="oal-gl-ea8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5fZ-hf-oVF" secondAttribute="trailing" id="1Yx-Ak-qIA"/>
+                <constraint firstItem="b0n-7D-qyk" firstAttribute="top" secondItem="1Cu-yd-o4e" secondAttribute="bottom" constant="3" id="F0O-Hr-9UP"/>
+                <constraint firstAttribute="bottom" secondItem="b0n-7D-qyk" secondAttribute="bottom" id="KGi-tM-QJc"/>
+                <constraint firstItem="1Cu-yd-o4e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="MCK-fS-oI9"/>
+                <constraint firstItem="b0n-7D-qyk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UnO-ME-R9m"/>
+                <constraint firstItem="5fZ-hf-oVF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XsP-UG-OD8"/>
+                <constraint firstItem="Fur-hq-qCv" firstAttribute="leading" secondItem="1Cu-yd-o4e" secondAttribute="trailing" constant="10" id="Y41-MR-wty"/>
+                <constraint firstAttribute="trailing" secondItem="b0n-7D-qyk" secondAttribute="trailing" id="rAo-lJ-4mX"/>
+                <constraint firstItem="5fZ-hf-oVF" firstAttribute="leading" secondItem="Fur-hq-qCv" secondAttribute="trailing" id="raE-rP-mHP"/>
+                <constraint firstItem="1Cu-yd-o4e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="sUL-0B-hMC"/>
+                <constraint firstItem="Fur-hq-qCv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="y84-0F-hmq"/>
+            </constraints>
+            <point key="canvasLocation" x="94.5" y="257.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add" width="14" height="14"/>
+    </resources>
+</document>

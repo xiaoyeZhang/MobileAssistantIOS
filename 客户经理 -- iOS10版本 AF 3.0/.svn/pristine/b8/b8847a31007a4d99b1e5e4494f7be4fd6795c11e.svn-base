@@ -1,0 +1,293 @@
+//
+//  SUNListViewController.m
+//  SUNCommonComponent
+//
+//  Created by 麦志泉 on 13-9-5.
+//  Copyright (c) 2013年 中山市新联医疗科技有限公司. All rights reserved.
+//
+
+#import "SUNListViewController.h"
+#import "MBProgressHUD.h"
+#import "TaskTableViewCell.h"
+#import "HMSegmentedControl.h"
+#import "UIButton+WebCache.h"
+//#import "UIImageView+LK.h"
+#import "MJRefresh.h"
+
+#import "CommonService.h"
+#import "UserEntity.h"
+#import "VisiteTask.h"
+#import "VisitTaskDetailViewController.h"
+#import "Utilies.h"
+
+@interface SUNListViewController ()<MBProgressHUDDelegate>
+{
+    MBProgressHUD *HUD;
+    MJRefreshFooterView *_footer;
+    NSString *type;
+}
+@property (nonatomic, strong) MJRefreshBaseView *refreshView;
+@property (assign) int from;
+
+@end
+
+@implementation SUNListViewController
+@synthesize mutableArrayData;
+@synthesize state, compEntity;
+@synthesize tableViewList;
+@synthesize refreshView;
+@synthesize from;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    //NSLog(@"viewDidLoad title = %@",self.title);
+    mutableArrayData = [[NSMutableArray alloc] init];
+//    [data addObject:@"今天"];
+//    [data addObject:@"近一周"];
+//    [data addObject:@"近一月"];
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        tableViewList.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-95);
+    }else{
+        tableViewList.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 5);
+        
+    }
+    [self addFooter];
+}
+
+- (void)viewDidCurrentView
+{
+    [HUD hide:YES];
+    [mutableArrayData removeAllObjects];
+    NSLog(@"加载为当前视图 = %@",self.title);
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.labelText = @"努力加载中...";
+    [self loadDataTask];
+    from = 0;
+}
+
+
+- (void)loadDataTask{
+	// Do something usefull in here instead of sleeping ...
+    UserEntity *userEntity = [UserEntity sharedInstance];
+    
+    NSString *strLasWeek = [Utilies getLastWeek];
+    NSString *strLastMonth = [Utilies getLastMonth];
+    
+    //
+    //  定义一个NSDateComponents对象，设置一个时间段
+    //
+    NSString *strTime = [Utilies GetNowDate];
+    if (self.pressType == Press_1) {
+        type = @"0";
+    } else if (self.pressType == Press_2) {
+        strTime = strLasWeek;
+        type = @"1";
+        
+    } else if (self.pressType == Press_3) {
+        strTime = strLastMonth;
+        type = @"2";
+    }
+    
+    if (compEntity == nil) {
+        compEntity = [[CompEntity alloc] init];
+        compEntity.company_id = @"0";
+    }
+    CommonService *service = [[CommonService alloc] init];
+    NSString *strFrom = [NSString stringWithFormat:@"%d", from];
+    
+//    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+//                           userEntity.user_id, @"actor_id",
+//                           strTime, @"time",
+//                           userEntity.type_id, @"type_id",
+//                           state, @"state",
+//                           compEntity.company_id, @"company_id",
+//                           strFrom, @"start_location",
+//                           @"visitlist_new", @"method", nil];
+    //boss接口
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+                           userEntity.user_id, @"actor_id",
+                           userEntity.user_id, @"maker_id",
+                           @"visit_list",      @"method",
+                           state,              @"state",
+                           strFrom,            @"local",
+                           type, @"type",
+                           nil];
+
+    [service getNetWorkData:param  Successed:^(id entity) {
+        NSNumber *statee = [entity valueForKeyPath:@"state"];
+        NSString *strState = [NSString stringWithFormat:@"%d", [statee intValue]];
+        
+        if ([strState isEqualToString:@"0"] == YES) {
+//            UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:[entity valueForKeyPath:@"reason"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alert show];
+            [self.tableViewList reloadData];
+        }
+        else
+        {
+            NSMutableArray *array = [entity objectForKey:@"content"];
+            NSMutableArray *arrayTemp = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary* attributes in array) {
+                VisiteTask *entity = [[VisiteTask alloc] init];
+                entity = [entity initWithAttributes:attributes];
+                [arrayTemp addObject:entity];
+                [mutableArrayData addObject:entity];
+            }
+            
+            //mutableArrayData = [NSMutableArray arrayWithArray:arrayTemp];
+            //[self.tableViewList reloadData];
+//            [self doneWithView:refreshView];
+        }
+        [HUD hide:YES];
+        [self doneWithView:refreshView];
+    } Failed:^(int errorCode, NSString *message) {
+        [HUD hide:YES];
+        [self.refreshView endRefreshing];
+    }];
+}
+
+#pragma mark - 表格视图数据源代理方法
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    VisiteTask *entity = [mutableArrayData objectAtIndex:indexPath.row];
+    
+    if ([entity.assist_id isEqual:@"-1"] || [entity.assist_id isEqual:@"0"]) {
+        return 84;
+    }else{
+        return 100;
+    }
+    
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return mutableArrayData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *couponTableViewCellIdentifier=@"TaskTableViewCell";
+    
+    TaskTableViewCell *cell = (TaskTableViewCell *)[tableView dequeueReusableCellWithIdentifier:couponTableViewCellIdentifier];
+    if (cell == nil) {
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"TaskTableViewCell" owner:self options:nil];
+        cell = [array objectAtIndex:0];
+    }
+    
+    VisiteTask *entity = [mutableArrayData objectAtIndex:indexPath.row];
+    NSString *is_chiefStr = @"";
+
+    if ([entity.is_chief isEqualToString:@"1"]) {
+        is_chiefStr = @"首席走访-";
+    }
+    
+    NSString *title = [NSString stringWithFormat:@"%@(%@待执行)", entity.title ,is_chiefStr];
+    
+    if ([entity.state isEqualToString:@"0"] == YES) {
+        title = [NSString stringWithFormat:@"%@(%@待执行)", entity.title ,is_chiefStr];
+        cell.imageView.image = [UIImage imageNamed:@"start-1"];
+    } else if ([entity.state isEqualToString:@"1"] == YES) {
+        title = [NSString stringWithFormat:@"%@(%@等待填写纪要)", entity.title ,is_chiefStr];
+        cell.imageView.image = [UIImage imageNamed:@"summary-1"];
+    } else if ([entity.state isEqualToString:@"2"] == YES) {
+        title = [NSString stringWithFormat:@"%@(%@任务完成)", entity.title ,is_chiefStr];
+        cell.imageView.image = [UIImage imageNamed:@"finish-1"];
+    } else if ([entity.state isEqualToString:@"-1"] == YES) {
+        title = [NSString stringWithFormat:@"%@(%@已撤销)", entity.title ,is_chiefStr];
+        cell.imageView.image = [UIImage imageNamed:@"cancle-1"];
+    } else if ([entity.state isEqualToString:@"-2"] == YES) {
+        title = [NSString stringWithFormat:@"%@(%@待接受)", entity.title ,is_chiefStr];
+        cell.imageView.image = [UIImage imageNamed:@"start-1"];
+    }
+    
+    if (![entity.cacsi isEqualToString:@"-1"]) {
+        cell.rateView.hidden = NO;
+        cell.rateLbl.text = [NSString stringWithFormat:@"%@分",entity.cacsi];
+    }else{
+        cell.rateView.hidden = YES;
+    }
+    
+    NSString *customer = [NSString stringWithFormat:@"联系人：%@", entity.name];
+    NSString *name = [NSString stringWithFormat:@"客户：%@", entity.company_name];
+    
+    cell.labelContact.text = customer;
+    cell.labelCustomer.text = name;
+    cell.labelDate.text = entity.time;
+    cell.labelTitle.text = title;
+
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if ([entity.assist_id isEqualToString:@"-1"] || [entity.assist_id isEqualToString:@"0"]) {
+        
+    
+    }else{
+
+        UILabel *assistLable = [[UILabel alloc]initWithFrame:CGRectMake(cell.labelContact.frame.origin.x, cell.labelContact.frame.origin.y + cell.labelContact.frame.size.height, cell.labelContact.frame.size.width + 20, cell.labelContact.frame.size.height)];
+        assistLable.font = [UIFont systemFontOfSize:13];
+        assistLable.textColor = RGBA(85, 85, 85, 1);
+        assistLable.text = [NSString stringWithFormat:@"随访人员：%@",entity.assist_name];
+        [cell addSubview:assistLable];
+        
+    }
+    
+    return cell;
+}
+
+#pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    VisiteTask *entity = [mutableArrayData objectAtIndex:indexPath.row];
+    VisitTaskDetailViewController *vc = [[VisitTaskDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.visiteTask = entity;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (void)addFooter
+{
+    //__unsafe_unretained OAAnnoViewController *vc = self;
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.tableViewList;
+    
+    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+        from = from + 12;
+        [self loadDataTask];
+        self.refreshView = refreshView;
+        NSLog(@"%@----开始进入刷新状态", refreshView.class);
+    };
+    _footer = footer;
+}
+
+- (void)doneWithView:(MJRefreshBaseView *)refreshView
+{
+    // 刷新表格
+    [self.tableViewList reloadData];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.refreshView endRefreshing];
+}
+
+
+@end

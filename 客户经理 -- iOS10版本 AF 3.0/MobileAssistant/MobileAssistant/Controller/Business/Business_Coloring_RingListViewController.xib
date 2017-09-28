@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Business_Coloring_RingListViewController">
+            <connections>
+                <outlet property="tableView" destination="wA4-Mz-2s4" id="URa-hT-uv1"/>
+                <outlet property="textFieldKey" destination="8nE-BZ-6og" id="2C9-qx-iiu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8nE-BZ-6og">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P5-Z9-lBS">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="WOa-8w-4kV"/>
+                        <constraint firstAttribute="width" constant="51" id="hg4-6A-GH4"/>
+                    </constraints>
+                    <state key="normal" title="查询"/>
+                    <connections>
+                        <action selector="doSelectByKey:" destination="-1" eventType="touchUpInside" id="fGC-aP-6V4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qif-wd-2KK">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="cjR-HK-9dT"/>
+                        <constraint firstAttribute="height" constant="44" id="fzq-1v-V5J"/>
+                    </constraints>
+                    <state key="normal" image="add"/>
+                    <connections>
+                        <action selector="doAdd_V_Contact:" destination="-1" eventType="touchUpInside" id="lpX-pZ-T9y"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wA4-Mz-2s4">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="T8z-hX-1kR"/>
+                        <outlet property="delegate" destination="-1" id="TZ4-Zb-3Iu"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Qif-wd-2KK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1U8-He-oMn"/>
+                <constraint firstItem="Qif-wd-2KK" firstAttribute="leading" secondItem="1P5-Z9-lBS" secondAttribute="trailing" id="246-DY-3nP"/>
+                <constraint firstAttribute="bottom" secondItem="wA4-Mz-2s4" secondAttribute="bottom" id="2xq-Rq-ZM2"/>
+                <constraint firstItem="8nE-BZ-6og" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="6dc-RO-j5K"/>
+                <constraint firstItem="1P5-Z9-lBS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7tG-to-7U2"/>
+                <constraint firstAttribute="trailing" secondItem="wA4-Mz-2s4" secondAttribute="trailing" id="9E4-bA-7I9"/>
+                <constraint firstItem="wA4-Mz-2s4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LSN-x8-Vgh"/>
+                <constraint firstItem="wA4-Mz-2s4" firstAttribute="top" secondItem="8nE-BZ-6og" secondAttribute="bottom" constant="3" id="Ugb-Ui-Jum"/>
+                <constraint firstAttribute="trailing" secondItem="Qif-wd-2KK" secondAttribute="trailing" id="YPY-2F-neK"/>
+                <constraint firstItem="8nE-BZ-6og" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="bkt-FZ-cEX"/>
+                <constraint firstItem="1P5-Z9-lBS" firstAttribute="leading" secondItem="8nE-BZ-6og" secondAttribute="trailing" constant="10" id="xsh-lL-3i9"/>
+            </constraints>
+            <point key="canvasLocation" x="431" y="257"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add" width="14" height="14"/>
+    </resources>
+</document>

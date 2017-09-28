@@ -1,0 +1,91 @@
+//
+//  Trouble_call_DetailViewController.m
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 2017/6/4.
+//  Copyright © 2017年 avatek. All rights reserved.
+//
+
+#import "Trouble_call_DetailViewController.h"
+#import "MBProgressHUD.h"
+
+@interface Trouble_call_DetailViewController ()<MBProgressHUDDelegate>
+{
+    UserEntity *userEntity;
+    MBProgressHUD *HUD;
+}
+@end
+
+@implementation Trouble_call_DetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    self.navigationItem.title = @"故障投诉";
+    
+    
+    userEntity = [UserEntity sharedInstance];
+    
+    [self getDate];
+}
+
+//返回
+- (void)backBtnClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)getDate{
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.labelText = @"努力加载中...";
+    
+    CommonService *service = [[CommonService alloc]init];
+    
+    NSDictionary *dic = @{
+                          @"method":@"m_order_detail",
+                          @"user_id":userEntity.user_id,
+                          @"order_id":self.order_id,
+                          };
+    
+    [service getNetWorkData:dic Successed:^(id entity) {
+        
+        NSNumber *state = [entity valueForKeyPath:@"state"];
+        NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
+        
+        if ([strState isEqualToString:@"1"]) {
+            
+            
+            [self.tableView reloadData];
+            
+        }else{
+            
+        }
+        
+        [HUD hide:YES];
+    } Failed:^(int errorCode, NSString *message) {
+        
+        [HUD hide:YES];
+    }];
+    
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 0;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
+    return nil;
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

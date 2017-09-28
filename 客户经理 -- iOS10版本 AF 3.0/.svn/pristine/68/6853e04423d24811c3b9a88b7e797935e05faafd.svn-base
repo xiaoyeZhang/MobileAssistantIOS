@@ -1,0 +1,133 @@
+//
+//  Business_contacts_ListViewController.m
+//  MobileAssistant
+//
+//  Created by 张晓烨 on 2017/6/1.
+//  Copyright © 2017年 avatek. All rights reserved.
+//
+
+#import "Business_contacts_ListViewController.h"
+#import "MBProgressHUD.h"
+#import "Business_contactsEntity.h"
+#import "Business_contactsTableViewCell.h"
+
+@interface Business_contacts_ListViewController ()<MBProgressHUDDelegate>
+{
+    MBProgressHUD *HUD;
+}
+@end
+
+@implementation Business_contacts_ListViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"业务联系人";
+    self.arrayCustomerTemp = [[NSMutableArray alloc]init];
+
+    UIButton *backBtn = [self setNaviCommonBackBtn];
+    [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self getData];
+}
+
+//返回
+- (void)backBtnClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.arrayCustomerTemp.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 64;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *identifier = @"Business_contactsTableViewCell";
+    Business_contactsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:identifier owner:nil options:nil] firstObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.telButton.tag = indexPath.row;
+    }
+    
+    [cell.telButton addTarget:self action:@selector(callTEL:) forControlEvents:UIControlEventTouchUpInside];
+    
+    Business_contactsEntity *entity = [_arrayCustomerTemp objectAtIndex:indexPath.row];
+    
+    cell.nameLabel.text = [NSString stringWithFormat:@"姓名：%@",entity.name];
+    cell.telLabel.text = [NSString stringWithFormat:@"电话：%@",entity.tel];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+- (void)getData{
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.labelText = @"努力加载中...";
+    
+    CommonService *service = [[CommonService alloc] init];
+    NSDictionary *dict = @{@"method":@"m_order_contact",
+                           };
+    
+    [service getNetWorkData:dict  Successed:^(id entity) {
+        NSNumber *state = [entity valueForKeyPath:@"state"];
+        NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
+        
+        if ([strState isEqualToString:@"1"] == YES) {
+
+            NSMutableArray *array = [entity objectForKey:@"content"];
+            for (NSDictionary* attributes in array) {
+                Business_contactsEntity *entity = [[Business_contactsEntity alloc] init];
+                entity = [entity initWithAttributes:attributes];
+                [self.arrayCustomerTemp addObject:entity];
+            }
+
+            
+        }
+        else
+        {
+            
+        }
+        
+        
+        [self.tableView reloadData];
+        
+        [HUD hide:YES];
+
+    } Failed:^(int errorCode, NSString *message) {
+        
+        [HUD hide:YES];
+        
+    }];
+    
+}
+
+- (void)callTEL:(UIButton *)sender{
+    
+    Business_contactsEntity *entity = [_arrayCustomerTemp objectAtIndex:sender.tag];
+
+    NSString *strTel = [NSString stringWithFormat:@"tel://%@", entity.tel];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strTel]];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+@end

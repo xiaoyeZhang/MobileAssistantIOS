@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="KGk-i7-Jjw" customClass="Examination_SeconTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="337" height="81.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyr-kD-eDO">
+                        <rect key="frame" x="16" y="8" width="313" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW8-Hb-Qwh">
+                        <rect key="frame" x="16" y="27.5" width="313" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGV-N6-agH">
+                        <rect key="frame" x="16" y="43.5" width="313" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzJ-AX-I5F">
+                        <rect key="frame" x="16" y="59.5" width="313" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-gq-H5p">
+                        <rect key="frame" x="278.5" y="32.5" width="40.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.50196078430000002" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="PW8-Hb-Qwh" secondAttribute="trailing" id="19F-Le-KTG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eyr-kD-eDO" secondAttribute="trailing" id="B3r-5Q-Zd2"/>
+                    <constraint firstItem="PW8-Hb-Qwh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Gcm-On-CMI"/>
+                    <constraint firstItem="xiN-gq-H5p" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PUe-B9-zeF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FGV-N6-agH" secondAttribute="trailing" id="UYh-Aj-d7x"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xiN-gq-H5p" secondAttribute="trailing" constant="10" id="Xad-gj-vUm"/>
+                    <constraint firstItem="vzJ-AX-I5F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="bMv-1o-IkQ"/>
+                    <constraint firstItem="FGV-N6-agH" firstAttribute="top" secondItem="PW8-Hb-Qwh" secondAttribute="bottom" id="c0E-ik-b3H"/>
+                    <constraint firstItem="FGV-N6-agH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="cFH-8E-ePc"/>
+                    <constraint firstItem="eyr-kD-eDO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="hei-o6-Ovf"/>
+                    <constraint firstItem="vzJ-AX-I5F" firstAttribute="top" secondItem="FGV-N6-agH" secondAttribute="bottom" id="ldg-cc-apY"/>
+                    <constraint firstItem="eyr-kD-eDO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="nEP-rc-1AL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vzJ-AX-I5F" secondAttribute="trailing" id="oht-Q0-WRc"/>
+                    <constraint firstItem="PW8-Hb-Qwh" firstAttribute="top" secondItem="eyr-kD-eDO" secondAttribute="bottom" id="pCP-JY-v21"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="Test_scores" destination="xiN-gq-H5p" id="Y4a-23-9Oa"/>
+                <outlet property="end_time" destination="FGV-N6-agH" id="dpK-k1-gBV"/>
+                <outlet property="start_time" destination="PW8-Hb-Qwh" id="cI2-gI-DuA"/>
+                <outlet property="task_time" destination="vzJ-AX-I5F" id="Fos-wU-huS"/>
+                <outlet property="titleLable" destination="eyr-kD-eDO" id="Q5j-Bs-Csd"/>
+            </connections>
+            <point key="canvasLocation" x="-209" y="63"/>
+        </tableViewCell>
+    </objects>
+</document>
