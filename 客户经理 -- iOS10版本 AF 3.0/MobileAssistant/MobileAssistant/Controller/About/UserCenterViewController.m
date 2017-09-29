@@ -503,7 +503,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
+     view = [[[NSBundle mainBundle] loadNibNamed:@"UserTableCellHeaderView" owner:nil options:nil] firstObject];
     
     if (sectionArray.count == 15) {
         if (section == 14) {
