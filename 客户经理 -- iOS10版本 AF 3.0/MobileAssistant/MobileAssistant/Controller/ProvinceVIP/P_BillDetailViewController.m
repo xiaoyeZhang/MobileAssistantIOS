@@ -48,7 +48,7 @@
                    @{@"title":@"自定义科目",@"detail":@"bill_subject",@"type":@"Label"},
                    @{@"title":@"发票金额",@"detail":@"bill_amount",@"type":@"Label"},
                    @{@"title":@"预回款日期",@"detail":@"bill_predate",@"type":@"Label"},
-                   @{@"title":@"付款方式",@"detail":@"type_payment",@"type":@"Label"},
+//                   @{@"title":@"付款方式",@"detail":@"type_payment",@"type":@"Label"},
                    @{@"title":@"备       注",@"detail":@"remarks",@"type":@"Label"},
                    @{@"title":@"状       态",@"process":@"state",@"type":@"Label"},nil];
     
@@ -81,7 +81,7 @@
             
             [detailMuArr removeObjectsInRange:NSMakeRange(7, 5)];
             
-            [detailMuArr removeObject:@{@"title":@"付款方式",@"detail":@"type_payment",@"type":@"Label"}];
+//            [detailMuArr removeObject:@{@"title":@"付款方式",@"detail":@"type_payment",@"type":@"Label"}];
             
         }else{
             
@@ -128,7 +128,7 @@
             
             NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
                                @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
-//                               @{@"title":@"审核领导",@"type":@"Select"}
+                               @{@"title":@"审核领导",@"type":@"Select"}
                                ];
             
             [detailMuArr addObjectsFromArray:array];
@@ -139,35 +139,38 @@
             
             [self addSubmitBtn];
         }else if (state == PROCESS_STATE_three_manager_through &&
-                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //三级经理审核通过
+                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_TWO)){ //三级经理审核通过
             
             NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
                                @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
-                               @{@"title":@"审核领导",@"type":@"Select"}
+//                               @{@"title":@"审核领导",@"type":@"Select"}
                               ];
             
             [detailMuArr addObjectsFromArray:array];
             
             if (!self.submitState) {
-                self.submitState = PROCESS_STATE_marketing_through; // 支撑人员审核
+//                self.submitState = PROCESS_STATE_marketing_through; // 支撑人员审核
+                self.submitState = PROCESS_STATE_two_manager_through; //二级经理审核
             }
             
             [self addSubmitBtn];
-        }else if (state == PROCESS_STATE_marketing_through &&
-                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_TWO)){ //支撑人员审核通过
-            
-            NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
-                               @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
-                               ];
-            
-            [detailMuArr addObjectsFromArray:array];
-            
-            if (!self.submitState) {
-                self.submitState = PROCESS_STATE_two_manager_through;
-            }
-            
-            [self addSubmitBtn];
-        }else if (state == PROCESS_STATE_two_manager_through &&
+        }
+//        else if (state == PROCESS_STATE_marketing_through &&
+//                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_TWO)){ //支撑人员审核通过
+//            
+//            NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
+//                               @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
+//                               ];
+//            
+//            [detailMuArr addObjectsFromArray:array];
+//            
+//            if (!self.submitState) {
+//                self.submitState = PROCESS_STATE_two_manager_through;
+//            }
+//            
+//            [self addSubmitBtn];
+//        }
+        else if (state == PROCESS_STATE_two_manager_through &&
                   ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //二级经理审核通过
             
             NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
@@ -219,7 +222,7 @@
             
             [detailMuArr removeObjectsInRange:NSMakeRange(7, 5)];
             
-            [detailMuArr removeObject:@{@"title":@"付款方式",@"detail":@"type_payment",@"type":@"Label"}];
+//            [detailMuArr removeObject:@{@"title":@"付款方式",@"detail":@"type_payment",@"type":@"Label"}];
         }else{
             
             [detailMuArr removeObjectsInRange:NSMakeRange(12, 1)];
@@ -289,7 +292,7 @@
                 [self addSubmitBtnWithTitle:@"送票"];
                 
             }else if (state == PROCESS_STATE_send_Invoice &&
-                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_CUSTOMER)){ //综合开票 ->填写回款日期和金额
+                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //综合开票 ->填写回款日期和金额
                 
                 NSArray *array = @[@{@"title":@"回款金额",@"type":@"Input"},
                                    @{@"title":@"回款日期",@"type":@"DateSelect"},
@@ -302,20 +305,21 @@
                 }
                 
                 [self addSubmitBtn];
-            }else if (state == PROCESS_STATE_filled_out_confirm &&
-                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //填写回款日期和金额 -> 归档
-                
-                NSArray *array = @[@{@"title":@"意       见",@"type":@"Check"},
-                                   @{@"title":@"处理意见",@"type":@"Input",@"placeholder":@"请输入处理意见"}];
-                
-                [detailMuArr addObjectsFromArray:array];
-                
-                if (!self.submitState) {
-                    self.submitState = PROCESS_STATE_library_File;
-                }
-                
-                [self addSubmitBtn];
             }
+//            else if (state == PROCESS_STATE_filled_out_confirm &&
+//                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //填写回款日期和金额 -> 归档
+//                
+//                NSArray *array = @[@{@"title":@"意       见",@"type":@"Check"},
+//                                   @{@"title":@"处理意见",@"type":@"Input",@"placeholder":@"请输入处理意见"}];
+//                
+//                [detailMuArr addObjectsFromArray:array];
+//                
+//                if (!self.submitState) {
+//                    self.submitState = PROCESS_STATE_library_File;
+//                }
+//                
+//                [self addSubmitBtn];
+//            }
         }else{
             if (state == PROCESS_STATE_manager_submit &&
                 [userInfo.type_id intValue] == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
@@ -358,7 +362,7 @@
                 [self addSubmitBtnWithTitle:@"送票"];
                 
             }else if (state == PROCESS_STATE_send_Invoice &&
-                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_CUSTOMER)){ //综合开票 ->填写回款日期和金额
+                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //综合开票 ->填写回款日期和金额
                 
                 NSArray *array = @[@{@"title":@"回款金额",@"type":@"Input"},
                                    @{@"title":@"回款日期",@"type":@"DateSelect"},
@@ -371,20 +375,21 @@
                 }
                 
                 [self addSubmitBtn];
-            }else if (state == PROCESS_STATE_filled_out_confirm &&
-                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //填写回款日期和金额 -> 归档
-                
-                NSArray *array = @[@{@"title":@"意       见",@"type":@"Check"},
-                                   @{@"title":@"处理意见",@"type":@"Input",@"placeholder":@"请输入处理意见"}];
-                
-                [detailMuArr addObjectsFromArray:array];
-                
-                if (!self.submitState) {
-                    self.submitState = PROCESS_STATE_library_File;
-                }
-                
-                [self addSubmitBtn];
             }
+//            else if (state == PROCESS_STATE_filled_out_confirm &&
+//                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //填写回款日期和金额 -> 归档
+//                
+//                NSArray *array = @[@{@"title":@"意       见",@"type":@"Check"},
+//                                   @{@"title":@"处理意见",@"type":@"Input",@"placeholder":@"请输入处理意见"}];
+//                
+//                [detailMuArr addObjectsFromArray:array];
+//                
+//                if (!self.submitState) {
+//                    self.submitState = PROCESS_STATE_library_File;
+//                }
+//                
+//                [self addSubmitBtn];
+//            }
         }
     }
     
@@ -432,27 +437,30 @@
             if (state == PROCESS_STATE_manager_submit &&
                 ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_THREE)) { //客户经理已提交 -> 综合确认
                 
-//                [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
-//                
-//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-//                          withRowAnimation:UITableViewRowAnimationNone];
-                
-                self.submitState = PROCESS_STATE_three_manager_through;
-                
-            }else if (state == PROCESS_STATE_three_manager_through){ //指定二级经理审批
-//                      && [userInfo.user_id isEqualToString:self.bListModel.next_processor]){ //指定二级经理审批
-                
                 [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
                 
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                           withRowAnimation:UITableViewRowAnimationNone];
-                self.submitState = PROCESS_STATE_marketing_through;
                 
-            }else if (state == PROCESS_STATE_marketing_through){ //指定支撑人员审批
+                self.submitState = PROCESS_STATE_three_manager_through;
+                
+            }else if (state == PROCESS_STATE_three_manager_through && [userInfo.user_id isEqualToString:self.bListModel.next_processor]){ //指定二级经理审批
+                
+//                [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
+                
+//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+//                          withRowAnimation:UITableViewRowAnimationNone];
+//                self.submitState = PROCESS_STATE_marketing_through;
                 
                 self.submitState = PROCESS_STATE_two_manager_through;
                 
-            }else if (state == PROCESS_STATE_two_manager_through){ //指定二级经理审批
+            }
+//            else if (state == PROCESS_STATE_marketing_through){ //指定支撑人员审批
+//                
+//                self.submitState = PROCESS_STATE_two_manager_through;
+//                
+//            }
+            else if (state == PROCESS_STATE_two_manager_through){ //指定二级经理审批
                 
                 self.submitState = PROCESS_STATE_Invoice;
                 
@@ -489,11 +497,12 @@
                     self.submitState = PROCESS_STATE_Invoice;
                 }else if (state == PROCESS_STATE_Invoice){
                     self.submitState = PROCESS_STATE_send_Invoice;
-                }else if (state == PROCESS_STATE_filled_out_confirm){ //指定二级经理审批
-                    
-                    self.submitState = PROCESS_STATE_library_File;
-                    
                 }
+//                else if (state == PROCESS_STATE_filled_out_confirm){ //指定二级经理审批
+//                    
+//                    self.submitState = PROCESS_STATE_library_File;
+//                    
+//                }
             }else{
                 if (state == PROCESS_STATE_manager_submit &&
                     [userInfo.type_id intValue] == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
@@ -503,11 +512,12 @@
                     self.submitState = PROCESS_STATE_Invoice;
                 }else if (state == PROCESS_STATE_Invoice){
                     self.submitState = PROCESS_STATE_send_Invoice;
-                }else if (state == PROCESS_STATE_filled_out_confirm){ //指定二级经理审批
-                    
-                    self.submitState = PROCESS_STATE_library_File;
-                    
                 }
+//                else if (state == PROCESS_STATE_filled_out_confirm){ //指定二级经理审批
+//                    
+//                    self.submitState = PROCESS_STATE_library_File;
+//                    
+//                }
             }
         }
     }else{
@@ -519,18 +529,19 @@
             if (state == PROCESS_STATE_manager_submit &&
                 ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_THREE)) { //客户经理已提交 -> 三级经理确认
                 
-//                [detailMuArr removeObjectAtIndex:detailMuArr.count-1];
-//                
-//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-//                          withRowAnimation:UITableViewRowAnimationNone];
-            }else if (state == PROCESS_STATE_three_manager_through &&
-                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)) { //三级经理审核通过 -> 支撑人员确认
-                
                 [detailMuArr removeObjectAtIndex:detailMuArr.count-1];
                 
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                           withRowAnimation:UITableViewRowAnimationNone];
             }
+//            else if (state == PROCESS_STATE_three_manager_through &&
+//                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)) { //三级经理审核通过 -> 支撑人员确认
+//                
+//                [detailMuArr removeObjectAtIndex:detailMuArr.count-1];
+//                
+//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+//                          withRowAnimation:UITableViewRowAnimationNone];
+//            }
         }else{
             
             if (amount > 3000) {
@@ -643,7 +654,7 @@
     
     int cost = [self.detailDict[@"bill_amount"] intValue];
     NSString *type = self.detailDict[@"bill_kind"];
-    if ((![type isEqualToString:@"自定义发票"]) | ([type isEqualToString:@"自定义发票"] && cost > 3000) && ([self.next_processor_id isEqualToString:@"-1"] || self.next_processor_id.length == 0) && (self.submitState == PROCESS_STATE_marketing_through) && (self.submitState != PROCESS_STATE_reject)) {
+    if ((![type isEqualToString:@"自定义发票"]) | ([type isEqualToString:@"自定义发票"] && cost > 3000) && ([self.next_processor_id isEqualToString:@"-1"] || self.next_processor_id.length == 0) && (self.submitState == PROCESS_STATE_three_manager_through) && (self.submitState != PROCESS_STATE_reject)) {
         ALERT_ERR_MSG(@"请选择审核领导");
         
         isDone = YES;

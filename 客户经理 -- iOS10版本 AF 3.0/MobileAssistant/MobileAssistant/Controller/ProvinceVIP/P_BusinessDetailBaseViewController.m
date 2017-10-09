@@ -585,6 +585,7 @@
                 }
                 [self.navigationController pushViewController:vc animated:YES];
             }else if([type isEqualToString:@"DateSelect"]){
+                [textField resignFirstResponder];
                 XYDatePicker *datePicker = [XYDatePicker datePicker];
                 datePicker.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
                 datePicker.delegate = self;

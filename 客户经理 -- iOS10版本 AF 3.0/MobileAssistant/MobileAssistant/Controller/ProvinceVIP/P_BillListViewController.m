@@ -57,14 +57,16 @@
             
             return YES;
         }else if (state == PROCESS_STATE_three_manager_through &&
-                  (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合确认 ->填写回款日期和金额
+                  (userType == ROLE_BILL || userType == ROLE_TWO)){ //综合确认 ->填写回款日期和金额
             
             return YES;
-        }else if (state == PROCESS_STATE_marketing_through &&
-                  (userType == ROLE_BILL || userType == ROLE_TWO)){ //支撑人员审核通过
-            
-            return YES;
-        }else if (state == PROCESS_STATE_two_manager_through &&
+        }
+//        else if (state == PROCESS_STATE_marketing_through &&
+//                  (userType == ROLE_BILL || userType == ROLE_TWO)){ //支撑人员审核通过
+//            
+//            return YES;
+//        }
+        else if (state == PROCESS_STATE_two_manager_through &&
                   (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合确认 ->填写回款日期和金额
             
             return YES;
@@ -97,14 +99,15 @@
                 return YES;
                 
             }else if (state == PROCESS_STATE_send_Invoice &&
-                      (userType == ROLE_BILL || userType == ROLE_CUSTOMER)){ //综合开票 ->填写回款日期和金额
-                
-                return YES;
-            }else if (state == PROCESS_STATE_filled_out_confirm &&
                       (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合开票 ->填写回款日期和金额
                 
                 return YES;
             }
+//            else if (state == PROCESS_STATE_filled_out_confirm &&
+//                      (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合开票 ->填写回款日期和金额
+//                
+//                return YES;
+//            }
         }else{
             if (state == PROCESS_STATE_manager_submit &&
                 userType == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
@@ -120,14 +123,15 @@
                 return YES;
                 
             }else if (state == PROCESS_STATE_send_Invoice &&
-                      (userType == ROLE_BILL || userType == ROLE_CUSTOMER)){ //综合开票 ->填写回款日期和金额
-                
-                return YES;
-            }else if (state == PROCESS_STATE_filled_out_confirm &&
                       (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合开票 ->填写回款日期和金额
                 
                 return YES;
             }
+//            else if (state == PROCESS_STATE_filled_out_confirm &&
+//                      (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合开票 ->填写回款日期和金额
+//                
+//                return YES;
+//            }
         }
     }
     

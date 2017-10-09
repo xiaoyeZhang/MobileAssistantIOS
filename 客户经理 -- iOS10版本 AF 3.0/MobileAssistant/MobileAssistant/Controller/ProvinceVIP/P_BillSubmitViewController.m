@@ -97,7 +97,7 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
         self.account_number = self.detailDict[@"account_number"];
         self.fixed_subject = self.detailDict[@"fixed_subject"];
         self.business_id = self.bListModel.business_id;
-        self.type_payment = self.detailDict[@"type_payment"];
+//        self.type_payment = self.detailDict[@"type_payment"];
     }
 }
 
@@ -212,13 +212,13 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
             return;
         }
         
-        if (self.type_payment.length == 0) {
-            msg = @"请选择付款方式";
-            ALERT_ERR_MSG(msg);
-            isDone = YES;
-            return;
-        }
-        
+//        if (self.type_payment.length == 0) {
+//            msg = @"请选择付款方式";
+//            ALERT_ERR_MSG(msg);
+//            isDone = YES;
+//            return;
+//        }
+//        
         if ([self.bill_type isEqualToString:@"否"]){
             msg = @"增值税发票必须要有合同，否则不能提交";
             
@@ -307,7 +307,7 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
     
     [dict setObject:self.bListModel?self.bListModel.business_id:@"" forKey:@"business_id"];
     
-    [dict setObject:self.type_payment?self.type_payment:@"" forKey:@"type_payment"];
+//    [dict setObject:self.type_payment?self.type_payment:@"" forKey:@"type_payment"];
     
     [self get_three_list:[dict objectForKey:@"type_id"] Successed:^(id entity) {
         
@@ -414,9 +414,9 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
 {
     if([self.bill_kind isEqualToString:@"增值税普通发票"] || [self.bill_kind isEqualToString:@"增值税专用发票"]){
         if ([self.bill_type isEqualToString:@"是"]) {
-            return 17/*有合同*/;
+            return 16/*有合同*/;
         }
-        return 15/*无合同*/;
+        return 14/*无合同*/;
     }else{
         return 8+1/*自定义科目*/+1/*发票类别*/;
     }
@@ -674,28 +674,28 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
             case 14:
             {
                 
-                if([self.bill_kind isEqualToString:@"增值税普通发票"] || [self.bill_kind isEqualToString:@"增值税专用发票"]){
-                    
-                    if ([self.bill_type isEqualToString:@"是"]) {
-      
-                        cell.titleLbl.text = @"预回款日期";
-                        cell.txtField.placeholder = @"请选择预回款日期";
-                        cell.txtField.text = self.bill_predate;
-                        
-                    }else{
-                        
-                        cell.titleLbl.text = @"付款方式";
-                        cell.txtField.placeholder = @"请选择付款方式";
-                        cell.txtField.text = self.type_payment;
-                    }
-                    
-                }else{
-                    
+//                if([self.bill_kind isEqualToString:@"增值税普通发票"] || [self.bill_kind isEqualToString:@"增值税专用发票"]){
+//                    
+//                    if ([self.bill_type isEqualToString:@"是"]) {
+//      
+//                        cell.titleLbl.text = @"预回款日期";
+//                        cell.txtField.placeholder = @"请选择预回款日期";
+//                        cell.txtField.text = self.bill_predate;
+//                        
+//                    }else{
+//                        
+//////                        cell.titleLbl.text = @"付款方式";
+//////                        cell.txtField.placeholder = @"请选择付款方式";
+//////                        cell.txtField.text = self.type_payment;
+////                    }
+//                    
+//                }else{
+                
                     cell.titleLbl.text = @"预回款日期";
                     cell.txtField.placeholder = @"请选择预回款日期";
                     cell.txtField.text = self.bill_predate;
                 
-                }
+//                }
 
                 break;
             }
@@ -706,13 +706,13 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
                 cell.txtField.text = self.remarks;
                 break;
             }
-            case 16:
-            {
-                cell.titleLbl.text = @"付款方式";
-                cell.txtField.placeholder = @"请选择付款方式";
-                cell.txtField.text = self.type_payment;
-                break;
-            }
+//            case 16:
+//            {
+//                cell.titleLbl.text = @"付款方式";
+//                cell.txtField.placeholder = @"请选择付款方式";
+//                cell.txtField.text = self.type_payment;
+//                break;
+//            }
             default:
                 break;
         }
@@ -880,67 +880,68 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
     
         return YES;
     }else if(textField.tag == 14){ //预回款日期
-        if([self.bill_kind isEqualToString:@"增值税普通发票"] || [self.bill_kind isEqualToString:@"增值税专用发票"]){ //付款方式
-            if ([self.bill_type isEqualToString:@"是"]) {
-                
-                //预回款日期
-                XYDatePicker *datePicker = [XYDatePicker datePicker];
-                datePicker.delegate = self;
-                [datePicker show];
-            }else{
-                [self.view endEditing:YES];
-                [UIActionSheet showInView:self.view
-                                withTitle:@"付款方式"
-                        cancelButtonTitle:@"取消"
-                   destructiveButtonTitle:nil
-                        otherButtonTitles:@[@"月结",@"预存"]
-                                 tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                                     if (buttonIndex != actionSheet.cancelButtonIndex) {
-                                         
-                                         if (buttonIndex == 0) {
-                                             self.type_payment = @"月结";
-                                         }else if(buttonIndex == 1){
-                                             self.type_payment = @"预存";
-                                         }
-                                         [_tableView reloadData];
-                                     }
-                                     
-                                 }];
-                
-            }
-            
-        }else{
+//        if([self.bill_kind isEqualToString:@"增值税普通发票"] || [self.bill_kind isEqualToString:@"增值税专用发票"]){ //付款方式
+//            if ([self.bill_type isEqualToString:@"是"]) {
+//                
+//                //预回款日期
+//                XYDatePicker *datePicker = [XYDatePicker datePicker];
+//                datePicker.delegate = self;
+//                [datePicker show];
+//            }else{
+//                [self.view endEditing:YES];
+//                [UIActionSheet showInView:self.view
+//                                withTitle:@"付款方式"
+//                        cancelButtonTitle:@"取消"
+//                   destructiveButtonTitle:nil
+//                        otherButtonTitles:@[@"月结",@"预存"]
+//                                 tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+//                                     if (buttonIndex != actionSheet.cancelButtonIndex) {
+//                                         
+//                                         if (buttonIndex == 0) {
+//                                             self.type_payment = @"月结";
+//                                         }else if(buttonIndex == 1){
+//                                             self.type_payment = @"预存";
+//                                         }
+//                                         [_tableView reloadData];
+//                                     }
+//                                     
+//                                 }];
+//                
+//            }
+//            
+//        }else{
             //预回款日期
             XYDatePicker *datePicker = [XYDatePicker datePicker];
             datePicker.delegate = self;
             [datePicker show];
-        }
+//        }
         
     
         return NO;
-    }else if(textField.tag == 16){ //付款方式
-        [self.view endEditing:YES];
-        [UIActionSheet showInView:self.view
-                        withTitle:@"付款方式"
-                cancelButtonTitle:@"取消"
-           destructiveButtonTitle:nil
-                otherButtonTitles:@[@"月结",@"预存"]
-                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                             if (buttonIndex != actionSheet.cancelButtonIndex) {
-                                 
-                                 if (buttonIndex == 0) {
-                                     self.type_payment = @"月结";
-                                 }else if(buttonIndex == 1){
-                                     self.type_payment = @"预存";
-                                 }
-                                 [_tableView reloadData];
-                             }
-                             
-                         }];
-        
-        return NO;
-
     }
+//    else if(textField.tag == 16){ //付款方式
+//        [self.view endEditing:YES];
+//        [UIActionSheet showInView:self.view
+//                        withTitle:@"付款方式"
+//                cancelButtonTitle:@"取消"
+//           destructiveButtonTitle:nil
+//                otherButtonTitles:@[@"月结",@"预存"]
+//                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+//                             if (buttonIndex != actionSheet.cancelButtonIndex) {
+//                                 
+//                                 if (buttonIndex == 0) {
+//                                     self.type_payment = @"月结";
+//                                 }else if(buttonIndex == 1){
+//                                     self.type_payment = @"预存";
+//                                 }
+//                                 [_tableView reloadData];
+//                             }
+//                             
+//                         }];
+//        
+//        return NO;
+//
+//    }
 
     return YES;
     
