@@ -28,13 +28,19 @@
 
 #import "New_CustiomerViewController.h"
 
+#import "data_statisticsWebViewController.h"
+
+#import "Central_manageCollectionViewCell.h"
+
+static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
+
 @interface MainViewController ()
 {
     int i;
     NSMutableArray *ConfigureArr;
     NSString *ProvinceVIP_State;
     NSArray *MainTableViewArr;
-    
+    NSArray *MainBusinessArr;
     
     NSString *Already_visitedstrCount;
     NSString *Not_visitedstrCount;
@@ -250,6 +256,35 @@
         
         ALERT_MSG(@"公告",userEntity.notice);
     }
+    
+    //***********************//
+    
+    // CollectionView 新界面列表
+    
+    self.MainCollectionView.backgroundColor = [UIColor whiteColor];
+    
+    MainBusinessArr = @[@{@"section":@"0",@"list":
+                              @[@{@"title":@"统一下单",@"icon":@"下单-(1)",@"viewController":@"0",@"VCbool":@"0"},
+                                @{@"title":@"走访任务",@"icon":@"拜访-(1)",@"viewController":@"走访任务系统",@"VCbool":@"0"},
+                                @{@"title":@"订单中心",@"icon":@"订单-(4)",@"viewController":@"订单中心",@"VCbool":@"0"},
+                                @{@"title":@"CRM业务",@"icon":@"crm-(1)",@"viewController":@"2",@"VCbool":@"0"},
+                                @{@"title":@"小纸条工单",@"icon":@"TAB-纸条",@"viewController":@"small_piece_paperViewController",@"VCbool":@"1"},
+                                @{@"title":@"营销中心",@"icon":@"集合",@"viewController":@"Marketing_CenterListViewController",@"VCbool":@"1"},
+                                @{@"title":@"实名认证",@"icon":@"实名",@"viewController":@"",@"VCbool":@"1"},
+                                @{@"title":@"集中化管理",@"icon":@"集中受理中心",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1"}]},
+                        @{@"section":@"1",@"list":
+                              @[@{@"title":@"CRM查看",@"icon":@"CRM-1",@"viewController":@"data_statisticsWebViewController",@"VCbool":@"1",@"select_type":@"2",@"VCname":@"CRM业务办理情况"},
+                                @{@"title":@"统一下单查看",@"icon":@"下单",@"viewController":@"data_statisticsWebViewController",@"VCbool":@"1",@"select_type":@"3",@"VCname":@"统一下单业务办理情况"},]}
+                        ];
+    
+    UINib *nib = [UINib nibWithNibName:cellIdentifier bundle:nil];
+    [_MainCollectionView registerNib:nib forCellWithReuseIdentifier:cellIdentifier];
+    
+    
+    [_MainCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    
+    //***********************************//
+
     
     ConfigureArr = [[NSMutableArray alloc]init];
     
@@ -784,6 +819,152 @@
                   } Failed:^(int errorCode, NSString *message) {
                       
                   }];
+}
+
+#pragma mark - scorllorView代理
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    
+    return MainBusinessArr.count;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    for (int iC = 0; iC < MainBusinessArr.count; iC++) {
+        
+        if (section == iC) {
+            return [[[MainBusinessArr objectAtIndex:iC] objectForKey:@"list"] count];
+        }
+        
+    }
+    return 0;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    Central_manageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    
+    cell.titleLable.text = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.iconImageView.image = [UIImage imageNamed:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"icon"]];
+    cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.titleLable.font = [UIFont systemFontOfSize:12];
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    return cell;
+    
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        headerView.backgroundColor = RGBCOLOR(244, 244, 244, 1);
+        
+        UILabel *titilabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 25)];
+        titilabel.font = [UIFont systemFontOfSize:13];
+        titilabel.textColor = RGBCOLOR(130, 130, 130, 1);
+        
+        if (indexPath.section == 0) {
+            titilabel.text = @"常用功能";
+        }else if (indexPath.section == 1) {
+            titilabel.text = @"其他功能";
+        }else{
+            
+        }
+        
+        [headerView addSubview:titilabel];
+        reusableview = headerView;
+        
+    }
+    
+    return reusableview;
+    
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+    NSString *strType = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCbool"];
+    if ([strType isEqualToString:@"0"]) {
+        
+        [self goViewController:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"]];
+        
+    }else{
+        
+        NSString *viewControllerStr = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"];
+        
+        if ([viewControllerStr isEqualToString:@"data_statisticsWebViewController"]) {
+        
+            NSString *select_type = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"select_type"];
+            
+            data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
+            
+            vc.select_type = select_type;
+            
+            vc.name = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCname"];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+
+            
+        }else{
+            
+            UIViewController* viewController = [[NSClassFromString(viewControllerStr) alloc] init];
+            
+            [self.navigationController pushViewController:viewController animated:YES];
+        
+        }
+        
+    }
+    
+    
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((collectionView.bounds.size.width - 10)/4, 70);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(collectionView.bounds.size.width, 25);
+    
+}
+
+- (void)goViewController:(NSString *)strType{
+    
+    UserEntity *userInfo = [UserEntity sharedInstance];
+    
+    if ([userInfo.type_id intValue]== ROLE_SOCOALCHANNEL) {
+        
+        if ([strType isEqualToString:@"订单中心"]) {
+            
+            [self goMainBaseViewController:strType];
+        }
+        
+    }else{
+        if ([strType isEqualToString:@"0"]) {
+            [self doProvinceVIP:nil];
+        }else if ([strType isEqualToString:@"2"]) {
+            [self doEnterBusiness:nil];
+            
+        }else{
+            [self goMainBaseViewController:strType];
+            
+        }
+
+    }
+    
 }
 
 - (void)subVCBackNeedRefresh:(id)sender

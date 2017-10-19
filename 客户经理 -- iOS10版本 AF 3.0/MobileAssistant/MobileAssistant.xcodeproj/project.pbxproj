@@ -475,6 +475,10 @@
 		2EA3668A1CDAF2BF00443BE9 /* Product_classificCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA366881CDAF2BF00443BE9 /* Product_classificCollectionViewCell.xib */; };
 		2EA3668E1CDAFA5E00443BE9 /* Product_classificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3668C1CDAFA5E00443BE9 /* Product_classificationTableViewCell.m */; };
 		2EA3668F1CDAFA5E00443BE9 /* Product_classificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA3668D1CDAFA5E00443BE9 /* Product_classificationTableViewCell.xib */; };
+		2EA36F591F984D6F00206816 /* Centralized_managementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA36F571F984D6F00206816 /* Centralized_managementViewController.m */; };
+		2EA36F5A1F984D6F00206816 /* Centralized_managementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA36F581F984D6F00206816 /* Centralized_managementViewController.xib */; };
+		2EA36F5E1F98707000206816 /* Central_manageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA36F5C1F98707000206816 /* Central_manageCollectionViewCell.m */; };
+		2EA36F5F1F98707000206816 /* Central_manageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA36F5D1F98707000206816 /* Central_manageCollectionViewCell.xib */; };
 		2EA3878A1CE071D50036C6B8 /* Product_classificationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387891CE071D50036C6B8 /* Product_classificationEntity.m */; };
 		2EA3878E1CE171450036C6B8 /* Birthday_departmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3878C1CE171450036C6B8 /* Birthday_departmentViewController.m */; };
 		2EA3878F1CE171450036C6B8 /* Birthday_departmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA3878D1CE171450036C6B8 /* Birthday_departmentViewController.xib */; };
@@ -1687,6 +1691,12 @@
 		2EA3668B1CDAFA5E00443BE9 /* Product_classificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product_classificationTableViewCell.h; sourceTree = "<group>"; };
 		2EA3668C1CDAFA5E00443BE9 /* Product_classificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product_classificationTableViewCell.m; sourceTree = "<group>"; };
 		2EA3668D1CDAFA5E00443BE9 /* Product_classificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Product_classificationTableViewCell.xib; sourceTree = "<group>"; };
+		2EA36F561F984D6F00206816 /* Centralized_managementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Centralized_managementViewController.h; sourceTree = "<group>"; };
+		2EA36F571F984D6F00206816 /* Centralized_managementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Centralized_managementViewController.m; sourceTree = "<group>"; };
+		2EA36F581F984D6F00206816 /* Centralized_managementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Centralized_managementViewController.xib; sourceTree = "<group>"; };
+		2EA36F5B1F98707000206816 /* Central_manageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Central_manageCollectionViewCell.h; sourceTree = "<group>"; };
+		2EA36F5C1F98707000206816 /* Central_manageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Central_manageCollectionViewCell.m; sourceTree = "<group>"; };
+		2EA36F5D1F98707000206816 /* Central_manageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Central_manageCollectionViewCell.xib; sourceTree = "<group>"; };
 		2EA387881CE071D50036C6B8 /* Product_classificationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product_classificationEntity.h; sourceTree = "<group>"; };
 		2EA387891CE071D50036C6B8 /* Product_classificationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product_classificationEntity.m; sourceTree = "<group>"; };
 		2EA3878B1CE171450036C6B8 /* Birthday_departmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Birthday_departmentViewController.h; sourceTree = "<group>"; };
@@ -3701,6 +3711,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2EA36F551F984D0400206816 /* Cen_management */ = {
+			isa = PBXGroup;
+			children = (
+				2EA36F561F984D6F00206816 /* Centralized_managementViewController.h */,
+				2EA36F571F984D6F00206816 /* Centralized_managementViewController.m */,
+				2EA36F581F984D6F00206816 /* Centralized_managementViewController.xib */,
+				2EA36F5B1F98707000206816 /* Central_manageCollectionViewCell.h */,
+				2EA36F5C1F98707000206816 /* Central_manageCollectionViewCell.m */,
+				2EA36F5D1F98707000206816 /* Central_manageCollectionViewCell.xib */,
+			);
+			path = Cen_management;
+			sourceTree = "<group>";
+		};
 		2EAF7B571D45A087007188F2 /* Houston_query */ = {
 			isa = PBXGroup;
 			children = (
@@ -4739,6 +4762,7 @@
 		D9F3AE8B19C3DB0500AAF0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2EA36F551F984D0400206816 /* Cen_management */,
 				2ED1123D1F383E2700B8ED3F /* SA_Special */,
 				2EDEE8491F2992D8003A82A3 /* Focus */,
 				2E57127B1F1F45CC00A14C9F /* Product_visit */,
@@ -5335,6 +5359,7 @@
 				148546D81BBA257100257580 /* red_line_and_shadow@2x.png in Resources */,
 				2EA3668A1CDAF2BF00443BE9 /* Product_classificCollectionViewCell.xib in Resources */,
 				2EE3AE291CBCF45E0089FBA7 /* Marking_detailViewController.xib in Resources */,
+				2EA36F5A1F984D6F00206816 /* Centralized_managementViewController.xib in Resources */,
 				2ED0578A1EE93CB8008FEE72 /* Examination_SeconTableViewCell.xib in Resources */,
 				2E86A4CA1D20DA5D00856AF1 /* P_RefundSubmitViewController.xib in Resources */,
 				2EF98C181C30FF2000B10311 /* Business_Add_Coloring_RingViewController.xib in Resources */,
@@ -5476,6 +5501,7 @@
 				41CF61301BBFD45F00A19D8C /* P_AddDevicesViewController.xib in Resources */,
 				2E92E9031D3CB5050099A5AD /* Marking_detail_ListViewController.xib in Resources */,
 				D92C533519E435A100F64EC0 /* ConditionTableViewCell.xib in Resources */,
+				2EA36F5F1F98707000206816 /* Central_manageCollectionViewCell.xib in Resources */,
 				2E92E9201D3E23A70099A5AD /* Case_listViewController.xib in Resources */,
 				148546281BBA239F00257580 /* camera_line@2x.png in Resources */,
 			);
@@ -5638,6 +5664,7 @@
 				2E9814CE1C51CF6800A56EF9 /* ZXYBaseViewController.m in Sources */,
 				2E86A4C91D20DA5D00856AF1 /* P_RefundSubmitViewController.m in Sources */,
 				2ECDBE0E1CCF51C4008B2B46 /* Sales_supportViewController.m in Sources */,
+				2EA36F5E1F98707000206816 /* Central_manageCollectionViewCell.m in Sources */,
 				2EEA26DA1F0E1D070085573D /* PNRadarChartDataItem.m in Sources */,
 				2E86A52F1D2503E100856AF1 /* MASConstraintMaker.m in Sources */,
 				2EF98C171C30FF2000B10311 /* Business_Add_Coloring_RingViewController.m in Sources */,
@@ -5727,6 +5754,7 @@
 				2ED057AB1EEA9BD0008FEE72 /* Integral_rankingListTableViewCell.m in Sources */,
 				2E6A0AF21C215F260086E333 /* Business_ProdInstInfoTableViewCell.m in Sources */,
 				2E873F561F1744FC008F5641 /* P_pic_ulrViewController.m in Sources */,
+				2EA36F591F984D6F00206816 /* Centralized_managementViewController.m in Sources */,
 				2EF98BF41C29579800B10311 /* ThreeCheckBoxTableViewCell.m in Sources */,
 				148546561BBA239F00257580 /* FMDatabasePool.m in Sources */,
 				2ED5CF1C1D5DA2C00048C507 /* No_visit_Detail_ListViewController.m in Sources */,

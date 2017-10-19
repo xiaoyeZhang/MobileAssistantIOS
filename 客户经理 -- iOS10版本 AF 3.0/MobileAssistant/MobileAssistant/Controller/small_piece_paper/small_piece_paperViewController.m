@@ -46,8 +46,12 @@
     
     self.no_replyNum.alpha = 0;
     self.Already_replyNum.alpha = 0;
-
+    
     [self setTape_num];
+
+    if ([self.tape_num intValue] <= 0) {
+        [self gettape_num];
+    }
     
     self.view.backgroundColor = RGBA(242, 242, 242, 1);
     self.tableView.backgroundColor = RGBA(242, 242, 242, 1);

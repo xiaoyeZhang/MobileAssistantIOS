@@ -11,6 +11,7 @@
 #import "ATLabel.h"
 
 @interface MainViewController : ZXYBaseViewController<EScrollerViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *MainCollectionView;
 
 @property (strong, nonatomic) IBOutlet UIView *MainTableView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;
