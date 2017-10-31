@@ -19,6 +19,7 @@
 #import "BusinessViewController.h"
 #import "ProvinceVIPViewController.h"
 #import "UserCenterViewController.h"
+#import "MainCollectionReusableViewHeadView.h"
 
 #import "MALocationEntity.h"
 #import "News_ProvinceVIPViewController.h"
@@ -32,7 +33,10 @@
 
 #import "Central_manageCollectionViewCell.h"
 
+#import "Centralized_managementViewController.h"
+
 static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
+static NSString *HeaderIdentifier = @"headerView";
 
 @interface MainViewController ()
 {
@@ -264,14 +268,14 @@ static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
     self.MainCollectionView.backgroundColor = [UIColor whiteColor];
     
     MainBusinessArr = @[@{@"section":@"0",@"list":
-                              @[@{@"title":@"统一下单",@"icon":@"下单-(1)",@"viewController":@"0",@"VCbool":@"0"},
-                                @{@"title":@"走访任务",@"icon":@"拜访-(1)",@"viewController":@"走访任务系统",@"VCbool":@"0"},
-                                @{@"title":@"订单中心",@"icon":@"订单-(4)",@"viewController":@"订单中心",@"VCbool":@"0"},
-                                @{@"title":@"CRM业务",@"icon":@"crm-(1)",@"viewController":@"2",@"VCbool":@"0"},
+                              @[@{@"title":@"统一下单",@"icon":@"下单-(1)",@"viewController":@"0",@"VCbool":@"0",@"VCname":@"统一下单业务"},
+                                @{@"title":@"走访任务",@"icon":@"拜访-(1)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"走访任务系统"},
+                                @{@"title":@"订单中心",@"icon":@"订单-(4)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"订单中心"},
+                                @{@"title":@"CRM业务",@"icon":@"crm-(1)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"CRM业务"},
                                 @{@"title":@"小纸条工单",@"icon":@"TAB-纸条",@"viewController":@"small_piece_paperViewController",@"VCbool":@"1"},
                                 @{@"title":@"营销中心",@"icon":@"集合",@"viewController":@"Marketing_CenterListViewController",@"VCbool":@"1"},
                                 @{@"title":@"实名认证",@"icon":@"实名",@"viewController":@"",@"VCbool":@"1"},
-                                @{@"title":@"集中化管理",@"icon":@"集中受理中心",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1"}]},
+                                @{@"title":@"集中化管理",@"icon":@"集中受理中心",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"集中化管理"}]},
                         @{@"section":@"1",@"list":
                               @[@{@"title":@"CRM查看",@"icon":@"CRM-1",@"viewController":@"data_statisticsWebViewController",@"VCbool":@"1",@"select_type":@"2",@"VCname":@"CRM业务办理情况"},
                                 @{@"title":@"统一下单查看",@"icon":@"下单",@"viewController":@"data_statisticsWebViewController",@"VCbool":@"1",@"select_type":@"3",@"VCname":@"统一下单业务办理情况"},]}
@@ -280,8 +284,8 @@ static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
     UINib *nib = [UINib nibWithNibName:cellIdentifier bundle:nil];
     [_MainCollectionView registerNib:nib forCellWithReuseIdentifier:cellIdentifier];
     
-    
-    [_MainCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([MainCollectionReusableViewHeadView class])  bundle:[NSBundle mainBundle]];
+    [_MainCollectionView registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];//注册加载头
     
     //***********************************//
 
@@ -446,9 +450,13 @@ static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 
     if ([ProvinceVIP_State isEqualToString:@"old"]) {
         
-        ProvinceVIPViewController *vc = [[ProvinceVIPViewController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+//        ProvinceVIPViewController *vc = [[ProvinceVIPViewController alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+        Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
         
+        vc.name = @"统一下单业务";
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }else if ([ProvinceVIP_State isEqualToString:@"new"]){
         
         News_ProviceVip_TwoViewController *vc = [[News_ProviceVip_TwoViewController alloc]init];
@@ -859,31 +867,27 @@ static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     
-    UICollectionReusableView *reusableview = nil;
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind   withReuseIdentifier:HeaderIdentifier forIndexPath:indexPath];
     
-    if (kind == UICollectionElementKindSectionHeader) {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         
-        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        headerView.backgroundColor = RGBCOLOR(244, 244, 244, 1);
-        
-        UILabel *titilabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 25)];
-        titilabel.font = [UIFont systemFontOfSize:13];
-        titilabel.textColor = RGBCOLOR(130, 130, 130, 1);
-        
+        MainCollectionReusableViewHeadView *headerView = (MainCollectionReusableViewHeadView *)view;
+
+        headerView.backgroundColor = RGBCOLOR(247, 247, 247, 1);
+        headerView.titilabel.font = [UIFont systemFontOfSize:12];
+        headerView.titilabel.textColor = RGBCOLOR(130, 130, 130, 1);
+
         if (indexPath.section == 0) {
-            titilabel.text = @"常用功能";
+            headerView.titilabel.text = @"常用功能";
         }else if (indexPath.section == 1) {
-            titilabel.text = @"其他功能";
+            headerView.titilabel.text = @"其他功能";
         }else{
             
         }
-        
-        [headerView addSubview:titilabel];
-        reusableview = headerView;
-        
+        return headerView;
     }
     
-    return reusableview;
+    return nil;
     
 }
 
@@ -915,6 +919,15 @@ static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
             [self.navigationController pushViewController:vc animated:YES];
 
             
+        }else if ([viewControllerStr isEqualToString:@"Centralized_managementViewController"]) {
+            
+            Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
+            
+            vc.name = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCname"];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
         }else{
             
             UIViewController* viewController = [[NSClassFromString(viewControllerStr) alloc] init];
@@ -932,12 +945,12 @@ static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((collectionView.bounds.size.width - 10)/4, 70);
+    return CGSizeMake((collectionView.bounds.size.width - 10)/4, 65);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(collectionView.bounds.size.width, 25);
+    return CGSizeMake(collectionView.bounds.size.width, 20);
     
 }
 

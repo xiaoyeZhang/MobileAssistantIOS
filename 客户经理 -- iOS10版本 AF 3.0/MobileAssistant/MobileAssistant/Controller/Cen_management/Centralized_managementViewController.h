@@ -11,4 +11,6 @@
 @interface Centralized_managementViewController : XYBaseViewController
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) NSString *name;
 @end

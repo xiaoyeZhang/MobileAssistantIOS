@@ -479,6 +479,10 @@
 		2EA36F5A1F984D6F00206816 /* Centralized_managementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA36F581F984D6F00206816 /* Centralized_managementViewController.xib */; };
 		2EA36F5E1F98707000206816 /* Central_manageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA36F5C1F98707000206816 /* Central_manageCollectionViewCell.m */; };
 		2EA36F5F1F98707000206816 /* Central_manageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA36F5D1F98707000206816 /* Central_manageCollectionViewCell.xib */; };
+		2EA377E81FA6FB62003B0684 /* Performance_displayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA377E61FA6FB62003B0684 /* Performance_displayViewController.m */; };
+		2EA377E91FA6FB62003B0684 /* Performance_displayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA377E71FA6FB62003B0684 /* Performance_displayViewController.xib */; };
+		2EA377ED1FA8240B003B0684 /* MainCollectionReusableViewHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA377EB1FA8240B003B0684 /* MainCollectionReusableViewHeadView.m */; };
+		2EA377EE1FA8240B003B0684 /* MainCollectionReusableViewHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA377EC1FA8240B003B0684 /* MainCollectionReusableViewHeadView.xib */; };
 		2EA3878A1CE071D50036C6B8 /* Product_classificationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387891CE071D50036C6B8 /* Product_classificationEntity.m */; };
 		2EA3878E1CE171450036C6B8 /* Birthday_departmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3878C1CE171450036C6B8 /* Birthday_departmentViewController.m */; };
 		2EA3878F1CE171450036C6B8 /* Birthday_departmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA3878D1CE171450036C6B8 /* Birthday_departmentViewController.xib */; };
@@ -1697,6 +1701,12 @@
 		2EA36F5B1F98707000206816 /* Central_manageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Central_manageCollectionViewCell.h; sourceTree = "<group>"; };
 		2EA36F5C1F98707000206816 /* Central_manageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Central_manageCollectionViewCell.m; sourceTree = "<group>"; };
 		2EA36F5D1F98707000206816 /* Central_manageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Central_manageCollectionViewCell.xib; sourceTree = "<group>"; };
+		2EA377E51FA6FB62003B0684 /* Performance_displayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Performance_displayViewController.h; sourceTree = "<group>"; };
+		2EA377E61FA6FB62003B0684 /* Performance_displayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Performance_displayViewController.m; sourceTree = "<group>"; };
+		2EA377E71FA6FB62003B0684 /* Performance_displayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Performance_displayViewController.xib; sourceTree = "<group>"; };
+		2EA377EA1FA8240B003B0684 /* MainCollectionReusableViewHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionReusableViewHeadView.h; sourceTree = "<group>"; };
+		2EA377EB1FA8240B003B0684 /* MainCollectionReusableViewHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionReusableViewHeadView.m; sourceTree = "<group>"; };
+		2EA377EC1FA8240B003B0684 /* MainCollectionReusableViewHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollectionReusableViewHeadView.xib; sourceTree = "<group>"; };
 		2EA387881CE071D50036C6B8 /* Product_classificationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product_classificationEntity.h; sourceTree = "<group>"; };
 		2EA387891CE071D50036C6B8 /* Product_classificationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product_classificationEntity.m; sourceTree = "<group>"; };
 		2EA3878B1CE171450036C6B8 /* Birthday_departmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Birthday_departmentViewController.h; sourceTree = "<group>"; };
@@ -3724,6 +3734,16 @@
 			path = Cen_management;
 			sourceTree = "<group>";
 		};
+		2EA377E41FA6FB3C003B0684 /* Performance_display */ = {
+			isa = PBXGroup;
+			children = (
+				2EA377E51FA6FB62003B0684 /* Performance_displayViewController.h */,
+				2EA377E61FA6FB62003B0684 /* Performance_displayViewController.m */,
+				2EA377E71FA6FB62003B0684 /* Performance_displayViewController.xib */,
+			);
+			path = Performance_display;
+			sourceTree = "<group>";
+		};
 		2EAF7B571D45A087007188F2 /* Houston_query */ = {
 			isa = PBXGroup;
 			children = (
@@ -4762,6 +4782,7 @@
 		D9F3AE8B19C3DB0500AAF0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2EA377E41FA6FB3C003B0684 /* Performance_display */,
 				2EA36F551F984D0400206816 /* Cen_management */,
 				2ED1123D1F383E2700B8ED3F /* SA_Special */,
 				2EDEE8491F2992D8003A82A3 /* Focus */,
@@ -5085,6 +5106,9 @@
 				2E91D1CA1D2BA0F700C5C776 /* MainTableViewCell.h */,
 				2E91D1CB1D2BA0F700C5C776 /* MainTableViewCell.m */,
 				2E91D1CC1D2BA0F700C5C776 /* MainTableViewCell.xib */,
+				2EA377EA1FA8240B003B0684 /* MainCollectionReusableViewHeadView.h */,
+				2EA377EB1FA8240B003B0684 /* MainCollectionReusableViewHeadView.m */,
+				2EA377EC1FA8240B003B0684 /* MainCollectionReusableViewHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5383,6 +5407,7 @@
 				2ECDBE191CCF544A008B2B46 /* daily_managementViewController.xib in Resources */,
 				14E54B4C1BD0C5DD00114D60 /* ChangePwdViewController.xib in Resources */,
 				1485464D1BBA239F00257580 /* SVProgressHUD.bundle in Resources */,
+				2EA377E91FA6FB62003B0684 /* Performance_displayViewController.xib in Resources */,
 				D954E7DF19DE8C6C00330D43 /* AboutViewController.xib in Resources */,
 				2EEA26E41F0E1D230085573D /* LICENSE in Resources */,
 				14E54B3A1BCF842800114D60 /* UserTableCellHeaderView.xib in Resources */,
@@ -5436,6 +5461,7 @@
 				D971E51C19E184E70085BA20 /* CoustomerMainNewsViewController.xib in Resources */,
 				1485462B1BBA239F00257580 /* close_cha.png in Resources */,
 				148546331BBA239F00257580 /* flashing_on.png in Resources */,
+				2EA377EE1FA8240B003B0684 /* MainCollectionReusableViewHeadView.xib in Resources */,
 				148546511BBA239F00257580 /* btn_close_selected.png in Resources */,
 				2E6F3A7F1D7E9D1500C9EF03 /* Customer_portraitViewController.xib in Resources */,
 				2E90AEC81CAA607C00E71FFD /* recommendedViewController.xib in Resources */,
@@ -5916,6 +5942,7 @@
 				D90D568519CD554C002C1AC0 /* TaskCreateViewController.m in Sources */,
 				D9E023E01A4301C90064D98D /* LevelEntity.m in Sources */,
 				2EE516371D48567F00F43462 /* Vertical_ListEntity.m in Sources */,
+				2EA377ED1FA8240B003B0684 /* MainCollectionReusableViewHeadView.m in Sources */,
 				2E9B21491DAB33DD00E1A794 /* New_group_base_messageTableViewCell.m in Sources */,
 				2E90AED41CAB65F500E71FFD /* Reommened_Detail_HeadViewTableViewCell.m in Sources */,
 				2E64C9CE1C1E5E6800F7597A /* Business_InternationalDetailViewController.m in Sources */,
@@ -5991,6 +6018,7 @@
 				41CF614D1BC1712400A19D8C /* P_BillSubmitViewController.m in Sources */,
 				2E86A5301D2503E100856AF1 /* MASLayoutConstraint.m in Sources */,
 				2E5712871F20382100A14C9F /* Product_Visit_SumbitViewController.m in Sources */,
+				2EA377E81FA6FB62003B0684 /* Performance_displayViewController.m in Sources */,
 				2EB7AE631C1ACAE100621F84 /* UserView.m in Sources */,
 				148546571BBA239F00257580 /* FMDatabaseQueue.m in Sources */,
 				141344471BD6200F00F10F99 /* PushSettingViewController.m in Sources */,
