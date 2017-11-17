@@ -20,8 +20,8 @@
     
     self.company_num = [attributes valueForKey:@"company_num"];
     self.company_name = [attributes valueForKey:@"company_name"];
-    self.sum = [attributes valueForKey:@"sum"];
-    
+    self.all_amount = [attributes valueForKey:@"all_amount"];
+    self.time = [attributes valueForKey:@"time"];
     
     return self;
 }

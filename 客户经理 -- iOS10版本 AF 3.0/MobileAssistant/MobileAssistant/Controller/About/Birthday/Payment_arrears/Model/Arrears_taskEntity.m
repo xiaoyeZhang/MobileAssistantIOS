@@ -19,11 +19,25 @@
         return nil;
     }
     
-    self.arrearage_id = [attributes valueForKey:@"arrearage_id"];
-    self.name = [attributes valueForKey:@"name"];
-    self.start_time = [attributes valueForKey:@"start_time"];
-    self.end_time = [attributes valueForKey:@"end_time"];
+    self.time = [attributes valueForKey:@"time"];
+    self.area_name = [attributes valueForKey:@"area_name"];
+    self.company_name = [attributes valueForKey:@"company_name"];
+    self.company_num = [attributes valueForKey:@"company_num"];
+
+    self.type = [attributes valueForKey:@"type"];
+    self.user_name = [attributes valueForKey:@"user_name"];
+    self.user_num = [attributes valueForKey:@"user_num"];
+    self.city_name = [attributes valueForKey:@"city_name"];
+
+    self.cycle = [attributes valueForKey:@"cycle"];
+    self.acc_num = [attributes valueForKey:@"acc_num"];
+    self.amount = [attributes valueForKey:@"amount"];
+    self.month = [attributes valueForKey:@"month"];
     
+    self.flag = [attributes valueForKey:@"flag"];
+    self.acc_name = [attributes valueForKey:@"acc_name"];
+    self.guest_num = [attributes valueForKey:@"guest_num"];
+    self.tel = [attributes valueForKey:@"tel"];
     
     return self;
 }

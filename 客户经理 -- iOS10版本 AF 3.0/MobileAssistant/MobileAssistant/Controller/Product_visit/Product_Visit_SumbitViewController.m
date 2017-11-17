@@ -60,6 +60,7 @@
     Visit_matters = @"";
     Account_Manager = @"";
     Visit_date = @"";
+    assis_user_id = @"";
     
     [self initData];
 }
@@ -76,7 +77,7 @@
     dicArr = [NSMutableArray arrayWithObjects:
               @{@"title":@"产品及项目经理姓名",    @"type":@"2", @"placeholder":@"", @"message":userEntity.name},
               @{@"title":@"走访单位\n名称",    @"type":@"0", @"placeholder":@"", @"message":Visiting_name},
-              @{@"title":@"陪同客户\n经理",@"type":@"1",@"placeholder":@"请选择",@"message":Account_Manager},
+              @{@"title":@"陪同客户\n经理",@"type":@"0",@"placeholder":@"",@"message":Account_Manager},
               @{@"title":@"走访对接人职务",@"type":@"0",@"placeholder":@"",@"message":duty_access},
               @{@"title":@"走访人姓名",@"type":@"0",@"placeholder":@"",@"message":product_name},
               @{@"title":@"走访事宜",@"type":@"0",@"placeholder":@"",@"message":Visit_matters},
@@ -124,6 +125,9 @@
    
         case 1:
             Visiting_name = textField.text;
+            break;
+        case 2:
+            Account_Manager = textField.text;
             break;
         case 3:
             duty_access = textField.text;
@@ -237,11 +241,13 @@
         ALERT_ERR_MSG(@"走访单位名称不能为空");
         isDone = YES;
         return;
-    }else if ([Account_Manager isEqualToString:@""]){
-        ALERT_ERR_MSG(@"陪同客户经理不能为空");
-        isDone = YES;
-        return;
-    }else if ([duty_access isEqualToString:@""]){
+    }
+//    else if ([Account_Manager isEqualToString:@""]){
+//        ALERT_ERR_MSG(@"陪同客户经理不能为空");
+//        isDone = YES;
+//        return;
+//    }
+    else if ([duty_access isEqualToString:@""]){
         ALERT_ERR_MSG(@"走访对接人职务不能为空");
         isDone = YES;
         return;
@@ -268,6 +274,7 @@
                            @"user_id":userEntity.user_id,
                            @"company_name":Visiting_name,
                            @"assis_user_id":assis_user_id,
+                           @"assis_user_name":Account_Manager,
                            @"job":duty_access,
                            @"client_name":product_name,
                            @"content":Visit_matters,

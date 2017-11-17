@@ -299,14 +299,7 @@ static NSString *HeaderIdentifier = @"headerView";
         
         NSString *ControllerStr = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"];
         
-        if ([ControllerStr isEqualToString:@"News_ProviceVIP_ListViewController"]) {
-            
-            News_ProviceVIP_ListViewController *vc = [[News_ProviceVIP_ListViewController alloc]init];
-            vc.module_id = @"80";
-            vc.name = @"集团划拨";
-            [self.navigationController pushViewController:vc animated:YES];
-            
-        }else if ([ControllerStr isEqualToString:@"Business_InternationalViewController"]) {
+        if ([ControllerStr isEqualToString:@"Business_InternationalViewController"]) {
             
             Business_InternationalViewController *vc = [[Business_InternationalViewController alloc] init];
             vc.num = [[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCNum"] intValue];

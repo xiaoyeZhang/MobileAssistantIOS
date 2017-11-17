@@ -10,9 +10,10 @@
 
 @interface Payment_arrears_listEntity : NSObject
 
-@property (nonatomic, copy) NSString *company_num;
-@property (nonatomic, copy) NSString *company_name;
-@property (nonatomic, copy) NSString *sum;
+@property (nonatomic, copy) NSString *company_num; //集团编号
+@property (nonatomic, copy) NSString *company_name; //集团名称
+@property (nonatomic, copy) NSString *all_amount; //总欠费数
+@property (nonatomic, copy) NSString *time; //截止日期
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 

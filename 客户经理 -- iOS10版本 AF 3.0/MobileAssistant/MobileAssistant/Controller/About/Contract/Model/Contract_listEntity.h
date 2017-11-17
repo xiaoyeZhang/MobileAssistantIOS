@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *list_type;
 @property (nonatomic, copy) NSString *contract_id;
 @property (nonatomic, copy) NSString *company_name;
+@property (nonatomic, copy) NSString *show_type;
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 

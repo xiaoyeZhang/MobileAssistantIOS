@@ -193,8 +193,17 @@
             hightNum = hightNum + [num intValue];
         }
 
-        UILabel *reLbael = [[UILabel alloc]initWithFrame:CGRectMake(cell.summaryLabel.frame.origin.x, cell.supportView.frame.origin.y + cell.supportView.frame.size.height + 23 + hightNum, [UIScreen mainScreen].bounds.size.width - cell.summaryLabel.frame.origin.x - 12, [self heightForString:[comtent string] fontSize:15 andWidth:[UIScreen mainScreen].bounds.size.width - cell.summaryLabel.frame.origin.x + 10] - 10)];
+        UILabel *reLbael = [[UILabel alloc]init];
         
+        if (entity.summary.length > 0) {
+            reLbael.frame = CGRectMake(cell.summaryLabel.frame.origin.x, cell.supportView.frame.origin.y + cell.supportView.frame.size.height + 23 + hightNum, [UIScreen mainScreen].bounds.size.width - cell.summaryLabel.frame.origin.x - 12, [self heightForString:[comtent string] fontSize:15 andWidth:[UIScreen mainScreen].bounds.size.width - cell.summaryLabel.frame.origin.x + 10] - 10);
+            
+        }else{
+            
+            reLbael.frame = CGRectMake(cell.summaryLabel.frame.origin.x, cell.supportView.frame.origin.y + cell.supportView.frame.size.height - 8 + hightNum, [UIScreen mainScreen].bounds.size.width - cell.summaryLabel.frame.origin.x - 12, [self heightForString:[comtent string] fontSize:15 andWidth:[UIScreen mainScreen].bounds.size.width - cell.summaryLabel.frame.origin.x + 10] - 10);
+            
+        }
+
         reLbael.lineBreakMode = NSLineBreakByCharWrapping;
         [reLbael setFont:[UIFont systemFontOfSize:15]];
         reLbael.numberOfLines = 0;
@@ -203,7 +212,15 @@
         
         [reHeightArr addObject:[NSString stringWithFormat:@"%f",reLbael.frame.size.height]];
         
-        cellHeight = cellHeight + reLbael.frame.size.height;
+        if (entity.summary.length > 0) {
+
+            cellHeight = cellHeight + reLbael.frame.size.height;
+
+        }else{
+            
+            cellHeight = cellHeight + reLbael.frame.size.height - 10;
+
+        }
         
         reLbael.attributedText = comtent;
         

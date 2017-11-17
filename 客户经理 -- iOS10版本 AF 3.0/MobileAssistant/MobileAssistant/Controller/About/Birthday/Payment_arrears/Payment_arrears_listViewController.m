@@ -2,17 +2,17 @@
 //  Payment_arrears_listViewController.m
 //  MobileAssistant
 //
-//  Created by 张晓烨 on 16/4/25.
-//  Copyright © 2016年 avatek. All rights reserved.
+//  Created by 张晓烨 on 2017/11/17.
+//  Copyright © 2017年 avatek. All rights reserved.
 //
 
 #import "Payment_arrears_listViewController.h"
-#import "NewsTableViewCell.h"
+#import "Payment_arrears_listTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "Payment_arrears_listEntity.h"
 #import "Arrears_taskViewController.h"
 
-@interface Payment_arrears_listViewController ()<MBProgressHUDDelegate>
+@interface Payment_arrears_listViewController ()<MBProgressHUDDelegate,MJRefreshBaseViewDelegate>
 {
     MBProgressHUD *HUD;
     NSString *company_num;
@@ -26,11 +26,12 @@
 - (void)dealloc
 {
     [refreshHeader free];
+    [refreshFooter free];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.navigationItem.title = @"欠费任务提醒";
     self.arrayCutomer =[[NSMutableArray alloc]init];
     
@@ -38,12 +39,14 @@
     UIButton *backBtn = [self setNaviCommonBackBtn];
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.textFiled.returnKeyType = UIReturnKeyDone;
-    [self.textFiled addTarget:self action:@selector(TextFieldEndEdited:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    //    self.textFiled.returnKeyType = UIReturnKeyDone;
+    //    [self.textFiled addTarget:self action:@selector(TextFieldEndEdited:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self getData];
+    [self getData:0];
     
     [self addRefreshView];
+
+    
 }
 
 //返回
@@ -61,10 +64,15 @@
     refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
         company_name = @"";
         company_num = @"";
-        [weakSelf getData];
+        [weakSelf getData:0];
+    };
+    refreshFooter = [MJRefreshFooterView footer];
+    refreshFooter.scrollView = _tableView;
+    refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+        
+        [weakSelf getData:weakSelf.arrayCutomer.count];
     };
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -72,47 +80,50 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70;
+    
+    
+    return 120;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *identifier = @"NewsTableViewCell";
+    static NSString *identifier = @"Payment_arrears_listTableViewCell";
     
-    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    Payment_arrears_listTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:identifier owner:nil options:nil] firstObject];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.typeLabel.alpha = 0;
-
+    
     Payment_arrears_listEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
     
-    cell.labelTitle.text = entity.company_name;
-    cell.labelDate.text = [NSString stringWithFormat:@"(欠费金额 %@)",entity.sum];
-
+    cell.titleLabel.text = entity.company_name;
+    cell.company_num.text = [NSString stringWithFormat:@"集团编号:%@",entity.company_num];
+    cell.all_amountLabel.text = [NSString stringWithFormat:@"总欠费金额:%@",entity.all_amount];
+    cell.timeLabel.text = [NSString stringWithFormat:@"截止日期:%@",entity.time];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Arrears_taskViewController *vc = [[Arrears_taskViewController alloc]init];
     Payment_arrears_listEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
     vc.company_name = entity.company_name;
     vc.company_num = entity.company_num;
-    [vc getData];
     [self.navigationController pushViewController:vc animated:YES];
-
+    
 }
 
-- (void)TextFieldEndEdited:(UITextField *)TextField
-{
-    [TextField resignFirstResponder];
-}
+//- (void)TextFieldEndEdited:(UITextField *)TextField
+//{
+//    [TextField resignFirstResponder];
+//}
 
-- (void)getData{
+- (void)getData:(NSUInteger)page{
     
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
@@ -123,7 +134,9 @@
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     
-    [dict setObject:@"get_arrearage_list" forKey:@"method"];
+    [dict setObject:@"m_arrearage_list" forKey:@"method"];
+    
+    [dict setObject:@(page) forKey:@"local"];
     
     if (self.user_num.length > 0) {
         [dict setObject:self.user_num forKey:@"user_num"];
@@ -131,20 +144,21 @@
         [dict setObject:userEntity.num forKey:@"user_num"];
     }
     
-    if (company_name.length != 0) {
-        [dict setObject:company_name forKey:@"company_name"];
-    }
-    
-    if (company_num.length != 0) {
-       [dict setObject:company_num forKey:@"company_num"];
-    }
-    
+    //    if (company_name.length != 0) {
+    //        [dict setObject:company_name forKey:@"company_name"];
+    //    }
+    //
+    //    if (company_num.length != 0) {
+    //       [dict setObject:company_num forKey:@"company_num"];
+    //    }
     
     [service getNetWorkData:dict  Successed:^(id entity) {
         NSNumber *state = [entity valueForKeyPath:@"state"];
         NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
         
-        [self.arrayCutomer removeAllObjects];
+        if (page == 0) {
+            [self.arrayCutomer removeAllObjects];
+        }
         
         if ([strState isEqualToString:@"1"] == YES) {
             NSMutableArray *array = [entity objectForKey:@"content"];
@@ -152,41 +166,41 @@
                 Payment_arrears_listEntity *entity = [[Payment_arrears_listEntity alloc] init];
                 entity = [entity initWithAttributes:attributes];
                 [self.arrayCutomer addObject:entity];
-            
+                
             }
             
         }else{
-
+            
+            [self.arrayCutomer removeAllObjects];
+            
         }
         [self.tableView reloadData];
         [refreshHeader endRefreshing];
+        [refreshFooter endRefreshing];
         [HUD hide:YES];
     } Failed:^(int errorCode, NSString *message) {
         [refreshHeader endRefreshing];
+        [refreshFooter endRefreshing];
         [HUD hide:YES];
-        iToast *toast = [iToast makeText:@"网络连接失败"];
-        [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
-        [toast setDuration:500];
-        [toast show:iToastTypeNotice];
+
     }];
     
     
 }
-
-- (IBAction)doSelectByKey:(UIButton *)sender {
-    
-    [self.view endEditing:YES];
-  
-    if (![self isPureNumandCharacters:self.textFiled.text]) {
-        company_name = self.textFiled.text;
-    }
-    
-    if ([self isPureNumandCharacters:self.textFiled.text]) {
-        company_num = self.textFiled.text;
-    }
-    
-    [self getData];
-}
+//- (IBAction)doSelectByKey:(UIButton *)sender {
+//
+//    [self.view endEditing:YES];
+//
+//    if (![self isPureNumandCharacters:self.textFiled.text]) {
+//        company_name = self.textFiled.text;
+//    }
+//
+//    if ([self isPureNumandCharacters:self.textFiled.text]) {
+//        company_num = self.textFiled.text;
+//    }
+//
+//    [self getData:0];
+//}
 
 - (BOOL)isPureNumandCharacters:(NSString *)string
 {
@@ -204,5 +218,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

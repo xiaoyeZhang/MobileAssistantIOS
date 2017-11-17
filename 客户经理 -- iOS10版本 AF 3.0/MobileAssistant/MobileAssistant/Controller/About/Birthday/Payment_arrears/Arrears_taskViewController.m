@@ -9,28 +9,40 @@
 #import "Arrears_taskViewController.h"
 #import "MBProgressHUD.h"
 #import "Arrears_taskEntity.h"
-#import "Bussiness_CustomerTableViewCell.h"
+#import "Arrears_taskTableViewCell.h"
 #import "Arrears_DetailViewController.h"
+#import "UserEntity.h"
 
-@interface Arrears_taskViewController ()<MBProgressHUDDelegate>
+@interface Arrears_taskViewController ()<MBProgressHUDDelegate,MJRefreshBaseViewDelegate>
 {
     MBProgressHUD *HUD;
+    UserEntity *userEntity;
 }
 @property (strong ,nonatomic) NSMutableArray *arrayCutomer;
 
 @end
 
 @implementation Arrears_taskViewController
-
+- (void)dealloc
+{
+    [refreshHeader free];
+    [refreshFooter free];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    userEntity = [UserEntity sharedInstance];
+    
     self.navigationItem.title = @"欠费任务提醒";
+    
     self.arrayCutomer = [[NSMutableArray alloc]init];
     self.tableView.tableFooterView = [[UITableView alloc]init];
+    
     UIButton *backBtn = [self setNaviCommonBackBtn];
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+    [self getData:0];
     
+    [self addRefreshView];
 }
 
 //返回
@@ -38,6 +50,23 @@
 {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)addRefreshView
+{
+    __weak typeof(self) weakSelf = self;
+    refreshHeader = [MJRefreshHeaderView header];
+    refreshHeader.scrollView = self.tableView;
+    refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+
+        [weakSelf getData:0];
+    };
+    refreshFooter = [MJRefreshFooterView footer];
+    refreshFooter.scrollView = _tableView;
+    refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+        
+        [weakSelf getData:weakSelf.arrayCutomer.count];
+    };
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -51,7 +80,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 95;
+    return 145;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -72,18 +101,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    static NSString *CellIdentifier = @"Bussiness_CustomerTableViewCell";
-    Bussiness_CustomerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"Arrears_taskTableViewCell";
+    Arrears_taskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(!cell)
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:nil options:nil] firstObject];
     }
     Arrears_taskEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
-    cell.CustomerName.text = entity.name;
+    cell.company_nameLabel.text = entity.company_name;
     
-    cell.CustomerNum.text = [NSString stringWithFormat:@"生效时间：%@",entity.start_time];
-    cell.CustomerAddress.text = [NSString stringWithFormat:@"失效时间：%@",entity.end_time];
+    cell.acc_numLabel.text = [NSString stringWithFormat:@"账号编号：%@",entity.acc_num];
+    cell.amountLabel.text = [NSString stringWithFormat:@"当月欠费额：%@",entity.amount];
+    cell.timeLabel.text = [NSString stringWithFormat:@"数据日期：%@",entity.time];
+    cell.monthLabel.text = [NSString stringWithFormat:@"欠费月份：%@",entity.month];
     return cell;
 }
 
@@ -92,12 +123,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Arrears_DetailViewController *vc = [[Arrears_DetailViewController alloc]init];
     Arrears_taskEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
-    vc.arrearage_id = entity.arrearage_id;
+    vc.entity = entity;
     [self.navigationController pushViewController:vc animated:YES];
     
 }
 
-- (void)getData{
+- (void)getData:(NSUInteger)page{
     
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
@@ -107,16 +138,24 @@
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     
-    [dict setObject:@"get_arrearage_detail_list" forKey:@"method"];
+//    [dict setObject:@"get_arrearage_detail_list" forKey:@"method"];
+    [dict setObject:@"m_arrearage_acc_list" forKey:@"method"];
+
     [dict setObject:self.company_num forKey:@"company_num"];
+    [dict setObject:userEntity.num forKey:@"user_num"];
+    [dict setObject:@(page) forKey:@"local"];
     
     [service getNetWorkData:dict  Successed:^(id entity) {
-        NSNumber *state = [entity valueForKeyPath:@"state"];
-        NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
+//        NSNumber *state = [entity valueForKeyPath:@"state"];
+//        NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
+       
+        if (page == 0) {
+            
+            [self.arrayCutomer removeAllObjects];
         
-        [self.arrayCutomer removeAllObjects];
+        }
         
-        if ([strState isEqualToString:@"1"] == YES) {
+//        if ([strState isEqualToString:@"1"] == YES) {
             NSMutableArray *array = [entity objectForKey:@"content"];
             for (NSDictionary* attributes in array) {
                 Arrears_taskEntity *entity = [[Arrears_taskEntity alloc] init];
@@ -125,17 +164,21 @@
                 
             }
             
-        }else{
-            
-            iToast *toast = [iToast makeText:@"暂无数据"];
-            [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
-            [toast setDuration:500];
-            [toast show:iToastTypeNotice];
-            
-        }
+//        }else{
+//            
+//            iToast *toast = [iToast makeText:@"暂无数据"];
+//            [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];
+//            [toast setDuration:500];
+//            [toast show:iToastTypeNotice];
+//            
+//        }
         [self.tableView reloadData];
+        [refreshHeader endRefreshing];
+        [refreshFooter endRefreshing];
         [HUD hide:YES];
     } Failed:^(int errorCode, NSString *message) {
+        [refreshHeader endRefreshing];
+        [refreshFooter endRefreshing];
         [HUD hide:YES];
         iToast *toast = [iToast makeText:@"网络连接失败"];
         [toast setGravity:iToastGravityBottom offsetLeft:0 offsetTop:-30];

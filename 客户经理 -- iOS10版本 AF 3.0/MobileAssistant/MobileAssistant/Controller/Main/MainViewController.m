@@ -274,7 +274,7 @@ static NSString *HeaderIdentifier = @"headerView";
                                 @{@"title":@"CRM业务",@"icon":@"crm-(1)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"CRM业务"},
                                 @{@"title":@"小纸条工单",@"icon":@"TAB-纸条",@"viewController":@"small_piece_paperViewController",@"VCbool":@"1"},
                                 @{@"title":@"营销中心",@"icon":@"集合",@"viewController":@"Marketing_CenterListViewController",@"VCbool":@"1"},
-                                @{@"title":@"实名认证",@"icon":@"实名",@"viewController":@"",@"VCbool":@"1"},
+//                                @{@"title":@"实名认证",@"icon":@"实名",@"viewController":@"",@"VCbool":@"1"},
                                 @{@"title":@"集中化管理",@"icon":@"集中受理中心",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"集中化管理"}]},
                         @{@"section":@"1",@"list":
                               @[@{@"title":@"CRM查看",@"icon":@"CRM-1",@"viewController":@"data_statisticsWebViewController",@"VCbool":@"1",@"select_type":@"2",@"VCname":@"CRM业务办理情况"},

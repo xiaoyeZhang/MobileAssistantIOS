@@ -17,8 +17,10 @@
 {
     MBProgressHUD *HUD;
 }
-@property (strong, nonatomic) NSMutableArray *arrayCutomer;
-@property (strong, nonatomic) NSMutableArray *arrayCutomerTemp;
+@property (strong, nonatomic) NSMutableArray *arrayCutomerOne;
+@property (strong, nonatomic) NSMutableArray *arrayCutomerTwo;
+@property (strong, nonatomic) NSMutableArray *arrayCutomerThree;
+@property (strong, nonatomic) NSMutableArray *arrayCutomerFour;
 @end
 
 @implementation Contract_expiresViewController
@@ -27,8 +29,10 @@
     [super viewDidLoad];
    
     self.navigationItem.title = @"合同到期提醒";
-    self.arrayCutomer = [[NSMutableArray alloc]init];
-    self.arrayCutomerTemp = [[NSMutableArray alloc]init];
+    self.arrayCutomerOne = [[NSMutableArray alloc]init];
+    self.arrayCutomerTwo = [[NSMutableArray alloc]init];
+    self.arrayCutomerThree = [[NSMutableArray alloc]init];
+    self.arrayCutomerFour = [[NSMutableArray alloc]init];
     
     self.tableView.tableFooterView = [[UITableView alloc]init];
     UIButton *backBtn = [self setNaviCommonBackBtn];
@@ -52,16 +56,25 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return 2;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0){
         
-        return [self.arrayCutomer count];
+        return [self.arrayCutomerOne count];
+    }else if(section == 1){
+        
+        return [self.arrayCutomerTwo count];
+    }else if(section == 2){
+        
+        return [self.arrayCutomerThree count];
+    }else if(section == 3){
+        
+        return [self.arrayCutomerFour count];
     }else{
-        return [self.arrayCutomerTemp count];
+        return 0;
     }
 }
 
@@ -83,11 +96,15 @@
     headLabel.font = [UIFont systemFontOfSize:15];
     if (section == 0) {
         headLabel.text = @"本月内";
-    }
-    else{
+    }else if (section == 1){
         headLabel.text = @"一个月后";
+    }else if (section == 2){
+        headLabel.text = @"两个月后";
+    }else if (section == 3){
+        headLabel.text = @"三个月后";
+    }else{
+        headLabel.text = @"";
     }
-    
     
     [headView addSubview:headLabel];
     
@@ -104,21 +121,31 @@
     }
     cell.typeLabel.text = @"详情查看";
     cell.typeLabel.textColor = [UIColor colorWithRed:16.0/255 green:66.0/255 blue:199.0/255 alpha:1];
+    
+    Contract_listEntity *entity;
+    
     if (indexPath.section == 0) {
         
-        Contract_listEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
+        entity = [self.arrayCutomerOne objectAtIndex:indexPath.row];
+
+    }else if (indexPath.section == 1) {
         
-        cell.labelTitle.text = [NSString stringWithFormat:@"%@",entity.company_name];
-        cell.labelDate.text = [NSString stringWithFormat:@"(%@)",entity.title];
+        entity = [self.arrayCutomerTwo objectAtIndex:indexPath.row];
+        
+    }else if (indexPath.section == 1) {
+        
+        entity = [self.arrayCutomerThree objectAtIndex:indexPath.row];
+        
+    }else if (indexPath.section == 1) {
+        
+        entity = [self.arrayCutomerFour objectAtIndex:indexPath.row];
         
     }else{
-        
-        Contract_listEntity *entity = [self.arrayCutomerTemp objectAtIndex:indexPath.row];
-        
-        cell.labelTitle.text = [NSString stringWithFormat:@"%@",entity.company_name];
-        cell.labelDate.text = [NSString stringWithFormat:@"(%@)",entity.title];
 
     }
+    
+    cell.labelTitle.text = [NSString stringWithFormat:@"%@",entity.company_name];
+    cell.labelDate.text = [NSString stringWithFormat:@"(%@)",entity.title];
     
     return cell;
 }
@@ -130,11 +157,19 @@
     NSString *contract_id;
     
     if (indexPath.section == 0) {
-        Contract_listEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
+        Contract_listEntity *entity = [self.arrayCutomerOne objectAtIndex:indexPath.row];
+        contract_id = entity.contract_id;
+    }else if (indexPath.section == 1) {
+        Contract_listEntity *entity = [self.arrayCutomerTwo objectAtIndex:indexPath.row];
+        contract_id = entity.contract_id;
+    }else if (indexPath.section == 2) {
+        Contract_listEntity *entity = [self.arrayCutomerThree objectAtIndex:indexPath.row];
+        contract_id = entity.contract_id;
+    }else if (indexPath.section == 3) {
+        Contract_listEntity *entity = [self.arrayCutomerFour objectAtIndex:indexPath.row];
         contract_id = entity.contract_id;
     }else{
-        Contract_listEntity *entity = [self.arrayCutomerTemp objectAtIndex:indexPath.row];
-        contract_id = entity.contract_id;
+        
     }
     
     Contract_expries_DetailViewController *vc = [[Contract_expries_DetailViewController alloc]init];
@@ -163,25 +198,43 @@
         NSNumber *state = [entity valueForKeyPath:@"state"];
         NSString *strState = [NSString stringWithFormat:@"%d", [state intValue]];
         
+        [self.arrayCutomerOne removeAllObjects];
+        [self.arrayCutomerTwo removeAllObjects];
+        [self.arrayCutomerThree removeAllObjects];
+        [self.arrayCutomerFour removeAllObjects];
+
         if ([strState isEqualToString:@"1"] == YES) {
-            [self.arrayCutomer removeAllObjects];
-            [self.arrayCutomerTemp removeAllObjects];
+
             NSMutableArray *array = [entity objectForKey:@"content"];
             for (NSDictionary* attributes in array) {
                 Contract_listEntity *entity = [[Contract_listEntity alloc] init];
                 entity = [entity initWithAttributes:attributes];
-                if ([entity.list_type isEqualToString:@"1"]) {
-                    [self.arrayCutomer addObject:entity];
+                
+                if ([entity.show_type isEqualToString:@"0"]) {
+                    
+                    [self.arrayCutomerOne addObject:entity];
+                
+                }else if ([entity.show_type isEqualToString:@"1"]) {
+                
+                    [self.arrayCutomerTwo addObject:entity];
+                
+                }else if ([entity.show_type isEqualToString:@"2"]) {
+                
+                    [self.arrayCutomerThree addObject:entity];
+                
+                }else if ([entity.show_type isEqualToString:@"3"]) {
+                    
+                    [self.arrayCutomerFour addObject:entity];
+                    
                 }else{
-                    [self.arrayCutomerTemp addObject:entity];
+                
                 }
                 
             }
             [self.tableView reloadData];
         }else if([strState isEqualToString:@"0"] == YES){
             
-            [self.arrayCutomer removeAllObjects];
-            [self.arrayCutomerTemp removeAllObjects];
+
         }else{
             
         }

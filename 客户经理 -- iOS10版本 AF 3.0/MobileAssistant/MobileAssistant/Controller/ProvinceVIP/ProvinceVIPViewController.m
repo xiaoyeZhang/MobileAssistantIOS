@@ -361,7 +361,6 @@ static NSString *headerIdentifier = @"ImageCollectionReusableView";
             }
             break;
             
-            
         case 9: //营销方案更改
             if ([userEntity.dep_id rangeOfString:@"10007"].location != NSNotFound) {
                 

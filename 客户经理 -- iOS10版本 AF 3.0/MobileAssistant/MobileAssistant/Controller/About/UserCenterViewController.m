@@ -249,12 +249,12 @@
         if ([ProvinceVIP_State isEqualToString:@"old"]) {
             
             sectionArray = [NSArray arrayWithObjects:@"待办事项",@"运营分析数据统计",@"小纸条",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//13
-            iconArray = [NSArray arrayWithObjects:@"待办事项",@"运营信息统计icon",@"小纸条工单icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"2017全省班组成绩展示",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
+            iconArray = [NSArray arrayWithObjects:@"待办事项",@"运营信息统计icon",@"小纸条工单icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else if ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"]){
             
             sectionArray = [NSArray arrayWithObjects:@"待办事项",@"运营分析数据统计",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//12
-            iconArray = [NSArray arrayWithObjects:@"待办事项",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"2017全省班组成绩展示",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
+            iconArray = [NSArray arrayWithObjects:@"待办事项",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else{
             
@@ -265,12 +265,12 @@
         if ([ProvinceVIP_State isEqualToString:@"old"]) {
             
             sectionArray = [NSArray arrayWithObjects:@"待办事项",@"走访情况",@"运营分析数据统计",@"小纸条",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//14
-            iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"小纸条工单icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"2017全省班组成绩展示",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
+            iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"小纸条工单icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else if ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"]){
             
             sectionArray = [NSArray arrayWithObjects:@"待办事项",@"走访情况",@"运营分析数据统计",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//13
-            iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"2017全省班组成绩展示",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
+            iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else{
             

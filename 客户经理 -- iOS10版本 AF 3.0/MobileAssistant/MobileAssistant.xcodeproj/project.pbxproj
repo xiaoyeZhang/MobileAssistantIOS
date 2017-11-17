@@ -486,11 +486,16 @@
 		2EA3878A1CE071D50036C6B8 /* Product_classificationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387891CE071D50036C6B8 /* Product_classificationEntity.m */; };
 		2EA3878E1CE171450036C6B8 /* Birthday_departmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3878C1CE171450036C6B8 /* Birthday_departmentViewController.m */; };
 		2EA3878F1CE171450036C6B8 /* Birthday_departmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA3878D1CE171450036C6B8 /* Birthday_departmentViewController.xib */; };
+		2EA56DC81FBE841C00D40D19 /* Payment_arrears_listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA56DC61FBE841C00D40D19 /* Payment_arrears_listTableViewCell.m */; };
+		2EA56DC91FBE841C00D40D19 /* Payment_arrears_listTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA56DC71FBE841C00D40D19 /* Payment_arrears_listTableViewCell.xib */; };
+		2EA56DCD1FBEB60100D40D19 /* Arrears_taskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA56DCB1FBEB60100D40D19 /* Arrears_taskTableViewCell.m */; };
+		2EA56DCE1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA56DCC1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib */; };
 		2EA5A6511D47381900A87184 /* Select_section_ManmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5A64F1D47381900A87184 /* Select_section_ManmerViewController.m */; };
 		2EA5A6521D47381900A87184 /* Select_section_ManmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA5A6501D47381900A87184 /* Select_section_ManmerViewController.xib */; };
 		2EAF7B5A1D45A12F007188F2 /* Houston_queryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF7B591D45A12F007188F2 /* Houston_queryViewController.m */; };
 		2EAF7B5E1D45AF97007188F2 /* Houston_querySubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF7B5C1D45AF97007188F2 /* Houston_querySubmitViewController.m */; };
 		2EAF7B5F1D45AF97007188F2 /* Houston_querySubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EAF7B5D1D45AF97007188F2 /* Houston_querySubmitViewController.xib */; };
+		2EAFC6971FB0052D00481BA2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EAFC6961FB0052D00481BA2 /* Images.xcassets */; };
 		2EB0F4781F1060D100F8F498 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB0F4771F1060D100F8F498 /* UIColor+Random.m */; };
 		2EB7AE571C1AA5B700621F84 /* Business_InternationalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7AE561C1AA5B700621F84 /* Business_InternationalViewController.m */; };
 		2EB7AE601C1AB5B400621F84 /* RandomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7AE5F1C1AB5B400621F84 /* RandomViewController.m */; };
@@ -509,8 +514,6 @@
 		2EC91E641EC1638500995113 /* dayo.net.cn.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2EC91E631EC1638500995113 /* dayo.net.cn.cer */; };
 		2ECCD2881E542EAF00A93EF1 /* OrderUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCD2861E542EAF00A93EF1 /* OrderUserViewController.m */; };
 		2ECCD2891E542EAF00A93EF1 /* OrderUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCD2871E542EAF00A93EF1 /* OrderUserViewController.xib */; };
-		2ECDBDEE1CCDB616008B2B46 /* Payment_arrears_listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDBDEC1CCDB616008B2B46 /* Payment_arrears_listViewController.m */; };
-		2ECDBDEF1CCDB616008B2B46 /* Payment_arrears_listViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECDBDED1CCDB616008B2B46 /* Payment_arrears_listViewController.xib */; };
 		2ECDBDF31CCDC00C008B2B46 /* Payment_arrears_listEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDBDF21CCDC00C008B2B46 /* Payment_arrears_listEntity.m */; };
 		2ECDBDF71CCDC8C5008B2B46 /* Arrears_taskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDBDF51CCDC8C5008B2B46 /* Arrears_taskViewController.m */; };
 		2ECDBDF81CCDC8C5008B2B46 /* Arrears_taskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECDBDF61CCDC8C5008B2B46 /* Arrears_taskViewController.xib */; };
@@ -573,6 +576,8 @@
 		2ED057AC1EEA9BD0008FEE72 /* Integral_rankingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED057AA1EEA9BD0008FEE72 /* Integral_rankingListTableViewCell.xib */; };
 		2ED112411F383EF300B8ED3F /* SA_SpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED1123F1F383EF300B8ED3F /* SA_SpecialViewController.m */; };
 		2ED112421F383EF300B8ED3F /* SA_SpecialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED112401F383EF300B8ED3F /* SA_SpecialViewController.xib */; };
+		2ED556171FBECB2F00860F80 /* Payment_arrears_listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED556151FBECB2F00860F80 /* Payment_arrears_listViewController.m */; };
+		2ED556181FBECB2F00860F80 /* Payment_arrears_listViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED556161FBECB2F00860F80 /* Payment_arrears_listViewController.xib */; };
 		2ED5CF1C1D5DA2C00048C507 /* No_visit_Detail_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED5CF1A1D5DA2C00048C507 /* No_visit_Detail_ListViewController.m */; };
 		2ED5CF1D1D5DA2C00048C507 /* No_visit_Detail_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED5CF1B1D5DA2C00048C507 /* No_visit_Detail_ListViewController.xib */; };
 		2ED82A8C1ED520900053F237 /* M_OrderDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED82A8A1ED520900053F237 /* M_OrderDeleteViewController.m */; };
@@ -875,7 +880,6 @@
 		D9F3AE5B19C3DA5C00AAF0C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3AE5A19C3DA5C00AAF0C9 /* UIKit.framework */; };
 		D9F3AE6319C3DA5C00AAF0C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F3AE6219C3DA5C00AAF0C9 /* main.m */; };
 		D9F3AE6719C3DA5C00AAF0C9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9F3AE6619C3DA5C00AAF0C9 /* AppDelegate.mm */; };
-		D9F3AE6F19C3DA5C00AAF0C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F3AE6E19C3DA5C00AAF0C9 /* Images.xcassets */; };
 		D9F3AE7619C3DA5C00AAF0C9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3AE7519C3DA5C00AAF0C9 /* XCTest.framework */; };
 		D9F3AE7719C3DA5C00AAF0C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3AE5619C3DA5C00AAF0C9 /* Foundation.framework */; };
 		D9F3AE7819C3DA5C00AAF0C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3AE5A19C3DA5C00AAF0C9 /* UIKit.framework */; };
@@ -1712,6 +1716,12 @@
 		2EA3878B1CE171450036C6B8 /* Birthday_departmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Birthday_departmentViewController.h; sourceTree = "<group>"; };
 		2EA3878C1CE171450036C6B8 /* Birthday_departmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Birthday_departmentViewController.m; sourceTree = "<group>"; };
 		2EA3878D1CE171450036C6B8 /* Birthday_departmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Birthday_departmentViewController.xib; sourceTree = "<group>"; };
+		2EA56DC51FBE841C00D40D19 /* Payment_arrears_listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment_arrears_listTableViewCell.h; sourceTree = "<group>"; };
+		2EA56DC61FBE841C00D40D19 /* Payment_arrears_listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment_arrears_listTableViewCell.m; sourceTree = "<group>"; };
+		2EA56DC71FBE841C00D40D19 /* Payment_arrears_listTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Payment_arrears_listTableViewCell.xib; sourceTree = "<group>"; };
+		2EA56DCA1FBEB60100D40D19 /* Arrears_taskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrears_taskTableViewCell.h; sourceTree = "<group>"; };
+		2EA56DCB1FBEB60100D40D19 /* Arrears_taskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrears_taskTableViewCell.m; sourceTree = "<group>"; };
+		2EA56DCC1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Arrears_taskTableViewCell.xib; sourceTree = "<group>"; };
 		2EA5A64E1D47381900A87184 /* Select_section_ManmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Select_section_ManmerViewController.h; sourceTree = "<group>"; };
 		2EA5A64F1D47381900A87184 /* Select_section_ManmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Select_section_ManmerViewController.m; sourceTree = "<group>"; };
 		2EA5A6501D47381900A87184 /* Select_section_ManmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Select_section_ManmerViewController.xib; sourceTree = "<group>"; };
@@ -1720,6 +1730,7 @@
 		2EAF7B5B1D45AF97007188F2 /* Houston_querySubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Houston_querySubmitViewController.h; sourceTree = "<group>"; };
 		2EAF7B5C1D45AF97007188F2 /* Houston_querySubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Houston_querySubmitViewController.m; sourceTree = "<group>"; };
 		2EAF7B5D1D45AF97007188F2 /* Houston_querySubmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Houston_querySubmitViewController.xib; sourceTree = "<group>"; };
+		2EAFC6961FB0052D00481BA2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2EB0F4761F1060D100F8F498 /* UIColor+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
 		2EB0F4771F1060D100F8F498 /* UIColor+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
 		2EB7AE551C1AA5B700621F84 /* Business_InternationalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business_InternationalViewController.h; sourceTree = "<group>"; };
@@ -1752,9 +1763,6 @@
 		2ECCD2851E542EAF00A93EF1 /* OrderUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderUserViewController.h; sourceTree = "<group>"; };
 		2ECCD2861E542EAF00A93EF1 /* OrderUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderUserViewController.m; sourceTree = "<group>"; };
 		2ECCD2871E542EAF00A93EF1 /* OrderUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderUserViewController.xib; sourceTree = "<group>"; };
-		2ECDBDEB1CCDB616008B2B46 /* Payment_arrears_listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment_arrears_listViewController.h; sourceTree = "<group>"; };
-		2ECDBDEC1CCDB616008B2B46 /* Payment_arrears_listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment_arrears_listViewController.m; sourceTree = "<group>"; };
-		2ECDBDED1CCDB616008B2B46 /* Payment_arrears_listViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Payment_arrears_listViewController.xib; sourceTree = "<group>"; };
 		2ECDBDF11CCDC00C008B2B46 /* Payment_arrears_listEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment_arrears_listEntity.h; sourceTree = "<group>"; };
 		2ECDBDF21CCDC00C008B2B46 /* Payment_arrears_listEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment_arrears_listEntity.m; sourceTree = "<group>"; };
 		2ECDBDF41CCDC8C5008B2B46 /* Arrears_taskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrears_taskViewController.h; sourceTree = "<group>"; };
@@ -1853,6 +1861,9 @@
 		2ED1123E1F383EF300B8ED3F /* SA_SpecialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SA_SpecialViewController.h; sourceTree = "<group>"; };
 		2ED1123F1F383EF300B8ED3F /* SA_SpecialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SA_SpecialViewController.m; sourceTree = "<group>"; };
 		2ED112401F383EF300B8ED3F /* SA_SpecialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SA_SpecialViewController.xib; sourceTree = "<group>"; };
+		2ED556141FBECB2F00860F80 /* Payment_arrears_listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment_arrears_listViewController.h; sourceTree = "<group>"; };
+		2ED556151FBECB2F00860F80 /* Payment_arrears_listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment_arrears_listViewController.m; sourceTree = "<group>"; };
+		2ED556161FBECB2F00860F80 /* Payment_arrears_listViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Payment_arrears_listViewController.xib; sourceTree = "<group>"; };
 		2ED5CF191D5DA2C00048C507 /* No_visit_Detail_ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = No_visit_Detail_ListViewController.h; sourceTree = "<group>"; };
 		2ED5CF1A1D5DA2C00048C507 /* No_visit_Detail_ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = No_visit_Detail_ListViewController.m; sourceTree = "<group>"; };
 		2ED5CF1B1D5DA2C00048C507 /* No_visit_Detail_ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = No_visit_Detail_ListViewController.xib; sourceTree = "<group>"; };
@@ -2347,7 +2358,6 @@
 		D9F3AE6419C3DA5C00AAF0C9 /* MobileAssistant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileAssistant-Prefix.pch"; sourceTree = "<group>"; };
 		D9F3AE6519C3DA5C00AAF0C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D9F3AE6619C3DA5C00AAF0C9 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		D9F3AE6E19C3DA5C00AAF0C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9F3AE7419C3DA5C00AAF0C9 /* MobileAssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileAssistantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F3AE7519C3DA5C00AAF0C9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D9F3AE9119C3DB9600AAF0C9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -3795,15 +3805,21 @@
 		2ECDBDEA1CCDB575008B2B46 /* Payment_arrears */ = {
 			isa = PBXGroup;
 			children = (
-				2ECDBDEB1CCDB616008B2B46 /* Payment_arrears_listViewController.h */,
-				2ECDBDEC1CCDB616008B2B46 /* Payment_arrears_listViewController.m */,
-				2ECDBDED1CCDB616008B2B46 /* Payment_arrears_listViewController.xib */,
+				2ED556141FBECB2F00860F80 /* Payment_arrears_listViewController.h */,
+				2ED556151FBECB2F00860F80 /* Payment_arrears_listViewController.m */,
+				2ED556161FBECB2F00860F80 /* Payment_arrears_listViewController.xib */,
 				2ECDBDF41CCDC8C5008B2B46 /* Arrears_taskViewController.h */,
 				2ECDBDF51CCDC8C5008B2B46 /* Arrears_taskViewController.m */,
 				2ECDBDF61CCDC8C5008B2B46 /* Arrears_taskViewController.xib */,
 				2ECDBDFC1CCDE297008B2B46 /* Arrears_DetailViewController.h */,
 				2ECDBDFD1CCDE297008B2B46 /* Arrears_DetailViewController.m */,
 				2ECDBDFE1CCDE297008B2B46 /* Arrears_DetailViewController.xib */,
+				2EA56DC51FBE841C00D40D19 /* Payment_arrears_listTableViewCell.h */,
+				2EA56DC61FBE841C00D40D19 /* Payment_arrears_listTableViewCell.m */,
+				2EA56DC71FBE841C00D40D19 /* Payment_arrears_listTableViewCell.xib */,
+				2EA56DCA1FBEB60100D40D19 /* Arrears_taskTableViewCell.h */,
+				2EA56DCB1FBEB60100D40D19 /* Arrears_taskTableViewCell.m */,
+				2EA56DCC1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib */,
 				2ECDBDF01CCDBFCC008B2B46 /* Model */,
 			);
 			name = Payment_arrears;
@@ -4760,7 +4776,7 @@
 				148544F31BBA239F00257580 /* Vendor */,
 				D9F3AE6519C3DA5C00AAF0C9 /* AppDelegate.h */,
 				D9F3AE6619C3DA5C00AAF0C9 /* AppDelegate.mm */,
-				D9F3AE6E19C3DA5C00AAF0C9 /* Images.xcassets */,
+				2EAFC6961FB0052D00481BA2 /* Images.xcassets */,
 				D9F3AE5D19C3DA5C00AAF0C9 /* Supporting Files */,
 			);
 			path = MobileAssistant;
@@ -5243,6 +5259,7 @@
 				14A852B01BC8FD390087E937 /* RightIconCollectionViewCell.xib in Resources */,
 				2EF98BF01C293ADE00B10311 /* Business_Group_V_Net_DetailViewController.xib in Resources */,
 				2EFD75421C197D7B00C2F8EA /* Bussiness_CustomerViewController.xib in Resources */,
+				2EA56DCE1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib in Resources */,
 				141344481BD6200F00F10F99 /* PushSettingViewController.xib in Resources */,
 				148546381BBA239F00257580 /* shot_h@2x.png in Resources */,
 				2EEA26A11F0E05D00085573D /* LocationViewViewController.xib in Resources */,
@@ -5268,6 +5285,7 @@
 				2E64CA0E1C1F9F6000F7597A /* Business_MarkingPlanDetailViewController.xib in Resources */,
 				148546791BBA239F00257580 /* SIAlertView.bundle in Resources */,
 				148546BC1BBA252F00257580 /* business.sqlite in Resources */,
+				2EA56DC91FBE841C00D40D19 /* Payment_arrears_listTableViewCell.xib in Resources */,
 				2EA192E01DC6F48600D13FC5 /* Order_demandViewController.xib in Resources */,
 				14E54B2B1BCF7B6E00114D60 /* UserCenterViewController.xib in Resources */,
 				2EA366841CDAEF1D00443BE9 /* Product_classificationViewController.xib in Resources */,
@@ -5298,7 +5316,7 @@
 				2EF98C091C2BF5C200B10311 /* Business_Group_V_Net_Contact_DetailTableViewController.xib in Resources */,
 				D9F3AE9A19C3DC4B00AAF0C9 /* LoginViewController.xib in Resources */,
 				148546401BBA239F00257580 /* touch_focus_x@2x.png in Resources */,
-				2ECDBDEF1CCDB616008B2B46 /* Payment_arrears_listViewController.xib in Resources */,
+				2EAFC6971FB0052D00481BA2 /* Images.xcassets in Resources */,
 				2E9B214A1DAB33DD00E1A794 /* New_group_base_messageTableViewCell.xib in Resources */,
 				2ED057A21EEA954E008FEE72 /* TestScoresViewController.xib in Resources */,
 				1485462C1BBA239F00257580 /* close_cha@2x.png in Resources */,
@@ -5314,6 +5332,7 @@
 				2EDA64611CA22FE800B0F428 /* News_ProviceVIP_ListViewController.xib in Resources */,
 				2ED057991EEA371B008FEE72 /* Examination_DetailViewController.xib in Resources */,
 				2EDEE8481F26E2F0003A82A3 /* ScreenHeadView.xib in Resources */,
+				2ED556181FBECB2F00860F80 /* Payment_arrears_listViewController.xib in Resources */,
 				2E2319D01EA4A1E5007C2E79 /* M_Order_demandViewController.xib in Resources */,
 				2E2257831EA4C670009EAB8E /* M_Product_listViewController.xib in Resources */,
 				149A86C01BBA35AE00CEFA50 /* ImageCollectionReusableView.xib in Resources */,
@@ -5376,7 +5395,6 @@
 				2EDEE84E1F2992F7003A82A3 /* Focus_ListViewController.xib in Resources */,
 				2ECCD2891E542EAF00A93EF1 /* OrderUserViewController.xib in Resources */,
 				2EF98BD81C27B09300B10311 /* Business_BillListDetailTableViewController.xib in Resources */,
-				D9F3AE6F19C3DA5C00AAF0C9 /* Images.xcassets in Resources */,
 				2EFD75151C182C8200C2F8EA /* P_MarketingSubmitViewController.xib in Resources */,
 				2E64C9D41C1E654300F7597A /* MessageTableViewCell.xib in Resources */,
 				2E64C9F71C1EBFC700F7597A /* Business_groupBillViewController.xib in Resources */,
@@ -5565,7 +5583,6 @@
 				2EEA26D91F0E1D070085573D /* PNRadarChart.m in Sources */,
 				2E92E90A1D3CBEC00099A5AD /* TwoTableViewCell.m in Sources */,
 				2EDCCA251F01F31A00BBCA0C /* Exam_historylistEntity.m in Sources */,
-				2ECDBDEE1CCDB616008B2B46 /* Payment_arrears_listViewController.m in Sources */,
 				417D54971BC3A4520036934C /* P_SpecialDetailViewController.m in Sources */,
 				2E6BF09E1E5EBDFE008F6CF2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2E8C4FBF1D45BE8600D6F2DD /* HoustonDetailViewController.m in Sources */,
@@ -5677,6 +5694,7 @@
 				148546631BBA239F00257580 /* PKImagePickerViewController.m in Sources */,
 				2E6BF0961E5EBDFD008F6CF2 /* AFSecurityPolicy.m in Sources */,
 				2ED057981EEA371B008FEE72 /* Examination_DetailViewController.m in Sources */,
+				2EA56DC81FBE841C00D40D19 /* Payment_arrears_listTableViewCell.m in Sources */,
 				1485465D1BBA239F00257580 /* MWTapDetectingImageView.m in Sources */,
 				149A87821BBA7F3700CEFA50 /* MJFoundation.m in Sources */,
 				2EC15D3C1C5892A300DE522C /* ProductLineDetailViewController.m in Sources */,
@@ -5897,6 +5915,7 @@
 				2E6BF0A21E5EBDFE008F6CF2 /* UIProgressView+AFNetworking.m in Sources */,
 				2E86A54B1D26137100856AF1 /* UIWebView+SFHFStringMetrics.m in Sources */,
 				2E6A0AF71C22648E0086E333 /* Business_MarkingPlanListViewController.m in Sources */,
+				2EA56DCD1FBEB60100D40D19 /* Arrears_taskTableViewCell.m in Sources */,
 				2E92E8FD1D3CA8CB0099A5AD /* Marking_listTableViewCell.m in Sources */,
 				148546871BBA239F00257580 /* CalendarLogic.m in Sources */,
 				D9F3AEA119C3EE7B00AAF0C9 /* UserEntity.m in Sources */,
@@ -6022,6 +6041,7 @@
 				2EB7AE631C1ACAE100621F84 /* UserView.m in Sources */,
 				148546571BBA239F00257580 /* FMDatabaseQueue.m in Sources */,
 				141344471BD6200F00F10F99 /* PushSettingViewController.m in Sources */,
+				2ED556171FBECB2F00860F80 /* Payment_arrears_listViewController.m in Sources */,
 				2E91D1D21D2E261500C5C776 /* MainBaseViewController.m in Sources */,
 				2EECF8791DD1A35400661E7E /* Visit_list_quertViewController.m in Sources */,
 				2E5712911F207E9300A14C9F /* Product_Visit_DetailViewController.m in Sources */,
