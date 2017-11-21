@@ -23,6 +23,7 @@
     self.list_type = [attributes valueForKey:@"list_type"];
     self.contract_id = [attributes valueForKey:@"contract_id"];
     self.company_name = [attributes valueForKey:@"company_name"];
+    self.show_type = [attributes valueForKey:@"show_type"];
     
     return self;
 }

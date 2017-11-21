@@ -8,9 +8,11 @@
 
 #import "Arrears_DetailViewController.h"
 #import "MBProgressHUD.h"
-#import "NameTableViewCell.h"
+#import "LineTwoLabelTableViewCell.h"
 
 @interface Arrears_DetailViewController ()<MBProgressHUDDelegate>{
+    
+    LineTwoLabelTableViewCell *cell;
     
     MBProgressHUD *HUD;
 }
@@ -67,32 +69,39 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40;
+    CGSize size = [cell.subTitleLbl sizeThatFits:CGSizeMake(cell.subTitleLbl.frame
+                                                             .size.width, MAXFLOAT)];
+    if (size.height == 0) {
+        return 40;
+    }
+    return size.height + 28;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *identifier = @"NameTableViewCell";
+    static NSString *identifier = @"LineTwoLabelTableViewCell";
     
-    NameTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:identifier owner:nil options:nil] firstObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-//    if ([[self.detailMuArr[indexPath.row] objectForKey:@"detail"] isEqualToString:@"time"]) {
-//        cell.labelName.text = [NSString stringWithFormat:@"%@%@至%@",[self.detailMuArr[indexPath.row] objectForKey:@"title"],[self.dicCutomer objectForKey:@"start_time"],[self.dicCutomer objectForKey:@"end_time"]];
-//    }else{
-//         cell.labelName.text = [NSString stringWithFormat:@"%@%@",[self.detailMuArr[indexPath.row] objectForKey:@"title"],[self.dicCutomer objectForKey:[self.detailMuArr[indexPath.row] objectForKey:@"detail"]]];
-//    }
 
-    cell.labelName.text = [NSString stringWithFormat:@"%@%@",[self.detailMuArr[indexPath.row] objectForKey:@"title"],[self.detailMuArr[indexPath.row] objectForKey:@"detail"]];
+    cell.titLabel.text = self.detailMuArr[indexPath.row][@"title"];
+    cell.subTitleLbl.layer.borderWidth = 0.5;
+    cell.subTitleLbl.font = [UIFont systemFontOfSize:14];
+    cell.subTitleLbl.layer.cornerRadius = 6;
+    cell.subTitleLbl.layer.borderColor = RGBA(193, 193, 193, 1).CGColor;
+    
+    cell.subTitleLbl.textColor = [UIColor darkGrayColor];
+    cell.subTitleLbl.text = self.detailMuArr[indexPath.row][@"detail"];
     
     return cell;
 }
 
 //- (void)getData{
-//    
+//
 //    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    HUD.delegate = self;
 //    HUD.labelText = @"努力加载中...";

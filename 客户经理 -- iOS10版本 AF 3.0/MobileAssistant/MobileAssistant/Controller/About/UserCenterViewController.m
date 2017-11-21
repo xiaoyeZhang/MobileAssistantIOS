@@ -209,7 +209,7 @@
                         @{@"title":@" 进账查询",@"num":@"t22"},
                         ];
 
-    data_statisticsArr = @[@"欠费催缴",@"CRM业务办理情况",@"统一下单业务办理情况"];
+    data_statisticsArr = @[@"CRM业务办理情况",@"统一下单业务办理情况"];
 //    ,@"拜访任务查看",@"统一下单工单查看"];
     UserEntity *userInfo = [UserEntity sharedInstance];
     
@@ -1257,11 +1257,12 @@
         UserEntity *userInfo = [UserEntity sharedInstance];
         if ([userInfo.type_id intValue] == ROLE_CUSTOMER) {
             
-            if(indexPath.row == 0){
-                
-                [self Payment_arrearsBtnClicked:nil];
-                
-            }else if (indexPath.row == 1){
+//            if(indexPath.row == 0){
+//                
+//                [self Payment_arrearsBtnClicked:nil];
+//                
+//            }else
+            if (indexPath.row == 0){
                 
                 data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
                 
@@ -1271,7 +1272,7 @@
                 
                 [self.mainVC.navigationController pushViewController:vc animated:YES];
                 
-            }else if (indexPath.row == 2){
+            }else if (indexPath.row == 1){
                 
                 data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
                 
@@ -1281,7 +1282,7 @@
                 
                 [self.mainVC.navigationController pushViewController:vc animated:YES];
                 
-            }else if (indexPath.row == 3){
+            }else if (indexPath.row == 2){
                 
                 Visit_listViewController  *vc = [[Visit_listViewController alloc]init];
                 
@@ -1292,27 +1293,28 @@
             
             data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
             vc.name = data_statisticsArr[indexPath.row];
-
-            if(indexPath.row == 0){
-                
-                vc.select_type = @"1";
-                
-            }else if (indexPath.row == 1){
+//
+//            if(indexPath.row == 0){
+//                
+//                vc.select_type = @"1";
+//                
+//            }else
+            if (indexPath.row == 0){
                 
                 vc.select_type = @"2";
                 
-            }else if (indexPath.row == 2){
+            }else if (indexPath.row == 1){
                 
                 vc.select_type = @"3";
                 
-            }else if(indexPath.row == 3){
+            }else if(indexPath.row == 2){
                 
                 Visit_listViewController  *vc = [[Visit_listViewController alloc]init];
                 
                 [self.mainVC.navigationController pushViewController:vc animated:YES];
             }
             
-            if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
+            if (indexPath.row == 0 || indexPath.row == 1) {
                 
                 [self.mainVC.navigationController pushViewController:vc animated:YES];
 

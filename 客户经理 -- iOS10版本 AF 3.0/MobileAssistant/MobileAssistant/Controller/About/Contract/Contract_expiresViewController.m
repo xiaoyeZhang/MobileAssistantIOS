@@ -132,11 +132,11 @@
         
         entity = [self.arrayCutomerTwo objectAtIndex:indexPath.row];
         
-    }else if (indexPath.section == 1) {
+    }else if (indexPath.section == 2) {
         
         entity = [self.arrayCutomerThree objectAtIndex:indexPath.row];
         
-    }else if (indexPath.section == 1) {
+    }else if (indexPath.section == 3) {
         
         entity = [self.arrayCutomerFour objectAtIndex:indexPath.row];
         
@@ -210,19 +210,19 @@
                 Contract_listEntity *entity = [[Contract_listEntity alloc] init];
                 entity = [entity initWithAttributes:attributes];
                 
-                if ([entity.show_type isEqualToString:@"0"]) {
+                if ([[entity.show_type stringValue] isEqualToString:@"0"]){
                     
                     [self.arrayCutomerOne addObject:entity];
                 
-                }else if ([entity.show_type isEqualToString:@"1"]) {
+                }else if ([[entity.show_type stringValue] isEqualToString:@"1"]) {
                 
                     [self.arrayCutomerTwo addObject:entity];
                 
-                }else if ([entity.show_type isEqualToString:@"2"]) {
+                }else if ([[entity.show_type stringValue] isEqualToString:@"2"]) {
                 
                     [self.arrayCutomerThree addObject:entity];
                 
-                }else if ([entity.show_type isEqualToString:@"3"]) {
+                }else if ([[entity.show_type stringValue] isEqualToString:@"3"]) {
                     
                     [self.arrayCutomerFour addObject:entity];
                     
