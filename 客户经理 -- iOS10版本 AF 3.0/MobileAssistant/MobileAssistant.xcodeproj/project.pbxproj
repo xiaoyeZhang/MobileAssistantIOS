@@ -290,6 +290,9 @@
 		2E6BF0A41E5EBDFE008F6CF2 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BF0911E5EBDFD008F6CF2 /* UIWebView+AFNetworking.m */; };
 		2E6F3A7E1D7E9D1500C9EF03 /* Customer_portraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F3A7C1D7E9D1500C9EF03 /* Customer_portraitViewController.m */; };
 		2E6F3A7F1D7E9D1500C9EF03 /* Customer_portraitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F3A7D1D7E9D1500C9EF03 /* Customer_portraitViewController.xib */; };
+		2E74F2AC1FC665ED0028472A /* M_Order_FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E74F2AA1FC665ED0028472A /* M_Order_FormViewController.m */; };
+		2E74F2AD1FC665ED0028472A /* M_Order_FormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E74F2AB1FC665ED0028472A /* M_Order_FormViewController.xib */; };
+		2E74F2B01FC66A860028472A /* M_OrderFormEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E74F2AF1FC66A860028472A /* M_OrderFormEntity.m */; };
 		2E78C1141CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E78C1121CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.m */; };
 		2E78C1151CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E78C1131CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib */; };
 		2E78F31C1D40615100285B9D /* P_Vertical_industry_collaborationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E78F31A1D40615100285B9D /* P_Vertical_industry_collaborationDetailViewController.m */; };
@@ -1402,6 +1405,11 @@
 		2E6F3A7B1D7E9D1500C9EF03 /* Customer_portraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer_portraitViewController.h; sourceTree = "<group>"; };
 		2E6F3A7C1D7E9D1500C9EF03 /* Customer_portraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer_portraitViewController.m; sourceTree = "<group>"; };
 		2E6F3A7D1D7E9D1500C9EF03 /* Customer_portraitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Customer_portraitViewController.xib; sourceTree = "<group>"; };
+		2E74F2A91FC665ED0028472A /* M_Order_FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M_Order_FormViewController.h; sourceTree = "<group>"; };
+		2E74F2AA1FC665ED0028472A /* M_Order_FormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M_Order_FormViewController.m; sourceTree = "<group>"; };
+		2E74F2AB1FC665ED0028472A /* M_Order_FormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_Order_FormViewController.xib; sourceTree = "<group>"; };
+		2E74F2AE1FC66A860028472A /* M_OrderFormEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M_OrderFormEntity.h; sourceTree = "<group>"; };
+		2E74F2AF1FC66A860028472A /* M_OrderFormEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M_OrderFormEntity.m; sourceTree = "<group>"; };
 		2E78C1111CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News_ProviceVip_TwoViewController.h; sourceTree = "<group>"; };
 		2E78C1121CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News_ProviceVip_TwoViewController.m; sourceTree = "<group>"; };
 		2E78C1131CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News_ProviceVip_TwoViewController.xib; sourceTree = "<group>"; };
@@ -3113,6 +3121,11 @@
 				2ED82A891ED520900053F237 /* M_OrderDeleteViewController.h */,
 				2ED82A8A1ED520900053F237 /* M_OrderDeleteViewController.m */,
 				2ED82A8B1ED520900053F237 /* M_OrderDeleteViewController.xib */,
+				2E74F2A91FC665ED0028472A /* M_Order_FormViewController.h */,
+				2E74F2AA1FC665ED0028472A /* M_Order_FormViewController.m */,
+				2E74F2AB1FC665ED0028472A /* M_Order_FormViewController.xib */,
+				2E74F2AE1FC66A860028472A /* M_OrderFormEntity.h */,
+				2E74F2AF1FC66A860028472A /* M_OrderFormEntity.m */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -5275,6 +5288,7 @@
 				148546361BBA239F00257580 /* shot@2x.png in Resources */,
 				4191DCD81BD31D4800DC6003 /* P_AddPhotoViewController.xib in Resources */,
 				2E08EFDE1EE0511100FBD274 /* Business_contacts_ListViewController.xib in Resources */,
+				2E74F2AD1FC665ED0028472A /* M_Order_FormViewController.xib in Resources */,
 				41CF61351BC002B400A19D8C /* P_StockSubmitViewController.xib in Resources */,
 				148546261BBA239F00257580 /* meizi.jpg in Resources */,
 				2EA0F5EA1D1A5B1100306608 /* Handling_tasksTableViewCell.xib in Resources */,
@@ -5688,6 +5702,7 @@
 				2ECDBDFB1CCDCBF5008B2B46 /* Arrears_taskEntity.m in Sources */,
 				2E08EFF01EE3CCA000FBD274 /* Trouble_call_SumbitViewController.m in Sources */,
 				4191DCDC1BD321B300DC6003 /* PhotosCollectionViewCell.m in Sources */,
+				2E74F2B01FC66A860028472A /* M_OrderFormEntity.m in Sources */,
 				2EF98BFA1C2B983400B10311 /* Business_Coloring_RingViewController.m in Sources */,
 				148546411BBA239F00257580 /* SCCaptureCameraController.m in Sources */,
 				148546C41BBA252F00257580 /* CapacityEntity.m in Sources */,
@@ -5750,6 +5765,7 @@
 				2EFD75141C182C8200C2F8EA /* P_MarketingSubmitViewController.m in Sources */,
 				2EF98C7E1C33A67E00B10311 /* UserLogoutBtnView.m in Sources */,
 				143AAD791BC65F17005401EA /* CAAnimation+WAnimation.m in Sources */,
+				2E74F2AC1FC665ED0028472A /* M_Order_FormViewController.m in Sources */,
 				2EDCCA291F01F72900BBCA0C /* Exam_history_DetailViewController.m in Sources */,
 				2E6BF0951E5EBDFD008F6CF2 /* AFNetworkReachabilityManager.m in Sources */,
 				2EFD75371C196ED200C2F8EA /* BusinessModel.m in Sources */,

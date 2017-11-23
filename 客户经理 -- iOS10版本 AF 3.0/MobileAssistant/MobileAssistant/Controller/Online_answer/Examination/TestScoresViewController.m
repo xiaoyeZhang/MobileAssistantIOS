@@ -9,6 +9,7 @@
 #import "TestScoresViewController.h"
 #import "Examination_SeconViewController.h"
 #import "MainBaseViewController.h"
+#import "Centralized_managementViewController.h"
 
 @interface TestScoresViewController ()
 
@@ -56,7 +57,7 @@
             
         }
     }else if ([_type isEqualToString:@"1"]){
-        MainBaseViewController *vc = [[MainBaseViewController alloc]init];
+        Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
         for (UIViewController *temp in self.navigationController.viewControllers) {
             if ([temp isKindOfClass:[vc class]]) {
                 

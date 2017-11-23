@@ -16,8 +16,10 @@
 #import "AFNetworking.h"
 #import "M_Order_demandViewController.h"
 #import "MainBaseViewController.h"
+#import "M_Order_FormViewController.h"
+#import "Centralized_managementViewController.h"
 
-@interface M_Order_Demand_SumiltViewController ()<UITextFieldDelegate,M_Product_listViewControllerDelegate,M_OrderUserViewControllerDelegate,MBProgressHUDDelegate>
+@interface M_Order_Demand_SumiltViewController ()<UITextFieldDelegate,M_Product_listViewControllerDelegate,M_OrderUserViewControllerDelegate,MBProgressHUDDelegate,M_Order_FormViewControllerDelegate>
 {
     TxtFieldTableViewCell *cell;
     UserEntity *userEntity;
@@ -206,7 +208,7 @@
                                 
                                 [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
                                 
-                                MainBaseViewController *vc = [[MainBaseViewController alloc]init];
+                                Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
                                 for (UIViewController *temp in self.navigationController.viewControllers) {
                                     if ([temp isKindOfClass:[vc class]]) {
                                         [self.navigationController popToViewController:temp animated:YES];
@@ -236,7 +238,7 @@
 //                            
 //                        }
 //                    }else{
-                        MainBaseViewController *vc = [[MainBaseViewController alloc]init];
+                        Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
                         for (UIViewController *temp in self.navigationController.viewControllers) {
                             if ([temp isKindOfClass:[vc class]]) {
                                  [self.navigationController popToViewController:temp animated:YES];
@@ -370,6 +372,12 @@
             cell.downArrowImageView.hidden = YES;
             
   
+        }else if ([entity.type_id isEqualToString:@"5"]) {
+            
+            cell.txtField.placeholder = @"请选择";
+            cell.downArrowImageView.hidden = YES;
+            
+            
         }else{
 
             cell.txtField.placeholder = @"";
@@ -393,6 +401,7 @@
      type_id = 2 表示列表选择，从data_info取数据，每一项用;隔开
      type_id = 3 表示附件上传
      type_id = 4 表示下拉菜单选择，从data_info取数据，每一项用;隔开
+     type_id = 5 表示下拉菜单选择，从data_info取接口名，重新请求数据
      */
     
     if (textField.tag == _listArr.count) {
@@ -470,6 +479,19 @@
                                      }
                                  }
                              }];
+            return NO;
+        }else if ([entity.type_id isEqualToString:@"5"]){
+            
+            M_Order_FormViewController *vc = [[M_Order_FormViewController alloc]init];
+            
+            vc.delegate = self;
+            
+            vc.methodEntity = entity;
+            
+            vc.Id = @"";
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
             return NO;
         }
 
@@ -651,6 +673,13 @@
     [_tableView reloadData];
 }
 
+-(void)successM_OrderFormDelegate:(NSDictionary *)successdelegate{
+    
+    [self.submitDic setObject:[successdelegate objectForKey:@"message"] forKey:[successdelegate objectForKey:@"name"]];
+    
+    [_tableView reloadData];
+}
+
 - (void)successM_OrderUserDelegate:(NSDictionary *)successdelegate{
     
     [self.submitDic setObject:[successdelegate objectForKey:@"user_id"] forKey:@"next_processor_id"];
@@ -736,7 +765,7 @@
 //                            
 //                        }
 //                    }else{
-                        MainBaseViewController *vc = [[MainBaseViewController alloc]init];
+                        Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
                         for (UIViewController *temp in self.navigationController.viewControllers) {
                             if ([temp isKindOfClass:[vc class]]) {
                                   [self.navigationController popToViewController:temp animated:YES];
@@ -757,7 +786,7 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
                 
-                MainBaseViewController *vc = [[MainBaseViewController alloc]init];
+                Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
                 for (UIViewController *temp in self.navigationController.viewControllers) {
                     if ([temp isKindOfClass:[vc class]]) {
                         [self.navigationController popToViewController:temp animated:YES];
