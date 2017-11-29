@@ -73,9 +73,9 @@
     
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     
-    if (message.length > 0 ) {
+    if (message.length > 0) {
         
-        message = [message stringByAppendingFormat:@"/%@",entity.name];
+        message = [message stringByAppendingFormat:@"%@",entity.name];
 
     }else{
         

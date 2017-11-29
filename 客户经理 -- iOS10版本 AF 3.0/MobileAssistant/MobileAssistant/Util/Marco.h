@@ -104,6 +104,8 @@
 #define PROCESS_STATE_responded_VISIT 29
 /** 已挂单（特号办理）*/
 #define PROCESS_STATE_Have_Guadan 30
+/** 行业总监审核（终端订货）*/
+#define PROCESS_STATE_Industry_director 40
 
 //动态配置
 #define FORM_TYPE_ZERO  0   //文本框

@@ -150,6 +150,9 @@
         case 30:
             msg = @"已挂单";
             break;
+        case 40:
+            msg = @"行业总监审核通过";
+            break;
         case 99:
             msg = @"";
             break;

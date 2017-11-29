@@ -263,7 +263,7 @@
                 if (processMuArr.count > 0) {
                     BusinessProcessModel *processModel = processMuArr[0];
                     
-                    if ([processModel.state intValue] == 99) {
+                    if ([processModel.state intValue] == 99 || [processModel.state intValue] == 100) {
                         processModel = processMuArr[1];
                     }
                     
@@ -509,6 +509,13 @@
                 NSArray *arr = [model.user_name componentsSeparatedByString:@","];
                 if ([arr count] == 2) {
                     cell.leftLbl.text = [NSString stringWithFormat:@"%@待处理",[StringHelper getUserType:[arr[0] intValue]]];
+                    cell.middleLbl.text = arr[1];
+                    cell.rightLbl.text = model.time;
+                }
+            }else if ([model.state intValue] == 100) {
+                NSArray *arr = [model.user_name componentsSeparatedByString:@","];
+                if ([arr count] == 2) {
+                    cell.leftLbl.text = [NSString stringWithFormat:@"行业总监审核待处理"];
                     cell.middleLbl.text = arr[1];
                     cell.rightLbl.text = model.time;
                 }

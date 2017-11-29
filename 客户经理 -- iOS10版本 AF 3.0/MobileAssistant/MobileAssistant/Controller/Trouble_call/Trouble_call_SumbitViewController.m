@@ -14,8 +14,9 @@
 #import "M_Product_listViewController.h"
 #import "Trouble_callListViewController.h"
 #import "M_OrderUserViewController.h"
+#import "M_Order_FormViewController.h"
 
-@interface Trouble_call_SumbitViewController ()<UITextFieldDelegate,MBProgressHUDDelegate,M_Product_listViewControllerDelegate,M_OrderUserViewControllerDelegate>
+@interface Trouble_call_SumbitViewController ()<UITextFieldDelegate,MBProgressHUDDelegate,M_Product_listViewControllerDelegate,M_OrderUserViewControllerDelegate,M_Order_FormViewControllerDelegate>
 {
     TxtFieldTableViewCell *cell;
     UserEntity *userEntity;
@@ -312,6 +313,12 @@
             cell.downArrowImageView.hidden = YES;
             
             
+        }else if ([entity.type_id isEqualToString:@"5"]) {
+            
+            cell.txtField.placeholder = @"请选择";
+            cell.downArrowImageView.hidden = YES;
+            
+            
         }else{
             
             cell.txtField.placeholder = @"";
@@ -333,6 +340,7 @@
      type_id = 2 表示列表选择，从data_info取数据，每一项用;隔开
      type_id = 3 表示附件上传
      type_id = 4 表示下拉菜单选择，从data_info取数据，每一项用;隔开
+     type_id = 5 表示下拉菜单选择，从data_info取接口名，重新请求数据
      */
     
     if (textField.tag == _listArr.count) {
@@ -401,6 +409,19 @@
                                  }
                              }];
             return NO;
+        }else if ([entity.type_id isEqualToString:@"5"]){
+            
+            M_Order_FormViewController *vc = [[M_Order_FormViewController alloc]init];
+            
+            vc.delegate = self;
+            
+            vc.methodEntity = entity;
+            
+            vc.Id = @"";
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            return NO;
         }
     }
     return YES;
@@ -427,6 +448,13 @@
         }
         
     }
+}
+
+-(void)successM_OrderFormDelegate:(NSDictionary *)successdelegate{
+    
+    [self.submitDic setObject:[successdelegate objectForKey:@"message"] forKey:[successdelegate objectForKey:@"name"]];
+    
+    [_tableView reloadData];
 }
 
 - (void)successM_OrderUserDelegate:(NSDictionary *)successdelegate{

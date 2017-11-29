@@ -69,7 +69,8 @@
     if ([self.order_type isEqualToString:@"赠送机"]|
         [self.order_type isEqualToString:@"赠送礼品"]|
         [self.order_type isEqualToString:@"集团关键联系人保底购机活动"]|
-        [self.order_type isEqualToString:@"业务"]) {
+        [self.order_type isEqualToString:@"业务"]|
+        [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
         
         if (self.client_name.length == 0) {
             msg = @"请输入客户姓名";
@@ -116,9 +117,10 @@
     
     [dict setObject:self.bListModel?self.bListModel.business_id:@"" forKey:@"business_id"];
     
-    if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"]){
+    if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
         
         [dict setObject:self.minimum_guarantee_amount forKey:@"minimum_guarantee_amount"];
+        [dict setObject:self.rigid_amount forKey:@"rigid_amount"];
         
     }
     
@@ -252,7 +254,7 @@
     
         if (textField.tag == [_tableView numberOfRowsInSection:0]-1){
 
-            if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"]){
+            if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
                 
                 return NO;
             }
@@ -308,9 +310,10 @@
             self.phone_num = dict[@"client_tel"];
             self.remarks = dict[@"remarks"];
             
-            if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"]){
+            if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
                 self.isFromTerminalStock = NO;
                 self.minimum_guarantee_amount = dict[@"minimum_guarantee_amount"];
+                self.rigid_amount = dict[@"rigid_amount"];
             }
             
             [_tableView reloadData];

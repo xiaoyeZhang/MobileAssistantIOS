@@ -47,6 +47,8 @@
 @property(nonatomic ,strong) NSArray *uploadImagesArr;
 //保底金额
 @property (nonatomic, strong) NSString *minimum_guarantee_amount;
+//刚性成本金额
+@property (nonatomic, strong) NSString *rigid_amount;
 /////
 //@property(nonatomic, copy) NSArray *imagesNameArr;
 

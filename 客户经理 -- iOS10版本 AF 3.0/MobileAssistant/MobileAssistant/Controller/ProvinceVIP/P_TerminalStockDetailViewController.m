@@ -24,6 +24,7 @@
 - (void)initData
 {
     detailMuArr = [[NSMutableArray alloc] initWithObjects:
+                   @{@"title":@"工单编号",@"detail":@"num",@"type":@"Label"},
                    @{@"title":@"集团单位",@"detail":@"company_name",@"type":@"Label"},
                    @{@"title":@"集团编号",@"detail":@"company_num",@"type":@"Label"},
                    @{@"title":@"订货工号",@"list":@"num",@"type":@"Label"},
@@ -46,9 +47,10 @@
     int state = [self.bListModel.state intValue];
     int userType = [userInfo.type_id intValue];
     
-    if ([self.detailDict[@"order_type"] isEqualToString:@"集团关键联系人保底购机活动"]){
+    if ([self.detailDict[@"order_type"] isEqualToString:@"集团关键联系人保底购机活动"] || [self.detailDict[@"order_type"] isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
         
         [detailMuArr addObject:@{@"title":@"保底金额",@"detail":@"minimum_guarantee_amount",@"type":@"Label"}];
+        [detailMuArr addObject:@{@"title":@"刚性成本金额",@"detail":@"rigid_amount",@"type":@"Label"}];
     }
     
     if (state == PROCESS_STATE_reject) { //被驳回
@@ -116,7 +118,20 @@
     }
     
     if (state == PROCESS_STATE_manager_submit &&
-        userType == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
+        userType == ROLE_THREE) { //客户经理已提交 -> 行业总监审批
+        
+        NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核意见",@"type":@"Input"}];
+        
+        [detailMuArr addObjectsFromArray:array];
+        
+        if (!self.submitState) { //默认行业总监通过
+            self.submitState = PROCESS_STATE_Industry_director;
+        }
+        
+        [self addSubmitBtn];
+    }else if (state == PROCESS_STATE_Industry_director &&
+              userType == ROLE_THREE) { //行业总监审批通过 -> 三级经理审批
         
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
                            @{@"title":@"审核意见",@"type":@"Input"},

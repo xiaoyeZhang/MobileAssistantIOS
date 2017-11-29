@@ -104,8 +104,11 @@
     }
     
     if (state == PROCESS_STATE_manager_submit &&
-        userType == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
+        userType == ROLE_THREE) { //客户经理已提交 -> 行业总监审批
         
+        return YES;
+    }else if (state == PROCESS_STATE_Industry_director &&
+              [model.next_processor isEqualToString:userInfo.user_id]){
         return YES;
     }else if (state == PROCESS_STATE_three_manager_through &&
               [model.next_processor isEqualToString:userInfo.user_id]){

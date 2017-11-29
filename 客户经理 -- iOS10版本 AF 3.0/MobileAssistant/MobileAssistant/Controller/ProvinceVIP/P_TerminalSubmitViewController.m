@@ -22,6 +22,7 @@
 #define DATE_TABLE_INDEX 8 //到货时间
 #define DEVICE_TYPE_TABLE_INDEX 9 //机型
 #define UPLOAD_TABLE_INDEX 10 //上传资料
+#define AMOUNT_TABLE_INDEX 11 //刚性成本金额
 
 @interface P_TerminalSubmitViewController ()
 
@@ -52,10 +53,10 @@
         self.phone_num = self.detailDict[@"client_tel"];
         self.remarks = self.detailDict[@"remarks"];
         
-        if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"]){
+        if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
             
             self.minimum_guarantee_amount = self.detailDict[@"minimum_guarantee_amount"];
-            
+            self.rigid_amount = self.detailDict[@"rigid_amount"];
         }
         
     }
@@ -87,15 +88,19 @@
     if ([self.order_type isEqualToString:@"赠送机"]|
         [self.order_type isEqualToString:@"赠送礼品"]|
         [self.order_type isEqualToString:@"集团关键联系人保底购机活动"]|
-        [self.order_type isEqualToString:@"业务"]) {
+        [self.order_type isEqualToString:@"业务"]|
+        [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
         
         if (self.client_name.length == 0) {
             msg = @"请输入客户姓名";
         }else if (self.phone_num.length == 0) {
             msg = @"请输入电话号码";
-        }else if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] && self.minimum_guarantee_amount.length == 0) {
+        }else if (([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"])&& self.minimum_guarantee_amount.length == 0) {
             msg = @"请选择保底金额";
+        }else if (([self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"])&& self.rigid_amount.length == 0) {
+            msg = @"请输入刚性成本金额";
         }
+
     }else{
         
         if(self.uploadImagesArr.count == 0){
@@ -140,10 +145,11 @@
     
     [dict setObject:self.remarks?self.remarks:@"" forKey:@"remarks"];
     
-    if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"]){
+    if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
         
-       [dict setObject:self.minimum_guarantee_amount forKey:@"minimum_guarantee_amount"];
+        [dict setObject:self.minimum_guarantee_amount forKey:@"minimum_guarantee_amount"];
         
+        [dict setObject:self.rigid_amount forKey:@"rigid_amount"];
     }
     
     [self get_three_list:[dict objectForKey:@"type_id"] Successed:^(id entity) {
@@ -233,8 +239,13 @@
     if (section == 0) {
         if (([self.order_type isEqualToString:@"已签合同"] |
              [self.order_type isEqualToString:@"未签合同"] |
-             [self.order_type isEqualToString:@"集团关键联系人保底购机活动"]) & !self.isFromTerminalStock) {
-            rows = 11;
+             [self.order_type isEqualToString:@"集团关键联系人保底购机活动"] |
+             [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) & !self.isFromTerminalStock) {
+            if ([self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
+                rows = 12;
+            }else{
+               rows = 11;
+            }
         }else{
             rows = 10;
         }
@@ -359,6 +370,13 @@
                 
                 break;
             }
+            case AMOUNT_TABLE_INDEX:
+            {
+                cell.titleLbl.text = @"刚性成本金额";
+                cell.txtField.placeholder = nil;
+                cell.txtField.text = self.rigid_amount;
+                break;
+            }
             default:
                 break;
         }
@@ -443,14 +461,14 @@
                         withTitle:@"订货类型"
                 cancelButtonTitle:@"取消"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"已签合同",@"未签合同",@"集团关键联系人保底购机活动",@"业务"]
+                otherButtonTitles:@[@"已签合同",@"未签合同",@"重要客户（AB类）新业务体验营销活动",@"业务"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
                                  self.order_type = @"已签合同";
                              }else if(buttonIndex == 1){
                                  self.order_type = @"未签合同";
                              }else if(buttonIndex == 2){
-                                 self.order_type = @"集团关键联系人保底购机活动";
+                                 self.order_type = @"重要客户（AB类）新业务体验营销活动";
                              }else if(buttonIndex == 3){
                                  self.order_type = @"业务";
                              }
@@ -499,40 +517,43 @@
                             withTitle:@"保底金额"
                     cancelButtonTitle:@"取消"
                destructiveButtonTitle:nil
-                    otherButtonTitles:@[@"310100966401  28元保底[合约期6个月]",
-                                        @"310100966402  58元保底[合约期6个月]",
-                                        @"310100966403  88元保底[合约期6个月]",
-                                        @"310100966404  128元保底[合约期6个月]",
-                                        @"310100966405  158元保底[合约期6个月]",
-                                        @"310100966406  188元保底[合约期6个月]",
-                                        @"310100966407  238元保底[合约期6个月]",
-                                        @"310100966408  258元保底[合约期6个月]",
-                                        @"310100966409  288元保底[合约期6个月]",
-                                        @"310100966410  338元保底[合约期6个月]",
-                                        @"310100966411  388元保底[合约期6个月]"]
+                    otherButtonTitles:@[@"58元保底（合约期24个月）",
+                                        @"58元保底（合约期36个月）",
+                                        @"88元保底（合约期24个月）",
+                                        @"88元保底（合约期36个月）",
+                                        @"128元保底（合约期24个月）",
+                                        @"128元保底（合约期36个月）",
+                                        @"158元保底（合约期24个月）",
+                                        @"158元保底（合约期36个月）",
+                                        @"188元保底（合约期24个月）",
+                                        @"188元保底（合约期36个月）",
+                                        @"288元保底（合约期24个月）",
+                                        @"288元保底（合约期36个月）"]
                              tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                                  if (buttonIndex == 0) {
-                                     self.minimum_guarantee_amount= @"310100966401 28元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount= @"58元保底（合约期24个月）";
                                  }else if(buttonIndex == 1){
-                                     self.minimum_guarantee_amount = @"310100966402  58元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"58元保底（合约期36个月）";
                                  }else if(buttonIndex == 2){
-                                     self.minimum_guarantee_amount = @"310100966403  88元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"88元保底（合约期24个月）";
                                  }else if(buttonIndex == 3){
-                                     self.minimum_guarantee_amount = @"310100966404  128元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"88元保底（合约期36个月）";
                                  }else if(buttonIndex == 4){
-                                     self.minimum_guarantee_amount = @"310100966405  158元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"128元保底（合约期24个月）";
                                  }else if(buttonIndex == 5){
-                                     self.minimum_guarantee_amount = @"310100966406  188元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"128元保底（合约期36个月）";
                                  }else if(buttonIndex == 6){
-                                     self.minimum_guarantee_amount = @"310100966407  238元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"158元保底（合约期24个月）";
                                  }else if(buttonIndex == 7){
-                                     self.minimum_guarantee_amount = @"310100966408  258元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"158元保底（合约期36个月）";
                                  }else if(buttonIndex == 8){
-                                     self.minimum_guarantee_amount = @"310100966409  288元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"188元保底（合约期24个月）";
                                  }else if(buttonIndex == 9){
-                                     self.minimum_guarantee_amount = @"310100966410  338元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"188元保底（合约期36个月）";
                                  }else if(buttonIndex == 10){
-                                     self.minimum_guarantee_amount = @"310100966411  388元保底[合约期6个月]";
+                                     self.minimum_guarantee_amount = @"288元保底（合约期24个月）";
+                                 }else if(buttonIndex == 11){
+                                     self.minimum_guarantee_amount = @"288元保底（合约期36个月）";
                                  }
                                  [_tableView reloadData];
                                  
@@ -558,6 +579,8 @@
         self.phone_num = textField.text;
     }else if (textField.tag == REMARKS_TABLE_INDEX){
         self.remarks = textField.text;
+    }else if (textField.tag == AMOUNT_TABLE_INDEX){
+        self.rigid_amount = textField.text;
     }
 }
 
@@ -657,7 +680,8 @@
             if ([self.order_type isEqualToString:@"赠送机"]|
                 [self.order_type isEqualToString:@"赠送礼品"]|
                 [self.order_type isEqualToString:@"集团关键联系人保底购机活动"]|
-                [self.order_type isEqualToString:@"业务"]) {
+                [self.order_type isEqualToString:@"业务"]|
+                [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
                 
                 UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"提交成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
