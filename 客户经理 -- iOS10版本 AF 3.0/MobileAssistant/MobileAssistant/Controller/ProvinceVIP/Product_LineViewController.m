@@ -101,6 +101,7 @@
     
     ProductLineDetailViewController *vc = [[ProductLineDetailViewController alloc] initWithNibName:@"P_BusinessDetailBaseViewController" bundle:nil];
     vc.bListModel = model;
+    vc.model_id = self.typeId;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

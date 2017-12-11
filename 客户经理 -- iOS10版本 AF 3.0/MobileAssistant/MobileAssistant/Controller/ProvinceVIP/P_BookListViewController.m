@@ -201,6 +201,7 @@
     
     P_BookDetailViewController *vc = [[P_BookDetailViewController alloc] initWithNibName:@"P_BusinessDetailBaseViewController" bundle:nil];
     vc.bListModel = model;
+    vc.model_id = self.typeId;
     vc.specialConfigStr = self.specialConfigStr;
     [self.navigationController pushViewController:vc animated:YES];
 }

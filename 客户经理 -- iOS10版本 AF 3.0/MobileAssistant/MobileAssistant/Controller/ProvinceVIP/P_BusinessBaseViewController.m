@@ -38,11 +38,11 @@
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     //客户经理才能提交
-    UserEntity *userInfo = [UserEntity sharedInstance];
-    if ([userInfo.type_id intValue] == ROLE_CUSTOMER) {
+//    UserEntity *userInfo = [UserEntity sharedInstance];
+//    if ([userInfo.type_id intValue] == ROLE_CUSTOMER) {
         UIButton *addBtn = [self setNaviRightBtnWithTitle:@"添加"];
         [addBtn addTarget:self action:@selector(addBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    }
+//    }
     
     self.startTime = [Utilies getLastMonth];
     

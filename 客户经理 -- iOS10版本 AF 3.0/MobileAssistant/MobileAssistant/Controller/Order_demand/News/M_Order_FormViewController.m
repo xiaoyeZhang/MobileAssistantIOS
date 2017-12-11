@@ -28,6 +28,9 @@
     UIButton *backBtn = [self setNaviCommonBackBtn];
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
 
+    UIButton *rightBtn = [self setNaviRightBtnWithTitle:@"重置"];
+    [rightBtn addTarget:self action:@selector(rightBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
     arrayCutomer = [NSMutableArray array];
     
     [self getData];
@@ -38,12 +41,17 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+//重置
+- (void)rightBtnClicked:(id)sender{
+    
+    self.Id = @"";
+    message = @"";
+    [self getData];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
     return arrayCutomer.count;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

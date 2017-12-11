@@ -347,7 +347,7 @@
                     }
                     
                     return cell;
-                }else if(state == PROCESS_STATE_two_manager_through && [self.bListModel.type_id isEqualToString:@"15"] && userInfo.type_id.intValue == ROLE_COMMON){
+                }else if((state == PROCESS_STATE_two_manager_through && [self.bListModel.type_id isEqualToString:@"15"] && userInfo.type_id.intValue == ROLE_COMMON)){
                 
                     [cell2 setSelectDataWithArray:@[@"是",@"否",@"归档"]];
                     
@@ -582,15 +582,26 @@
             NSString *type = dict[@"type"]; //类型
             
             if ([type isEqualToString:@"Select"]) {
-                P_UserListViewController *vc = [[P_UserListViewController alloc] init];
-                vc.type_id = @"2";
-                vc.dep_id = userInfo.dep_id;
-                vc.delegate = self;
-                if ([dict[@"model_id"] isEqualToString:@"9"]) {
-                    vc.type_id = @"25";
-                    vc.model_id = @"9";
+               
+                if ([self.model_id isEqualToString:@"9"] || [self.model_id isEqualToString:@"3"] || [self.model_id isEqualToString:@"15"]) {
+
+                    P_NextUserListViewController *vc = [[P_NextUserListViewController alloc]init];
+                    vc.delegate = self;
+                    vc.business_id = self.bListModel.business_id;
+                    [self.navigationController pushViewController:vc animated:YES];
+
+                }else{
+                    P_UserListViewController *vc = [[P_UserListViewController alloc] init];
+                    vc.type_id = @"2";
+                    vc.dep_id = userInfo.dep_id;
+                    vc.delegate = self;
+                    if ([dict[@"model_id"] isEqualToString:@"9"]) {
+                        vc.type_id = @"25";
+                        vc.model_id = @"9";
+                    }
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
-                [self.navigationController pushViewController:vc animated:YES];
+                
             }else if([type isEqualToString:@"DateSelect"]){
                 [textField resignFirstResponder];
                 XYDatePicker *datePicker = [XYDatePicker datePicker];
@@ -656,6 +667,16 @@
 
 - (void)userListViewController:(P_UserListViewController *)vc didSelectUser:(UserListModel *)model
 {
+    self.selectedUserModel = model;
+    self.next_processor_id = model.user_id;
+    
+    [_tableView reloadData];
+}
+
+#pragma mark - NextUserListViewControllerDelegate
+
+- (void)NextuserListViewController:(P_NextUserListViewController *)vc didSelectUser:(UserListModel *)model{
+    
     self.selectedUserModel = model;
     self.next_processor_id = model.user_id;
     

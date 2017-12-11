@@ -30,6 +30,7 @@
 #import "Houston_queryViewController.h"
 #import "Matching_ListViewController.h"
 #import "Payment_ListViewController.h"
+#import "P_Marketing_PlanListViewController.h"
 
 static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 static NSString *HeaderIdentifier = @"headerView";
@@ -112,7 +113,9 @@ static NSString *HeaderIdentifier = @"headerView";
                                            @{@"title":@"营销方案更改",@"icon":@"p_marking",@"viewController":@"9",@"VCbool":@"1"},
                                            @{@"title":@"分合户",@"icon":@"分合户",@"viewController":@"13",@"VCbool":@"1"},
                                            @{@"title":@"纵向行业任务协同",@"icon":@"纵向行业任务协同",@"viewController":@"14",@"VCbool":@"1"},
-                                           @{@"title":@"集团划拨",@"icon":@"p_stock3",@"viewController":@"16",@"VCbool":@"1"}]}];
+                                           @{@"title":@"集团划拨",@"icon":@"p_stock3",@"viewController":@"16",@"VCbool":@"1"},
+                                           @{@"title":@"营销方案确认",@"icon":@"维修(2)",@"viewController":@"17",@"VCbool":@"1"}
+                                           ]}];
 
     }else if ([_name isEqualToString:@"走访任务系统"]){
         
@@ -430,6 +433,10 @@ static NSString *HeaderIdentifier = @"headerView";
         {
             [self goNews_ProviceVIP_ListViewController:nil];
             break;
+        }case 17:
+        {
+            [self goP_Marketing_PlanViewController:nil];
+            break;
         }
             
         default:
@@ -556,7 +563,13 @@ static NSString *HeaderIdentifier = @"headerView";
     [self.navigationController pushViewController:vc animated:YES];
     
 }
-
+//营销方案确认     P_Marketing_PlanListViewController
+- (void)goP_Marketing_PlanViewController:(id)sender{
+    
+    P_Marketing_PlanListViewController *vc = [[P_Marketing_PlanListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 //动态配置     News_ProviceVIP_ListViewController
 - (void)goNews_ProviceVIP_ListViewController:(id)sender{
     

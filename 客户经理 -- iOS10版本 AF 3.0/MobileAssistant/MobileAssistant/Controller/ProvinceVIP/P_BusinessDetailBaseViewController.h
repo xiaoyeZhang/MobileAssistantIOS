@@ -24,6 +24,7 @@
 #import "UIAlertView+Blocks.h"
 #import "XYDatePicker.h"
 #import "P_AddDevicesViewController.h"
+#import "P_NextUserListViewController.h"
 
 @interface P_BusinessDetailBaseViewController : XYBaseViewController<UITableViewDataSource,
                                                                      UITableViewDelegate,
@@ -32,7 +33,7 @@
                                                                      UserListViewControllerDelegate,
                                                                      XYDatePickerDelegate,
                                                                      AddDevicesViewControllerDelegate,
-ThreeCheckBoxTableViewCellDelegate>
+ThreeCheckBoxTableViewCellDelegate,NextUserListViewControllerDelegate>
 {    
     __weak IBOutlet UITableView *_tableView;
     NSMutableArray *processMuArr;
@@ -44,6 +45,8 @@ ThreeCheckBoxTableViewCellDelegate>
 
 @property(nonatomic, strong) BusinessListModel *bListModel; //进入时需赋值
 @property(nonatomic, assign) BOOL isShowSubmitBtn;
+
+@property(nonatomic, copy) NSString *model_id;
 
 @property(nonatomic, assign) BOOL isCheckBoxUnPass; //不通过情况
 

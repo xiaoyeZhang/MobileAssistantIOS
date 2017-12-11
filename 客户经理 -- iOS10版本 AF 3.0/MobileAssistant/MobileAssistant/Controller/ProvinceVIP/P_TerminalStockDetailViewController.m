@@ -121,6 +121,7 @@
         userType == ROLE_THREE) { //客户经理已提交 -> 行业总监审批
         
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核领导",@"type":@"Select"},
                            @{@"title":@"审核意见",@"type":@"Input"}];
         
         [detailMuArr addObjectsFromArray:array];
@@ -717,7 +718,7 @@
         return;
     }
     
-    if (([self.next_processor_id isEqualToString:@"-1"] || self.next_processor_id.length == 0) && (self.submitState == PROCESS_STATE_three_manager_through) && (self.submitState != PROCESS_STATE_reject)) {
+    if (([self.next_processor_id isEqualToString:@"-1"] || self.next_processor_id.length == 0) && (self.submitState == PROCESS_STATE_three_manager_through || self.submitState == PROCESS_STATE_manager_submit) && (self.submitState != PROCESS_STATE_reject)) {
         ALERT_ERR_MSG(@"请选择审核领导");
         isDone = YES;
         return;

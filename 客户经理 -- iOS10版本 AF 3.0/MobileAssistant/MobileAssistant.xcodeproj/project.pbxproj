@@ -252,6 +252,8 @@
 		2E64CA0E1C1F9F6000F7597A /* Business_MarkingPlanDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E64CA0C1C1F9F6000F7597A /* Business_MarkingPlanDetailViewController.xib */; };
 		2E64CA121C1FA64D00F7597A /* Business_StopOpenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E64CA101C1FA64D00F7597A /* Business_StopOpenViewController.m */; };
 		2E64CA131C1FA64D00F7597A /* Business_StopOpenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E64CA111C1FA64D00F7597A /* Business_StopOpenViewController.xib */; };
+		2E684CB81FD643E500D8B031 /* P_Marketing_PlanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */; };
+		2E684CB91FD643E500D8B031 /* P_Marketing_PlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E684CB41FD643E400D8B031 /* P_Marketing_PlanListViewController.m */; };
 		2E6A0AD11C20037C0086E333 /* GroupContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD01C20037C0086E333 /* GroupContact.m */; };
 		2E6A0AD41C210E840086E333 /* GroupOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD31C210E840086E333 /* GroupOrderModel.m */; };
 		2E6A0AD81C21340A0086E333 /* UpDownLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD61C21340A0086E333 /* UpDownLabelTableViewCell.m */; };
@@ -336,6 +338,8 @@
 		2E8C4FBF1D45BE8600D6F2DD /* HoustonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C4FBE1D45BE8600D6F2DD /* HoustonDetailViewController.m */; };
 		2E8E54971F00DD1400B000B6 /* Exam_listEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E54961F00DD1400B000B6 /* Exam_listEntity.m */; };
 		2E8E549A1F00EBC000B000B6 /* Exam_DetailEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E54991F00EBC000B000B6 /* Exam_DetailEntity.m */; };
+		2E8EFD801FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EFD7E1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.m */; };
+		2E8EFD811FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8EFD7F1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.xib */; };
 		2E90AEC21CA90B1000E71FFD /* shareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E90AEC01CA90B1000E71FFD /* shareViewController.m */; };
 		2E90AEC31CA90B1000E71FFD /* shareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E90AEC11CA90B1000E71FFD /* shareViewController.xib */; };
 		2E90AEC71CAA607C00E71FFD /* recommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E90AEC51CAA607C00E71FFD /* recommendedViewController.m */; };
@@ -438,6 +442,8 @@
 		2E9F494D1EEF8BB800FEF17F /* MarketingCaselistEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F494C1EEF8BB800FEF17F /* MarketingCaselistEntity.m */; };
 		2E9F49511EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F494F1EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.m */; };
 		2E9F49521EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F49501EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.xib */; };
+		2EA06C6D1FD7941B000A952F /* P_NextUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA06C6B1FD7941B000A952F /* P_NextUserListViewController.m */; };
+		2EA06C6E1FD7941B000A952F /* P_NextUserListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA06C6C1FD7941B000A952F /* P_NextUserListViewController.xib */; };
 		2EA0F5DF1D17C88100306608 /* White_query_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0F5DD1D17C88100306608 /* White_query_DetailViewController.m */; };
 		2EA0F5E01D17C88100306608 /* White_query_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA0F5DE1D17C88100306608 /* White_query_DetailViewController.xib */; };
 		2EA0F5E41D17D64E00306608 /* Product_classification_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0F5E21D17D64E00306608 /* Product_classification_DetailViewController.m */; };
@@ -1335,6 +1341,10 @@
 		2E64CA0F1C1FA64D00F7597A /* Business_StopOpenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business_StopOpenViewController.h; sourceTree = "<group>"; };
 		2E64CA101C1FA64D00F7597A /* Business_StopOpenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business_StopOpenViewController.m; sourceTree = "<group>"; };
 		2E64CA111C1FA64D00F7597A /* Business_StopOpenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Business_StopOpenViewController.xib; sourceTree = "<group>"; };
+		2E684CB11FD643E400D8B031 /* P_Marketing_PlanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Marketing_PlanDetailViewController.h; sourceTree = "<group>"; };
+		2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P_Marketing_PlanDetailViewController.m; sourceTree = "<group>"; };
+		2E684CB31FD643E400D8B031 /* P_Marketing_PlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Marketing_PlanListViewController.h; sourceTree = "<group>"; };
+		2E684CB41FD643E400D8B031 /* P_Marketing_PlanListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P_Marketing_PlanListViewController.m; sourceTree = "<group>"; };
 		2E6A0ACF1C20037C0086E333 /* GroupContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupContact.h; sourceTree = "<group>"; };
 		2E6A0AD01C20037C0086E333 /* GroupContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupContact.m; sourceTree = "<group>"; };
 		2E6A0AD21C210E840086E333 /* GroupOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupOrderModel.h; sourceTree = "<group>"; };
@@ -1492,6 +1502,9 @@
 		2E8E54961F00DD1400B000B6 /* Exam_listEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exam_listEntity.m; sourceTree = "<group>"; };
 		2E8E54981F00EBC000B000B6 /* Exam_DetailEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exam_DetailEntity.h; sourceTree = "<group>"; };
 		2E8E54991F00EBC000B000B6 /* Exam_DetailEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exam_DetailEntity.m; sourceTree = "<group>"; };
+		2E8EFD7D1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Marketing_PlanSubmitViewController.h; sourceTree = "<group>"; };
+		2E8EFD7E1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P_Marketing_PlanSubmitViewController.m; sourceTree = "<group>"; };
+		2E8EFD7F1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = P_Marketing_PlanSubmitViewController.xib; sourceTree = "<group>"; };
 		2E90AEBF1CA90B1000E71FFD /* shareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shareViewController.h; sourceTree = "<group>"; };
 		2E90AEC01CA90B1000E71FFD /* shareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shareViewController.m; sourceTree = "<group>"; };
 		2E90AEC11CA90B1000E71FFD /* shareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = shareViewController.xib; sourceTree = "<group>"; };
@@ -1643,6 +1656,9 @@
 		2E9F494E1EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marketing_CenterListTableViewCell.h; sourceTree = "<group>"; };
 		2E9F494F1EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marketing_CenterListTableViewCell.m; sourceTree = "<group>"; };
 		2E9F49501EEF8FA900FEF17F /* Marketing_CenterListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Marketing_CenterListTableViewCell.xib; sourceTree = "<group>"; };
+		2EA06C6A1FD7941B000A952F /* P_NextUserListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = P_NextUserListViewController.h; sourceTree = "<group>"; };
+		2EA06C6B1FD7941B000A952F /* P_NextUserListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = P_NextUserListViewController.m; sourceTree = "<group>"; };
+		2EA06C6C1FD7941B000A952F /* P_NextUserListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = P_NextUserListViewController.xib; sourceTree = "<group>"; };
 		2EA0F5DC1D17C88100306608 /* White_query_DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White_query_DetailViewController.h; sourceTree = "<group>"; };
 		2EA0F5DD1D17C88100306608 /* White_query_DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = White_query_DetailViewController.m; sourceTree = "<group>"; };
 		2EA0F5DE1D17C88100306608 /* White_query_DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = White_query_DetailViewController.xib; sourceTree = "<group>"; };
@@ -2959,7 +2975,11 @@
 				41B13E2E1BC4B7A70090D456 /* P_UserListViewController.h */,
 				41B13E2F1BC4B7A70090D456 /* P_UserListViewController.m */,
 				41B13E301BC4B7A70090D456 /* P_UserListViewController.xib */,
+				2EA06C6A1FD7941B000A952F /* P_NextUserListViewController.h */,
+				2EA06C6B1FD7941B000A952F /* P_NextUserListViewController.m */,
+				2EA06C6C1FD7941B000A952F /* P_NextUserListViewController.xib */,
 				2EDA64481CA115CE00B0F428 /* NewsProvinceVip */,
+				2E684CB01FD643E400D8B031 /* Marketing_plan_ confirmation */,
 				2EAF7B571D45A087007188F2 /* Houston_query */,
 				2ECFB86F1D37894700A0668E /* P_Vertical_industry_collaboration */,
 				2E91CD6F1D1133E000F15BEA /* Payment_of_funds */,
@@ -3294,6 +3314,20 @@
 				2E64CA111C1FA64D00F7597A /* Business_StopOpenViewController.xib */,
 			);
 			name = "stop-open";
+			sourceTree = "<group>";
+		};
+		2E684CB01FD643E400D8B031 /* Marketing_plan_ confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				2E684CB31FD643E400D8B031 /* P_Marketing_PlanListViewController.h */,
+				2E684CB41FD643E400D8B031 /* P_Marketing_PlanListViewController.m */,
+				2E8EFD7D1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.h */,
+				2E8EFD7E1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.m */,
+				2E8EFD7F1FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.xib */,
+				2E684CB11FD643E400D8B031 /* P_Marketing_PlanDetailViewController.h */,
+				2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */,
+			);
+			path = "Marketing_plan_ confirmation";
 			sourceTree = "<group>";
 		};
 		2E6BF0681E5EBDFD008F6CF2 /* AFNetworking */ = {
@@ -5395,6 +5429,7 @@
 				1485463A1BBA239F00257580 /* switch_camera@2x.png in Resources */,
 				D994C4731A41B57B000A8FE1 /* WebViewViewController.xib in Resources */,
 				41CF613F1BC0C98500A19D8C /* CheckBoxTableViewCell.xib in Resources */,
+				2EA06C6E1FD7941B000A952F /* P_NextUserListViewController.xib in Resources */,
 				1413444D1BD622C400F10F99 /* PushSettingTableViewCell.xib in Resources */,
 				2ED057801EE9340D008FEE72 /* ExaminationTableViewCell.xib in Resources */,
 				2EA192DE1DC6F48600D13FC5 /* Order_Demand_SumiltViewController.xib in Resources */,
@@ -5518,6 +5553,7 @@
 				41CF612B1BBFC5AA00A19D8C /* P_TerminalSubmitViewController.xib in Resources */,
 				2ECE65E21CB7A789004721A4 /* SMS_CollectionViewCell.xib in Resources */,
 				2EF98BE31C29038100B10311 /* Business_Group_V_NetViewController.xib in Resources */,
+				2E8EFD811FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.xib in Resources */,
 				2ECE65DD1CB79607004721A4 /* SMS_MessageViewController.xib in Resources */,
 				2EDA64981CA4F74600B0F428 /* News_ClickBtnTableViewCell.xib in Resources */,
 				2EA2A5FD1DA890F40093A625 /* New_MyGroupViewController.xib in Resources */,
@@ -5868,6 +5904,7 @@
 				149A87C71BBA91CF00CEFA50 /* XYDatePicker.m in Sources */,
 				2ECDBE031CCEFEB1008B2B46 /* DataSql.m in Sources */,
 				149A87E81BBB939600CEFA50 /* ThreeLabelsTableViewCell.m in Sources */,
+				2E684CB91FD643E500D8B031 /* P_Marketing_PlanListViewController.m in Sources */,
 				2E92E91A1D3E1E560099A5AD /* CaseViewController.m in Sources */,
 				2E6A0AD81C21340A0086E333 /* UpDownLabelTableViewCell.m in Sources */,
 				2EECF87E1DD1B64A00661E7E /* visit_task_summaryModel.m in Sources */,
@@ -5999,6 +6036,7 @@
 				2E6F3A7E1D7E9D1500C9EF03 /* Customer_portraitViewController.m in Sources */,
 				41CF61211BBFB1E800A19D8C /* P_SpecialSubmitViewController.m in Sources */,
 				2EEA26CE1F0E1D060085573D /* PNBar.m in Sources */,
+				2E8EFD801FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.m in Sources */,
 				2ECE65B81CB39CC5004721A4 /* Birthday_listViewController.m in Sources */,
 				2EA2A6021DA8CCA70093A625 /* New_groupTableViewCell.m in Sources */,
 				2EA192DB1DC6F48600D13FC5 /* Order_Demand_DetailViewController.m in Sources */,
@@ -6007,6 +6045,7 @@
 				2EECF8751DD04FF500661E7E /* Visit_listViewController.m in Sources */,
 				2EDEE8461F26E2DF003A82A3 /* ScreenHeadView.m in Sources */,
 				148546491BBA239F00257580 /* DCIntrospect.m in Sources */,
+				2E684CB81FD643E500D8B031 /* P_Marketing_PlanDetailViewController.m in Sources */,
 				14E54B381BCF841900114D60 /* UserTableCellHeaderView.m in Sources */,
 				2EEA26D41F0E1D070085573D /* PNLineChart.m in Sources */,
 				2EDEE8511F29B356003A82A3 /* Focus_ListEntity.m in Sources */,
@@ -6105,6 +6144,7 @@
 				2EDA64931CA4D0D600B0F428 /* News_PtovinceVip_Next_CustomerEntity.m in Sources */,
 				2E9B21621DAE0A1A00E1A794 /* New_MyGroup_baseMessageViewController.m in Sources */,
 				148546901BBA247900257580 /* HMSegmentedControl.m in Sources */,
+				2EA06C6D1FD7941B000A952F /* P_NextUserListViewController.m in Sources */,
 				D9ADFDAE19D64F4200316935 /* CustomerViewController.m in Sources */,
 				41B189A81BC2AD3E000BF5D7 /* P_ContractListViewController.m in Sources */,
 				2ED0576A1EE7AE94008FEE72 /* Business_change_SumbitViewController.m in Sources */,

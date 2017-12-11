@@ -115,6 +115,7 @@
         userType == ROLE_THREE) { //客户经理已提交 -> 行业总监审核
         
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核领导",@"type":@"Select"},
                            @{@"title":@"审核意见",@"type":@"Input"}];
         
         [detailMuArr addObjectsFromArray:array];
@@ -580,6 +581,16 @@
     
     int state = [self.bListModel.state intValue];
     UserEntity *userInfo = [UserEntity sharedInstance];
+    if (state == PROCESS_STATE_manager_submit &&
+        [userInfo.type_id intValue] == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
+        
+        if ((!self.next_processor_id || [self.next_processor_id isEqualToString:@"-1"]) &&
+            (self.submitState != PROCESS_STATE_reject)) {
+            ALERT_ERR_MSG(@"请选择审核的下级经理");
+            isDone = YES;
+            return;
+        }
+    }
     
     if (self.submitState == PROCESS_STATE_reject &&
         self.submitDesc.length == 0) {

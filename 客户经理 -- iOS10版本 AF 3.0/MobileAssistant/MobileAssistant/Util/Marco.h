@@ -106,6 +106,10 @@
 #define PROCESS_STATE_Have_Guadan 30
 /** 行业总监审核（终端订货）*/
 #define PROCESS_STATE_Industry_director 40
+//** 营销支撑组经理审核通过 */
+#define PROCESS_STATE_marketing_manager_through 41
+/** 营销支撑组已归档*/
+#define PROCESS_STATE_REFUND 42
 
 //动态配置
 #define FORM_TYPE_ZERO  0   //文本框
