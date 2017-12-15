@@ -157,6 +157,9 @@
             msg = @"营销支撑组经理审核通过";
             break;
         case 42:
+            msg = @"营销支撑组经理选择人员归档";
+            break;
+        case 43:
             msg = @"营销支撑组已归档";
             break;
         case 99:

@@ -102,8 +102,7 @@
         
         [detailMuArr insertObject:@{@"title":@"处理意见",@"process":@"info",@"type":@"Label"} atIndex:detailMuArr.count-1];
         
-        if ([userInfo.user_id isEqualToString:self.bListModel.create_id] &&
-            [userInfo.type_id intValue] == ROLE_CUSTOMER) { //提交客户经理重新编辑
+        if ([userInfo.user_id isEqualToString:self.bListModel.create_id]) { //提交客户经理重新编辑
             
             [self addEditBtn]; //添加编辑按钮
         }
@@ -114,9 +113,10 @@
     }
     
     if (state == PROCESS_STATE_manager_submit &&
-        userType == ROLE_COMMON) { //客户经理已提交 -> 营销支撑组审核
+        userType == ROLE_COMMON  && [userInfo.user_id isEqualToString:self.bListModel.next_processor]) { //客户经理已提交 -> 营销支撑组审核
         
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核领导",@"type":@"Select"},
                            @{@"title":@"审核意见",@"type":@"Input"}];
         
         [detailMuArr addObjectsFromArray:array];
@@ -127,7 +127,7 @@
         
         [self addSubmitBtn];
     }else if (state == PROCESS_STATE_marketing_through &&
-              userType == ROLE_COMMON) { //营销支撑组审核审核通过 -> 营销支撑组经理审批
+              userType == ROLE_COMMON && [userInfo.user_id isEqualToString:self.bListModel.next_processor]) { //营销支撑组审核审核通过 -> 营销支撑组经理审批
         
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
                            @{@"title":@"审核领导",@"type":@"Select"},
@@ -141,9 +141,10 @@
         
         [self addSubmitBtn];
     }else if (state == PROCESS_STATE_marketing_manager_through &&
-              userType == ROLE_THREE) { //营销支撑组经理审核通过 -> 三级经理审批
+              userType == ROLE_THREE && [userInfo.user_id isEqualToString:self.bListModel.next_processor]) { //营销支撑组经理审核通过 -> 三级经理审批
         
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核领导",@"type":@"Select"},
                            @{@"title":@"审核意见",@"type":@"Input"}];
         
         [detailMuArr addObjectsFromArray:array];
@@ -154,15 +155,43 @@
         
         [self addSubmitBtn];
     }else if (state == PROCESS_STATE_three_manager_through &&
-              userType == ROLE_COMMON) { //三级经理审核通过 -> 营销支撑组审批
+              userType == ROLE_TWO && [userInfo.user_id isEqualToString:self.bListModel.next_processor]) { //三级经理审核通过 -> 营销支撑组审批
+        
+        NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核领导",@"type":@"Select"},
+                           @{@"title":@"审核意见",@"type":@"Input"}];
+        
+        [detailMuArr addObjectsFromArray:array];
+        
+//        if (!self.submitState) { //营销支撑组已归档
+            self.submitState = PROCESS_STATE_two_manager_through;
+//        }
+        
+        [self addSubmitBtn];
+    }else if (state == PROCESS_STATE_two_manager_through &&
+              userType == ROLE_COMMON && [userInfo.user_id isEqualToString:self.bListModel.next_processor]) { //三级经理审核通过 -> 营销支撑组审批
+        
+        NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
+                           @{@"title":@"审核领导",@"type":@"Select"},
+                           @{@"title":@"审核意见",@"type":@"Input"}];
+        
+        [detailMuArr addObjectsFromArray:array];
+        
+        //        if (!self.submitState) { //营销支撑组已归档
+        self.submitState = PROCESS_STATE_SELECT_REFUND;
+        //        }
+        
+        [self addSubmitBtn];
+    }else if (state == PROCESS_STATE_SELECT_REFUND &&
+              userType == ROLE_COMMON && [userInfo.user_id isEqualToString:self.bListModel.next_processor]) { //三级经理审核通过 -> 营销支撑组审批
         
         NSArray *array = @[@{@"title":@"审核意见",@"type":@"Input"}];
         
         [detailMuArr addObjectsFromArray:array];
         
-//        if (!self.submitState) { //营销支撑组已归档
-            self.submitState = PROCESS_STATE_REFUND;
-//        }
+        //        if (!self.submitState) { //营销支撑组已归档
+        self.submitState = PROCESS_STATE_REFUND;
+        //        }
         
         [self addSubmitBtn];
     }
@@ -193,6 +222,12 @@
     int userType = [userInfo.type_id intValue];
     
     if (selectedIndex == 1) {
+
+        [detailMuArr insertObject:@{@"title":@"审核领导",@"type":@"Select"} atIndex:detailMuArr.count-1];
+
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationNone];
+        
         if (state == PROCESS_STATE_manager_submit &&
             userType == ROLE_COMMON) { //客户经理已提交 -> 营销支撑组审核
 
@@ -201,11 +236,6 @@
         }else if (state == PROCESS_STATE_marketing_through &&
                   userType == ROLE_COMMON) { //营销支撑组审核审核通过 -> 营销支撑组经理审批
 
-            [detailMuArr insertObject:@{@"title":@"审核领导",@"type":@"Select"} atIndex:detailMuArr.count-1];
-            
-            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-                      withRowAnimation:UITableViewRowAnimationNone];
-            
             self.submitState = PROCESS_STATE_marketing_manager_through;
 
         }else if (state == PROCESS_STATE_marketing_manager_through &&
@@ -213,20 +243,30 @@
 
             self.submitState = PROCESS_STATE_three_manager_through;
   
+        }else if (state == PROCESS_STATE_three_manager_through &&
+                  userType == ROLE_TWO) { //营销支撑组经理审核通过 -> 三级经理审批
+            
+            self.submitState = PROCESS_STATE_two_manager_through;
+            
+        }else if (state == PROCESS_STATE_two_manager_through &&
+                  userType == ROLE_COMMON) { //营销支撑组经理审核通过 -> 三级经理审批
+            
+            self.submitState = PROCESS_STATE_SELECT_REFUND;
+            
         }
     }else{
         
         self.submitState = PROCESS_STATE_reject;
         
-        if (state == PROCESS_STATE_marketing_through &&
-            userType == ROLE_COMMON){
+        [detailMuArr removeObjectAtIndex:detailMuArr.count-2];
         
-            [detailMuArr removeObjectAtIndex:detailMuArr.count-2];
-            
-            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-                      withRowAnimation:UITableViewRowAnimationNone];
-        
-        }
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationNone];
+//        if (state == PROCESS_STATE_marketing_through &&
+//            userType == ROLE_COMMON){
+//
+//
+//        }
     }
 }
 
@@ -270,12 +310,11 @@
         return;
     }
     
-    if (self.submitState == PROCESS_STATE_marketing_manager_through &&
-        [userInfo.type_id intValue] == ROLE_COMMON) { //客户经理已提交 -> 三级经理审批
-        
+    if (self.submitState != PROCESS_STATE_REFUND) { //客户经理已提交 -> 三级经理审批
+
         if ((!self.next_processor_id || [self.next_processor_id isEqualToString:@"-1"]) &&
             (self.submitState != PROCESS_STATE_reject)) {
-            ALERT_ERR_MSG(@"请选择审核的下级经理");
+            ALERT_ERR_MSG(@"请选择下级执行人");
             isDone = YES;
             return;
         }
@@ -305,16 +344,16 @@
 
         if ([strState isEqualToString:@"1"]) {
 
-            if (self.submitState == PROCESS_STATE_manager_confirm) {
-                UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提交成功" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
-                    [self.navigationController popViewControllerAnimated:YES];
-
-                    [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
-                }];
-
-                return;
-            }
+//            if (self.submitState == PROCESS_STATE_manager_confirm) {
+//                UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提交成功" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//                [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {
+//                    [self.navigationController popViewControllerAnimated:YES];
+//
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
+//                }];
+//
+//                return;
+//            }
 
             UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"提交成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {

@@ -231,8 +231,10 @@
     HUD.labelText = @"努力加载中...";
     
     CommonService *service = [[CommonService alloc] init];
+    UserEntity *userinfo = [UserEntity sharedInstance];
     
     NSDictionary *dict = @{@"method":@"get_marketing_list",
+                           @"user_id":userinfo.user_id,
                            };
     
     [service getNetWorkData:dict  Successed:^(id entity) {

@@ -51,16 +51,22 @@
     
     if ([model.type_id isEqualToString:@"23"]) { //
         if (state == PROCESS_STATE_manager_submit &&
-            userType == ROLE_COMMON) {
+            userType == ROLE_COMMON && [userInfo.user_id isEqualToString:model.next_processor]) {
             return  YES;
         }else if (state == PROCESS_STATE_marketing_through &&
-                  userType == ROLE_COMMON) { //营销支撑组审核通过 -> 营销支撑组经理审批
+                  userType == ROLE_COMMON && [userInfo.user_id isEqualToString:model.next_processor]) { //营销支撑组审核通过 -> 营销支撑组经理审批
             return YES;
         }else if(state == PROCESS_STATE_marketing_manager_through &&
-                 userType == ROLE_THREE){ //营销支撑组经理通过 -> 三级经理审批
+                 userType == ROLE_THREE && [userInfo.user_id isEqualToString:model.next_processor]){ //营销支撑组经理通过 -> 三级经理审批
             return YES;
         }else if(state == PROCESS_STATE_three_manager_through &&
-                 userType == ROLE_COMMON){ //三级经理审核通过 -> 营销支撑组审批
+                 userType == ROLE_TWO && [userInfo.user_id isEqualToString:model.next_processor]){ //三级经理审核通过 -> 营销支撑组审批
+            return YES;
+        }else if(state == PROCESS_STATE_two_manager_through &&
+                 userType == ROLE_COMMON && [userInfo.user_id isEqualToString:model.next_processor]){ //三级经理审核通过 -> 营销支撑组审批
+            return YES;
+        }else if(state == PROCESS_STATE_SELECT_REFUND &&
+                 userType == ROLE_COMMON && [userInfo.user_id isEqualToString:model.next_processor]){ //三级经理审核通过 -> 营销支撑组审批
             return YES;
         }else if (userType == ROLE_COMMON){ //通用人员
             

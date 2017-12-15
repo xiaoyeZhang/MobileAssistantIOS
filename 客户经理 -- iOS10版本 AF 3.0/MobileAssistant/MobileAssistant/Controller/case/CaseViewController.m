@@ -100,9 +100,10 @@ static NSString *cellIdentifier = @"Product_classificCollectionViewCell";
 -(void)getDataCase{
     
     CommonService *service = [[CommonService alloc] init];
+    UserEntity *userinfo = [UserEntity sharedInstance];
     
     NSDictionary *dict = @{@"method":@"get_case_type_list",
-
+                           @"user_id":userinfo.user_id,
                            };
     
     [service getNetWorkData:dict  Successed:^(id entity) {

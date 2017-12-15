@@ -51,10 +51,10 @@
 #define PRODUCT_IMAGE_URL @"http://gzcmm.dayo.net.cn/cmm/upload/"
 
 //boss服务器
-//#define BASEURL @"http://gzcmm.dayo.net.cn/cmm/cmm_boss_token.php"
-//#define TERMINAL_PHOTO_URL @"http://gzcmm.dayo.net.cn/cmm/terminal_photo/"
-//#define NEWS_URL @"http://gzcmm.dayo.net.cn/cmm/note_app.php"
-//#define PER_DIS @"http://gzcmm.dayo.net.cn/cmm/data_show.php"
+#define BASEURL @"http://gzcmm.dayo.net.cn/cmm/cmm_boss_token.php"
+#define TERMINAL_PHOTO_URL @"http://gzcmm.dayo.net.cn/cmm/terminal_photo/"
+#define NEWS_URL @"http://gzcmm.dayo.net.cn/cmm/note_app.php"
+#define PER_DIS @"http://gzcmm.dayo.net.cn/cmm/data_show.php"
 
 //boss服务器https协议
 //#define BASEURL @"https://gzcmm.dayo.net.cn/cmm/cmm_boss_token.php"
@@ -65,10 +65,10 @@
 //#define PATH @"cmm_boss_token.php"
 
 //测试服务器
-#define BASEURL @"http://120.24.63.90/gzcms/cmm_boss.php"
-#define TERMINAL_PHOTO_URL @"http://120.24.63.90/gzcms/terminal_photo/"
-#define NEWS_URL @"http://120.24.63.90/gzcms/note_app.php"
-#define PER_DIS @"http://sw.avatek.com.cn/gzcms/data_show.php"
+//#define BASEURL @"http://120.24.63.90/gzcms/cmm_boss.php"
+//#define TERMINAL_PHOTO_URL @"http://120.24.63.90/gzcms/terminal_photo/"
+//#define NEWS_URL @"http://120.24.63.90/gzcms/note_app.php"
+//#define PER_DIS @"http://sw.avatek.com.cn/gzcms/data_show.php"
 //#define PATH @"cmm_boss.php"
 //#define PATH @"cmm_boss_unify.php"
 

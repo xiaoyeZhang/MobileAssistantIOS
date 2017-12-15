@@ -156,9 +156,11 @@ static NSString * CellIdentifier = @"SMS_CollectionViewCell";
     HUD.labelText = @"努力加载中...";
     
     CommonService *service = [[CommonService alloc]init];
+    UserEntity *userinfo = [UserEntity sharedInstance];
     
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"get_sms_type",@"method",
+                           userinfo.user_id,@"user_id",
                            nil];
     [service getNetWorkData:param Successed:^(id entity) {
         

@@ -152,9 +152,11 @@ static NSString *headerIdentifier = @"ImageCollectionReusableView";
     self.Type = scope_id;
     
     CommonService *service = [[CommonService alloc] init];
+    UserEntity *userinfo = [UserEntity sharedInstance];
     
     NSDictionary *dict = @{@"method":@"get_product_type_list",
                            @"scope_id":scope_id,
+                           @"user_id":userinfo.user_id
                            };
     
     [service getNetWorkData:dict  Successed:^(id entity) {

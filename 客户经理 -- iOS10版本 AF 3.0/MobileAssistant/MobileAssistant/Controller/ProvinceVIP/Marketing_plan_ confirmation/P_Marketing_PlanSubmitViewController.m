@@ -155,6 +155,8 @@
         
         if (self.detailDict) {
             
+            self.business_id = self.bListModel.business_id;
+            
             if ([dic[@"detail"] isEqualToString:@"username"] || [dic[@"detail"] isEqualToString:@"userdep_name"] || [dic[@"detail"] isEqualToString:@"image"]) {
                 
             }else{
@@ -354,6 +356,10 @@
     
         cell.txtField.keyboardType = UIKeyboardTypeDecimalPad;
     
+    }else{
+        
+        cell.txtField.keyboardType = UIKeyboardTypeDefault;
+
     }
     
     if ([dict[@"type"] isEqualToString:@"imageCheck"]) {
