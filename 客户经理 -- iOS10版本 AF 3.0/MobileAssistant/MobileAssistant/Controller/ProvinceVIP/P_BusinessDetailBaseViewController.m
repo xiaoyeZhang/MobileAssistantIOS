@@ -595,10 +595,21 @@
                     vc.type_id = @"2";
                     vc.dep_id = userInfo.dep_id;
                     vc.delegate = self;
+                    vc.titleName = @"二级经理列表";
+
                     if ([dict[@"model_id"] isEqualToString:@"9"]) {
+                        vc.titleName = @"活动受理人员列表";
                         vc.type_id = @"25";
                         vc.model_id = @"9";
                     }
+                    NSString *kind = self.detailDict[@"bill_kind"];
+                    
+                    if ([self.model_id isEqualToString:@"8"] && ([kind isEqualToString:@"增值税普通发票"] || [kind isEqualToString:@"增值税专用发票"]) && [self.bListModel.state intValue] == PROCESS_STATE_manager_submit) {
+                        
+                        vc.name = @"增值税发票";
+                        vc.titleName = @"下级执行人列表";
+                    }
+                    
                     [self.navigationController pushViewController:vc animated:YES];
                 }
                 

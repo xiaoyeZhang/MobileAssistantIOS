@@ -57,15 +57,15 @@
             
             return YES;
         }else if (state == PROCESS_STATE_three_manager_through &&
-                  (userType == ROLE_BILL || userType == ROLE_TWO)){ //综合确认 ->填写回款日期和金额
+                  (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合确认 ->填写回款日期和金额
             
             return YES;
         }
-//        else if (state == PROCESS_STATE_marketing_through &&
-//                  (userType == ROLE_BILL || userType == ROLE_TWO)){ //支撑人员审核通过
-//            
-//            return YES;
-//        }
+        else if (state == RETURN_THROUGH &&
+                  (userType == ROLE_BILL || userType == ROLE_TWO)){ //财务人员审核通过
+            
+            return YES;
+        }
         else if (state == PROCESS_STATE_two_manager_through &&
                   (userType == ROLE_BILL || userType == ROLE_COMMON)){ //综合确认 ->填写回款日期和金额
             

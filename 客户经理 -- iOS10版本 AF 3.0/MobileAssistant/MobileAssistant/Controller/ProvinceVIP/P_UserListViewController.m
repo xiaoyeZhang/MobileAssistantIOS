@@ -26,10 +26,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"二级经理列表";
-    if ([self.model_id isEqualToString:@"9"]) {
-        self.title = @"活动受理人员列表";
-    }
+//    self.title = @"二级经理列表";
+//    if ([self.model_id isEqualToString:@"9"]) {
+//        self.title = @"活动受理人员列表";
+//    }
+    self.navigationItem.title = self.titleName;
     
     UIButton *backBtn = [self setNaviCommonBackBtn];
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -61,6 +62,7 @@
     NSDictionary *dict = @{@"method":@"getprocessorlist"/*@"getuserlist"*/,
                            @"dep_id":self.dep_id?self.dep_id:@"",
                            @"type_id":self.type_id?self.type_id:@"",
+                           @"name":self.name?self.name:@"",
                            @"model_id":self.model_id?self.model_id:@""};
     
     CommonService *service = [[CommonService alloc] init];

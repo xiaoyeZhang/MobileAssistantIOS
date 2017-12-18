@@ -162,6 +162,9 @@
         case 43:
             msg = @"营销支撑组已归档";
             break;
+        case 44:
+            msg = @"财务人员审核通过";
+            break;
         case 99:
             msg = @"";
             break;

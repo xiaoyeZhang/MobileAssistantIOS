@@ -139,37 +139,37 @@
             
             [self addSubmitBtn];
         }else if (state == PROCESS_STATE_three_manager_through &&
-                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_TWO)){ //三级经理审核通过
+                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //三级经理审核通过
             
             NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
                                @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
-//                               @{@"title":@"审核领导",@"type":@"Select"}
+                               @{@"title":@"审核领导",@"type":@"Select"}
                               ];
             
             [detailMuArr addObjectsFromArray:array];
             
             if (!self.submitState) {
 //                self.submitState = PROCESS_STATE_marketing_through; // 支撑人员审核
-                self.submitState = PROCESS_STATE_two_manager_through; //二级经理审核
+                self.submitState = RETURN_THROUGH; //财务人员审核通过
             }
             
             [self addSubmitBtn];
         }
-//        else if (state == PROCESS_STATE_marketing_through &&
-//                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_TWO)){ //支撑人员审核通过
-//            
-//            NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
-//                               @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
-//                               ];
-//            
-//            [detailMuArr addObjectsFromArray:array];
-//            
-//            if (!self.submitState) {
-//                self.submitState = PROCESS_STATE_two_manager_through;
-//            }
-//            
-//            [self addSubmitBtn];
-//        }
+        else if (state == RETURN_THROUGH &&
+                  ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_TWO)){ //财务人员审核通过  -> 二级经理审核通过
+            
+            NSArray *array = @[@{@"title":@"审      核",@"type":@"Check"},
+                               @{@"title":@"审核意见",@"type":@"Input",@"placeholder":@"请输入审核意见"},
+                               ];
+            
+            [detailMuArr addObjectsFromArray:array];
+            
+            if (!self.submitState) {
+                self.submitState = PROCESS_STATE_two_manager_through;
+            }
+            
+            [self addSubmitBtn];
+        }
         else if (state == PROCESS_STATE_two_manager_through &&
                   ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)){ //二级经理审核通过
             
@@ -444,22 +444,22 @@
                 
                 self.submitState = PROCESS_STATE_three_manager_through;
                 
-            }else if (state == PROCESS_STATE_three_manager_through && [userInfo.user_id isEqualToString:self.bListModel.next_processor]){ //指定二级经理审批
+            }else if (state == PROCESS_STATE_three_manager_through && [userInfo.user_id isEqualToString:self.bListModel.next_processor]){ //指定财务人员审批通过
                 
-//                [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
+                [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
                 
-//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-//                          withRowAnimation:UITableViewRowAnimationNone];
-//                self.submitState = PROCESS_STATE_marketing_through;
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationNone];
+                self.submitState = RETURN_THROUGH;
+                
+//                self.submitState = PROCESS_STATE_two_manager_through;
+                
+            }
+            else if (state == RETURN_THROUGH){ //指定二级经理审批
                 
                 self.submitState = PROCESS_STATE_two_manager_through;
                 
             }
-//            else if (state == PROCESS_STATE_marketing_through){ //指定支撑人员审批
-//                
-//                self.submitState = PROCESS_STATE_two_manager_through;
-//                
-//            }
             else if (state == PROCESS_STATE_two_manager_through){ //指定二级经理审批
                 
                 self.submitState = PROCESS_STATE_Invoice;
@@ -534,14 +534,14 @@
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                           withRowAnimation:UITableViewRowAnimationNone];
             }
-//            else if (state == PROCESS_STATE_three_manager_through &&
-//                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)) { //三级经理审核通过 -> 支撑人员确认
-//                
-//                [detailMuArr removeObjectAtIndex:detailMuArr.count-1];
-//                
-//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-//                          withRowAnimation:UITableViewRowAnimationNone];
-//            }
+            else if (state == PROCESS_STATE_three_manager_through &&
+                      ([userInfo.type_id intValue] == ROLE_BILL|[userInfo.type_id intValue] == ROLE_COMMON)) { //三级经理审核通过 -> 支撑人员确认
+                
+                [detailMuArr removeObjectAtIndex:detailMuArr.count-1];
+                
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationNone];
+            }
         }else{
             
             if (amount > 3000) {
@@ -654,7 +654,7 @@
     
     int cost = [self.detailDict[@"bill_amount"] intValue];
     NSString *type = self.detailDict[@"bill_kind"];
-    if ((![type isEqualToString:@"自定义发票"]) | ([type isEqualToString:@"自定义发票"] && cost > 3000) && ([self.next_processor_id isEqualToString:@"-1"] || self.next_processor_id.length == 0) && (self.submitState == PROCESS_STATE_three_manager_through) && (self.submitState != PROCESS_STATE_reject)) {
+    if ((![type isEqualToString:@"自定义发票"]) | ([type isEqualToString:@"自定义发票"] && cost > 3000) && ([self.next_processor_id isEqualToString:@"-1"] || self.next_processor_id.length == 0) && (self.submitState == PROCESS_STATE_three_manager_through || self.submitState == RETURN_THROUGH) && (self.submitState != PROCESS_STATE_reject)) {
         ALERT_ERR_MSG(@"请选择审核领导");
         
         isDone = YES;

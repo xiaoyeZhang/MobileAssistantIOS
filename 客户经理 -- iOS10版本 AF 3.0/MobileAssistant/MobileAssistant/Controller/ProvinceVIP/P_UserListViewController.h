@@ -30,6 +30,8 @@
 @property(nonatomic, copy) NSString *type_id; //类型 2:二级经理
 @property(nonatomic, copy) NSString *dep_id; //部门id
 @property(nonatomic, copy) NSString *model_id;
+@property(nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *titleName;
 
 @property(nonatomic, weak) id<UserListViewControllerDelegate> delegate;
 
