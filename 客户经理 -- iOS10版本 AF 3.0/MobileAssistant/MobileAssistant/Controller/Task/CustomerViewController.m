@@ -312,6 +312,7 @@
     [param setObject:num forKey:@"user_num"];
     [param setObject:userEntity.user_id forKey:@"user_id"];
     [param setObject:userEntity.is_first forKey:@"is_first"];
+    [param setObject:self.info?self.info:@"" forKey:@"info"];
 
     if ([self.contenDic count] > 0) {
         [param setObject:[self.contenDic objectForKey:@"company_num"] forKey:@"GroupId"];
@@ -422,6 +423,7 @@
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"company_list", @"method",
                            entity.num, @"user_num",
+                           self.info,@"info",
                            from, @"from",
                            @"", @"name",
                            condition1.ID, @"level",

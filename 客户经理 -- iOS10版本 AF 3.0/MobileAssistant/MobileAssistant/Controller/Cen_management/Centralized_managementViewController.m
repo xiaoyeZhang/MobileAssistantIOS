@@ -31,6 +31,7 @@
 #import "Matching_ListViewController.h"
 #import "Payment_ListViewController.h"
 #import "P_Marketing_PlanListViewController.h"
+#import "Basic_business_moduleListViewController.h"
 
 static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 static NSString *HeaderIdentifier = @"headerView";
@@ -114,8 +115,8 @@ static NSString *HeaderIdentifier = @"headerView";
                                            @{@"title":@"分合户",@"icon":@"分合户",@"viewController":@"13",@"VCbool":@"1"},
                                            @{@"title":@"纵向行业任务协同",@"icon":@"纵向行业任务协同",@"viewController":@"14",@"VCbool":@"1"},
                                            @{@"title":@"集团划拨",@"icon":@"p_stock3",@"viewController":@"16",@"VCbool":@"1"},
-                                           @{@"title":@"营销方案确认",@"icon":@"维修(2)",@"viewController":@"17",@"VCbool":@"1"}
-                                           ]}];
+                                           @{@"title":@"营销方案确认",@"icon":@"维修(2)",@"viewController":@"17",@"VCbool":@"1"},
+                                           @{@"title":@"基础业务受理",@"icon":@"方案",@"viewController":@"18",@"VCbool":@"1"}]}];
 
     }else if ([_name isEqualToString:@"走访任务系统"]){
         
@@ -279,7 +280,7 @@ static NSString *HeaderIdentifier = @"headerView";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
+
     if ([_name isEqualToString:@"订单中心"]) {
     
         NSString *ControllerStr = [[MainBusinessArr objectAtIndex:indexPath.row] objectForKey:@"viewController"];
@@ -289,6 +290,8 @@ static NSString *HeaderIdentifier = @"headerView";
             CustomerViewController *vc = [[CustomerViewController alloc]init];
             
             vc.enter_type = 7;
+            
+            vc.info = @"订单需求发起";
             
             [self.navigationController pushViewController:vc animated:YES];
             
@@ -301,6 +304,8 @@ static NSString *HeaderIdentifier = @"headerView";
     }else{
         
         NSString *ControllerStr = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"];
+        
+        [self Select_Frequency:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"title"]];
         
         if ([ControllerStr isEqualToString:@"Business_InternationalViewController"]) {
             
@@ -437,11 +442,40 @@ static NSString *HeaderIdentifier = @"headerView";
         {
             [self goP_Marketing_PlanViewController:nil];
             break;
+        }case 18:
+        {
+            [self goBasic_business_moduleListViewController:nil];
+            break;
         }
             
         default:
             break;
     }
+}
+
+
+#pragma mark - 子界面的进入次数
+
+- (void) Select_Frequency:(NSString *)title{
+    
+    NSString *info;
+    
+    if ([title isEqualToString:@"制定走访任务"]) {
+        info = @"制定拜访任务";
+    }else if ([title isEqualToString:@"国际漫游"]) {
+        info = @"国际漫游";
+    }else if ([title isEqualToString:@"营销活动"]) {
+        info = @"营销活动查询";
+    }else if ([title isEqualToString:@"白名单查询"]) {
+        info = @"白名单查询";
+    }
+    
+    if (info.length > 0) {
+        
+        [self frequency_statistics:info];
+    
+    }
+    
 }
 
 #pragma mark - 进入子页面
@@ -567,6 +601,13 @@ static NSString *HeaderIdentifier = @"headerView";
 - (void)goP_Marketing_PlanViewController:(id)sender{
     
     P_Marketing_PlanListViewController *vc = [[P_Marketing_PlanListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+//基础业务受理     Basic_business_moduleListViewController
+- (void)goBasic_business_moduleListViewController:(id)sender{
+    
+    Basic_business_moduleListViewController *vc = [[Basic_business_moduleListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     
 }

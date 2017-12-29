@@ -583,7 +583,7 @@
             
             if ([type isEqualToString:@"Select"]) {
                
-                if ([self.model_id isEqualToString:@"9"] || [self.model_id isEqualToString:@"3"] || [self.model_id isEqualToString:@"15"]) {
+                if ([self.model_id isEqualToString:@"9"] || [self.model_id isEqualToString:@"3"] || [self.model_id isEqualToString:@"15"] || [self.model_id isEqualToString:@"16"]) {
 
                     P_NextUserListViewController *vc = [[P_NextUserListViewController alloc]init];
                     vc.delegate = self;

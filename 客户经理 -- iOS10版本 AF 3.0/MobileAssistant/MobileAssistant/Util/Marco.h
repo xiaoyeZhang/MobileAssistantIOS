@@ -114,6 +114,8 @@
 #define PROCESS_STATE_REFUND 43
 /** 财务人员审核通过*/
 #define RETURN_THROUGH 44
+/** 营销支撑组组长审核通过 */
+#define PROCESS_STATE_GROUP_LEADER_through 50
 
 //动态配置
 #define FORM_TYPE_ZERO  0   //文本框

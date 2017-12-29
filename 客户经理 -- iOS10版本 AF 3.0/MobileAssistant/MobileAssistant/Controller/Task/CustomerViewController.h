@@ -39,6 +39,7 @@
 
 @property (nonatomic, strong) NSString *product_name;
 @property (assign) int enter_type;
+@property (assign) NSString *info;
 
 - (void) addCompObj:(CompEntity *)entity;
 

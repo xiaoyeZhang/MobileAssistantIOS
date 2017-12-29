@@ -501,6 +501,10 @@
 		2EA56DCE1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA56DCC1FBEB60100D40D19 /* Arrears_taskTableViewCell.xib */; };
 		2EA5A6511D47381900A87184 /* Select_section_ManmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5A64F1D47381900A87184 /* Select_section_ManmerViewController.m */; };
 		2EA5A6521D47381900A87184 /* Select_section_ManmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA5A6501D47381900A87184 /* Select_section_ManmerViewController.xib */; };
+		2EA9BC651FE8B06500C3251B /* Basic_business_moduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9BC641FE8B06500C3251B /* Basic_business_moduleListViewController.m */; };
+		2EA9BC691FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9BC671FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.m */; };
+		2EA9BC6A1FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA9BC681FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.xib */; };
+		2EA9BC6D1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9BC6C1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.m */; };
 		2EAF7B5A1D45A12F007188F2 /* Houston_queryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF7B591D45A12F007188F2 /* Houston_queryViewController.m */; };
 		2EAF7B5E1D45AF97007188F2 /* Houston_querySubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF7B5C1D45AF97007188F2 /* Houston_querySubmitViewController.m */; };
 		2EAF7B5F1D45AF97007188F2 /* Houston_querySubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EAF7B5D1D45AF97007188F2 /* Houston_querySubmitViewController.xib */; };
@@ -1749,6 +1753,13 @@
 		2EA5A64E1D47381900A87184 /* Select_section_ManmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Select_section_ManmerViewController.h; sourceTree = "<group>"; };
 		2EA5A64F1D47381900A87184 /* Select_section_ManmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Select_section_ManmerViewController.m; sourceTree = "<group>"; };
 		2EA5A6501D47381900A87184 /* Select_section_ManmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Select_section_ManmerViewController.xib; sourceTree = "<group>"; };
+		2EA9BC631FE8B06500C3251B /* Basic_business_moduleListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Basic_business_moduleListViewController.h; sourceTree = "<group>"; };
+		2EA9BC641FE8B06500C3251B /* Basic_business_moduleListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Basic_business_moduleListViewController.m; sourceTree = "<group>"; };
+		2EA9BC661FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Basic_business_moduleSubmitViewController.h; sourceTree = "<group>"; };
+		2EA9BC671FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Basic_business_moduleSubmitViewController.m; sourceTree = "<group>"; };
+		2EA9BC681FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Basic_business_moduleSubmitViewController.xib; sourceTree = "<group>"; };
+		2EA9BC6B1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Basic_business_moduleDetailViewController.h; sourceTree = "<group>"; };
+		2EA9BC6C1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Basic_business_moduleDetailViewController.m; sourceTree = "<group>"; };
 		2EAF7B581D45A12F007188F2 /* Houston_queryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Houston_queryViewController.h; sourceTree = "<group>"; };
 		2EAF7B591D45A12F007188F2 /* Houston_queryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Houston_queryViewController.m; sourceTree = "<group>"; };
 		2EAF7B5B1D45AF97007188F2 /* Houston_querySubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Houston_querySubmitViewController.h; sourceTree = "<group>"; };
@@ -2979,6 +2990,7 @@
 				2EA06C6B1FD7941B000A952F /* P_NextUserListViewController.m */,
 				2EA06C6C1FD7941B000A952F /* P_NextUserListViewController.xib */,
 				2EDA64481CA115CE00B0F428 /* NewsProvinceVip */,
+				2EA9BC621FE8B04300C3251B /* Basic_business_module */,
 				2E684CB01FD643E400D8B031 /* Marketing_plan_ confirmation */,
 				2EAF7B571D45A087007188F2 /* Houston_query */,
 				2ECFB86F1D37894700A0668E /* P_Vertical_industry_collaboration */,
@@ -3799,6 +3811,20 @@
 				2EA377E71FA6FB62003B0684 /* Performance_displayViewController.xib */,
 			);
 			path = Performance_display;
+			sourceTree = "<group>";
+		};
+		2EA9BC621FE8B04300C3251B /* Basic_business_module */ = {
+			isa = PBXGroup;
+			children = (
+				2EA9BC631FE8B06500C3251B /* Basic_business_moduleListViewController.h */,
+				2EA9BC641FE8B06500C3251B /* Basic_business_moduleListViewController.m */,
+				2EA9BC661FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.h */,
+				2EA9BC671FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.m */,
+				2EA9BC681FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.xib */,
+				2EA9BC6B1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.h */,
+				2EA9BC6C1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.m */,
+			);
+			path = Basic_business_module;
 			sourceTree = "<group>";
 		};
 		2EAF7B571D45A087007188F2 /* Houston_query */ = {
@@ -5338,6 +5364,7 @@
 				14E54B2B1BCF7B6E00114D60 /* UserCenterViewController.xib in Resources */,
 				2EA366841CDAEF1D00443BE9 /* Product_classificationViewController.xib in Resources */,
 				149A87E91BBB939600CEFA50 /* ThreeLabelsTableViewCell.xib in Resources */,
+				2EA9BC6A1FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.xib in Resources */,
 				2EA3667F1CD9DC5400443BE9 /* SwitchTableViewCell.xib in Resources */,
 				2EA3668F1CDAFA5E00443BE9 /* Product_classificationTableViewCell.xib in Resources */,
 				2E9BB2381D36135E00092E31 /* small_piece_paperSubmitViewController.xib in Resources */,
@@ -5880,6 +5907,7 @@
 				2EF98C291C312CAC00B10311 /* Business_Group_DirectoruyListViewController.m in Sources */,
 				417D549A1BC3B1AF0036934C /* UserListModel.m in Sources */,
 				143AAD771BC65F17005401EA /* UIBarButtonItem+WZLBadge.m in Sources */,
+				2EA9BC651FE8B06500C3251B /* Basic_business_moduleListViewController.m in Sources */,
 				2EDA646E1CA24D6300B0F428 /* News_ProviceVIP_DetailViewController.m in Sources */,
 				2E22577A1EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.m in Sources */,
 				2E08EFE11EE052B100FBD274 /* Business_contactsEntity.m in Sources */,
@@ -5941,6 +5969,7 @@
 				D9FDDC8419EBF45D00F03B55 /* ContactTableViewCell.m in Sources */,
 				148546BD1BBA252F00257580 /* BusinessDetailEntity.m in Sources */,
 				D9ADFDB619D6584D00316935 /* ContactViewController.m in Sources */,
+				2EA9BC6D1FE8B0E200C3251B /* Basic_business_moduleDetailViewController.m in Sources */,
 				2E86A5461D26137100856AF1 /* README.md in Sources */,
 				2ECDBE181CCF544A008B2B46 /* daily_managementViewController.m in Sources */,
 				148546C31BBA252F00257580 /* BusinessUtils.m in Sources */,
@@ -6091,6 +6120,7 @@
 				2E90AEC21CA90B1000E71FFD /* shareViewController.m in Sources */,
 				41CF614D1BC1712400A19D8C /* P_BillSubmitViewController.m in Sources */,
 				2E86A5301D2503E100856AF1 /* MASLayoutConstraint.m in Sources */,
+				2EA9BC691FE8B0A100C3251B /* Basic_business_moduleSubmitViewController.m in Sources */,
 				2E5712871F20382100A14C9F /* Product_Visit_SumbitViewController.m in Sources */,
 				2EA377E81FA6FB62003B0684 /* Performance_displayViewController.m in Sources */,
 				2EB7AE631C1ACAE100621F84 /* UserView.m in Sources */,

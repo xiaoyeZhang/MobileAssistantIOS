@@ -41,4 +41,6 @@
 
 - (NSString *)setLevel:(NSString *)company_level;
 
+- (void)frequency_statistics:(NSString *)info;
+
 @end

@@ -132,6 +132,7 @@
     
     NSDictionary *dict = @{@"method":@"company_list",
                            @"user_num":userEntity.num,
+                           @"info":@"集团号簿",
                            };
     
     [service getNetWorkData:dict  Successed:^(id entity) {

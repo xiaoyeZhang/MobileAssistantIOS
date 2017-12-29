@@ -123,6 +123,7 @@
     
     NSDictionary *dict = @{@"method":@"company_list",
                            @"user_num":userEntity.num,
+                           @"info":@"产品查询退订",
                            };
     
     

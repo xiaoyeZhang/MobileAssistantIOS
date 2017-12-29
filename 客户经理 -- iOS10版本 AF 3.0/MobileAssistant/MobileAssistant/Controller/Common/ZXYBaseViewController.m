@@ -20,6 +20,13 @@
 
 }
 
+-(void)frequency_statistics:(NSString *)info{
+    
+    LogModule *logmodule = [[LogModule alloc]init];
+    [logmodule Select_statistics:info];
+    
+}
+
 - (void)set_logmodel{
     
     if (self.model.length > 0) {

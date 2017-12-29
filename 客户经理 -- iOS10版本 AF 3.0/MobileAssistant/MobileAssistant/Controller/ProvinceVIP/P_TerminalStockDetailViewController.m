@@ -146,7 +146,7 @@
         
         [self addSubmitBtn];
     }else if (state == PROCESS_STATE_three_manager_through &&
-              [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
+              userType == ROLE_TWO){
         NSArray *array = @[@{@"title":@"审       核",@"type":@"Check"},
                            @{@"title":@"审核意见",@"type":@"Input"}];
         

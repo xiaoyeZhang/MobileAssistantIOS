@@ -165,6 +165,9 @@
         case 44:
             msg = @"财务人员审核通过";
             break;
+        case 50:
+            msg = @"营销支撑组组长审核通过";
+            break;
         case 99:
             msg = @"";
             break;

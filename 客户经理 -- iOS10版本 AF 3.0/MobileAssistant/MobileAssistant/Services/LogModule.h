@@ -12,4 +12,6 @@
 
 - (void)Select_LogModule:(NSString *)module;
 
+- (void)Select_statistics:(NSString *)info;
+
 @end
