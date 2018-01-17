@@ -120,25 +120,43 @@ static NSString *HeaderIdentifier = @"headerView";
 
     }else if ([_name isEqualToString:@"走访任务系统"]){
         
+//        if ([userEntity.type_id intValue] == ROLE_CUSTOMER || [userEntity.type_id intValue] == ROLE_TWO || [userEntity.type_id intValue] == ROLE_THREE ){
+//
+//            [MainBusinessArr addObject:@{@"section":@"0",@"sectionName":@"",@"list":
+//                                             @[@{@"title":@"制定走访任务",@"icon":@"新建",@"viewController":[userEntity.is_first isEqual:@"1"]?@"Task_Two_CreateViewController":@"TaskCreateViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"走访任务列表",@"icon":@"查找表单列表",@"viewController":@"TaskListViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"长期未拜访",@"icon":@"时间",@"viewController":@"No_visit_baselistViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"实时定位查看",@"icon":@"定位(1)",@"viewController":@"LocationViewViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"信息实时查看",@"icon":@"订单详情",@"viewController":@"InformationViewViewController",@"VCbool":@"1"}]}];
+//        }
+//
+//        if ([userEntity.type_id intValue] == ROLE_TWO || [userEntity.type_id intValue] == ROLE_THREE || [userEntity.type_id intValue] == ROLE_PRODUCT){
+//
+//            [MainBusinessArr addObject:@{@"section":@"0",@"sectionName":@"",@"list":
+//                                             @[@{@"title":@"制定走访任务",@"icon":@"新建",@"viewController":[userEntity.is_first isEqual:@"1"]?@"Task_Two_CreateViewController":@"TaskCreateViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"走访任务列表",@"icon":@"查找表单列表",@"viewController":@"TaskListViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"长期未拜访",@"icon":@"时间",@"viewController":@"No_visit_baselistViewController",@"VCbool":@"1"},
+//                                               @{@"title":@"产品经理走访",@"icon":@"bm_directory",@"viewController":@"Product_VisitListViewController",@"VCbool":@"1"}]}];
+//
+//        }
+        [MainBusinessArr addObject:@{@"title":@"制定走访任务",@"icon":@"新建",@"viewController":[userEntity.is_first isEqual:@"1"]?@"Task_Two_CreateViewController":@"TaskCreateViewController"}];  //  首席看管
+        
+        [MainBusinessArr addObject:@{@"title":@"走访任务列表",@"icon":@"查找表单列表",@"viewController":@"TaskListViewController"}];
+        [MainBusinessArr addObject:@{@"title":@"长期未拜访",@"icon":@"时间",@"viewController":@"No_visit_baselistViewController"}];
+        
         if ([userEntity.type_id intValue] == ROLE_CUSTOMER || [userEntity.type_id intValue] == ROLE_TWO || [userEntity.type_id intValue] == ROLE_THREE ){
             
-            [MainBusinessArr addObject:@{@"section":@"0",@"sectionName":@"",@"list":
-                                             @[@{@"title":@"制定走访任务",@"icon":@"新建",@"viewController":[userEntity.is_first isEqual:@"1"]?@"Task_Two_CreateViewController":@"TaskCreateViewController",@"VCbool":@"1"},
-                                               @{@"title":@"走访任务列表",@"icon":@"查找表单列表",@"viewController":@"TaskListViewController",@"VCbool":@"1"},
-                                               @{@"title":@"长期未拜访",@"icon":@"时间",@"viewController":@"No_visit_baselistViewController",@"VCbool":@"1"},
-                                               @{@"title":@"实时定位查看",@"icon":@"定位(1)",@"viewController":@"LocationViewViewController",@"VCbool":@"1"},
-                                               @{@"title":@"信息实时查看",@"icon":@"订单详情",@"viewController":@"InformationViewViewController",@"VCbool":@"1"}]}];
+            [MainBusinessArr addObject:@{@"title":@"实时定位查看",@"icon":@"定位(1)",@"viewController":@"LocationViewViewController"}];
+            
+            [MainBusinessArr addObject:@{@"title":@"信息实时查看",@"icon":@"订单详情",@"viewController":@"InformationViewViewController"}];
         }
         
         if ([userEntity.type_id intValue] == ROLE_TWO || [userEntity.type_id intValue] == ROLE_THREE || [userEntity.type_id intValue] == ROLE_PRODUCT){
             
-            [MainBusinessArr addObject:@{@"section":@"0",@"sectionName":@"",@"list":
-                                             @[@{@"title":@"制定走访任务",@"icon":@"新建",@"viewController":[userEntity.is_first isEqual:@"1"]?@"Task_Two_CreateViewController":@"TaskCreateViewController",@"VCbool":@"1"},
-                                               @{@"title":@"走访任务列表",@"icon":@"查找表单列表",@"viewController":@"TaskListViewController",@"VCbool":@"1"},
-                                               @{@"title":@"长期未拜访",@"icon":@"时间",@"viewController":@"No_visit_baselistViewController",@"VCbool":@"1"},
-                                               @{@"title":@"产品经理走访",@"icon":@"bm_directory",@"viewController":@"Product_VisitListViewController",@"VCbool":@"1"}]}];
+            [MainBusinessArr addObject:@{@"title":@"产品经理走访",@"icon":@"bm_directory",@"viewController":@"Product_VisitListViewController"}];
             
         }
+        
     }else if ([_name isEqualToString:@"订单中心"]){
 
         [MainBusinessArr addObject:@{@"title":@"业务联系人",@"icon":@"联系人",@"viewController":@"Business_contacts_ListViewController",@"VCbool":@"1"}];
@@ -200,7 +218,7 @@ static NSString *HeaderIdentifier = @"headerView";
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    if (MainBusinessArr.count > 1 && ![_name isEqualToString:@"订单中心"]) {
+    if (MainBusinessArr.count > 1 && ![_name isEqualToString:@"订单中心"] && ![_name isEqualToString:@"走访任务系统"]) {
         
         return MainBusinessArr.count;
     
@@ -214,7 +232,7 @@ static NSString *HeaderIdentifier = @"headerView";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (![_name isEqualToString:@"订单中心"]) {
+    if (![_name isEqualToString:@"订单中心"] && ![_name isEqualToString:@"走访任务系统"]) {
         
         for (int iC = 0; iC < MainBusinessArr.count; iC++) {
             
@@ -226,12 +244,8 @@ static NSString *HeaderIdentifier = @"headerView";
         return 0;
         
     }else{
-        
         return MainBusinessArr.count;
-        
     }
-    
-   
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -239,7 +253,7 @@ static NSString *HeaderIdentifier = @"headerView";
     
     Central_manageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    if ([_name isEqualToString:@"订单中心"]) {
+    if ([_name isEqualToString:@"订单中心"] || [_name isEqualToString:@"走访任务系统"]) {
         cell.titleLable.text = [[MainBusinessArr objectAtIndex:indexPath.row] objectForKey:@"title"];
         cell.iconImageView.image = [UIImage imageNamed:[[MainBusinessArr objectAtIndex:indexPath.row] objectForKey:@"icon"]];
     }else{
@@ -281,7 +295,7 @@ static NSString *HeaderIdentifier = @"headerView";
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 
-    if ([_name isEqualToString:@"订单中心"]) {
+    if ([_name isEqualToString:@"订单中心"] || [_name isEqualToString:@"走访任务系统"]) {
     
         NSString *ControllerStr = [[MainBusinessArr objectAtIndex:indexPath.row] objectForKey:@"viewController"];
         
@@ -341,7 +355,7 @@ static NSString *HeaderIdentifier = @"headerView";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     
-    if (MainBusinessArr.count > 1 && ![_name isEqualToString:@"订单中心"]) {
+    if (MainBusinessArr.count > 1 && ![_name isEqualToString:@"订单中心"] && ![_name isEqualToString:@"走访任务系统"]) {
         
         return CGSizeMake(collectionView.bounds.size.width, 25);
 

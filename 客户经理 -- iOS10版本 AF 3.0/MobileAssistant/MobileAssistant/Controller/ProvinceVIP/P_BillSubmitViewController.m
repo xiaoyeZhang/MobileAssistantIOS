@@ -96,7 +96,7 @@ XYDatePickerDelegate,MBProgressHUDDelegate>{
         self.bill_kind = self.detailDict[@"bill_kind"];
         self.account_number = self.detailDict[@"account_number"];
         self.fixed_subject = self.detailDict[@"fixed_subject"];
-        self.business_id = self.bListModel.business_id;
+        
 //        self.type_payment = self.detailDict[@"type_payment"];
     }
 }

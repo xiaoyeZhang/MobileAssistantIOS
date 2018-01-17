@@ -293,6 +293,8 @@ BMKMapManager* _mapManager;
 //    NSInteger badge = [[aps valueForKey:@"badge"] integerValue]; //badge数量
 //    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
     
+//    notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" +R.raw.test));
+    
     // 取得自定义字段内容
 //    NSString *pushTag = [userInfo valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
 //    NSLog(@"content =[%@], badge=[%d], sound=[%@], customize field  =[%@]",content,badge,sound,pushTag);

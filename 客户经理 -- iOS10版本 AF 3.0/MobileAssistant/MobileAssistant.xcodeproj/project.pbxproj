@@ -412,6 +412,7 @@
 		2E9814C81C5096EE00A56EF9 /* ChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9814C61C5096EE00A56EF9 /* ChangePhoneViewController.xib */; };
 		2E9814CB1C51CA9800A56EF9 /* LogModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9814CA1C51CA9800A56EF9 /* LogModule.m */; };
 		2E9814CE1C51CF6800A56EF9 /* ZXYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9814CD1C51CF6800A56EF9 /* ZXYBaseViewController.m */; };
+		2E9AB5991FFF07F000A0C54F /* sub.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9AB5981FFF07EF00A0C54F /* sub.caf */; };
 		2E9B21441DA9D34900E1A794 /* News_MyGroup_MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9B21421DA9D34900E1A794 /* News_MyGroup_MessageViewController.m */; };
 		2E9B21451DA9D34900E1A794 /* News_MyGroup_MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9B21431DA9D34900E1A794 /* News_MyGroup_MessageViewController.xib */; };
 		2E9B21491DAB33DD00E1A794 /* New_group_base_messageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9B21471DAB33DD00E1A794 /* New_group_base_messageTableViewCell.m */; };
@@ -1614,6 +1615,7 @@
 		2E9814CA1C51CA9800A56EF9 /* LogModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogModule.m; sourceTree = "<group>"; };
 		2E9814CC1C51CF6800A56EF9 /* ZXYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYBaseViewController.h; sourceTree = "<group>"; };
 		2E9814CD1C51CF6800A56EF9 /* ZXYBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYBaseViewController.m; sourceTree = "<group>"; };
+		2E9AB5981FFF07EF00A0C54F /* sub.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sub.caf; sourceTree = "<group>"; };
 		2E9B21411DA9D34900E1A794 /* News_MyGroup_MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News_MyGroup_MessageViewController.h; sourceTree = "<group>"; };
 		2E9B21421DA9D34900E1A794 /* News_MyGroup_MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News_MyGroup_MessageViewController.m; sourceTree = "<group>"; };
 		2E9B21431DA9D34900E1A794 /* News_MyGroup_MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News_MyGroup_MessageViewController.xib; sourceTree = "<group>"; };
@@ -4858,6 +4860,7 @@
 		D9F3AE5D19C3DA5C00AAF0C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2E9AB5981FFF07EF00A0C54F /* sub.caf */,
 				2EC91E631EC1638500995113 /* dayo.net.cn.cer */,
 				D9BA5FD41A67BFF100D38D56 /* phoneNumber.txt */,
 				D9F3AE5E19C3DA5C00AAF0C9 /* MobileAssistant-Info.plist */,
@@ -5385,6 +5388,7 @@
 				2EDCCA2F1F02495000BBCA0C /* Integral_rankingListHeadView.xib in Resources */,
 				D9ADFDD819D6DBC400316935 /* ActionViewController.xib in Resources */,
 				2EF98C801C33A69200B10311 /* UserLogoutBtnView.xib in Resources */,
+				2E9AB5991FFF07F000A0C54F /* sub.caf in Resources */,
 				2E90AEC31CA90B1000E71FFD /* shareViewController.xib in Resources */,
 				D9ADFDA219D63C1C00316935 /* ExecutorViewController.xib in Resources */,
 				2E22577B1EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.xib in Resources */,

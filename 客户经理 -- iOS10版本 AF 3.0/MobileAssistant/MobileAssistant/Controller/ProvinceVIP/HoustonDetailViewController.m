@@ -67,7 +67,7 @@
         return;
     }
     
-    if (state == PROCESS_STATE_manager_submit) { //被驳回
+    if (state == PROCESS_STATE_manager_submit) { 
         
         [detailMuArr removeObject:@{@"title":@"附      件",@"type":@"Btn"}];
         [detailMuArr removeObject:@{@"title":@"入账金额",       @"process":@"remark",      @"type":@"Label"}];
