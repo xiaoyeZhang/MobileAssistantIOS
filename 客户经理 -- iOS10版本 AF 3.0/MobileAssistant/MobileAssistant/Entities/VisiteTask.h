@@ -31,6 +31,7 @@
  address;客户地址
  is_chief:是否首席客户代表
  up_date:截止日期
+ business_info:商机
  */
 @property (nonatomic, strong) NSString *visit_id;
 @property (nonatomic, strong) NSString *title;
@@ -58,6 +59,8 @@
 
 @property (nonatomic, strong) NSString *assist_id;
 @property(nonatomic, copy) NSString *assist_name;
+
+@property(nonatomic, strong) NSArray *business_info;
 
 @property(nonatomic, copy) NSString *color;
 

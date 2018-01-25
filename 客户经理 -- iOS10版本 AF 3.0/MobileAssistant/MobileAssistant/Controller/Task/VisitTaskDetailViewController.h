@@ -28,6 +28,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *labelLocation;
 @property (nonatomic, strong) IBOutlet UILabel *labelLoactionAddress;
 @property (nonatomic, strong) IBOutlet UILabel *labelSummary;
+@property (weak, nonatomic) IBOutlet UIButton *Manage_Lookbtn;
 
 @property (nonatomic, strong) IBOutlet UIView *viewLocation;
 @property (nonatomic, strong) IBOutlet UIView *viewSummary;

@@ -176,6 +176,10 @@
 		14E54B571BD0C9CD00114D60 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E54B551BD0C9CD00114D60 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2E05A53F1CE566E400851BD7 /* White_query_Detail_listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E05A53D1CE566E400851BD7 /* White_query_Detail_listViewController.m */; };
 		2E05A5401CE566E400851BD7 /* White_query_Detail_listViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E05A53E1CE566E400851BD7 /* White_query_Detail_listViewController.xib */; };
+		2E080EA620171A72006059A0 /* Management_business_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E080EA420171A72006059A0 /* Management_business_ListViewController.m */; };
+		2E080EA720171A72006059A0 /* Management_business_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E080EA520171A72006059A0 /* Management_business_ListViewController.xib */; };
+		2E080EAB2017367E006059A0 /* Manangement_detailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E080EA92017367D006059A0 /* Manangement_detailListViewController.m */; };
+		2E080EAC2017367E006059A0 /* Manangement_detailListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E080EAA2017367D006059A0 /* Manangement_detailListViewController.xib */; };
 		2E08EFD81EDF098400FBD274 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E08EFD71EDF098400FBD274 /* libMobClickLibrary.a */; };
 		2E08EFDD1EE0511100FBD274 /* Business_contacts_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E08EFDB1EE0511100FBD274 /* Business_contacts_ListViewController.m */; };
 		2E08EFDE1EE0511100FBD274 /* Business_contacts_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E08EFDC1EE0511100FBD274 /* Business_contacts_ListViewController.xib */; };
@@ -1229,6 +1233,12 @@
 		2E05A53C1CE566E400851BD7 /* White_query_Detail_listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White_query_Detail_listViewController.h; sourceTree = "<group>"; };
 		2E05A53D1CE566E400851BD7 /* White_query_Detail_listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = White_query_Detail_listViewController.m; sourceTree = "<group>"; };
 		2E05A53E1CE566E400851BD7 /* White_query_Detail_listViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = White_query_Detail_listViewController.xib; sourceTree = "<group>"; };
+		2E080EA320171A72006059A0 /* Management_business_ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Management_business_ListViewController.h; sourceTree = "<group>"; };
+		2E080EA420171A72006059A0 /* Management_business_ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Management_business_ListViewController.m; sourceTree = "<group>"; };
+		2E080EA520171A72006059A0 /* Management_business_ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Management_business_ListViewController.xib; sourceTree = "<group>"; };
+		2E080EA82017367D006059A0 /* Manangement_detailListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Manangement_detailListViewController.h; sourceTree = "<group>"; };
+		2E080EA92017367D006059A0 /* Manangement_detailListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manangement_detailListViewController.m; sourceTree = "<group>"; };
+		2E080EAA2017367D006059A0 /* Manangement_detailListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Manangement_detailListViewController.xib; sourceTree = "<group>"; };
 		2E08EFD71EDF098400FBD274 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		2E08EFDA1EE0511100FBD274 /* Business_contacts_ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business_contacts_ListViewController.h; sourceTree = "<group>"; };
 		2E08EFDB1EE0511100FBD274 /* Business_contacts_ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business_contacts_ListViewController.m; sourceTree = "<group>"; };
@@ -4966,6 +4976,12 @@
 				D9ADFDC319D6841200316935 /* VisitTaskDetailViewController.h */,
 				D9ADFDC419D6841200316935 /* VisitTaskDetailViewController.m */,
 				D9ADFDC519D6841200316935 /* VisitTaskDetailViewController.xib */,
+				2E080EA320171A72006059A0 /* Management_business_ListViewController.h */,
+				2E080EA420171A72006059A0 /* Management_business_ListViewController.m */,
+				2E080EA520171A72006059A0 /* Management_business_ListViewController.xib */,
+				2E080EA82017367D006059A0 /* Manangement_detailListViewController.h */,
+				2E080EA92017367D006059A0 /* Manangement_detailListViewController.m */,
+				2E080EAA2017367D006059A0 /* Manangement_detailListViewController.xib */,
 				D9ADFDD419D6DBC400316935 /* ActionViewController.h */,
 				D9ADFDD519D6DBC400316935 /* ActionViewController.m */,
 				D9ADFDD619D6DBC400316935 /* ActionViewController.xib */,
@@ -5403,6 +5419,7 @@
 				2E5712881F20382100A14C9F /* Product_Visit_SumbitViewController.xib in Resources */,
 				148546301BBA239F00257580 /* flashing_auto@2x.png in Resources */,
 				2ED112421F383EF300B8ED3F /* SA_SpecialViewController.xib in Resources */,
+				2E080EA720171A72006059A0 /* Management_business_ListViewController.xib in Resources */,
 				2E9BB2201D33934500092E31 /* This_month_unvisitTableViewCell.xib in Resources */,
 				2ECDBDF81CCDC8C5008B2B46 /* Arrears_taskViewController.xib in Resources */,
 				2E5712801F1F462300A14C9F /* Product_VisitListViewController.xib in Resources */,
@@ -5610,6 +5627,7 @@
 				149A86B61BBA32F500CEFA50 /* ProvinceVIPViewController.xib in Resources */,
 				148546DA1BBA257100257580 /* SUNListViewController.xib in Resources */,
 				2EA3878F1CE171450036C6B8 /* Birthday_departmentViewController.xib in Resources */,
+				2E080EAC2017367E006059A0 /* Manangement_detailListViewController.xib in Resources */,
 				2E91CD831D11403100F15BEA /* Matching_ListTableViewCell.xib in Resources */,
 				1485463B1BBA239F00257580 /* switch_camera_h.png in Resources */,
 				41CF61491BC15F6E00A19D8C /* P_CardSubmitViewController.xib in Resources */,
@@ -5931,6 +5949,7 @@
 				2ECCD2881E542EAF00A93EF1 /* OrderUserViewController.m in Sources */,
 				2E64C9D81C1E6C1C00F7597A /* ButtonTableViewCell.m in Sources */,
 				148546D91BBA257100257580 /* SUNListViewController.m in Sources */,
+				2E080EAB2017367E006059A0 /* Manangement_detailListViewController.m in Sources */,
 				2E91CD731D11343400F15BEA /* Payment_ListViewController.m in Sources */,
 				2E6BF0A41E5EBDFE008F6CF2 /* UIWebView+AFNetworking.m in Sources */,
 				149A87C71BBA91CF00CEFA50 /* XYDatePicker.m in Sources */,
@@ -6099,6 +6118,7 @@
 				D9F3AEA419C3F8AB00AAF0C9 /* AdEntity.m in Sources */,
 				D9ADFDBA19D65BB500316935 /* ContactEntity.m in Sources */,
 				2E86A5471D26137100856AF1 /* SFHFKeychainUtils.m in Sources */,
+				2E080EA620171A72006059A0 /* Management_business_ListViewController.m in Sources */,
 				1485467A1BBA239F00257580 /* SIAlertView.m in Sources */,
 				41CF61391BC00B2200A19D8C /* P_RepairSubmitViewController.m in Sources */,
 				2E86A4DE1D21244E00856AF1 /* P_Household_divisionDetaukViewController.m in Sources */,
@@ -6335,8 +6355,6 @@
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/baiduMap/Release$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/UMAnalytics_Sdk_3.4.6",
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/JPush",
-					"$(PROJECT_DIR)/MobileAssistant/Vendor/baiduMap/Release-iphonesimulator",
-					"$(PROJECT_DIR)/MobileAssistant/Vendor/baiduMap/Release-iphoneos",
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/JPush/Lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -6373,8 +6391,6 @@
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/baiduMap/Release$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/UMAnalytics_Sdk_3.4.6",
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/JPush",
-					"$(PROJECT_DIR)/MobileAssistant/Vendor/baiduMap/Release-iphonesimulator",
-					"$(PROJECT_DIR)/MobileAssistant/Vendor/baiduMap/Release-iphoneos",
 					"$(PROJECT_DIR)/MobileAssistant/Vendor/JPush/Lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";

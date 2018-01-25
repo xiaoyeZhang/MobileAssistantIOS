@@ -33,6 +33,7 @@
 @synthesize is_chief;
 @synthesize assist_id;
 @synthesize assist_name;
+@synthesize business_info;
 - (instancetype)initWithAttributes:(NSDictionary *)attributes
 {
     self = [super init];
@@ -63,6 +64,8 @@
     self.is_chief = [attributes valueForKeyPath:@"is_chief"];
     
     self.up_date = [attributes valueForKeyPath:@"up_date"];
+    
+    self.business_info = [attributes valueForKeyPath:@"business_info"];
     
     if([[attributes allKeys] containsObject:@"assist_name"])
     {

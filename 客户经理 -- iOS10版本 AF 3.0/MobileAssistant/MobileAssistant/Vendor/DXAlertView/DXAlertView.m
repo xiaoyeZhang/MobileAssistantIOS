@@ -140,7 +140,7 @@ double kAlertHeight = 205.0f;
    rightButtonTitle:(NSString *)rigthTitle
 {
     if (self = [super init]) {
-        kAlertHeight = 250.0f;
+        kAlertHeight = 200.0f;
         
         kAlertWidth = [UIScreen mainScreen].bounds.size.width - 40;
         
@@ -158,41 +158,44 @@ double kAlertHeight = 205.0f;
 
         //优化拜访任务功能
         
-        UILabel *serviceLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset+18, 75 , kTitleHeight)];
+//        UILabel *serviceLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset+18, 75 , kTitleHeight)];
+//
+//        serviceLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+//        serviceLabel.text = @"推荐业务:";
+//        serviceLabel.textColor = RGBA(175, 175, 175, 1);
+//        [self addSubview:serviceLabel];
+//
+//        self.serviceTextfield = [[UITextField alloc]initWithFrame:CGRectMake(serviceLabel.frame.size.width + 8, kTitleYOffset+18, kAlertWidth - serviceLabel.frame.size.width - 16, kTitleHeight)];
+//        self.serviceTextfield.delegate = self;
+//        self.serviceTextfield.font = [UIFont systemFontOfSize:15.0f];
+//        self.serviceTextfield.returnKeyType = UIReturnKeyNext;
+//        self.serviceTextfield.borderStyle = UITextBorderStyleRoundedRect;
+//        [self addSubview:self.serviceTextfield];
+//
+//        UILabel *operationsLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset+18 + kTitleHeight + 8,75 , kTitleHeight)];
+//        operationsLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+//        operationsLabel.text = @"挖掘业务:";
+//        operationsLabel.textColor = RGBA(175, 175, 175, 1);
+//        [self addSubview:operationsLabel];
         
-        serviceLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-        serviceLabel.text = @"推荐业务:";
-        serviceLabel.textColor = RGBA(175, 175, 175, 1);
-        [self addSubview:serviceLabel];
-        
-        self.serviceTextfield = [[UITextField alloc]initWithFrame:CGRectMake(serviceLabel.frame.size.width + 8, kTitleYOffset+18, kAlertWidth - serviceLabel.frame.size.width - 16, kTitleHeight)];
-        self.serviceTextfield.delegate = self;
-        self.serviceTextfield.font = [UIFont systemFontOfSize:15.0f];
-        self.serviceTextfield.returnKeyType = UIReturnKeyNext;
-        self.serviceTextfield.borderStyle = UITextBorderStyleRoundedRect;
-        [self addSubview:self.serviceTextfield];
-        
-        UILabel *operationsLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset+18 + kTitleHeight + 8,75 , kTitleHeight)];
-        operationsLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-        operationsLabel.text = @"挖掘业务:";
-        operationsLabel.textColor = RGBA(175, 175, 175, 1);
-        [self addSubview:operationsLabel];
-        
-        self.operationsTextfield = [[UITextField alloc]initWithFrame:CGRectMake(serviceLabel.frame.size.width + 8, kTitleYOffset + 26 + kTitleHeight, kAlertWidth - operationsLabel.frame.size.width - 16, kTitleHeight)];
-        self.operationsTextfield.delegate = self;
-        self.operationsTextfield.font = [UIFont systemFontOfSize:15.0f];
-        self.operationsTextfield.returnKeyType = UIReturnKeyDone;
-        self.operationsTextfield.borderStyle = UITextBorderStyleRoundedRect;
-        [self addSubview:self.operationsTextfield];
+//        self.operationsTextfield = [[UITextField alloc]initWithFrame:CGRectMake(serviceLabel.frame.size.width + 8, kTitleYOffset + 26 + kTitleHeight, kAlertWidth - operationsLabel.frame.size.width - 16, kTitleHeight)];
+//        self.operationsTextfield.delegate = self;
+//        self.operationsTextfield.font = [UIFont systemFontOfSize:15.0f];
+//        self.operationsTextfield.returnKeyType = UIReturnKeyDone;
+//        self.operationsTextfield.borderStyle = UITextBorderStyleRoundedRect;
+//        [self addSubview:self.operationsTextfield];
         
         
-        UILabel *alertContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, self.operationsTextfield.frame.size.height + self.operationsTextfield.frame.origin.y + 10 ,75 , kTitleHeight)];
+//        UILabel *alertContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, self.operationsTextfield.frame.size.height + self.operationsTextfield.frame.origin.y + 10 ,75 , kTitleHeight)];
+        UILabel *alertContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset+18 ,75 , kTitleHeight)];
+
         alertContentLabel.font = [UIFont boldSystemFontOfSize:16.0f];
         alertContentLabel.text = @"拜访内容:";
         alertContentLabel.textColor = RGBA(175, 175, 175, 1);
         [self addSubview:alertContentLabel];
         
-        self.alertContentTextView = [[UITextView alloc] initWithFrame:CGRectMake(alertContentLabel.frame.size.width + 8, self.operationsTextfield.frame.size.height + self.operationsTextfield.frame.origin.y + 10, kAlertWidth - alertContentLabel.frame.size.width - 16, 80)];
+//        self.alertContentTextView = [[UITextView alloc] initWithFrame:CGRectMake(alertContentLabel.frame.size.width + 8, self.operationsTextfield.frame.size.height + self.operationsTextfield.frame.origin.y + 10, kAlertWidth - alertContentLabel.frame.size.width - 16, 80)];
+        self.alertContentTextView = [[UITextView alloc] initWithFrame:CGRectMake((kAlertWidth - contentLabelWidth) * 0.5, CGRectGetMaxY(self.alertTitleLabel.frame) + 10 + 15, contentLabelWidth, 80)];
         
         self.alertContentTextView.delegate = self;
         self.alertContentTextView.returnKeyType = UIReturnKeyDone;
@@ -694,6 +697,12 @@ double kAlertHeight = 205.0f;
 - (void)dismissAlert
 {
     [self removeFromSuperview];
+//
+//
+//    if ([self.rightBtn.titleLabel.text isEqualToString:@"管理商机"]) {
+//        vsTaskVC.strSummery = self.alertContentTextView.text;
+//    }
+//
     if (self.dismissBlock) {
         self.dismissBlock();
     }
@@ -701,6 +710,7 @@ double kAlertHeight = 205.0f;
 
 - (UIViewController *)appRootViewController
 {
+
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;
     while (topVC.presentedViewController) {
@@ -713,12 +723,12 @@ double kAlertHeight = 205.0f;
 - (void)removeFromSuperview
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+
     [self.backImageView removeFromSuperview];
     self.backImageView = nil;
     UIViewController *topVC = [self appRootViewController];
     CGRect afterFrame = CGRectMake((CGRectGetWidth(topVC.view.bounds) - kAlertWidth) * 0.5, CGRectGetHeight(topVC.view.bounds), kAlertWidth, kAlertHeight);
-    
+
     [UIView animateWithDuration:0.35f delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.frame = afterFrame;
         if (_leftLeave) {
@@ -752,6 +762,7 @@ double kAlertHeight = 205.0f;
         self.frame = afterFrame;
     } completion:^(BOOL finished) {
     }];
+    
     [super willMoveToSuperview:newSuperview];
 }
 

@@ -517,43 +517,43 @@
                             withTitle:@"保底金额"
                     cancelButtonTitle:@"取消"
                destructiveButtonTitle:nil
-                    otherButtonTitles:@[@"58元保底（合约期24个月）",
-                                        @"58元保底（合约期36个月）",
-                                        @"88元保底（合约期24个月）",
-                                        @"88元保底（合约期36个月）",
-                                        @"128元保底（合约期24个月）",
-                                        @"128元保底（合约期36个月）",
-                                        @"158元保底（合约期24个月）",
-                                        @"158元保底（合约期36个月）",
-                                        @"188元保底（合约期24个月）",
-                                        @"188元保底（合约期36个月）",
-                                        @"288元保底（合约期24个月）",
-                                        @"288元保底（合约期36个月）"]
+                    otherButtonTitles:@[@"310100947801 58元保底24个月[策划]",
+                                        @"310100947802 88元保底24个月[策划]",
+                                        @"310100947803 128元保底24个月[策划]",
+                                        @"310100947804 158元保底24个月[策划]",
+                                        @"310100947805 188元保底24个月[策划]",
+                                        @"310100947812 288元保底36个月[策划]",
+                                        @"310100947807 58元保底36个月[策划]",
+                                        @"310100947808 88元保底36个月[策划]",
+                                        @"310100947809 128元保底36个月[策划]",
+                                        @"310100947810 158元保底36个月[策划]",
+                                        @"310100947811 188元保底36个月[策划]",
+                                        @"310100947806 288元保底24个月[策划]"]
                              tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                                  if (buttonIndex == 0) {
-                                     self.minimum_guarantee_amount= @"58元保底（合约期24个月）";
+                                     self.minimum_guarantee_amount= @"310100947801 58元保底24个月[策划]";
                                  }else if(buttonIndex == 1){
-                                     self.minimum_guarantee_amount = @"58元保底（合约期36个月）";
+                                     self.minimum_guarantee_amount = @"310100947802 88元保底24个月[策划]";
                                  }else if(buttonIndex == 2){
-                                     self.minimum_guarantee_amount = @"88元保底（合约期24个月）";
+                                     self.minimum_guarantee_amount = @"310100947803 128元保底24个月[策划]";
                                  }else if(buttonIndex == 3){
-                                     self.minimum_guarantee_amount = @"88元保底（合约期36个月）";
+                                     self.minimum_guarantee_amount = @"310100947804 158元保底24个月[策划]";
                                  }else if(buttonIndex == 4){
-                                     self.minimum_guarantee_amount = @"128元保底（合约期24个月）";
+                                     self.minimum_guarantee_amount = @"310100947805 188元保底24个月[策划]";
                                  }else if(buttonIndex == 5){
-                                     self.minimum_guarantee_amount = @"128元保底（合约期36个月）";
+                                     self.minimum_guarantee_amount = @"310100947812 288元保底36个月[策划]";
                                  }else if(buttonIndex == 6){
-                                     self.minimum_guarantee_amount = @"158元保底（合约期24个月）";
+                                     self.minimum_guarantee_amount = @"310100947807 58元保底36个月[策划]";
                                  }else if(buttonIndex == 7){
-                                     self.minimum_guarantee_amount = @"158元保底（合约期36个月）";
+                                     self.minimum_guarantee_amount = @"310100947808 88元保底36个月[策划]";
                                  }else if(buttonIndex == 8){
-                                     self.minimum_guarantee_amount = @"188元保底（合约期24个月）";
+                                     self.minimum_guarantee_amount = @"310100947809 128元保底36个月[策划]";
                                  }else if(buttonIndex == 9){
-                                     self.minimum_guarantee_amount = @"188元保底（合约期36个月）";
+                                     self.minimum_guarantee_amount = @"310100947810 158元保底36个月[策划]";
                                  }else if(buttonIndex == 10){
-                                     self.minimum_guarantee_amount = @"288元保底（合约期24个月）";
+                                     self.minimum_guarantee_amount = @"310100947811 188元保底36个月[策划]";
                                  }else if(buttonIndex == 11){
-                                     self.minimum_guarantee_amount = @"288元保底（合约期36个月）";
+                                     self.minimum_guarantee_amount = @"310100947806 288元保底24个月[策划]";
                                  }
                                  [_tableView reloadData];
                                  

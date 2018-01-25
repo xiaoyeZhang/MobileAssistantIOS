@@ -18,8 +18,10 @@
 #import "MALocationEntity.h"
 #import "UIAlertView+Blocks.h"
 #import <AVFoundation/AVFoundation.h>
+#import "Management_business_ListViewController.h"
+#import "Manangement_detailListViewController.h"
 
-@interface VisitTaskDetailViewController ()<BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
+@interface VisitTaskDetailViewController ()<BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,Management_business_ListViewControllerDelegate>
 {
     CalendarHomeViewController *chvc;
     BMKLocationService *_locService;
@@ -29,8 +31,12 @@
     NSString *address;
     NSArray *summaryArr;
     NSString *refuse_reason;
+    
+    UIView *AlertView;
 }
 @property (nonatomic, strong) NSMutableArray *arrayAddress;
+@property(nonatomic, copy) NSString *info;
+
 
 @end
 
@@ -79,7 +85,7 @@
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, height)];
     //bgImageView.backgroundColor = GrayBackgroundColor;
     bgImageView.image = [UIImage imageNamed:@"background"];
-    [self.view addSubview:bgImageView];
+//    [self.view addSubview:bgImageView];
     
 //    UIButton *backButton =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
 //    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -165,7 +171,7 @@
         if (currentScreen.applicationFrame.size.height == 460.000000) {
             scrollView.contentSize = CGSizeMake(320,860);
         } else {
-            scrollView.contentSize = CGSizeMake(320,810);
+            scrollView.contentSize = CGSizeMake(320,800);
         }
         
         self.sendMsgBgView.hidden = NO;
@@ -225,6 +231,17 @@
         
     }
 
+    UILabel *ServiceLabel = [[UILabel alloc]initWithFrame:CGRectMake(14, labelSummary.frame.size.height + labelSummary.frame.origin.y + 15, 100, 24)];
+    ServiceLabel.font = [UIFont systemFontOfSize:16];
+    ServiceLabel.text = [NSString stringWithFormat:@"商机查看："];
+    [viewSummary addSubview:ServiceLabel];
+    
+    
+    if (visiteTask.business_info.count > 0) {
+
+        [_Manage_Lookbtn setTitle:@"查看" forState:UIControlStateNormal];
+        
+    }
     
     arrayAddress = [[NSMutableArray alloc] init];
     //[[LocationManagement sharedInstance] startUpdatingLocation];
@@ -396,7 +413,13 @@
         };
         
     }else{
-        DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"填写纪要" leftButtonTitle:@"提交" rightButtonTitle:@"取消"];
+        DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"填写纪要" leftButtonTitle:@"提交" rightButtonTitle:@"管理商机"];
+        
+        if (self.strSummery.length > 0) {
+
+            alert.alertContentTextView.text = self.strSummery;
+
+        }
         
         alert.vsTaskVC = self;
         [alert show];
@@ -409,26 +432,40 @@
              endtime	当前时间
              */
             //
-            if (self.strService.length == 0) {
-                ALERT_ERR_MSG(@"推荐业务不能为空");
-                return;
-            }
-            
-            if (self.strOperations.length == 0) {
-                ALERT_ERR_MSG(@"挖掘业务不能为空");
-                return;
-            }
             
             if (self.strSummery.length == 0) {
                 ALERT_ERR_MSG(@"拜访内容不能为空");
                 return;
             }
             
+            NSString *opportunity_type = @"";
+            NSString *opportunity_content = @"";
+            NSString *opportunity_strength = @"";
             
+            if (self.info.length > 0) {
+                NSArray *arr = [self.info componentsSeparatedByString:@";"];
+                
+                for (NSString *info in arr) {
+                    NSArray *arr = [info componentsSeparatedByString:@","];
+                    opportunity_type = [opportunity_type stringByAppendingFormat:@"%@;",arr[0]];
+                    opportunity_content = [opportunity_content stringByAppendingFormat:@"%@;",arr[1]];
+                    opportunity_strength = [opportunity_strength stringByAppendingFormat:@"%@;",arr[2]];
+                }
+                
+                opportunity_type = [opportunity_type substringToIndex:opportunity_type.length-1];
+                
+                opportunity_content = [opportunity_content substringToIndex:opportunity_content.length-1];
+                
+                opportunity_strength = [opportunity_strength substringToIndex:opportunity_strength.length-1];
+            }
+
             CommonService *service = [[CommonService alloc] init];
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                                    self.visiteTask.visit_id, @"visitId",
-                                   [NSString stringWithFormat:@"%@,%@,%@",self.strService,self.strOperations,self.strSummery], @"content",
+                                   self.strSummery, @"content",
+                                   opportunity_type, @"opportunity_type",
+                                   opportunity_content, @"opportunity_content",
+                                   opportunity_strength, @"opportunity_strength",
                                    [Utilies GetNowDateTime], @"endtime",
                                    @"writeSummary", @"method", nil];
             
@@ -450,6 +487,13 @@
         };
         alert.rightBlock = ^() {
             NSLog(@"right button clicked");
+            
+            self.strSummery = alert.alertContentTextView.text;
+            
+            Management_business_ListViewController *vc = [[Management_business_ListViewController alloc]init];
+            vc.delegate = self;
+            vc.device_info = _info;
+            [self.navigationController pushViewController:vc animated:YES];
         };
         alert.dismissBlock = ^() {
             NSLog(@"Do something interesting after dismiss block");
@@ -701,5 +745,31 @@
                   }];
 
 }
+- (IBAction)Management_business_listIsClick:(id)sender {
+    
+    if (visiteTask.business_info.count > 0) {
+        Manangement_detailListViewController *vc = [[Manangement_detailListViewController alloc]init];
+        
+        vc.business_info = visiteTask.business_info;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+}
+
+- (void)Management_business_ListViewController:(Management_business_ListViewController *)vc addInfo:(NSString *)info{
+
+    self.info = info;
+    [self writeSummery:nil];
+
+}
+
+//- (void)initWithTitle:(NSString *)title leftButtonTitle:(NSString *)leftTitle rightButtonTitle:(NSString *)rigthTitle{
+//    
+//    AlertView = [[UIView alloc]initWithFrame:CGRectMake((CGRectGetWidth(self.view.bounds) - 245) * 0.5, 175, 245, 205)];
+//
+//    AlertView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+//    
+//    [self.view addSubview:AlertView];
+//}
 
 @end

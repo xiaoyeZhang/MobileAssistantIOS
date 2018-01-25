@@ -153,7 +153,7 @@ static NSString *HeaderIdentifier = @"headerView";
     P_BillstrCount = @"0";
     P_MarketingstrCount = @"0";
     
-    [self getTask_NumData];
+//    [self getTask_NumData];
     
     
     [self select_logmodel:NSStringFromClass([self class])];
@@ -185,34 +185,37 @@ static NSString *HeaderIdentifier = @"headerView";
     
     UserEntity *userEntity = [UserEntity sharedInstance];
     
-    UIScrollView *WebScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 140)];
-    WebScroller.backgroundColor = RGBA(66, 187, 233, 1);
-    WebScroller.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 140);
-    WebScroller.pagingEnabled = YES;//整个页面翻页
-    WebScroller.showsHorizontalScrollIndicator = NO;
-    WebScroller.showsVerticalScrollIndicator = NO;
-
-    [self.MainTableView addSubview:WebScroller];
+    UIImageView *mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 140)];
+    mainImage.image = [UIImage imageNamed:@"ad_default"];
+    [self.MainTableView addSubview:mainImage];
+//    UIScrollView *WebScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 140)];
+//    WebScroller.backgroundColor = RGBA(66, 187, 233, 1);
+//    WebScroller.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 140);
+//    WebScroller.pagingEnabled = YES;//整个页面翻页
+//    WebScroller.showsHorizontalScrollIndicator = NO;
+//    WebScroller.showsVerticalScrollIndicator = NO;
+//
+//    [self.MainTableView addSubview:WebScroller];
     
-    UIWebView *webView1 = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
-    webView1.userInteractionEnabled = NO;
-    
-    NSString *url1 = [NSString stringWithFormat:@"http://gzcmm.dayo.net.cn/cmm/charts.php?id=%@",userEntity.user_id];
-    NSURLRequest *request1 = [NSURLRequest requestWithURL:[NSURL URLWithString:url1]];
-    
-    [webView1 loadRequest:request1];
-    
-    
-    UIWebView *webView2 = [[UIWebView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, 160)];
-    webView2.userInteractionEnabled = NO;
-    
-    NSString *url2 = [NSString stringWithFormat:@"http://gzcmm.dayo.net.cn/cmm/charts1.php?id=%@",userEntity.user_id];
-    NSURLRequest *request2 = [NSURLRequest requestWithURL:[NSURL URLWithString:url2]];
-    
-    [webView2 loadRequest:request2];
-    
-    [WebScroller addSubview:webView1];
-    [WebScroller addSubview:webView2];
+//    UIWebView *webView1 = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
+//    webView1.userInteractionEnabled = NO;
+//    
+//    NSString *url1 = [NSString stringWithFormat:@"http://gzcmm.dayo.net.cn/cmm/charts.php?id=%@",userEntity.user_id];
+//    NSURLRequest *request1 = [NSURLRequest requestWithURL:[NSURL URLWithString:url1]];
+//    
+//    [webView1 loadRequest:request1];
+//    
+//    
+//    UIWebView *webView2 = [[UIWebView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, 160)];
+//    webView2.userInteractionEnabled = NO;
+//    
+//    NSString *url2 = [NSString stringWithFormat:@"http://gzcmm.dayo.net.cn/cmm/charts1.php?id=%@",userEntity.user_id];
+//    NSURLRequest *request2 = [NSURLRequest requestWithURL:[NSURL URLWithString:url2]];
+//    
+//    [webView2 loadRequest:request2];
+//    
+//    [WebScroller addSubview:webView1];
+//    [WebScroller addSubview:webView2];
     
     page = 0;
     [self showMainView];
@@ -272,7 +275,7 @@ static NSString *HeaderIdentifier = @"headerView";
                                 @{@"title":@"走访任务",@"icon":@"拜访-(1)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"走访任务系统"},
                                 @{@"title":@"订单中心",@"icon":@"订单-(4)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"订单中心"},
                                 @{@"title":@"CRM业务",@"icon":@"crm-(1)",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"CRM业务"},
-                                @{@"title":@"小纸条工单",@"icon":@"TAB-纸条",@"viewController":@"small_piece_paperViewController",@"VCbool":@"1"},
+//                                @{@"title":@"小纸条工单",@"icon":@"TAB-纸条",@"viewController":@"small_piece_paperViewController",@"VCbool":@"1"},
                                 @{@"title":@"营销中心",@"icon":@"集合",@"viewController":@"Marketing_CenterListViewController",@"VCbool":@"1"},
 //                                @{@"title":@"实名认证",@"icon":@"实名",@"viewController":@"",@"VCbool":@"1"},
                                 @{@"title":@"集中化管理",@"icon":@"集中受理中心",@"viewController":@"Centralized_managementViewController",@"VCbool":@"1",@"VCname":@"集中化管理"}]},
@@ -983,7 +986,7 @@ static NSString *HeaderIdentifier = @"headerView";
 - (void)subVCBackNeedRefresh:(id)sender
 {
     //刷新数据
-    [self getTask_NumData];
+//    [self getTask_NumData];
 }
 
 @end

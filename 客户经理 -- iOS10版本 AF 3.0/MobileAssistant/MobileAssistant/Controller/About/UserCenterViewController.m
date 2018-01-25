@@ -65,6 +65,9 @@
 #import "small_piece_paperViewController.h"
 #import "data_statisticsWebViewController.h"
 #import "goP_Vertical_industry_collaborationViewController.h"
+#import "P_Marketing_PlanListViewController.h"
+#import "Basic_business_moduleListViewController.h"
+#import "Houston_queryViewController.h"
 
 #import "Visit_listViewController.h"
 
@@ -207,6 +210,8 @@
                         @{@"title":@" 分合户",@"num":@"t21"},
                         @{@"title":@" 纵向行业任务协同",@"num":@"t-1"},
                         @{@"title":@" 进账查询",@"num":@"t22"},
+                        @{@"title":@" 营销方案确认",@"num":@"t23"},
+                        @{@"title":@" 基础业务受理",@"num":@"t24"},
                         ];
 
     data_statisticsArr = @[@"CRM业务办理情况",@"统一下单业务办理情况"];
@@ -247,9 +252,10 @@
     if ([userInfo.type_id intValue] != ROLE_CUSTOMER) {
         
         if ([ProvinceVIP_State isEqualToString:@"old"]) {
-            
-            sectionArray = [NSArray arrayWithObjects:@"待办事项",@"运营分析数据统计",@"小纸条",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//13
-            iconArray = [NSArray arrayWithObjects:@"待办事项",@"运营信息统计icon",@"小纸条工单icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
+            //@"小纸条"
+            sectionArray = [NSArray arrayWithObjects:@"待办事项",@"运营分析数据统计",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//13
+            //@"小纸条工单icon"
+            iconArray = [NSArray arrayWithObjects:@"待办事项",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else if ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"]){
             
@@ -263,9 +269,10 @@
     }else{
         
         if ([ProvinceVIP_State isEqualToString:@"old"]) {
-            
-            sectionArray = [NSArray arrayWithObjects:@"待办事项",@"走访情况",@"运营分析数据统计",@"小纸条",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//14
-            iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"小纸条工单icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
+            //@"小纸条"
+            sectionArray = [NSArray arrayWithObjects:@"待办事项",@"走访情况",@"运营分析数据统计",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//14
+            //,@"小纸条工单icon"
+            iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else if ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"]){
             
@@ -506,8 +513,8 @@
 {
      view = [[[NSBundle mainBundle] loadNibNamed:@"UserTableCellHeaderView" owner:nil options:nil] firstObject];
     
-    if (sectionArray.count == 16) {
-        if (section == 15) {
+    if (sectionArray.count == 15) {
+        if (section == 14) {
             
         }else{
             
@@ -566,160 +573,21 @@
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
             [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 3) {
-            
-            NSMutableAttributedString *tape_numStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"小纸条 (%@)",tape_num?tape_num:@"0"]];
-            
-            [tape_numStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(5, tape_num.length)];
-            
-            view.titleLbl.attributedText = tape_numStr;
-            
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(small_piece_paperBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 4) {
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Payment_arrearsBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 5) {
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Contract_expiresBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 6) {
-            
-            view.titleLbl.text = [NSString stringWithFormat:@"%@(本月%@条提醒)",title,self.birthday_num?self.birthday_num:@"0"];
-            
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(BirthdayBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 7) {//2017全省班组成绩展示
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Performance_displayBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 8) {//应用推荐
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(recommendedBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 9) {
-            
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(settingBtnClicked:)];
-            
-            if (self.push_starttime.length > 0 && self.push_endtime.length > 0) {
-                view.titleLbl.text = [NSString stringWithFormat:@"%@(%@--%@)",sectionArray[section],self.push_starttime,self.push_endtime];
-            }
-            
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 10) {
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changePwdBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 11) {
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changePhoneBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 12) {
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(feedBackBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 13) {
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(shareBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
         }
-        if(section == 15){
-            
-            UserLogoutBtnView *logoutView = [[[NSBundle mainBundle]loadNibNamed:@"UserLogoutBtnView" owner:nil options:nil]firstObject];
-            logoutView.subTitleLbl.layer.borderWidth = 1;
-            logoutView.subTitleLbl.clipsToBounds = YES;
-            logoutView.subTitleLbl.font = [UIFont systemFontOfSize:14];
-            logoutView.subTitleLbl.layer.cornerRadius = 10;
-            logoutView.subTitleLbl.layer.borderColor = [UIColor colorWithRed:28.0/255 green:135.0/255 blue:192.0/255 alpha:1].CGColor;
-            logoutView.subTitleLbl.text = @"退出登录";
-            logoutView.subTitleLbl.backgroundColor = [UIColor whiteColor];
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(logoutBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [logoutView addGestureRecognizer:singleRecognizer];//添加一个手势监测
-            
-            return logoutView;
-        }
-        
-        if (section == 14) {
-            view.down_rightImage.hidden = YES;
-            NSDictionary *clientInfoDict =[[NSBundle mainBundle] infoDictionary];
-            NSString *clientVersion = clientInfoDict[@"CFBundleShortVersionString"];
-            
-            view.label.text = [NSString stringWithFormat:@"%@",clientVersion];
-        }else{
-            view.label.hidden = YES;
-        }
-    }else if(sectionArray.count == 15 && [ProvinceVIP_State isEqualToString:@"old"]){
-        
-        if (section == 14) {
-            
-        }else{
-            
-            NSString *icon = iconArray[section];
-            view.iconImage.image = [UIImage imageNamed:icon];
-        }
-        
-        NSString *title = sectionArray[section];
-        view.titleLbl.text = [NSString stringWithFormat:@"%@",title];
-        view.backgroundColor = [UIColor whiteColor];
-        view.down_rightImage.image = [UIImage imageNamed:@"right"];
-        view.tag = section;
-        
-        
-        if (section == 0) {
-            NSString *icon = iconArray[section];
-            view.iconImage.image = [UIImage imageNamed:icon];
-            int num = 0;
-            for (NSString *key in [self.unfinishedDict allKeys]) {
-                num += [self.unfinishedDict [key] intValue];
-            }
-            view.titleLbl.text = [NSString stringWithFormat:@"%@(%d)",sectionArray[section],num];
-            
-            if (i == 1) {
-                if (section == 0) {
-                    view.down_rightImage.image = [UIImage imageNamed:@"down"];
-                }
-            }
-            
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(SingleTop:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 1) {
-            
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(SingleTop:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 2) {
-            
-            NSMutableAttributedString *tape_numStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"小纸条 (%@)",tape_num?tape_num:@"0"]];
-            
-            [tape_numStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(5, tape_num.length)];
-            
-            view.titleLbl.attributedText = tape_numStr;
-            
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(small_piece_paperBtnClicked:)];
-            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
-            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
-            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 3) {
+//        else if (section == 3) {
+//
+//            NSMutableAttributedString *tape_numStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"小纸条 (%@)",tape_num?tape_num:@"0"]];
+//
+//            [tape_numStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(5, tape_num.length)];
+//
+//            view.titleLbl.attributedText = tape_numStr;
+//
+//            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(small_piece_paperBtnClicked:)];
+//            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+//            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+//            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+//        }
+        else if (section == 3) {
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Payment_arrearsBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
             [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
@@ -742,18 +610,19 @@
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
             [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
-        }else if (section == 7) {
+        }else if (section == 7) {//应用推荐
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(recommendedBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
             [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
         }else if (section == 8) {
             
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(settingBtnClicked:)];
+            
             if (self.push_starttime.length > 0 && self.push_endtime.length > 0) {
                 view.titleLbl.text = [NSString stringWithFormat:@"%@(%@--%@)",sectionArray[section],self.push_starttime,self.push_endtime];
             }
             
-            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(settingBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
             [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
@@ -797,6 +666,148 @@
         }
         
         if (section == 13) {
+            view.down_rightImage.hidden = YES;
+            NSDictionary *clientInfoDict =[[NSBundle mainBundle] infoDictionary];
+            NSString *clientVersion = clientInfoDict[@"CFBundleShortVersionString"];
+            
+            view.label.text = [NSString stringWithFormat:@"%@",clientVersion];
+        }else{
+            view.label.hidden = YES;
+        }
+    }else if(sectionArray.count == 14 && [ProvinceVIP_State isEqualToString:@"old"]){
+        
+        if (section == 13) {
+            
+        }else{
+            
+            NSString *icon = iconArray[section];
+            view.iconImage.image = [UIImage imageNamed:icon];
+        }
+        
+        NSString *title = sectionArray[section];
+        view.titleLbl.text = [NSString stringWithFormat:@"%@",title];
+        view.backgroundColor = [UIColor whiteColor];
+        view.down_rightImage.image = [UIImage imageNamed:@"right"];
+        view.tag = section;
+        
+        
+        if (section == 0) {
+            NSString *icon = iconArray[section];
+            view.iconImage.image = [UIImage imageNamed:icon];
+            int num = 0;
+            for (NSString *key in [self.unfinishedDict allKeys]) {
+                num += [self.unfinishedDict [key] intValue];
+            }
+            view.titleLbl.text = [NSString stringWithFormat:@"%@(%d)",sectionArray[section],num];
+            
+            if (i == 1) {
+                if (section == 0) {
+                    view.down_rightImage.image = [UIImage imageNamed:@"down"];
+                }
+            }
+            
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(SingleTop:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 1) {
+            
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(SingleTop:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }
+//        else if (section == 2) {
+//
+//            NSMutableAttributedString *tape_numStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"小纸条 (%@)",tape_num?tape_num:@"0"]];
+//
+//            [tape_numStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(5, tape_num.length)];
+//
+//            view.titleLbl.attributedText = tape_numStr;
+//
+//            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(small_piece_paperBtnClicked:)];
+//            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+//            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+//            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+//        }
+        else if (section == 2) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Payment_arrearsBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 3) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Contract_expiresBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 4) {
+            
+            view.titleLbl.text = [NSString stringWithFormat:@"%@(本月%@条提醒)",title,self.birthday_num?self.birthday_num:@"0"];
+            
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(BirthdayBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 5) {//2017全省班组成绩展示
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Performance_displayBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 6) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(recommendedBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 7) {
+            
+            if (self.push_starttime.length > 0 && self.push_endtime.length > 0) {
+                view.titleLbl.text = [NSString stringWithFormat:@"%@(%@--%@)",sectionArray[section],self.push_starttime,self.push_endtime];
+            }
+            
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(settingBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 8) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changePwdBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 9) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changePhoneBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 10) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(feedBackBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }else if (section == 11) {
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(shareBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
+        }
+        if(section == 13){
+            
+            UserLogoutBtnView *logoutView = [[[NSBundle mainBundle]loadNibNamed:@"UserLogoutBtnView" owner:nil options:nil]firstObject];
+            logoutView.subTitleLbl.layer.borderWidth = 1;
+            logoutView.subTitleLbl.clipsToBounds = YES;
+            logoutView.subTitleLbl.font = [UIFont systemFontOfSize:14];
+            logoutView.subTitleLbl.layer.cornerRadius = 10;
+            logoutView.subTitleLbl.layer.borderColor = [UIColor colorWithRed:28.0/255 green:135.0/255 blue:192.0/255 alpha:1].CGColor;
+            logoutView.subTitleLbl.text = @"退出登录";
+            logoutView.subTitleLbl.backgroundColor = [UIColor whiteColor];
+            UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(logoutBtnClicked:)];
+            singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
+            [singleRecognizer setNumberOfTapsRequired:1];//1个手指操作
+            [logoutView addGestureRecognizer:singleRecognizer];//添加一个手势监测
+            
+            return logoutView;
+        }
+        
+        if (section == 12) {
             view.down_rightImage.hidden = YES;
             NSDictionary *clientInfoDict =[[NSBundle mainBundle] infoDictionary];
             NSString *clientVersion = clientInfoDict[@"CFBundleShortVersionString"];
@@ -1161,7 +1172,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     if (![sectionArray[indexPath.section] isEqualToString:@"运营分析数据统计"]) {
         if ((sectionArray.count == 16 || (sectionArray.count == 15 && ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"])))&& indexPath.section == 1) {
             
@@ -1335,6 +1346,7 @@
         if ([ProvinceVIP_State isEqualToString:@"old"]) {
 
             if ([cell.subTitleLbl.text intValue] > 0) {
+
                 switch (indexPath.row) {
                     case 0:
                     {
@@ -1404,6 +1416,21 @@
                     case 12:
                     {
                         [self goP_Vertical_industry_collaborationViewController:nil];
+                        break;
+                    }
+                    case 13:
+                    {
+                        [self goHouston_queryViewController:nil];
+                        break;
+                    }
+                    case 14:
+                    {
+                        [self goP_Marketing_PlanViewController:nil];
+                        break;
+                    }
+                    case 15:
+                    {
+                        [self goBasic_business_moduleListViewController:nil];
                         break;
                     }
                     default:
@@ -1735,7 +1762,7 @@
     
     [self getThis_month_unvisit];
     
-    [self gettape_num];
+//    [self gettape_num];
 }
 
 
@@ -1870,6 +1897,29 @@
     
 }
 
+//进账查询     Houston_queryViewController
+- (void)goHouston_queryViewController:(id)sender{
+    
+    Houston_queryViewController *vc = [[Houston_queryViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
+    [self.mainVC.navigationController pushViewController:vc animated:YES];
+    
+}
+
+//营销方案确认     P_Marketing_PlanListViewController
+- (void)goP_Marketing_PlanViewController:(id)sender{
+    
+    P_Marketing_PlanListViewController *vc = [[P_Marketing_PlanListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
+    [self.mainVC.navigationController pushViewController:vc animated:YES];
+    
+}
+//基础业务受理     Basic_business_moduleListViewController
+- (void)goBasic_business_moduleListViewController:(id)sender{
+    
+    Basic_business_moduleListViewController *vc = [[Basic_business_moduleListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
+    [self.mainVC.navigationController pushViewController:vc animated:YES];
+    
+}
+
 #pragma mark - 刷新数据
 
 - (void)subVCBackNeedRefresh:(id)sender
@@ -1881,7 +1931,7 @@
         [self getUnfinishedNum];
     }
     
-    [self gettape_num];
+//    [self gettape_num];
 }
 
 #pragma mark -
