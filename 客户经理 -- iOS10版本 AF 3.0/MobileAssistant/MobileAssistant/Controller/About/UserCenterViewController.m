@@ -197,19 +197,19 @@
     [self settableviewARR];
     
     unfinishedArray = @[@{@"title":@" 特号办理",@"num":@"t1+t2"},
-                        @{@"title":@" 公司领导预约拜访",@"num":@"t3"},
+//                        @{@"title":@" 公司领导预约拜访",@"num":@"t3"},
                         @{@"title":@" 终端办理",@"num":@"t4"},
                         @{@"title":@" 终端退库",@"num":@"t5"},
-                        @{@"title":@" 售后维修单",@"num":@"t6+t7"},
+//                        @{@"title":@" 售后维修单",@"num":@"t6+t7"},
                         @{@"title":@" 台账登记",@"num":@"t8+t9+t16"},
-                        @{@"title":@" 办卡",@"num":@"t10+t11"},
+//                        @{@"title":@" 办卡",@"num":@"t10+t11"},
                         @{@"title":@" 开具发票",@"num":@"t12+t13+t14"},
                         @{@"title":@" 终端出库",@"num":@"t15+t17"},
-                        @{@"title":@" 营销方案更改",@"num":@"t18"},
-                        @{@"title":@" 退款",@"num":@"t20"},
-                        @{@"title":@" 分合户",@"num":@"t21"},
-                        @{@"title":@" 纵向行业任务协同",@"num":@"t-1"},
-                        @{@"title":@" 进账查询",@"num":@"t22"},
+//                        @{@"title":@" 营销方案更改",@"num":@"t18"},
+//                        @{@"title":@" 退款",@"num":@"t20"},
+//                        @{@"title":@" 分合户",@"num":@"t21"},
+//                        @{@"title":@" 纵向行业任务协同",@"num":@"t-1"},
+//                        @{@"title":@" 进账查询",@"num":@"t22"},
                         @{@"title":@" 营销方案确认",@"num":@"t23"},
                         @{@"title":@" 基础业务受理",@"num":@"t24"},
                         ];
@@ -1353,82 +1353,82 @@
                         [self goSpecialViewController:nil];
                         break;
                     }
+//                    case 1:
+//                    {
+//                        [self goAPPointViewController:nil];
+//                        break;
+//                    }
                     case 1:
-                    {
-                        [self goAPPointViewController:nil];
-                        break;
-                    }
-                    case 2:
                     {
                         [self goTerminalViewController:nil];
                         break;
                     }
-                    case 3:
+                    case 2:
                     {
                         [self goStockViewController:nil];
                         break;
                     }
-                    case 4:
-                    {
-                        [self goRepairViewController:nil];
-                        break;
-                    }
-                    case 5:
+//                    case 4:
+//                    {
+//                        [self goRepairViewController:nil];
+//                        break;
+//                    }
+                    case 3:
                     {
                         [self goBookViewController:nil];
                         break;
                     }
-                    case 6:
-                    {
-                        [self goCardViewController:nil];
-                        break;
-                    }
-                    case 7:
+//                    case 6:
+//                    {
+//                        [self goCardViewController:nil];
+//                        break;
+//                    }
+                    case 4:
                     {
                         [self goBillViewController:nil];
                         break;
                     }
-                    case 8:
+                    case 5:
                     {
                         [self goTerminalStockViewController:nil];
                         break;
                     }
-                    case 9:
-                    {
-                        [self goMarketingPlanViewController:nil];
-                        break;
-                    }
+//                    case 9:
+//                    {
+//                        [self goMarketingPlanViewController:nil];
+//                        break;
+//                    }
 //                    case 10:
 //                    {
 //                        [self goProduct_LineViewController:nil];
 //                        break;
 //                    }
-                    case 10:
-                    {
-                        [self goRefundViewController:nil];
-                        break;
-                    }
-                    case 11:
-                    {
-                        [self goP_Household_divisionViewController:nil];
-                        break;
-                    }
-                    case 12:
-                    {
-                        [self goP_Vertical_industry_collaborationViewController:nil];
-                        break;
-                    }
-                    case 13:
-                    {
-                        [self goHouston_queryViewController:nil];
-                        break;
-                    }
-                    case 14:
+//                    case 10:
+//                    {
+//                        [self goRefundViewController:nil];
+//                        break;
+//                    }
+//                    case 11:
+//                    {
+//                        [self goP_Household_divisionViewController:nil];
+//                        break;
+//                    }
+//                    case 12:
+//                    {
+//                        [self goP_Vertical_industry_collaborationViewController:nil];
+//                        break;
+//                    }
+//                    case 13:
+//                    {
+//                        [self goHouston_queryViewController:nil];
+//                        break;
+//                    }
+                    case 6:
                     {
                         [self goP_Marketing_PlanViewController:nil];
                         break;
                     }
-                    case 15:
+                    case 7:
                     {
                         [self goBasic_business_moduleListViewController:nil];
                         break;

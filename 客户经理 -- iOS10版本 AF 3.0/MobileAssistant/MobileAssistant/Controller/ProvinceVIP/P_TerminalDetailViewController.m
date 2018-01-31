@@ -83,11 +83,11 @@
          [orderType isEqualToString:@"赠送礼品"]|
          [orderType isEqualToString:@"集团关键联系人保底购机活动"]|
          [orderType isEqualToString:@"业务"]|
-         [orderType isEqualToString:@"重要客户（AB类）新业务体验营销活动"])) {
+         [orderType containsString:@"重要客户（AB类）新业务体验营销活动"])) {
         
         //此处无需显示订货合同
         [detailMuArr removeObjectAtIndex:7];
-        if ([orderType isEqualToString:@"集团关键联系人保底购机活动"] | [orderType isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
+        if ([orderType isEqualToString:@"集团关键联系人保底购机活动"] | [orderType containsString:@"重要客户（AB类）新业务体验营销活动"]) {
             [detailMuArr addObject:@{@"title":@"保底金额",@"detail":@"minimum_guarantee_amount",@"type":@"Label"}];
             [detailMuArr addObject:@{@"title":@"刚性成本金额",@"detail":@"rigid_amount",@"type":@"Label"}];
         }
@@ -503,7 +503,13 @@
         if (state == PROCESS_STATE_manager_submit &&
             userType == ROLE_THREE) { //客户经理已提交 -> 三级经理审批
 
+            self.submitState = PROCESS_STATE_Industry_director;
+            
+        }else if (state == PROCESS_STATE_Industry_director &&
+                  userType == ROLE_THREE){
+            
             self.submitState = PROCESS_STATE_three_manager_through;
+            
         }else if (state == PROCESS_STATE_three_manager_through &&
                   (userType == ROLE_TERMINAL | userType == ROLE_COMMON)){
         

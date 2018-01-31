@@ -98,23 +98,23 @@ static NSString *HeaderIdentifier = @"headerView";
         
         [MainBusinessArr addObject:@{@"section":@"0",@"sectionName":@"财务管理",@"list":
                                          @[@{@"title":@"开具发票",@"icon":@"p_bill3",@"viewController":@"8",@"VCbool":@"1"},
-                                           @{@"title":@"银行入账匹配",@"icon":@"bank",@"viewController":@"10",@"VCbool":@"1"},
-                                           @{@"title":@"资金回款",@"icon":@"money",@"viewController":@"11",@"VCbool":@"1"},
-                                           @{@"title":@"退款",@"icon":@"退款",@"viewController":@"12",@"VCbool":@"1"},
-                                           @{@"title":@"进账查询",@"icon":@"book",@"viewController":@"15",@"VCbool":@"1"},
+//                                           @{@"title":@"银行入账匹配",@"icon":@"bank",@"viewController":@"10",@"VCbool":@"1"},
+//                                           @{@"title":@"资金回款",@"icon":@"money",@"viewController":@"11",@"VCbool":@"1"},
+//                                           @{@"title":@"退款",@"icon":@"退款",@"viewController":@"12",@"VCbool":@"1"},
+//                                           @{@"title":@"进账查询",@"icon":@"book",@"viewController":@"15",@"VCbool":@"1"},
                                            @{@"title":@"台账登记",@"icon":@"p_book3",@"viewController":@"1",@"VCbool":@"1"}]}];
         [MainBusinessArr addObject:@{@"section":@"1",@"sectionName":@"基础业务受理",@"list":
                                          @[@{@"title":@"特号办理",@"icon":@"p_special3",@"viewController":@"0",@"VCbool":@"1"},
-                                           @{@"title":@"办卡",@"icon":@"p_card3",@"viewController":@"7",@"VCbool":@"1"},
+//                                           @{@"title":@"办卡",@"icon":@"p_card3",@"viewController":@"7",@"VCbool":@"1"},
                                            @{@"title":@"终端订货",@"icon":@"p_terminal3",@"viewController":@"2",@"VCbool":@"1"},
                                            @{@"title":@"终端退库",@"icon":@"p_stock3",@"viewController":@"3",@"VCbool":@"1"},
                                            @{@"title":@"终端出库",@"icon":@"p_terminale3",@"viewController":@"4",@"VCbool":@"1"},
-                                           @{@"title":@"终端售后维修",@"icon":@"p_repair3",@"viewController":@"5",@"VCbool":@"1"},
-                                           @{@"title":@"领导预约拜访",@"icon":@"p_appoint3",@"viewController":@"6",@"VCbool":@"1"},
-                                           @{@"title":@"营销方案更改",@"icon":@"p_marking",@"viewController":@"9",@"VCbool":@"1"},
-                                           @{@"title":@"分合户",@"icon":@"分合户",@"viewController":@"13",@"VCbool":@"1"},
-                                           @{@"title":@"纵向行业任务协同",@"icon":@"纵向行业任务协同",@"viewController":@"14",@"VCbool":@"1"},
-                                           @{@"title":@"集团划拨",@"icon":@"p_stock3",@"viewController":@"16",@"VCbool":@"1"},
+//                                           @{@"title":@"终端售后维修",@"icon":@"p_repair3",@"viewController":@"5",@"VCbool":@"1"},
+//                                           @{@"title":@"领导预约拜访",@"icon":@"p_appoint3",@"viewController":@"6",@"VCbool":@"1"},
+//                                           @{@"title":@"营销方案更改",@"icon":@"p_marking",@"viewController":@"9",@"VCbool":@"1"},
+//                                           @{@"title":@"分合户",@"icon":@"分合户",@"viewController":@"13",@"VCbool":@"1"},
+//                                           @{@"title":@"纵向行业任务协同",@"icon":@"纵向行业任务协同",@"viewController":@"14",@"VCbool":@"1"},
+//                                           @{@"title":@"集团划拨",@"icon":@"p_stock3",@"viewController":@"16",@"VCbool":@"1"},
                                            @{@"title":@"营销方案确认",@"icon":@"维修(2)",@"viewController":@"17",@"VCbool":@"1"},
                                            @{@"title":@"基础业务受理",@"icon":@"方案",@"viewController":@"18",@"VCbool":@"1"}]}];
 

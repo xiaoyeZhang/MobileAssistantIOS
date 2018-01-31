@@ -47,7 +47,7 @@
     int state = [self.bListModel.state intValue];
     int userType = [userInfo.type_id intValue];
     
-    if ([self.detailDict[@"order_type"] isEqualToString:@"集团关键联系人保底购机活动"] || [self.detailDict[@"order_type"] isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
+    if ([self.detailDict[@"order_type"] isEqualToString:@"集团关键联系人保底购机活动"] || [self.detailDict[@"order_type"] containsString:@"重要客户（AB类）新业务体验营销活动"]){
         
         [detailMuArr addObject:@{@"title":@"保底金额",@"detail":@"minimum_guarantee_amount",@"type":@"Label"}];
         [detailMuArr addObject:@{@"title":@"刚性成本金额",@"detail":@"rigid_amount",@"type":@"Label"}];
@@ -407,6 +407,18 @@
             if (self.submitState == PROCESS_STATE_reject) {
                 [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
                 
+                self.submitState = PROCESS_STATE_Industry_director;
+                
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                self.submitState = PROCESS_STATE_Industry_director;
+            }
+        }else if (state == PROCESS_STATE_Industry_director &&
+                  type == ROLE_THREE){
+            if (self.submitState == PROCESS_STATE_reject) {
+                [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
+                
                 self.submitState = PROCESS_STATE_three_manager_through;
                 
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
@@ -414,6 +426,7 @@
             }else{
                 self.submitState = PROCESS_STATE_three_manager_through;
             }
+            
         }else if (state == PROCESS_STATE_three_manager_through &&
                   [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
             self.submitState = PROCESS_STATE_two_manager_through;
@@ -470,7 +483,15 @@
             
             
             //删除审核领导
-            [detailMuArr removeObjectAtIndex:detailMuArr.count-1];
+            [detailMuArr removeObject:@{@"title":@"审核领导",@"type":@"Select"}];
+            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                      withRowAnimation:UITableViewRowAnimationNone];
+            
+        }else if (state == PROCESS_STATE_Industry_director &&
+                  [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
+            
+            self.submitState = PROCESS_STATE_reject;
+            [detailMuArr removeObject:@{@"title":@"审核领导",@"type":@"Select"}];
             [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                       withRowAnimation:UITableViewRowAnimationNone];
             
@@ -539,6 +560,18 @@
             if (self.submitState == PROCESS_STATE_reject) {
                 [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
                 
+                self.submitState = PROCESS_STATE_Industry_director;
+                
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                self.submitState = PROCESS_STATE_Industry_director;
+            }
+        }else if (state == PROCESS_STATE_Industry_director &&
+                  type == ROLE_THREE){
+            if (self.submitState == PROCESS_STATE_reject) {
+                [detailMuArr addObject:@{@"title":@"审核领导",@"type":@"Select"}];
+                
                 self.submitState = PROCESS_STATE_three_manager_through;
                 
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
@@ -546,6 +579,7 @@
             }else{
                 self.submitState = PROCESS_STATE_three_manager_through;
             }
+            
         }else if (state == PROCESS_STATE_three_manager_through &&
                   [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
             self.submitState = PROCESS_STATE_two_manager_through;
@@ -608,6 +642,14 @@
             [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                       withRowAnimation:UITableViewRowAnimationNone];
             
+        }else if (state == PROCESS_STATE_Industry_director &&
+                  [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
+            
+            self.submitState = PROCESS_STATE_reject;
+            [detailMuArr removeObject:@{@"title":@"审核领导",@"type":@"Select"}];
+            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                      withRowAnimation:UITableViewRowAnimationNone];
+            
         }else if (state == PROCESS_STATE_three_manager_through &&
                   [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
             self.submitState = PROCESS_STATE_reject;
@@ -649,6 +691,14 @@
             
             
             //删除审核领导
+            [detailMuArr removeObject:@{@"title":@"审核领导",@"type":@"Select"}];
+            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                      withRowAnimation:UITableViewRowAnimationNone];
+            
+        }else if (state == PROCESS_STATE_Industry_director &&
+                  [self.bListModel.next_processor isEqualToString:userInfo.user_id]){
+            
+            self.submitState = PROCESS_STATE_reject;
             [detailMuArr removeObject:@{@"title":@"审核领导",@"type":@"Select"}];
             [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                       withRowAnimation:UITableViewRowAnimationNone];

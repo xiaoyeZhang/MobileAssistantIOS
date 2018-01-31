@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 avatek. All rights reserved.
 //
 
+#define NSArrayToVariableArgumentsList(__ARRAYNAME__) NSArrayObjectMaybeNil(__ARRAYNAME__, 0),NSArrayObjectMaybeNil(__ARRAYNAME__, 1), NSArrayObjectMaybeNil(__ARRAYNAME__, 2), NSArrayObjectMaybeNil(__ARRAYNAME__, 3), NSArrayObjectMaybeNil(__ARRAYNAME__, 4), NSArrayObjectMaybeNil(__ARRAYNAME__, 5), NSArrayObjectMaybeNil(__ARRAYNAME__, 6), NSArrayObjectMaybeNil(__ARRAYNAME__, 7), NSArrayObjectMaybeNil(__ARRAYNAME__, 8), NSArrayObjectMaybeNil(__ARRAYNAME__, 9), NSArrayObjectMaybeNil(__ARRAYNAME__, 10), NSArrayObjectMaybeNil(__ARRAYNAME__, 11),nil
+
 #import "P_TerminalSubmitViewController.h"
 #import "UIAlertView+Blocks.h"
 #import "UIActionSheet+Block.h"
@@ -24,7 +26,7 @@
 #define UPLOAD_TABLE_INDEX 10 //上传资料
 #define AMOUNT_TABLE_INDEX 11 //刚性成本金额
 
-@interface P_TerminalSubmitViewController ()
+@interface P_TerminalSubmitViewController ()<UIActionSheetDelegate>
 
 @end
 
@@ -53,7 +55,7 @@
         self.phone_num = self.detailDict[@"client_tel"];
         self.remarks = self.detailDict[@"remarks"];
         
-        if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
+        if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"]){
             
             self.minimum_guarantee_amount = self.detailDict[@"minimum_guarantee_amount"];
             self.rigid_amount = self.detailDict[@"rigid_amount"];
@@ -89,15 +91,15 @@
         [self.order_type isEqualToString:@"赠送礼品"]|
         [self.order_type isEqualToString:@"集团关键联系人保底购机活动"]|
         [self.order_type isEqualToString:@"业务"]|
-        [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
+        [self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"]) {
         
         if (self.client_name.length == 0) {
             msg = @"请输入客户姓名";
         }else if (self.phone_num.length == 0) {
             msg = @"请输入电话号码";
-        }else if (([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"])&& self.minimum_guarantee_amount.length == 0) {
+        }else if (([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"])&& self.minimum_guarantee_amount.length == 0) {
             msg = @"请选择保底金额";
-        }else if (([self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"])&& self.rigid_amount.length == 0) {
+        }else if (([self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"])&& self.rigid_amount.length == 0) {
             msg = @"请输入刚性成本金额";
         }
 
@@ -145,7 +147,7 @@
     
     [dict setObject:self.remarks?self.remarks:@"" forKey:@"remarks"];
     
-    if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]){
+    if ([self.order_type isEqualToString:@"集团关键联系人保底购机活动"] || [self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"]){
         
         [dict setObject:self.minimum_guarantee_amount forKey:@"minimum_guarantee_amount"];
         
@@ -240,8 +242,8 @@
         if (([self.order_type isEqualToString:@"已签合同"] |
              [self.order_type isEqualToString:@"未签合同"] |
              [self.order_type isEqualToString:@"集团关键联系人保底购机活动"] |
-             [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) & !self.isFromTerminalStock) {
-            if ([self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
+             [self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"]) & !self.isFromTerminalStock) {
+            if ([self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"]) {
                 rows = 12;
             }else{
                rows = 11;
@@ -461,23 +463,24 @@
                         withTitle:@"订货类型"
                 cancelButtonTitle:@"取消"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"已签合同",@"未签合同",@"重要客户（AB类）新业务体验营销活动",@"业务"]
+                otherButtonTitles:@[@"已签合同",@"未签合同",@"190100009478 重要客户（AB类）新业务体验营销活动",@"业务"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
                                  self.order_type = @"已签合同";
                              }else if(buttonIndex == 1){
                                  self.order_type = @"未签合同";
                              }else if(buttonIndex == 2){
-                                 self.order_type = @"重要客户（AB类）新业务体验营销活动";
+                                 self.order_type = @"190100009478 重要客户（AB类）新业务体验营销活动";
                              }else if(buttonIndex == 3){
                                  self.order_type = @"业务";
                              }
-                             
+
 //                             [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:TYPE_TABLE_INDEX inSection:0]]
 //                                               withRowAnimation:UITableViewRowAnimationFade];
                              [_tableView reloadData];
-                             
+
                          }];
+        
         
         return NO;
     }else if (textField.tag == DATE_TABLE_INDEX){ //到货时间
@@ -681,7 +684,7 @@
                 [self.order_type isEqualToString:@"赠送礼品"]|
                 [self.order_type isEqualToString:@"集团关键联系人保底购机活动"]|
                 [self.order_type isEqualToString:@"业务"]|
-                [self.order_type isEqualToString:@"重要客户（AB类）新业务体验营销活动"]) {
+                [self.order_type containsString:@"重要客户（AB类）新业务体验营销活动"]) {
                 
                 UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"提交成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert showAlertViewWithCompleteBlock:^(NSInteger buttonIndex) {

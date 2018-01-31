@@ -127,7 +127,7 @@
     detailMuArr = [[NSMutableArray alloc] initWithObjects:
                    @{@"title":@"客户经理",@"detail":@"username",@"type":@"Label",@"placeholder":@"",@"message":@""},
                    @{@"title":@"申请部门",@"detail":@"userdep_name",@"type":@"Label",@"placeholder":@"",@"message":@""},
-                   @{@"title":@"集团单位",@"detail":@"company_name",@"type":@"CompanyCheck",@"placeholder":@"请选择集团单位名称",@"message":@""},
+                   @{@"title":@"集团单位",@"detail":@"company_name",@"type":@"CompanyCheck",@"placeholder":@"请选择集团单位",@"message":@""},
                    @{@"title":@"集团编号",@"detail":@"company_num",@"type":@"Label",@"placeholder":@"选择集团单位后自动生成",@"message":@""},
                    @{@"title":@"活动名称",@"detail":@"activity_name",@"type":@"Text",@"placeholder":@"",@"message":@""},
                    @{@"title":@"活动时长(月)",@"detail":@"long_time",@"type":@"Text",@"placeholder":@"",@"message":@""},
