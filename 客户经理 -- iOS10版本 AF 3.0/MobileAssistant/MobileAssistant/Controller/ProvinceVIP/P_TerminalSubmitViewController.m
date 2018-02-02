@@ -296,7 +296,7 @@
             case COMPANY_TABLE_INDEX:
             {
                 cell.titleLbl.text = @"集团单位";
-                cell.txtField.placeholder = @"请选择集团单位名称";
+                cell.txtField.placeholder = @"请选择集团单位";
                 cell.txtField.text = self.company;
                 break;
             }

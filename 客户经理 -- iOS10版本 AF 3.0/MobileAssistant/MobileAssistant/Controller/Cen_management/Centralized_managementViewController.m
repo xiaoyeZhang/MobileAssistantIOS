@@ -33,6 +33,8 @@
 #import "P_Marketing_PlanListViewController.h"
 #import "Basic_business_moduleListViewController.h"
 
+#import "News_ProvinceVip_ListTwoViewController.h"
+
 static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 static NSString *HeaderIdentifier = @"headerView";
 
@@ -115,8 +117,8 @@ static NSString *HeaderIdentifier = @"headerView";
 //                                           @{@"title":@"分合户",@"icon":@"分合户",@"viewController":@"13",@"VCbool":@"1"},
 //                                           @{@"title":@"纵向行业任务协同",@"icon":@"纵向行业任务协同",@"viewController":@"14",@"VCbool":@"1"},
 //                                           @{@"title":@"集团划拨",@"icon":@"p_stock3",@"viewController":@"16",@"VCbool":@"1"},
-                                           @{@"title":@"营销方案确认",@"icon":@"维修(2)",@"viewController":@"17",@"VCbool":@"1"},
-                                           @{@"title":@"基础业务受理",@"icon":@"方案",@"viewController":@"18",@"VCbool":@"1"}]}];
+                                           @{@"title":@"营销方案确认",@"icon":@"确认方案",@"viewController":@"17",@"VCbool":@"1"},
+                                           @{@"title":@"基础业务受理",@"icon":@"24-业务受理列表",@"viewController":@"18",@"VCbool":@"1"}]}];
 
     }else if ([_name isEqualToString:@"走访任务系统"]){
         
@@ -497,7 +499,12 @@ static NSString *HeaderIdentifier = @"headerView";
 //特号列表
 - (void)goSpecialViewController:(id)sender
 {
-
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"1";
+//    vc.titleName = @"特号列表";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    
     P_SpecialListViewController *vc = [[P_SpecialListViewController alloc] initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -512,6 +519,11 @@ static NSString *HeaderIdentifier = @"headerView";
 //终端列表
 - (void)goTerminalViewController:(id)sender
 {
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"3";
+//    vc.titleName = @"终端列表";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     P_TerminalListViewController *vc = [[P_TerminalListViewController alloc] initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -519,6 +531,11 @@ static NSString *HeaderIdentifier = @"headerView";
 //退库列表
 - (void)goStockViewController:(id)sender
 {
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"4";
+//    vc.titleName = @"退库列表";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     P_StockListViewController *vc = [[P_StockListViewController alloc] initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -526,6 +543,11 @@ static NSString *HeaderIdentifier = @"headerView";
 //终端出库
 - (void)goTerminalStockViewController:(id)sender
 {
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"9";
+//    vc.titleName = @"终端出库列表";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     P_TerminalStockListViewController *vc = [[P_TerminalStockListViewController alloc] initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -540,6 +562,11 @@ static NSString *HeaderIdentifier = @"headerView";
 //台账列表
 - (void)goBookViewController:(id)sender
 {
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"6";
+//    vc.titleName = @"台账列表";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     P_BookListViewController *vc = [[P_BookListViewController alloc] initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -554,6 +581,11 @@ static NSString *HeaderIdentifier = @"headerView";
 //发票列表
 - (void)goBillViewController:(id)sender
 {
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"8";
+//    vc.titleName = @"发票列表";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     P_BillListViewController *vc = [[P_BillListViewController alloc] initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -614,12 +646,22 @@ static NSString *HeaderIdentifier = @"headerView";
 //营销方案确认     P_Marketing_PlanListViewController
 - (void)goP_Marketing_PlanViewController:(id)sender{
     
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"15";
+//    vc.titleName = @"营销方案确认";
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     P_Marketing_PlanListViewController *vc = [[P_Marketing_PlanListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     
 }
 //基础业务受理     Basic_business_moduleListViewController
 - (void)goBasic_business_moduleListViewController:(id)sender{
+
+//    News_ProvinceVip_ListTwoViewController *vc = [[News_ProvinceVip_ListTwoViewController alloc]init];
+//    vc.typeId = @"16";
+//    vc.titleName = @"基础业务受理";
+//    [self.navigationController pushViewController:vc animated:YES];
     
     Basic_business_moduleListViewController *vc = [[Basic_business_moduleListViewController alloc]initWithNibName:@"P_BusinessBaseViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];

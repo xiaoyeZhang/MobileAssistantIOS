@@ -1138,13 +1138,13 @@
 //Section Footer的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (sectionArray.count == 16) {
+    if (sectionArray.count == 15) {
         if (section == 2) {
             return 10;
         }else{
             return 0.5;
         }
-    }else if(sectionArray.count == 15 && [ProvinceVIP_State isEqualToString:@"old"]){
+    }else if(sectionArray.count == 14 && [ProvinceVIP_State isEqualToString:@"old"]){
         
         if (section == 1) {
             return 10;
@@ -1158,7 +1158,7 @@
         }else{
             return 0.5;
         }
-    }else if(sectionArray.count == 14){
+    }else if(sectionArray.count == 13){
         
         if (section == 1) {
             return 10;

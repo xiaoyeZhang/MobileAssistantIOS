@@ -16,4 +16,6 @@
 @property(nonatomic, copy) NSString *user_name;
 @property(nonatomic, copy) NSString *remark;
 
+@property(nonatomic, copy) NSString *state_name;
+
 @end

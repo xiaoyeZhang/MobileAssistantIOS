@@ -194,6 +194,11 @@
 		2E08EFF61EE3E0A100FBD274 /* Trouble_call_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E08EFF41EE3E0A100FBD274 /* Trouble_call_DetailViewController.xib */; };
 		2E17F44C1C3E2D8100529C4C /* PlistLocalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E17F44B1C3E2D8100529C4C /* PlistLocalInfo.m */; };
 		2E17F44F1C3E2DA500529C4C /* phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E17F44E1C3E2DA500529C4C /* phone.m */; };
+		2E1FA68A2023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FA6882023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.m */; };
+		2E1FA68B2023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E1FA6892023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.xib */; };
+		2E1FA68E2023FBF100009F0F /* News_BusinessListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FA68D2023FBF100009F0F /* News_BusinessListModel.m */; };
+		2E1FA6922024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FA6902024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.m */; };
+		2E1FA6932024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E1FA6912024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.xib */; };
 		2E22577A1EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2257781EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.m */; };
 		2E22577B1EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2257791EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.xib */; };
 		2E22577E1EA4A93D009EAB8E /* M_Order_Demand_SumiltEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E22577D1EA4A93D009EAB8E /* M_Order_Demand_SumiltEntity.m */; };
@@ -1261,6 +1266,14 @@
 		2E17F44B1C3E2D8100529C4C /* PlistLocalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistLocalInfo.m; sourceTree = "<group>"; };
 		2E17F44D1C3E2DA500529C4C /* phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phone.h; sourceTree = "<group>"; };
 		2E17F44E1C3E2DA500529C4C /* phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = phone.m; sourceTree = "<group>"; };
+		2E1FA6872023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = News_ProvinceVip_ListTwoViewController.h; sourceTree = "<group>"; };
+		2E1FA6882023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = News_ProvinceVip_ListTwoViewController.m; sourceTree = "<group>"; };
+		2E1FA6892023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News_ProvinceVip_ListTwoViewController.xib; sourceTree = "<group>"; };
+		2E1FA68C2023FBF100009F0F /* News_BusinessListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = News_BusinessListModel.h; sourceTree = "<group>"; };
+		2E1FA68D2023FBF100009F0F /* News_BusinessListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = News_BusinessListModel.m; sourceTree = "<group>"; };
+		2E1FA68F2024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = News_ProvinceVip_Detail_TwoViewController.h; sourceTree = "<group>"; };
+		2E1FA6902024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = News_ProvinceVip_Detail_TwoViewController.m; sourceTree = "<group>"; };
+		2E1FA6912024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News_ProvinceVip_Detail_TwoViewController.xib; sourceTree = "<group>"; };
 		2E2257771EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M_Order_Demand_SumiltViewController.h; sourceTree = "<group>"; };
 		2E2257781EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M_Order_Demand_SumiltViewController.m; sourceTree = "<group>"; };
 		2E2257791EA4A48B009EAB8E /* M_Order_Demand_SumiltViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_Order_Demand_SumiltViewController.xib; sourceTree = "<group>"; };
@@ -3001,6 +3014,7 @@
 				2EA06C6A1FD7941B000A952F /* P_NextUserListViewController.h */,
 				2EA06C6B1FD7941B000A952F /* P_NextUserListViewController.m */,
 				2EA06C6C1FD7941B000A952F /* P_NextUserListViewController.xib */,
+				2E1FA6862023F33F00009F0F /* NewsProvinceVipTwo */,
 				2EDA64481CA115CE00B0F428 /* NewsProvinceVip */,
 				2EA9BC621FE8B04300C3251B /* Basic_business_module */,
 				2E684CB01FD643E400D8B031 /* Marketing_plan_ confirmation */,
@@ -3136,6 +3150,21 @@
 				2E08EFF41EE3E0A100FBD274 /* Trouble_call_DetailViewController.xib */,
 			);
 			path = Trouble_call;
+			sourceTree = "<group>";
+		};
+		2E1FA6862023F33F00009F0F /* NewsProvinceVipTwo */ = {
+			isa = PBXGroup;
+			children = (
+				2E1FA6872023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.h */,
+				2E1FA6882023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.m */,
+				2E1FA6892023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.xib */,
+				2E1FA68F2024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.h */,
+				2E1FA6902024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.m */,
+				2E1FA6912024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.xib */,
+				2E1FA68C2023FBF100009F0F /* News_BusinessListModel.h */,
+				2E1FA68D2023FBF100009F0F /* News_BusinessListModel.m */,
+			);
+			path = NewsProvinceVipTwo;
 			sourceTree = "<group>";
 		};
 		2E2319C61EA49F86007C2E79 /* News */ = {
@@ -5344,6 +5373,7 @@
 				2ECFB8791D386F6200A0668E /* P_Vertical_industry_collaborationSubmitViewController.xib in Resources */,
 				2EDA646F1CA24D6300B0F428 /* News_ProviceVIP_DetailViewController.xib in Resources */,
 				2E6A0AD91C21340A0086E333 /* UpDownLabelTableViewCell.xib in Resources */,
+				2E1FA68B2023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.xib in Resources */,
 				2EA192DC1DC6F48600D13FC5 /* Order_Demand_DetailViewController.xib in Resources */,
 				1485464F1BBA239F00257580 /* btn_close_normal.png in Resources */,
 				1485463F1BBA239F00257580 /* touch_focus_x.png in Resources */,
@@ -5399,6 +5429,7 @@
 				D9FDDC8519EBF45D00F03B55 /* ContactTableViewCell.xib in Resources */,
 				149A86BB1BBA357A00CEFA50 /* ShortcutItemCollectionViewCell.xib in Resources */,
 				D9BA5FD51A67BFF100D38D56 /* phoneNumber.txt in Resources */,
+				2E1FA6932024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.xib in Resources */,
 				2EF98BFB1C2B983400B10311 /* Business_Coloring_RingViewController.xib in Resources */,
 				41CF61221BBFB1E800A19D8C /* P_SpecialSubmitViewController.xib in Resources */,
 				2EDCCA2F1F02495000BBCA0C /* Integral_rankingListHeadView.xib in Resources */,
@@ -5754,6 +5785,7 @@
 				143AAD781BC65F17005401EA /* UITabBarItem+WZLBadge.m in Sources */,
 				148546C71BBA252F00257580 /* PhoneEnity.m in Sources */,
 				2E918FE41F38428F00B460C9 /* SA_Special_DetailViewController.m in Sources */,
+				2E1FA68A2023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.m in Sources */,
 				2E91CD7D1D11401600F15BEA /* Payment_ListTableViewCell.m in Sources */,
 				2EC15D331C587BC500DE522C /* Product_LineViewController.m in Sources */,
 				2EDA64831CA2979C00B0F428 /* News_ProvinceVIP_SubmitEntity.m in Sources */,
@@ -5847,6 +5879,7 @@
 				2E91CD781D11344500F15BEA /* Matching_ListViewController.m in Sources */,
 				2ECDBE291CD35CBE008B2B46 /* Activity_ID_queryView.m in Sources */,
 				417291F41BC5498B00377677 /* P_CardDetailViewController.m in Sources */,
+				2E1FA68E2023FBF100009F0F /* News_BusinessListModel.m in Sources */,
 				2EFD75141C182C8200C2F8EA /* P_MarketingSubmitViewController.m in Sources */,
 				2EF98C7E1C33A67E00B10311 /* UserLogoutBtnView.m in Sources */,
 				143AAD791BC65F17005401EA /* CAAnimation+WAnimation.m in Sources */,
@@ -6127,6 +6160,7 @@
 				D99A49CF19EFFDB2007EE8D6 /* StateViewController.m in Sources */,
 				2EA366661CD8811300443BE9 /* No_visit_baselistViewController.m in Sources */,
 				14A852AF1BC8FD390087E937 /* RightIconCollectionViewCell.m in Sources */,
+				2E1FA6922024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.m in Sources */,
 				2E90AED81CAB720A00E71FFD /* Recommended_DetailEntity.m in Sources */,
 				2EEA26E61F0E1D230085573D /* UICountingLabel.m in Sources */,
 				2E86A5341D2503E100856AF1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

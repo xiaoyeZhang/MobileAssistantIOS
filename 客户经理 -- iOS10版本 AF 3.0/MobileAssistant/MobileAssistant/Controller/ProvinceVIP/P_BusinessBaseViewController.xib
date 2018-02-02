@@ -86,7 +86,7 @@
                 <constraint firstItem="PMG-F9-6LS" firstAttribute="top" secondItem="E7g-yY-xQY" secondAttribute="bottom" id="it5-Np-iKy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="261" y="379"/>
+            <point key="canvasLocation" x="-63" y="348"/>
         </view>
     </objects>
     <resources>

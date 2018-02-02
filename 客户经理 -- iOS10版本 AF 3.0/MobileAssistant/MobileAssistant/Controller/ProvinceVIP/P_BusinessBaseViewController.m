@@ -11,7 +11,9 @@
 #import "UIAlertView+Blocks.h"
 
 @interface P_BusinessBaseViewController ()
-
+{
+    BOOL isDone;
+}
 @end
 
 @implementation P_BusinessBaseViewController
@@ -44,6 +46,8 @@
         [addBtn addTarget:self action:@selector(addBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
 //    }
     
+    isDone = NO;
+    
     self.startTime = [Utilies getLastMonth];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -51,7 +55,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     self.endTime = [dateFormatter stringFromDate:[NSDate date]];;
     
-    [dateBtn setTitle:[NSString stringWithFormat:@" %@ ~ %@",self.startTime,self.endTime]
+    [dateBtn setTitle:[NSString stringWithFormat:@"  ~ %@",self.endTime]
              forState:UIControlStateNormal];
     
     listMuArr = [[NSMutableArray alloc] init];
@@ -162,8 +166,8 @@
                            @"unfinish":waitBtn.selected?@"0":@"2",
                            @"page":@(page),
                            @"type_id":self.typeId,
-                           @"start_time":self.startTime,
-                           @"end_time":self.endTime};
+                           @"start_time":isDone?self.startTime:@"",
+                           @"end_time":isDone?self.endTime:@""};
     
     CommonService *service = [[CommonService alloc] init];
     
@@ -213,6 +217,7 @@
     } Failed:^(int errorCode, NSString *message) {
         [refreshHeader endRefreshing];
         [refreshFooter endRefreshing];
+        
     }];
 }
 
@@ -231,6 +236,8 @@
     NSString *dateStr = [NSString stringWithFormat:@" %@ ~ %@",self.startTime,self.endTime];
     [dateBtn setTitle:dateStr forState:UIControlStateNormal];
     
+    isDone = YES;
+
     self.currentPage = 0;
     [self getBusinessListWithPage:self.currentPage];
 }
