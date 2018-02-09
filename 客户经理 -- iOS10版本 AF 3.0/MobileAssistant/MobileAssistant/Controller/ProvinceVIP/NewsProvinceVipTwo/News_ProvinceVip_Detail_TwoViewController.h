@@ -24,4 +24,7 @@
 
 @property(nonatomic, strong) NSMutableArray *select_listMuArr;
 
+///审核状态
+@property(nonatomic, assign) int submitState;
+
 @end

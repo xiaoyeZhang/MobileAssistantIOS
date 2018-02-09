@@ -261,6 +261,8 @@
 		2E64CA0E1C1F9F6000F7597A /* Business_MarkingPlanDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E64CA0C1C1F9F6000F7597A /* Business_MarkingPlanDetailViewController.xib */; };
 		2E64CA121C1FA64D00F7597A /* Business_StopOpenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E64CA101C1FA64D00F7597A /* Business_StopOpenViewController.m */; };
 		2E64CA131C1FA64D00F7597A /* Business_StopOpenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E64CA111C1FA64D00F7597A /* Business_StopOpenViewController.xib */; };
+		2E66B68020293F100013CA84 /* News_Select_Next_listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E66B67E20293F100013CA84 /* News_Select_Next_listViewController.m */; };
+		2E66B68120293F100013CA84 /* News_Select_Next_listViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E66B67F20293F100013CA84 /* News_Select_Next_listViewController.xib */; };
 		2E684CB81FD643E500D8B031 /* P_Marketing_PlanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */; };
 		2E684CB91FD643E500D8B031 /* P_Marketing_PlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E684CB41FD643E400D8B031 /* P_Marketing_PlanListViewController.m */; };
 		2E6A0AD11C20037C0086E333 /* GroupContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD01C20037C0086E333 /* GroupContact.m */; };
@@ -1369,6 +1371,9 @@
 		2E64CA0F1C1FA64D00F7597A /* Business_StopOpenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business_StopOpenViewController.h; sourceTree = "<group>"; };
 		2E64CA101C1FA64D00F7597A /* Business_StopOpenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business_StopOpenViewController.m; sourceTree = "<group>"; };
 		2E64CA111C1FA64D00F7597A /* Business_StopOpenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Business_StopOpenViewController.xib; sourceTree = "<group>"; };
+		2E66B67D20293F100013CA84 /* News_Select_Next_listViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = News_Select_Next_listViewController.h; sourceTree = "<group>"; };
+		2E66B67E20293F100013CA84 /* News_Select_Next_listViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = News_Select_Next_listViewController.m; sourceTree = "<group>"; };
+		2E66B67F20293F100013CA84 /* News_Select_Next_listViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News_Select_Next_listViewController.xib; sourceTree = "<group>"; };
 		2E684CB11FD643E400D8B031 /* P_Marketing_PlanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Marketing_PlanDetailViewController.h; sourceTree = "<group>"; };
 		2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P_Marketing_PlanDetailViewController.m; sourceTree = "<group>"; };
 		2E684CB31FD643E400D8B031 /* P_Marketing_PlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Marketing_PlanListViewController.h; sourceTree = "<group>"; };
@@ -3161,6 +3166,9 @@
 				2E1FA68F2024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.h */,
 				2E1FA6902024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.m */,
 				2E1FA6912024117300009F0F /* News_ProvinceVip_Detail_TwoViewController.xib */,
+				2E66B67D20293F100013CA84 /* News_Select_Next_listViewController.h */,
+				2E66B67E20293F100013CA84 /* News_Select_Next_listViewController.m */,
+				2E66B67F20293F100013CA84 /* News_Select_Next_listViewController.xib */,
 				2E1FA68C2023FBF100009F0F /* News_BusinessListModel.h */,
 				2E1FA68D2023FBF100009F0F /* News_BusinessListModel.m */,
 			);
@@ -5599,6 +5607,7 @@
 				2E5158651DB5F12B000469E3 /* Task_Two_CreateViewController.xib in Resources */,
 				D954E7E519DE8C6C00330D43 /* NewsViewController.xib in Resources */,
 				D96BE6191A65580800F7C178 /* BusinessViewController.xib in Resources */,
+				2E66B68120293F100013CA84 /* News_Select_Next_listViewController.xib in Resources */,
 				1485463E1BBA239F00257580 /* touch_focus@2x.png in Resources */,
 				2EF98BD31C27A19F00B10311 /* LineTwoLabelTableViewCell.xib in Resources */,
 				2E9BB2301D35E8D600092E31 /* Small_prece_paperTableViewCell.xib in Resources */,
@@ -5735,6 +5744,7 @@
 				D9F74DBE19CDDF68005AD7A9 /* TaskTableViewCell.m in Sources */,
 				2ECE65C71CB62E12004721A4 /* Bless_informationViewController.m in Sources */,
 				1485464A1BBA239F00257580 /* DCStatusBarOverlay.m in Sources */,
+				2E66B68020293F100013CA84 /* News_Select_Next_listViewController.m in Sources */,
 				D971E52019E186CB0085BA20 /* CoustomerDetailViewController.m in Sources */,
 				149A87841BBA7F3700CEFA50 /* MJPropertyKey.m in Sources */,
 				2EDA64781CA2798700B0F428 /* News_ProvinceVIP_List_ProcessAEntity.m in Sources */,

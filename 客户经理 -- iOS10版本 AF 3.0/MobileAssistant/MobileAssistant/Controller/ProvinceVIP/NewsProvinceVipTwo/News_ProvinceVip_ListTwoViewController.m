@@ -265,6 +265,8 @@
     
     vc.business_id = model.business_id;
     
+    vc.titleName = self.titleName;
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
