@@ -212,6 +212,10 @@
 		2E2257931EA60682009EAB8E /* M_process_infoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2257921EA60682009EAB8E /* M_process_infoEntity.m */; };
 		2E2319CF1EA4A1E5007C2E79 /* M_Order_demandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2319CD1EA4A1E5007C2E79 /* M_Order_demandViewController.m */; };
 		2E2319D01EA4A1E5007C2E79 /* M_Order_demandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2319CE1EA4A1E5007C2E79 /* M_Order_demandViewController.xib */; };
+		2E4B91AD204F85CA00E5ADED /* Special_line_platformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4B91AB204F85CA00E5ADED /* Special_line_platformViewController.m */; };
+		2E4B91AE204F85CA00E5ADED /* Special_line_platformViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4B91AC204F85CA00E5ADED /* Special_line_platformViewController.xib */; };
+		2E4B91B2204F8C7D00E5ADED /* Special_line_platformDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4B91B0204F8C7D00E5ADED /* Special_line_platformDetailViewController.m */; };
+		2E4B91B3204F8C7D00E5ADED /* Special_line_platformDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4B91B1204F8C7D00E5ADED /* Special_line_platformDetailViewController.xib */; };
 		2E4ECC721F4BC6EE00E13B08 /* SA_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4ECC701F4BC6EE00E13B08 /* SA_ListViewController.m */; };
 		2E4ECC731F4BC6EE00E13B08 /* SA_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4ECC711F4BC6EE00E13B08 /* SA_ListViewController.xib */; };
 		2E5158641DB5F12B000469E3 /* Task_Two_CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5158621DB5F12B000469E3 /* Task_Two_CreateViewController.m */; };
@@ -265,6 +269,10 @@
 		2E66B68120293F100013CA84 /* News_Select_Next_listViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E66B67F20293F100013CA84 /* News_Select_Next_listViewController.xib */; };
 		2E684CB81FD643E500D8B031 /* P_Marketing_PlanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */; };
 		2E684CB91FD643E500D8B031 /* P_Marketing_PlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E684CB41FD643E400D8B031 /* P_Marketing_PlanListViewController.m */; };
+		2E686D72205649E700DF7B67 /* Overtime_workListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E686D70205649E700DF7B67 /* Overtime_workListViewController.m */; };
+		2E686D73205649E700DF7B67 /* Overtime_workListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E686D71205649E700DF7B67 /* Overtime_workListViewController.xib */; };
+		2E686D77205650EE00DF7B67 /* Overtime_work_childlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E686D75205650EE00DF7B67 /* Overtime_work_childlistViewController.m */; };
+		2E686D78205650EE00DF7B67 /* Overtime_work_childlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E686D76205650EE00DF7B67 /* Overtime_work_childlistViewController.xib */; };
 		2E6A0AD11C20037C0086E333 /* GroupContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD01C20037C0086E333 /* GroupContact.m */; };
 		2E6A0AD41C210E840086E333 /* GroupOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD31C210E840086E333 /* GroupOrderModel.m */; };
 		2E6A0AD81C21340A0086E333 /* UpDownLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A0AD61C21340A0086E333 /* UpDownLabelTableViewCell.m */; };
@@ -385,6 +393,8 @@
 		2E91D1CE1D2BA0F700C5C776 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E91D1CC1D2BA0F700C5C776 /* MainTableViewCell.xib */; };
 		2E91D1D21D2E261500C5C776 /* MainBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E91D1D01D2E261500C5C776 /* MainBaseViewController.m */; };
 		2E91D1D31D2E261500C5C776 /* MainBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E91D1D11D2E261500C5C776 /* MainBaseViewController.xib */; };
+		2E9295552060DEE700C3751A /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9295532060DEE700C3751A /* DisplayViewController.m */; };
+		2E9295562060DEE700C3751A /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9295542060DEE700C3751A /* DisplayViewController.xib */; };
 		2E92E8FD1D3CA8CB0099A5AD /* Marking_listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E92E8FB1D3CA8CB0099A5AD /* Marking_listTableViewCell.m */; };
 		2E92E8FE1D3CA8CB0099A5AD /* Marking_listTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E92E8FC1D3CA8CB0099A5AD /* Marking_listTableViewCell.xib */; };
 		2E92E9021D3CB5050099A5AD /* Marking_detail_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E92E9001D3CB5050099A5AD /* Marking_detail_ListViewController.m */; };
@@ -1297,6 +1307,12 @@
 		2E2319CC1EA4A1E5007C2E79 /* M_Order_demandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M_Order_demandViewController.h; sourceTree = "<group>"; };
 		2E2319CD1EA4A1E5007C2E79 /* M_Order_demandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M_Order_demandViewController.m; sourceTree = "<group>"; };
 		2E2319CE1EA4A1E5007C2E79 /* M_Order_demandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_Order_demandViewController.xib; sourceTree = "<group>"; };
+		2E4B91AA204F85CA00E5ADED /* Special_line_platformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Special_line_platformViewController.h; sourceTree = "<group>"; };
+		2E4B91AB204F85CA00E5ADED /* Special_line_platformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Special_line_platformViewController.m; sourceTree = "<group>"; };
+		2E4B91AC204F85CA00E5ADED /* Special_line_platformViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Special_line_platformViewController.xib; sourceTree = "<group>"; };
+		2E4B91AF204F8C7D00E5ADED /* Special_line_platformDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Special_line_platformDetailViewController.h; sourceTree = "<group>"; };
+		2E4B91B0204F8C7D00E5ADED /* Special_line_platformDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Special_line_platformDetailViewController.m; sourceTree = "<group>"; };
+		2E4B91B1204F8C7D00E5ADED /* Special_line_platformDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Special_line_platformDetailViewController.xib; sourceTree = "<group>"; };
 		2E4ECC6F1F4BC6EE00E13B08 /* SA_ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SA_ListViewController.h; sourceTree = "<group>"; };
 		2E4ECC701F4BC6EE00E13B08 /* SA_ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SA_ListViewController.m; sourceTree = "<group>"; };
 		2E4ECC711F4BC6EE00E13B08 /* SA_ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SA_ListViewController.xib; sourceTree = "<group>"; };
@@ -1378,6 +1394,12 @@
 		2E684CB21FD643E400D8B031 /* P_Marketing_PlanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P_Marketing_PlanDetailViewController.m; sourceTree = "<group>"; };
 		2E684CB31FD643E400D8B031 /* P_Marketing_PlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Marketing_PlanListViewController.h; sourceTree = "<group>"; };
 		2E684CB41FD643E400D8B031 /* P_Marketing_PlanListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P_Marketing_PlanListViewController.m; sourceTree = "<group>"; };
+		2E686D6F205649E700DF7B67 /* Overtime_workListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Overtime_workListViewController.h; sourceTree = "<group>"; };
+		2E686D70205649E700DF7B67 /* Overtime_workListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Overtime_workListViewController.m; sourceTree = "<group>"; };
+		2E686D71205649E700DF7B67 /* Overtime_workListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Overtime_workListViewController.xib; sourceTree = "<group>"; };
+		2E686D74205650EE00DF7B67 /* Overtime_work_childlistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Overtime_work_childlistViewController.h; sourceTree = "<group>"; };
+		2E686D75205650EE00DF7B67 /* Overtime_work_childlistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Overtime_work_childlistViewController.m; sourceTree = "<group>"; };
+		2E686D76205650EE00DF7B67 /* Overtime_work_childlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Overtime_work_childlistViewController.xib; sourceTree = "<group>"; };
 		2E6A0ACF1C20037C0086E333 /* GroupContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupContact.h; sourceTree = "<group>"; };
 		2E6A0AD01C20037C0086E333 /* GroupContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupContact.m; sourceTree = "<group>"; };
 		2E6A0AD21C210E840086E333 /* GroupOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupOrderModel.h; sourceTree = "<group>"; };
@@ -1591,6 +1613,9 @@
 		2E91D1CF1D2E261500C5C776 /* MainBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainBaseViewController.h; sourceTree = "<group>"; };
 		2E91D1D01D2E261500C5C776 /* MainBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainBaseViewController.m; sourceTree = "<group>"; };
 		2E91D1D11D2E261500C5C776 /* MainBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainBaseViewController.xib; sourceTree = "<group>"; };
+		2E9295522060DEE700C3751A /* DisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
+		2E9295532060DEE700C3751A /* DisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
+		2E9295542060DEE700C3751A /* DisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
 		2E92E8FA1D3CA8CB0099A5AD /* Marking_listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marking_listTableViewCell.h; sourceTree = "<group>"; };
 		2E92E8FB1D3CA8CB0099A5AD /* Marking_listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marking_listTableViewCell.m; sourceTree = "<group>"; };
 		2E92E8FC1D3CA8CB0099A5AD /* Marking_listTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Marking_listTableViewCell.xib; sourceTree = "<group>"; };
@@ -3238,6 +3263,19 @@
 			path = Marketing;
 			sourceTree = "<group>";
 		};
+		2E4B91A9204F85A400E5ADED /* Special_line_platform */ = {
+			isa = PBXGroup;
+			children = (
+				2E4B91AA204F85CA00E5ADED /* Special_line_platformViewController.h */,
+				2E4B91AB204F85CA00E5ADED /* Special_line_platformViewController.m */,
+				2E4B91AC204F85CA00E5ADED /* Special_line_platformViewController.xib */,
+				2E4B91AF204F8C7D00E5ADED /* Special_line_platformDetailViewController.h */,
+				2E4B91B0204F8C7D00E5ADED /* Special_line_platformDetailViewController.m */,
+				2E4B91B1204F8C7D00E5ADED /* Special_line_platformDetailViewController.xib */,
+			);
+			path = Special_line_platform;
+			sourceTree = "<group>";
+		};
 		2E5712711F1DEFB700A14C9F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -3390,6 +3428,20 @@
 			);
 			path = "Marketing_plan_ confirmation";
 			sourceTree = "<group>";
+		};
+		2E686D6E2056499500DF7B67 /* Overtime_work */ = {
+			isa = PBXGroup;
+			children = (
+				2E686D6F205649E700DF7B67 /* Overtime_workListViewController.h */,
+				2E686D70205649E700DF7B67 /* Overtime_workListViewController.m */,
+				2E686D71205649E700DF7B67 /* Overtime_workListViewController.xib */,
+				2E686D74205650EE00DF7B67 /* Overtime_work_childlistViewController.h */,
+				2E686D75205650EE00DF7B67 /* Overtime_work_childlistViewController.m */,
+				2E686D76205650EE00DF7B67 /* Overtime_work_childlistViewController.xib */,
+			);
+			name = Overtime_work;
+			path = MobileAssistant/Controller/Overtime_work;
+			sourceTree = SOURCE_ROOT;
 		};
 		2E6BF0681E5EBDFD008F6CF2 /* AFNetworking */ = {
 			isa = PBXGroup;
@@ -3610,6 +3662,16 @@
 				2E91CD721D11343400F15BEA /* Payment_ListViewController.xib */,
 			);
 			name = Payment_of_funds;
+			sourceTree = "<group>";
+		};
+		2E9295512060DED100C3751A /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				2E9295522060DEE700C3751A /* DisplayViewController.h */,
+				2E9295532060DEE700C3751A /* DisplayViewController.m */,
+				2E9295542060DEE700C3751A /* DisplayViewController.xib */,
+			);
+			path = Display;
 			sourceTree = "<group>";
 		};
 		2E92E9161D3E1E230099A5AD /* case */ = {
@@ -4723,6 +4785,7 @@
 		D954E7AD19DE8C6C00330D43 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				2E9295512060DED100C3751A /* Display */,
 				2EECF8721DD04FB100661E7E /* Visit_list */,
 				2EE516381D4B2CB500F43462 /* data_statistics */,
 				2ECDBDEA1CCDB575008B2B46 /* Payment_arrears */,
@@ -4928,9 +4991,11 @@
 				2E57127B1F1F45CC00A14C9F /* Product_visit */,
 				2EEA269B1F0E05980085573D /* information_view */,
 				2EEA269C1F0E05980085573D /* location_view */,
+				2E686D6E2056499500DF7B67 /* Overtime_work */,
 				2E9F49451EEE9DC100FEF17F /* Marketing_Center */,
 				2ED057711EE8F123008FEE72 /* Online_answer */,
 				2ED057611EE7AB93008FEE72 /* Business_change */,
+				2E4B91A9204F85A400E5ADED /* Special_line_platform */,
 				2E08EFE71EE3C7F000FBD274 /* Trouble_call */,
 				2E08EFD91EE050FF00FBD274 /* Business_contacts */,
 				2EA192CB1DC6F48600D13FC5 /* Order_demand */,
@@ -5378,6 +5443,7 @@
 				D90D568B19CD5613002C1AC0 /* TaskListViewController.xib in Resources */,
 				2EF98C011C2BD97700B10311 /* Business_Group_DirectoruyViewController.xib in Resources */,
 				2EDCCA221F01F1F300BBCA0C /* Exam_historylistViewController.xib in Resources */,
+				2E686D73205649E700DF7B67 /* Overtime_workListViewController.xib in Resources */,
 				2ECFB8791D386F6200A0668E /* P_Vertical_industry_collaborationSubmitViewController.xib in Resources */,
 				2EDA646F1CA24D6300B0F428 /* News_ProviceVIP_DetailViewController.xib in Resources */,
 				2E6A0AD91C21340A0086E333 /* UpDownLabelTableViewCell.xib in Resources */,
@@ -5476,6 +5542,7 @@
 				2E9B21451DA9D34900E1A794 /* News_MyGroup_MessageViewController.xib in Resources */,
 				2E57128D1F20459700A14C9F /* Product_Visit_Select_userViewController.xib in Resources */,
 				2EDA649D1CA512F100B0F428 /* News_ProviceVIP_Edit_DetailViewController.xib in Resources */,
+				2E9295562060DEE700C3751A /* DisplayViewController.xib in Resources */,
 				2E918FE51F38428F00B460C9 /* SA_Special_DetailViewController.xib in Resources */,
 				2E918FE01F38427F00B460C9 /* SA_Special_SumbitViewController.xib in Resources */,
 				2E92E90B1D3CBEC00099A5AD /* TwoTableViewCell.xib in Resources */,
@@ -5487,6 +5554,7 @@
 				2EC91E641EC1638500995113 /* dayo.net.cn.cer in Resources */,
 				4191DCDD1BD321B300DC6003 /* PhotosCollectionViewCell.xib in Resources */,
 				2EDA64801CA294E000B0F428 /* News_ProviceVIP_SubmitViewController.xib in Resources */,
+				2E686D78205650EE00DF7B67 /* Overtime_work_childlistViewController.xib in Resources */,
 				2E64C9D91C1E6C1C00F7597A /* ButtonTableViewCell.xib in Resources */,
 				D90D568619CD554C002C1AC0 /* TaskCreateViewController.xib in Resources */,
 				2EFD752C1C1966AC00C2F8EA /* BussinessList.plist in Resources */,
@@ -5601,6 +5669,7 @@
 				148546371BBA239F00257580 /* shot_h.png in Resources */,
 				148546341BBA239F00257580 /* flashing_on@2x.png in Resources */,
 				2EF98C2A1C312CAC00B10311 /* Business_Group_DirectoruyListViewController.xib in Resources */,
+				2E4B91B3204F8C7D00E5ADED /* Special_line_platformDetailViewController.xib in Resources */,
 				2E6A0B001C22B2B60086E333 /* Business_ProductDetailViewController.xib in Resources */,
 				2E9B21631DAE0A1A00E1A794 /* New_MyGroup_baseMessageViewController.xib in Resources */,
 				2EECF8841DD1B7EB00661E7E /* visit_task_summaryTableViewCell.xib in Resources */,
@@ -5624,6 +5693,7 @@
 				2EE3AE1D1CBCE2280089FBA7 /* Marking_listViewController.xib in Resources */,
 				2EA2A6031DA8CCA70093A625 /* New_groupTableViewCell.xib in Resources */,
 				2E08EFF61EE3E0A100FBD274 /* Trouble_call_DetailViewController.xib in Resources */,
+				2E4B91AE204F85CA00E5ADED /* Special_line_platformViewController.xib in Resources */,
 				D9FDAB1719D0723A00950CD1 /* NewsTableViewCell.xib in Resources */,
 				2E78C1151CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib in Resources */,
 				2ECE65CE1CB63BF1004721A4 /* Bless_informationTableViewCell.xib in Resources */,
@@ -5796,6 +5866,7 @@
 				148546C71BBA252F00257580 /* PhoneEnity.m in Sources */,
 				2E918FE41F38428F00B460C9 /* SA_Special_DetailViewController.m in Sources */,
 				2E1FA68A2023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.m in Sources */,
+				2E686D72205649E700DF7B67 /* Overtime_workListViewController.m in Sources */,
 				2E91CD7D1D11401600F15BEA /* Payment_ListTableViewCell.m in Sources */,
 				2EC15D331C587BC500DE522C /* Product_LineViewController.m in Sources */,
 				2EDA64831CA2979C00B0F428 /* News_ProvinceVIP_SubmitEntity.m in Sources */,
@@ -5939,6 +6010,7 @@
 				1485465C1BBA239F00257580 /* MWPhotoBrowser.m in Sources */,
 				D9F3AFA519C40CA800AAF0C9 /* UserService.m in Sources */,
 				D9ADFDBD19D66B7E00316935 /* VisiteTask.m in Sources */,
+				2E4B91AD204F85CA00E5ADED /* Special_line_platformViewController.m in Sources */,
 				2ED057AB1EEA9BD0008FEE72 /* Integral_rankingListTableViewCell.m in Sources */,
 				2E6A0AF21C215F260086E333 /* Business_ProdInstInfoTableViewCell.m in Sources */,
 				2E873F561F1744FC008F5641 /* P_pic_ulrViewController.m in Sources */,
@@ -6064,6 +6136,7 @@
 				2E86A54B1D26137100856AF1 /* UIWebView+SFHFStringMetrics.m in Sources */,
 				2E6A0AF71C22648E0086E333 /* Business_MarkingPlanListViewController.m in Sources */,
 				2EA56DCD1FBEB60100D40D19 /* Arrears_taskTableViewCell.m in Sources */,
+				2E686D77205650EE00DF7B67 /* Overtime_work_childlistViewController.m in Sources */,
 				2E92E8FD1D3CA8CB0099A5AD /* Marking_listTableViewCell.m in Sources */,
 				148546871BBA239F00257580 /* CalendarLogic.m in Sources */,
 				D9F3AEA119C3EE7B00AAF0C9 /* UserEntity.m in Sources */,
@@ -6132,6 +6205,7 @@
 				41CF61211BBFB1E800A19D8C /* P_SpecialSubmitViewController.m in Sources */,
 				2EEA26CE1F0E1D060085573D /* PNBar.m in Sources */,
 				2E8EFD801FD684DB0026A1CB /* P_Marketing_PlanSubmitViewController.m in Sources */,
+				2E9295552060DEE700C3751A /* DisplayViewController.m in Sources */,
 				2ECE65B81CB39CC5004721A4 /* Birthday_listViewController.m in Sources */,
 				2EA2A6021DA8CCA70093A625 /* New_groupTableViewCell.m in Sources */,
 				2EA192DB1DC6F48600D13FC5 /* Order_Demand_DetailViewController.m in Sources */,
@@ -6143,6 +6217,7 @@
 				2E684CB81FD643E500D8B031 /* P_Marketing_PlanDetailViewController.m in Sources */,
 				14E54B381BCF841900114D60 /* UserTableCellHeaderView.m in Sources */,
 				2EEA26D41F0E1D070085573D /* PNLineChart.m in Sources */,
+				2E4B91B2204F8C7D00E5ADED /* Special_line_platformDetailViewController.m in Sources */,
 				2EDEE8511F29B356003A82A3 /* Focus_ListEntity.m in Sources */,
 				2E8E549A1F00EBC000B000B6 /* Exam_DetailEntity.m in Sources */,
 				149A878D1BBA88FC00CEFA50 /* UIAlertView+Blocks.m in Sources */,

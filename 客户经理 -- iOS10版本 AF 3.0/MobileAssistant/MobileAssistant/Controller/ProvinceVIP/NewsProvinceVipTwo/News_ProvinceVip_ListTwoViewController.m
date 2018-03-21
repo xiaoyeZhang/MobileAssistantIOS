@@ -265,6 +265,10 @@
     
     vc.business_id = model.business_id;
     
+    vc.typeId = self.typeId;
+    
+    vc.listMuArr = listMuArr;
+    
     vc.titleName = self.titleName;
     
     [self.navigationController pushViewController:vc animated:YES];

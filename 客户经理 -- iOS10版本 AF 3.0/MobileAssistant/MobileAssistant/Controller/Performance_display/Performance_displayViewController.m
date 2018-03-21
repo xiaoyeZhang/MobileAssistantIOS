@@ -45,7 +45,16 @@
     
     [HUD hide:YES];
 }
-
+- (void) webViewDidStartLoad:(UIWebView *)webView
+{
+    NSLog(@"webViewDidStartLoad");
+    
+}
+- (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"didFailLoadWithError:%@", error);
+    [HUD hide:YES];
+}
 #pragma mark - ButtonMethod
 - (void)backBtnClicked:(id)sender
 {

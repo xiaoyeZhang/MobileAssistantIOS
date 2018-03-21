@@ -457,7 +457,9 @@
         int min = [Time intValue]/60 ;
         int second = [Time integerValue]%60;
         
-        [self performSelector:@selector(changeTime:) withObject:[NSNumber numberWithInt:[Time intValue]-1] afterDelay:1];
+//        [self performSelector:@selector(changeTime:) withObject:[NSNumber numberWithInt:[Time intValue]-1] afterDelay:1];
+        
+        [self performSelector:@selector(changeTime:) withObject:[NSNumber numberWithInt:[Time intValue]-1] afterDelay:1 inModes:@[NSRunLoopCommonModes]];
         
         if(second < 10){
             

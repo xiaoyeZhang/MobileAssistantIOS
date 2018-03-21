@@ -218,7 +218,7 @@
                            [Utilies GetNowDateTime], @"starttime",
                            self.imageName, @"path",
                            @"sign", @"method", nil];
-    NSLog(@"%@",param);
+
     [service getNetWorkData:param  Successed:^(id entity) {
         NSNumber *state = [entity valueForKeyPath:@"state"];
         NSString *strState= [NSString stringWithFormat:@"%d", [state intValue]];

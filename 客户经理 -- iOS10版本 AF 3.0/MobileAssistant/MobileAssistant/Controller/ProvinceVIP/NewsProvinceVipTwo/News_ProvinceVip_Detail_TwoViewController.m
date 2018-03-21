@@ -15,6 +15,17 @@
 #import "News_PtovinceVip_Next_CustomerEntity.h"
 #import "News_Select_Next_listViewController.h"
 #import "MBProgressHUD.h"
+
+#import "P_SpecialSubmitViewController.h"
+#import "P_TerminalSubmitViewController.h"
+#import "P_StockSubmitViewController.h"
+#import "P_TerminalStockSubmitViewController.h"
+#import "P_BookSubmitViewController.h"
+#import "P_BillSubmitViewController.h"
+#import "P_Marketing_PlanSubmitViewController.h"
+#import "Basic_business_moduleSubmitViewController.h"
+#import "News_ProvinceVip_Detail_TwoViewController.h"
+
 @interface News_ProvinceVip_Detail_TwoViewController ()<CheckBoxTableViewCellDelegate,News_Select_Next_listViewControllerDelegate,UITextFieldDelegate,MBProgressHUDDelegate>
 {
     NSString *op_info;
@@ -85,8 +96,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)setRightBtn{
-    //提交
+- (void)setRightBtn{    //提交
+    
     if([op_info isEqualToString:@"-1"]){
         
     }else if ([op_info isEqualToString:@"-2"]){
@@ -145,6 +156,13 @@
 }
 
 - (void)submitBtnClicked:(id)sender{
+    
+    if ([submitBtn.titleLabel.text isEqualToString:@"编辑"]) {
+        
+        [self chageViewController];
+        
+        return;
+    }
     
     static BOOL isDone = YES;
     if (!isDone) {
@@ -228,7 +246,7 @@
                 News_PtovinceVip_Next_CustomerEntity *entity = [[News_PtovinceVip_Next_CustomerEntity alloc]init];
                 entity = [entity initWithAttributes:attributes];
                 
-                [self.self.select_listMuArr addObject:entity];
+                [self.select_listMuArr addObject:entity];
                 
             }
         }
@@ -495,6 +513,79 @@
         
 //        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
 //                  withRowAnimation:UITableViewRowAnimationNone];
+        
+    }
+}
+
+- (void)chageViewController{
+    
+    NSMutableDictionary *detailDict = [NSMutableDictionary dictionary]; //被驳回时重新提交内容
+
+    for (NSDictionary *dict in _detailMuArr) {
+        
+        [detailDict setValue:dict[@"value"] forKey:dict[@"key_name"]];
+    }
+    
+    NSMutableArray *arr = [News_BusinessListModel keyValuesArrayWithObjectArray:self.listMuArr];
+   
+    NSMutableArray *arrr = [BusinessListModel objectArrayWithKeyValuesArray:arr];
+   
+    BusinessListModel *bListModel = [arrr objectAtIndex:0];
+    
+    if ([self.typeId isEqualToString:@"1"]) {
+        
+        P_SpecialSubmitViewController *vc = [[P_SpecialSubmitViewController alloc] init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"3"]){
+        
+        P_TerminalSubmitViewController *vc = [[P_TerminalSubmitViewController alloc]init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"4"]){
+        
+        P_StockSubmitViewController *vc = [[P_StockSubmitViewController alloc]init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"9"]){
+
+        P_TerminalStockSubmitViewController *vc = [[P_TerminalStockSubmitViewController alloc] initWithNibName:@"P_TerminalSubmitViewController" bundle:nil];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"6"]){
+        
+        P_BookSubmitViewController *vc = [[P_BookSubmitViewController alloc]init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"8"]){
+        
+        P_BillSubmitViewController *vc = [[P_BillSubmitViewController alloc]init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"15"]){
+        
+        P_Marketing_PlanSubmitViewController *vc = [[P_Marketing_PlanSubmitViewController alloc]init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([self.typeId isEqualToString:@"16"]){
+        Basic_business_moduleSubmitViewController *vc = [[Basic_business_moduleSubmitViewController alloc]init];
+        vc.detailDict = detailDict;
+        vc.bListModel = bListModel;
+        [self.navigationController pushViewController:vc animated:YES];
         
     }
 }

@@ -44,6 +44,7 @@
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [webView loadRequest:request];
     webView.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {

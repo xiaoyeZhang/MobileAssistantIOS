@@ -257,7 +257,8 @@
         }
     
         isDone = YES;
-    
+        [HUD hide:YES];
+        
     } Failed:^(int errorCode, NSString *message) {
         
         isDone = YES;
@@ -403,8 +404,12 @@
      type_id = 4 表示下拉菜单选择，从data_info取数据，每一项用;隔开
      type_id = 5 表示下拉菜单选择，从data_info取接口名，重新请求数据
      */
+
     
     if (textField.tag == _listArr.count) {
+
+        [self.view endEditing:YES];
+
         M_OrderUserViewController *vc = [[M_OrderUserViewController alloc]init];
         
         vc.order_id = @"-1";
@@ -422,6 +427,14 @@
 //        M_Order_Demand_SumiltEntity *entity = [_listDic objectForKey:[NSString stringWithFormat:@"%ld",textField.tag + 1]];
 
          M_Order_Demand_SumiltEntity *entity = [_listArr objectAtIndex:textField.tag];
+        
+        if ([entity.type_id isEqualToString:@"1"]) {
+            
+        }else{
+            
+            [self.view endEditing:YES];
+
+        }
         
         if ([entity.type_id isEqualToString:@"0"]) {
             
@@ -504,24 +517,31 @@
 {
 
 //    M_Order_Demand_SumiltEntity *entity = [_listDic objectForKey:[NSString stringWithFormat:@"%ld",textField.tag + 1]];
-    M_Order_Demand_SumiltEntity *entity = [_listArr objectAtIndex:textField.tag];
     
-    for (NSString *key in _submitDic) {
+    if (textField.tag == _listArr.count) {
         
-        if ([entity.name isEqualToString:key]) {
+    }else{
+        
+        M_Order_Demand_SumiltEntity *entity = [_listArr objectAtIndex:textField.tag];
+        
+        for (NSString *key in _submitDic) {
             
-            [self.submitDic setObject:textField.text forKey:key];
-            
-            if (entity.Init_data.length < 2 && [[self.submitDic objectForKey:key] rangeOfString:entity.Init_data].location == NSNotFound) {
+            if ([entity.name isEqualToString:key]) {
                 
-                textField.text = [NSString stringWithFormat:@"%@%@",[self.submitDic objectForKey:key],entity.Init_data];
+                [self.submitDic setObject:textField.text forKey:key];
                 
+                if (entity.Init_data.length < 2 && [[self.submitDic objectForKey:key] rangeOfString:entity.Init_data].location == NSNotFound) {
+                    
+                    textField.text = [NSString stringWithFormat:@"%@%@",[self.submitDic objectForKey:key],entity.Init_data];
+                    
+                }
+                
+                return;
             }
             
-            return;
         }
-        
     }
+    
 }
 
 - (void)getDate{

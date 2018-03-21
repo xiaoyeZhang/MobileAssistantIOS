@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Special_line_platformViewController">
+            <connections>
+                <outlet property="dateBtn" destination="7sp-gv-cJT" id="lTX-65-FIW"/>
+                <outlet property="tableView" destination="001-zH-sZ0" id="QlG-Oi-v8s"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="001-zH-sZ0">
+                    <rect key="frame" x="0.0" y="35" width="375" height="632"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Nv1-ys-LWE"/>
+                        <outlet property="delegate" destination="-1" id="DQS-gb-0E0"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlY-cv-iDg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sp-gv-cJT" userLabel="2015-09-04 ~ 2015-10-04">
+                            <rect key="frame" x="85" y="8" width="205" height="19"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title=" 2015-09-04 ~ 2015-10-04" image="rili">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="dateBtnClicked:" destination="-1" eventType="touchUpInside" id="9M0-Y4-vlj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="7sp-gv-cJT" firstAttribute="centerX" secondItem="dlY-cv-iDg" secondAttribute="centerX" id="3RA-Kf-nYi"/>
+                        <constraint firstAttribute="height" constant="35" id="eH0-6f-Gzd"/>
+                        <constraint firstItem="7sp-gv-cJT" firstAttribute="centerY" secondItem="dlY-cv-iDg" secondAttribute="centerY" id="xGd-4N-yxG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="001-zH-sZ0" firstAttribute="top" secondItem="dlY-cv-iDg" secondAttribute="bottom" id="CAK-Pb-LgX"/>
+                <constraint firstAttribute="trailing" secondItem="dlY-cv-iDg" secondAttribute="trailing" id="SOz-lG-nDp"/>
+                <constraint firstAttribute="trailing" secondItem="001-zH-sZ0" secondAttribute="trailing" id="VEL-Hv-HBR"/>
+                <constraint firstItem="001-zH-sZ0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bnI-wt-G0H"/>
+                <constraint firstAttribute="bottom" secondItem="001-zH-sZ0" secondAttribute="bottom" id="geT-Lm-0gj"/>
+                <constraint firstItem="dlY-cv-iDg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hgu-bS-AHk"/>
+                <constraint firstItem="dlY-cv-iDg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x35-wc-dZ2"/>
+            </constraints>
+            <point key="canvasLocation" x="-323" y="-86"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="rili" width="16" height="16"/>
+    </resources>
+</document>
