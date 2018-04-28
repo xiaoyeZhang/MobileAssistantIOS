@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"订单需求发起";
+    self.navigationItem.title = @"订单需求详情";
     
     UIButton *backBtn = [self setNaviCommonBackBtn];
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];

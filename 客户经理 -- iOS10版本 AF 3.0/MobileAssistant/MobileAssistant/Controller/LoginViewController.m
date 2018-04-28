@@ -29,6 +29,7 @@
     UserEntity *userEntity;
     
 }
+@property (strong, nonatomic) UITabBarController *tb;
 @property(nonatomic,strong) NSTimer* timer1;
 @property (nonatomic, strong) NSString *strUrlUpdate;
 @property (assign) BOOL bMustUpdate;
@@ -786,5 +787,6 @@
     
     return output;
 }
+
 
 @end

@@ -12,7 +12,13 @@
 
 @interface MainViewController : ZXYBaseViewController<EScrollerViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *MainCollectionView;
+/////  2018-4-8  新界面
 
+@property (strong, nonatomic) IBOutlet UIView *MainTabCollView;
+@property (weak, nonatomic) IBOutlet UICollectionView *MainCollectionView_Two;
+@property (weak, nonatomic) IBOutlet UITableView *MainTableView_Two;
+
+/////
 @property (strong, nonatomic) IBOutlet UIView *MainTableView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

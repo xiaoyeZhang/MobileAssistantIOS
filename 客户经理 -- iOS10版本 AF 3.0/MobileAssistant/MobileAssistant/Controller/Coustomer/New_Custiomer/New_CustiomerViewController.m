@@ -84,6 +84,8 @@ static NSString *cellIdentifier = @"BusinessListCollectionViewCell";
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
+    [_mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     UIViewController* viewController = [[NSClassFromString([[arr objectAtIndex:indexPath.row] objectForKey:@"viewController"]) alloc] init];
     
     [_mainVC.navigationController pushViewController:viewController animated:YES];

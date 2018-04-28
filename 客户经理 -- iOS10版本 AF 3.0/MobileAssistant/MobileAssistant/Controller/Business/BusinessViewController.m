@@ -41,6 +41,7 @@ static NSString *headerIdentifier = @"BusinessImageCollectionReusableView";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"CRM业务办理";
+//    self.navigationItem.title = @"业务受理";
     _collectionView.backgroundColor = [UIColor colorWithHexString:@"#F2F2F2"];
     
     UIButton *backBtn = [self setNaviCommonBackBtn];

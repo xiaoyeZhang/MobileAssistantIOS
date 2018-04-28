@@ -328,6 +328,8 @@
 //    NewsDetailViewController *vc = [[NewsDetailViewController alloc]init];
 //    vc.newsEntity = entity;
     
+    [mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NewsContentViewController *vc = [[NewsContentViewController alloc] init];

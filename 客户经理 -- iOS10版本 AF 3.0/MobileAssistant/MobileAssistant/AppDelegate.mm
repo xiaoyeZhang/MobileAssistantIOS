@@ -62,7 +62,7 @@ BMKMapManager* _mapManager;
 //    }
     
     if (IOS7_OR_LATER) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     }
     
     // Override point for customization after application launch.

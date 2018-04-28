@@ -9,7 +9,9 @@
 #import "MainViewController.h"
 #import "AFNetworking.h"
 #import "MainTableViewCell.h"
+#import "MaintwoTableViewCell.h"
 #import "UserEntity.h"
+#import "UIColor+Hex.h"
 #import "AdEntity.h"
 #import "NewsViewController.h"
 #import "CommonService.h"
@@ -35,8 +37,13 @@
 
 #import "Centralized_managementViewController.h"
 
+#import "BusinessListCollectionViewCell.h"
+
+
 static NSString *cellIdentifier = @"Central_manageCollectionViewCell";
 static NSString *HeaderIdentifier = @"headerView";
+
+static NSString *cellIdentifier1 = @"BusinessListCollectionViewCell";
 
 @interface MainViewController ()
 {
@@ -45,6 +52,10 @@ static NSString *HeaderIdentifier = @"headerView";
     NSString *ProvinceVIP_State;
     NSArray *MainTableViewArr;
     NSArray *MainBusinessArr;
+    NSArray *MainTableViewArr_Two;
+    
+    NSArray *MainBusinessArr_Two;
+    NSDictionary *home_page_numDic;
     
     NSString *Already_visitedstrCount;
     NSString *Not_visitedstrCount;
@@ -181,13 +192,18 @@ static NSString *HeaderIdentifier = @"headerView";
     
     
     //二期整体页面规划
-    [self.scrollView addSubview:_MainTableView];
+//    [self.scrollView addSubview:_MainTableView];
+    
+    [self.scrollView addSubview:_MainTabCollView]; // 最新界面
     
     UserEntity *userEntity = [UserEntity sharedInstance];
     
-    UIImageView *mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 140)];
+    UIImageView *mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, BAR_HEIGHT, SCREEN_WIDTH, 140)];
     mainImage.image = [UIImage imageNamed:@"ad_default"];
-    [self.MainTableView addSubview:mainImage];
+//    [self.MainTableView addSubview:mainImage];
+
+    [self.MainTabCollView addSubview:mainImage];  // 最新界面
+    
 //    UIScrollView *WebScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 140)];
 //    WebScroller.backgroundColor = RGBA(66, 187, 233, 1);
 //    WebScroller.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 140);
@@ -225,11 +241,17 @@ static NSString *HeaderIdentifier = @"headerView";
     
     NcVC = [[New_CustiomerViewController alloc]init];
     
-    aboutVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60);
-    newsVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60);
-    cmVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60);
-    
-    NcVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60);    //   首席看管
+//    aboutVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60 );
+//    newsVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60 );
+//    cmVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60 );
+//
+//    NcVC.view.frame = CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height - 60 );    //   首席看管
+    //////新界面
+    aboutVC.view.frame = CGRectMake(0, BAR_HEIGHT,  self.view.frame.size.width, self.view.frame.size.height - 60 - BAR_HEIGHT);
+    newsVC.view.frame = CGRectMake(0, BAR_HEIGHT,  self.view.frame.size.width, self.view.frame.size.height - 60 - BAR_HEIGHT);
+    cmVC.view.frame = CGRectMake(0, BAR_HEIGHT,  self.view.frame.size.width, self.view.frame.size.height - 60 - BAR_HEIGHT);
+
+    NcVC.view.frame = CGRectMake(0, BAR_HEIGHT,  self.view.frame.size.width, self.view.frame.size.height - 60 - BAR_HEIGHT);    //   首席看管
     
     newsVC.mainVC = self;
     aboutVC.mainVC = self;
@@ -248,12 +270,14 @@ static NSString *HeaderIdentifier = @"headerView";
     
     NcVC.view.hidden = YES;   //   首席看管
     
-    [self getWeatherData];
-    [self getLocationData];
+//    [self getWeatherData];
+//    [self getLocationData];
     
     [self getUnfinishedNum];
     
     [self getProvinceVIP_state];
+    
+    [self get_home_page_num];
     
     if (self.isAutoInP_VIP) {
         [self doProvinceVIP:nil];
@@ -294,14 +318,40 @@ static NSString *HeaderIdentifier = @"headerView";
         
     }
     
-    UINib *nib = [UINib nibWithNibName:cellIdentifier bundle:nil];
-    [_MainCollectionView registerNib:nib forCellWithReuseIdentifier:cellIdentifier];
-    
-    UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([MainCollectionReusableViewHeadView class])  bundle:[NSBundle mainBundle]];
-    [_MainCollectionView registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];//注册加载头
+//    UINib *nib = [UINib nibWithNibName:cellIdentifier bundle:nil];
+//    [_MainCollectionView registerNib:nib forCellWithReuseIdentifier:cellIdentifier];
+//
+//    UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([MainCollectionReusableViewHeadView class])  bundle:[NSBundle mainBundle]];
+//    [_MainCollectionView registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];//注册加载头
+
     
     //***********************************//
 
+    
+    //*****************************************新界面************************************************
+    
+    MainBusinessArr_Two = @[
+                            @{@"name":@"生产管理",@"image":@"商务业务",@"VCname":@"生产管理"},
+                            @{@"name":@"业务受理",@"image":@"受理和审查",@"VCname":@"业务受理"},
+                            @{@"name":@"集中调度",@"image":@"三元管理",@"VCname":@"集中调度"},
+                            @{@"name":@"订单管理",@"image":@"订单",@"VCname":@"订单管理"},
+                            @{@"name":@"商机管理",@"image":@"用户管理",@"VCname":@"商机管理"},
+                            @{@"name":@"业务展示",@"image":@"个人中心_知识库_actived",@"VCname":@"业务展示"}];
+
+    MainTableViewArr_Two = @[
+                             @{@"name":@"新商机任务",@"icon":@"商机管理",@"num":@"business_opportunity",@"viewController":@""},
+                             @{@"name":@"待拜访填写纪要",@"icon":@"反馈填写",@"num":@"visit",@"viewController":@"TaskListViewController"},
+                             @{@"name":@"集中策略分发",@"icon":@"测评",@"num":@"strategy",@"viewController":@"Policy_distributionListViewController"}];
+    
+    UINib *nib = [UINib nibWithNibName:cellIdentifier bundle:nil];
+    [_MainCollectionView_Two registerNib:nib forCellWithReuseIdentifier:cellIdentifier1];
+
+    UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([MainCollectionReusableViewHeadView class])  bundle:[NSBundle mainBundle]];
+    [_MainCollectionView_Two registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];//注册加载头
+
+     _MainCollectionView_Two.backgroundColor = [UIColor colorWithHexString:@"#F2F2F2"];
+
+    _MainTableView_Two.scrollEnabled = NO;
     
     ConfigureArr = [[NSMutableArray alloc]init];
     
@@ -312,31 +362,91 @@ static NSString *HeaderIdentifier = @"headerView";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return MainTableViewArr.count;
+    if (tableView == _tableView) {
+        return MainTableViewArr.count;
+
+    }else{
+        return MainTableViewArr_Two.count;
+    }
+}
+- (NSInteger)numberOfRowsInSection:(NSInteger)section{
+
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+    headView.backgroundColor = [UIColor colorWithRed:240.0/255 green:240.0/255 blue:240.0/255 alpha:1];
+    UILabel *headLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREEN_WIDTH - 10, 20)];
+    headLabel.font = [UIFont systemFontOfSize:14];
+    
+    headLabel.textColor = RGBA(100, 100, 100, 1);
+    
+    headLabel.text = @"待处理事项";
+    
+    [headView addSubview:headLabel];
+    
+    return headView;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    
+    if (tableView == _tableView) {
+        return 80;
+    }else{
+        return 40;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *couponTableViewCellIdentifier=@"MainTableViewCell";
-    MainTableViewCell *cell = (MainTableViewCell *)[tableView dequeueReusableCellWithIdentifier:couponTableViewCellIdentifier];
-    if (cell == nil) {
-        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"MainTableViewCell" owner:self options:nil];
-        cell = [array objectAtIndex:0];
-        cell.iconImage.contentMode = UIViewContentModeScaleAspectFit;
-    }
-
-    NSArray *arr = [[MainTableViewArr[indexPath.row]objectForKey:@"color"] componentsSeparatedByString:@","];
-
-    cell.ColorLabel.backgroundColor = RGBCOLOR([arr[0] intValue], [arr[1] intValue], [arr[2] intValue], 1);
-    cell.iconImage.image = [UIImage imageNamed:[MainTableViewArr[indexPath.row]objectForKey:@"icon"]];
-    cell.titleLabel.text = [MainTableViewArr[indexPath.row]objectForKey:@"title"];
-    cell.messageLabel.text = [MainTableViewArr[indexPath.row]objectForKey:@"message"];
+ 
+    if (tableView == _tableView) {
     
-    return cell;
+        static NSString *couponTableViewCellIdentifier=@"MainTableViewCell";
+        MainTableViewCell *cell = (MainTableViewCell *)[tableView dequeueReusableCellWithIdentifier:couponTableViewCellIdentifier];
+        if (cell == nil) {
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"MainTableViewCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+            cell.iconImage.contentMode = UIViewContentModeScaleAspectFit;
+        }
+        
+        NSArray *arr = [[MainTableViewArr[indexPath.row]objectForKey:@"color"] componentsSeparatedByString:@","];
+        
+        cell.ColorLabel.backgroundColor = RGBCOLOR([arr[0] intValue], [arr[1] intValue], [arr[2] intValue], 1);
+        cell.iconImage.image = [UIImage imageNamed:[MainTableViewArr[indexPath.row]objectForKey:@"icon"]];
+        cell.titleLabel.text = [MainTableViewArr[indexPath.row]objectForKey:@"title"];
+        cell.messageLabel.text = [MainTableViewArr[indexPath.row]objectForKey:@"message"];
+        
+        return cell;
+    }else{
+        
+        static NSString *couponTableViewCellIdentifier=@"MaintwoTableViewCell";
+        MaintwoTableViewCell *cell = (MaintwoTableViewCell *)[tableView dequeueReusableCellWithIdentifier:couponTableViewCellIdentifier];
+        if (cell == nil) {
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"MaintwoTableViewCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+            cell.iconImage.contentMode = UIViewContentModeScaleAspectFit;
+            cell.numLabel.layer.cornerRadius = 8;
+            cell.numLabel.layer.masksToBounds = YES;
+        }
+        
+        cell.iconImage.image = [UIImage imageNamed:[MainTableViewArr_Two[indexPath.row] objectForKey:@"icon"]];
+        cell.titleLabel.text = [MainTableViewArr_Two[indexPath.row] objectForKey:@"name"];
+        
+        cell.numLabel.text = home_page_numDic[[MainTableViewArr_Two[indexPath.row] objectForKey:@"num"]];
+        
+        return cell;
+    }
+    
 }
 
 #pragma mark Table view delegate
@@ -344,40 +454,57 @@ static NSString *HeaderIdentifier = @"headerView";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UserEntity *userInfo = [UserEntity sharedInstance];
     
-    if ([userInfo.type_id intValue]== ROLE_SOCOALCHANNEL) {
+    if (tableView == _tableView) {
+        UserEntity *userInfo = [UserEntity sharedInstance];
         
-        if ([[MainTableViewArr[indexPath.row]objectForKey:@"title"] isEqualToString:@"订单中心"]) {
+        if ([userInfo.type_id intValue]== ROLE_SOCOALCHANNEL) {
             
-            [self goMainBaseViewController:[MainTableViewArr[indexPath.row]objectForKey:@"title"]];
+            if ([[MainTableViewArr[indexPath.row]objectForKey:@"title"] isEqualToString:@"订单中心"]) {
+                
+                [self goMainBaseViewController:[MainTableViewArr[indexPath.row]objectForKey:@"title"]];
+            }
+            
+        }else{
+            
+            switch (indexPath.row) {
+                case 0:
+                    [self doProvinceVIP:nil];
+                    
+                    break;
+                    
+                case 2:
+                    
+                    [self doEnterBusiness:nil];
+                    
+                    break;
+                case 3:
+                    //
+                    //            [self goMainBaseViewController:[MainTableViewArr[indexPath.row]objectForKey:@"title"]];
+                    //
+                    //            break;
+                    
+                default:
+                    [self goMainBaseViewController:[MainTableViewArr[indexPath.row]objectForKey:@"title"]];
+                    break;
+            }
+            
         }
-        
     }else{
         
-        switch (indexPath.row) {
-            case 0:
-                [self doProvinceVIP:nil];
-                
-                break;
-                
-            case 2:
-                
-                [self doEnterBusiness:nil];
-                
-                break;
-            case 3:
-                //
-                //            [self goMainBaseViewController:[MainTableViewArr[indexPath.row]objectForKey:@"title"]];
-                //
-                //            break;
-                
-            default:
-                [self goMainBaseViewController:[MainTableViewArr[indexPath.row]objectForKey:@"title"]];
-                break;
-        }
+        NSString *ControllerStr = [MainTableViewArr_Two[indexPath.row] objectForKey:@"viewController"];
+        
+        if (ControllerStr.length > 0) {
+        
+            [self.navigationController setNavigationBarHidden:NO animated:NO];
 
+        }
+        
+        UIViewController* viewController = [[NSClassFromString(ControllerStr) alloc] init];
+        
+        [self.navigationController pushViewController:viewController animated:YES];
     }
+  
    
 }
 
@@ -416,7 +543,9 @@ static NSString *HeaderIdentifier = @"headerView";
                        forBarPosition:UIBarPositionAny
                            barMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
-    
+
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -525,8 +654,8 @@ static NSString *HeaderIdentifier = @"headerView";
         
         [btnMain setBackgroundImage:[UIImage imageNamed:@"tab_hp_press"] forState:UIControlStateNormal];
         [btnAbout setBackgroundImage:[UIImage imageNamed:@"tab_about"] forState:UIControlStateNormal];
-        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"tab_contact"] forState:UIControlStateNormal];
-        [btnNews setBackgroundImage:[UIImage imageNamed:@"tab_push"] forState:UIControlStateNormal];
+        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"客户_press"] forState:UIControlStateNormal];
+        [btnNews setBackgroundImage:[UIImage imageNamed:@"公告_press"] forState:UIControlStateNormal];
         
         [btnMainText setTitleColor:[UIColor colorWithRed:0.21 green:0.69 blue:0.89 alpha:1] forState:UIControlStateNormal];
         [btnAboutText setTitleColor:[UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1] forState:UIControlStateNormal];
@@ -566,8 +695,8 @@ static NSString *HeaderIdentifier = @"headerView";
 
         [btnMain setBackgroundImage:[UIImage imageNamed:@"tab_hp"] forState:UIControlStateNormal];
         [btnAbout setBackgroundImage:[UIImage imageNamed:@"tab_about"] forState:UIControlStateNormal];
-        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"tab_contact_press"] forState:UIControlStateNormal];
-        [btnNews setBackgroundImage:[UIImage imageNamed:@"tab_push"] forState:UIControlStateNormal];
+        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"客户"] forState:UIControlStateNormal];
+        [btnNews setBackgroundImage:[UIImage imageNamed:@"公告_press"] forState:UIControlStateNormal];
         
         [btnMainText setTitleColor:[UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1] forState:UIControlStateNormal];
         [btnAboutText setTitleColor:[UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1] forState:UIControlStateNormal];
@@ -591,8 +720,8 @@ static NSString *HeaderIdentifier = @"headerView";
         
         [btnMain setBackgroundImage:[UIImage imageNamed:@"tab_hp"] forState:UIControlStateNormal];
         [btnAbout setBackgroundImage:[UIImage imageNamed:@"tab_about"] forState:UIControlStateNormal];
-        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"tab_contact"] forState:UIControlStateNormal];
-        [btnNews setBackgroundImage:[UIImage imageNamed:@"tab_push_press"] forState:UIControlStateNormal];
+        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"客户_press"] forState:UIControlStateNormal];
+        [btnNews setBackgroundImage:[UIImage imageNamed:@"公告"] forState:UIControlStateNormal];
         
         [btnMainText setTitleColor:[UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1] forState:UIControlStateNormal];
         [btnAboutText setTitleColor:[UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1] forState:UIControlStateNormal];
@@ -617,8 +746,8 @@ static NSString *HeaderIdentifier = @"headerView";
         
         [btnMain setBackgroundImage:[UIImage imageNamed:@"tab_hp"] forState:UIControlStateNormal];
         [btnAbout setBackgroundImage:[UIImage imageNamed:@"tab_about_press"] forState:UIControlStateNormal];
-        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"tab_contact"] forState:UIControlStateNormal];
-        [btnNews setBackgroundImage:[UIImage imageNamed:@"tab_push"] forState:UIControlStateNormal];
+        [btnCoustomer setBackgroundImage:[UIImage imageNamed:@"客户_press"] forState:UIControlStateNormal];
+        [btnNews setBackgroundImage:[UIImage imageNamed:@"公告_press"] forState:UIControlStateNormal];
         
         [btnMainText setTitleColor:[UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1] forState:UIControlStateNormal];
         [btnAboutText setTitleColor:[UIColor colorWithRed:0.21 green:0.69 blue:0.89 alpha:1] forState:UIControlStateNormal];
@@ -842,67 +971,118 @@ static NSString *HeaderIdentifier = @"headerView";
                   }];
 }
 
+- (void)get_home_page_num
+{
+    UserEntity *userInfo = [UserEntity sharedInstance];
+    NSDictionary *dict = @{@"method":@"get_home_page_num",
+                           @"user_id":userInfo.user_id};
+    
+    CommonService *service = [[CommonService alloc] init];
+    
+    [service getNetWorkData:dict
+                  Successed:^(id entity) {
+                      int state = [entity[@"state"] intValue];
+                      
+                      if (state == 1) {
+                          
+                          home_page_numDic = entity[@"content"];
+                          
+                          [self.MainTableView_Two reloadData];
+                      }
+                      
+                  } Failed:^(int errorCode, NSString *message) {
+                      
+                  }];
+}
+
 #pragma mark - scorllorView代理
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return MainBusinessArr.count;
+    if (collectionView == _MainCollectionView) {
+       
+        return MainBusinessArr.count;
+
+    }else{
+        
+        return 1;
+
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    for (int iC = 0; iC < MainBusinessArr.count; iC++) {
-        
-        if (section == iC) {
-            return [[[MainBusinessArr objectAtIndex:iC] objectForKey:@"list"] count];
+    if (collectionView == _MainCollectionView) {
+        for (int iC = 0; iC < MainBusinessArr.count; iC++) {
+            
+            if (section == iC) {
+                return [[[MainBusinessArr objectAtIndex:iC] objectForKey:@"list"] count];
+            }
+            
         }
-        
+    }else{
+        return MainBusinessArr_Two.count;
     }
+    
     return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    Central_manageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    
-    cell.titleLable.text = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.iconImageView.image = [UIImage imageNamed:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"icon"]];
-    cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    cell.titleLable.font = [UIFont systemFontOfSize:12];
-    cell.backgroundColor = [UIColor whiteColor];
-    
-    return cell;
-    
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind   withReuseIdentifier:HeaderIdentifier forIndexPath:indexPath];
-    
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
+    if (collectionView == _MainCollectionView) {
+        Central_manageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         
-        MainCollectionReusableViewHeadView *headerView = (MainCollectionReusableViewHeadView *)view;
+        
+        cell.titleLable.text = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"title"];
+        cell.iconImageView.image = [UIImage imageNamed:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"icon"]];
+        cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+        cell.titleLable.font = [UIFont systemFontOfSize:12];
+        cell.backgroundColor = [UIColor whiteColor];
+        
+        return cell;
+    }else{
+        BusinessListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier1 forIndexPath:indexPath];
+        
+        cell.titleLable.text = MainBusinessArr_Two[indexPath.row][@"name"];
 
-        headerView.backgroundColor = RGBCOLOR(247, 247, 247, 1);
-        headerView.titilabel.font = [UIFont systemFontOfSize:12];
-        headerView.titilabel.textColor = RGBCOLOR(130, 130, 130, 1);
-
-        if (indexPath.section == 0) {
-            headerView.titilabel.text = @"常用功能";
-        }else if (indexPath.section == 1) {
-            headerView.titilabel.text = @"其他功能";
-        }else{
-            
-        }
-        return headerView;
+        cell.iconImageView.image = [UIImage imageNamed:MainBusinessArr_Two[indexPath.row][@"image"]];
+        
+        cell.backgroundColor = [UIColor whiteColor];
+        
+        return cell;
     }
     
-    return nil;
-    
 }
+
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+//
+//    if (collectionView == _MainCollectionView) {
+//        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind :kind   withReuseIdentifier:HeaderIdentifier forIndexPath:indexPath];
+//
+//        if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
+//
+//            MainCollectionReusableViewHeadView *headerView = (MainCollectionReusableViewHeadView *)view;
+//
+//            headerView.backgroundColor = RGBCOLOR(247, 247, 247, 1);
+//            headerView.titilabel.font = [UIFont systemFontOfSize:12];
+//            headerView.titilabel.textColor = RGBCOLOR(130, 130, 130, 1);
+//
+//            if (indexPath.section == 0) {
+//                headerView.titilabel.text = @"常用功能";
+//            }else if (indexPath.section == 1) {
+//                headerView.titilabel.text = @"其他功能";
+//            }else{
+//
+//            }
+//            return headerView;
+//        }
+//    }
+//
+//    return nil;
+//
+//}
 
 #pragma mark - UICollectionViewDelegate
 
@@ -910,62 +1090,88 @@ static NSString *HeaderIdentifier = @"headerView";
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    NSString *strType = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCbool"];
-    if ([strType isEqualToString:@"0"]) {
+    if (collectionView == _MainCollectionView) {
         
-        [self goViewController:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"]];
+        NSString *strType = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCbool"];
         
-    }else{
-        
-        NSString *viewControllerStr = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"];
-        
-        if ([viewControllerStr isEqualToString:@"data_statisticsWebViewController"]) {
-        
-            NSString *select_type = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"select_type"];
+        if ([strType isEqualToString:@"0"]) {
             
-            data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
-            
-            vc.select_type = select_type;
-            
-            vc.name = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCname"];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-
-            
-        }else if ([viewControllerStr isEqualToString:@"Centralized_managementViewController"]) {
-            
-            Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
-            
-            vc.name = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCname"];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-            
+            [self goViewController:[[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"]];
             
         }else{
             
-            UIViewController* viewController = [[NSClassFromString(viewControllerStr) alloc] init];
+            NSString *viewControllerStr = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"viewController"];
             
-            [self.navigationController pushViewController:viewController animated:YES];
+            if ([viewControllerStr isEqualToString:@"data_statisticsWebViewController"]) {
+                
+                NSString *select_type = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"select_type"];
+                
+                data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
+                
+                vc.select_type = select_type;
+                
+                vc.name = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCname"];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                
+            }else if ([viewControllerStr isEqualToString:@"Centralized_managementViewController"]) {
+                
+                Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
+                
+                vc.name = [[[[MainBusinessArr objectAtIndex:indexPath.section] objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"VCname"];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                
+            }else{
+                
+                UIViewController* viewController = [[NSClassFromString(viewControllerStr) alloc] init];
+                
+                [self.navigationController pushViewController:viewController animated:YES];
+                
+            }
+            
+        }
+    }else{
         
+        if ([MainBusinessArr_Two[indexPath.row][@"name"] isEqualToString:@"商机管理"] || [MainBusinessArr_Two[indexPath.row][@"name"] isEqualToString:@"业务展示"]) {
+            
+            ALERT_ERR_MSG(@"功能待开发");
+            
+            return;
         }
         
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+
+        Centralized_managementViewController *vc = [[Centralized_managementViewController alloc]init];
+        
+        vc.name = MainBusinessArr_Two[indexPath.row][@"VCname"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }
-    
-    
+
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((collectionView.bounds.size.width - 10)/4, 65);
+    if (collectionView == _MainCollectionView) {
+        
+        return CGSizeMake((collectionView.bounds.size.width - 10)/4, 65);
+
+    }else{
+        return CGSizeMake((collectionView.bounds.size.width - 4)/3, (SCREEN_HEIGHT - 160 -4*4-135)/3);
+    }
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(collectionView.bounds.size.width, 20);
-    
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+//{
+//    return CGSizeMake(collectionView.bounds.size.width, 20);
+//
+//}
 
 - (void)goViewController:(NSString *)strType{
     

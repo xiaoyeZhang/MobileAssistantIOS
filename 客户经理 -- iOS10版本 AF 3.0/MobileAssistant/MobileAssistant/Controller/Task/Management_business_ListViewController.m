@@ -263,18 +263,20 @@
                         withTitle:@"商机类型"
                 cancelButtonTitle:@"取消"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"产品类",@"项目类",@"话费活动类",@"终端活动类"]
+                otherButtonTitles:@[@"产品类",@"ICT项目",@"话费活动类",@"终端活动类",@"竞争对手信息"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex != actionSheet.cancelButtonIndex) {
                                  
                                  if (buttonIndex == 0) {
                                      textField.text = @"产品类";
                                  }else if(buttonIndex == 1){
-                                     textField.text = @"项目类";
+                                     textField.text = @"ICT项目";
                                  }else if(buttonIndex == 2){
                                      textField.text = @"话费活动类";
                                  }else if(buttonIndex == 3){
                                      textField.text = @"终端活动类";
+                                 }else if(buttonIndex == 4){
+                                     textField.text = @"竞争对手信息";
                                  }
                                  self.opportunity_type = textField.text;
                              }

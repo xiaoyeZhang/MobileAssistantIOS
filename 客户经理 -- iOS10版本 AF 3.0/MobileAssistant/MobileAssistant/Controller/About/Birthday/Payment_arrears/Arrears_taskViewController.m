@@ -27,6 +27,7 @@
 {
     [refreshHeader free];
     [refreshFooter free];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,6 +41,8 @@
     UIButton *backBtn = [self setNaviCommonBackBtn];
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subVCBackNeedRefresh:) name:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
+    
     [self getData:0];
     
     [self addRefreshView];
@@ -187,6 +190,15 @@
     }];
     
     
+}
+
+#pragma mark - 刷新数据
+
+- (void)subVCBackNeedRefresh:(id)sender
+{
+    //刷新数据
+    
+    [self getData:0];
 }
 
 - (void)didReceiveMemoryWarning {

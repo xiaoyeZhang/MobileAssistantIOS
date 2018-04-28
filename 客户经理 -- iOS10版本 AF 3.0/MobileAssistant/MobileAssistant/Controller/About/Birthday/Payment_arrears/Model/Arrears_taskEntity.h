@@ -29,6 +29,16 @@
 @property (nonatomic, copy) NSString *acc_name; // 账号名称
 @property (nonatomic, copy) NSString *guest_num; // 账号编码
 @property (nonatomic, copy) NSString *tel; // 电话号码
+
+@property (nonatomic, copy) NSString *do_flag; //
+@property (nonatomic, copy) NSString *state; //
+@property (nonatomic, copy) NSString *arrearage_id; //
+
+@property (nonatomic, copy) NSString *infos; //
+@property (nonatomic, copy) NSString *suggestion; //
+@property (nonatomic, copy) NSString *reason; //
+@property (nonatomic, copy) NSString *next_processor; //
+
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 

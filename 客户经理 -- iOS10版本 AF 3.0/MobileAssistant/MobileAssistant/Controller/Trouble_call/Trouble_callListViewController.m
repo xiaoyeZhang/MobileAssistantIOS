@@ -161,7 +161,8 @@
     NSDictionary *dict = @{@"method":@"m_order_list",
                            @"type":@"1",
                            @"user_id":userEntity.user_id,
-                           @"location":@(location),@"state":_waitBtn.selected?@"1":@"0",
+                           @"location":@(location),
+                           @"state":_waitBtn.selected?@"1":@"0",
                            @"start_time":self.start_time?self.start_time:@"",
                            @"end_time":self.end_time?self.end_time:@"",
                            };

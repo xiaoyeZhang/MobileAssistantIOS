@@ -39,6 +39,18 @@
     self.guest_num = [attributes valueForKey:@"guest_num"];
     self.tel = [attributes valueForKey:@"tel"];
     
+    self.do_flag = [attributes valueForKey:@"do_flag"];
+    self.state = [attributes valueForKey:@"state"];
+    self.arrearage_id = [attributes valueForKey:@"arrearage_id"];
+    
+    if ([[attributes allKeys] containsObject:@"infos"]){
+        self.infos = [attributes valueForKey:@"infos"];
+        self.suggestion = [attributes valueForKey:@"suggestion"];
+        self.next_processor = [attributes valueForKey:@"next_processor"];
+    }
+    if ([[attributes allKeys] containsObject:@"reason"]){
+        self.reason = [attributes valueForKey:@"reason"];
+    }
     return self;
 }
 

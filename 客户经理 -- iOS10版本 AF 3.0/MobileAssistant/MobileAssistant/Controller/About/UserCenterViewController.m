@@ -201,7 +201,7 @@
 //                        @{@"title":@" 公司领导预约拜访",@"num":@"t3"},
                         @{@"title":@" 终端办理",@"num":@"t4"},
                         @{@"title":@" 终端退库",@"num":@"t5"},
-//                        @{@"title":@" 售后维修单",@"num":@"t6+t7"},
+                        @{@"title":@" 售后维修单",@"num":@"t6+t7"},
                         @{@"title":@" 台账登记",@"num":@"t8+t9+t16"},
 //                        @{@"title":@" 办卡",@"num":@"t10+t11"},
                         @{@"title":@" 开具发票",@"num":@"t12+t13+t14"},
@@ -233,12 +233,14 @@
     [visitArray addObject:@{@"title":@" 本周走访任务数",@"finish":@"this_week_finish",@"total":@"this_week"}];
     [visitArray addObject:@{@"title":@" 本月走访任务数",@"finish":@"this_month_finish",@"total":@"this_month"}];
     [visitArray addObject:@{@"title":@" 上月走访任务数",@"finish":@"last_month_finish",@"total":@"last_month"}];
-    [visitArray addObject:@{@"title":@" 本月已走访集团客户",@"finish":@"last_month_finish",@"total":@"last_month"}];
-    [visitArray addObject:@{@"title":@" 本月未走访集团客户",@"finish":@"last_month_finish",@"total":@"last_month"}];
+//    [visitArray addObject:@{@"title":@" 本月已走访集团客户",@"finish":@"last_month_finish",@"total":@"last_month"}];
+//    [visitArray addObject:@{@"title":@" 本月未走访集团客户",@"finish":@"last_month_finish",@"total":@"last_month"}];
 
-    [self getSettingFromServer];
-    
-    [self getBirthdayNum];
+//    [self getSettingFromServer];
+//
+//    [self getBirthdayNum];
+
+    [self getData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subVCBackNeedRefresh:) name:BUSINESS_LIST_REFRESH_NOTIFY object:nil];
 }
@@ -277,7 +279,7 @@
             
         }else if ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"]){
             
-            sectionArray = [NSArray arrayWithObjects:@"待办事项",@"走访情况",@"运营分析数据统计",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//13
+            sectionArray = [NSArray arrayWithObjects:@"待办事项",@"走访情况",@"运营分析数据统计",@"欠费任务提醒",@"合同到期提醒推送",@"客户生日提醒",@"全省客户经理服务指标展示",@"2017全省班组成绩展示",@"APP应用推荐",@"推送设置",@"修改密码",@"修改手机号码",@"意见反馈",@"App下载地址分享",@"当前版本",@"退出登录", nil];					//13
             iconArray = [NSArray arrayWithObjects:@"待办事项",@"走访任务执行情况",@"运营信息统计icon",@"催缴任务",@"合同到期-2",@"生日提醒(1)",@"指标",@"指标",@"业内应用推荐",@"设置推送时间",@"修改密码",@"my_phone",@"意见反馈",@"my_share",@"当前版本号", nil];
             
         }else{
@@ -600,7 +602,7 @@
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
         }else if (section == 5) {
             
-            view.titleLbl.text = [NSString stringWithFormat:@"%@(本月%@条提醒)",title,self.birthday_num?self.birthday_num:@"0"];
+            view.titleLbl.text = [NSString stringWithFormat:@"%@",title];
             
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(BirthdayBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
@@ -748,7 +750,7 @@
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
         }else if (section == 4) {
             
-            view.titleLbl.text = [NSString stringWithFormat:@"%@(本月%@条提醒)",title,self.birthday_num?self.birthday_num:@"0"];
+            view.titleLbl.text = [NSString stringWithFormat:@"%@",title];
             
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(BirthdayBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
@@ -899,7 +901,7 @@
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
         }else if (section == 5) {
             
-            view.titleLbl.text = [NSString stringWithFormat:@"%@(本月%@条提醒)",title,self.birthday_num?self.birthday_num:@"0"];
+            view.titleLbl.text = [NSString stringWithFormat:@"%@",title];
             
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(BirthdayBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
@@ -1032,7 +1034,7 @@
             [view addGestureRecognizer:singleRecognizer];//添加一个手势监测
         }else if (section == 4) {
             
-            view.titleLbl.text = [NSString stringWithFormat:@"%@(本月%@条提醒)",title,self.birthday_num?self.birthday_num:@"0"];
+            view.titleLbl.text = [NSString stringWithFormat:@"%@",title];
             
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(BirthdayBtnClicked:)];
             singleRecognizer.numberOfTapsRequired = 1;//点击的次数。＝1 单击
@@ -1193,7 +1195,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     if (![sectionArray[indexPath.section] isEqualToString:@"运营分析数据统计"]) {
         if ((sectionArray.count == 16 || (sectionArray.count == 15 && ([ProvinceVIP_State isEqualToString:@"new"] || [ProvinceVIP_State isEqualToString:@"close"])))&& indexPath.section == 1) {
             
@@ -1273,6 +1275,9 @@
                     }
                 }
             }else{
+                
+                [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+
                 This_month_unvisitEntity *model = visitArray[indexPath.row];
                 
                 TaskCreateViewController *vc = [[TaskCreateViewController alloc]init];
@@ -1288,7 +1293,8 @@
     }else{
         UserEntity *userInfo = [UserEntity sharedInstance];
         if ([userInfo.type_id intValue] == ROLE_CUSTOMER) {
-            
+            [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+
 //            if(indexPath.row == 0){
 //                
 //                [self Payment_arrearsBtnClicked:nil];
@@ -1306,6 +1312,7 @@
                 
             }else if (indexPath.row == 1){
                 
+                
                 data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
                 
                 vc.select_type = @"3";
@@ -1316,6 +1323,7 @@
                 
             }else if (indexPath.row == 2){
                 
+                
                 Visit_listViewController  *vc = [[Visit_listViewController alloc]init];
                 
                 [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1323,6 +1331,8 @@
             
         }else if ([userInfo.type_id intValue] == ROLE_THREE || [userInfo.type_id intValue] == ROLE_TWO){
             
+            [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+
             data_statisticsWebViewController *vc = [[data_statisticsWebViewController alloc]init];
             vc.name = data_statisticsArr[indexPath.row];
 //
@@ -1348,6 +1358,7 @@
             
             if (indexPath.row == 0 || indexPath.row == 1) {
                 
+                
                 [self.mainVC.navigationController pushViewController:vc animated:YES];
 
             }
@@ -1367,7 +1378,9 @@
         if ([ProvinceVIP_State isEqualToString:@"old"]) {
 
             if ([cell.subTitleLbl.text intValue] > 0) {
-
+                
+                [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+                
                 switch (indexPath.row) {
                     case 0:
                     {
@@ -1389,12 +1402,12 @@
                         [self goStockViewController:nil];
                         break;
                     }
-//                    case 4:
-//                    {
-//                        [self goRepairViewController:nil];
-//                        break;
-//                    }
                     case 3:
+                    {
+                        [self goRepairViewController:nil];
+                        break;
+                    }
+                    case 4:
                     {
                         [self goBookViewController:nil];
                         break;
@@ -1404,12 +1417,12 @@
 //                        [self goCardViewController:nil];
 //                        break;
 //                    }
-                    case 4:
+                    case 5:
                     {
                         [self goBillViewController:nil];
                         break;
                     }
-                    case 5:
+                    case 6:
                     {
                         [self goTerminalStockViewController:nil];
                         break;
@@ -1444,12 +1457,12 @@
 //                        [self goHouston_queryViewController:nil];
 //                        break;
 //                    }
-                    case 6:
+                    case 7:
                     {
                         [self goP_Marketing_PlanViewController:nil];
                         break;
                     }
-                    case 7:
+                    case 8:
                     {
                         [self goBasic_business_moduleListViewController:nil];
                         break;
@@ -1463,10 +1476,13 @@
             
              if ([cell.subTitleLbl.text intValue] > 0) {
                  
+                 [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+
                  if([cell.titleLbl.text rangeOfString:@"纵向行业"].location != NSNotFound){
-                     [self goP_Vertical_industry_collaborationViewController:nil];
-                 }else{
                      
+                     [self goP_Vertical_industry_collaborationViewController:nil];
+                     
+                 }else{
                      News_ProviceVIP_ListViewController *vc = [[News_ProviceVIP_ListViewController alloc]init];
                      News_ProvinceVipEntity *entity = [self.arrayCutomer objectAtIndex:indexPath.row];
                      vc.module_id = entity.module_id;
@@ -1487,6 +1503,8 @@
 
 - (void)settingBtnClicked:(id)sender
 {
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     PushSettingViewController *vc = [[PushSettingViewController alloc] init];
     vc.delegate = self;
     [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1496,6 +1514,7 @@
 
 - (void)feedBackBtnClicked:(id)sender
 {
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
     SuggestViewController *vc = [[SuggestViewController alloc] init];
     [self.mainVC.navigationController pushViewController:vc animated:YES];
 }
@@ -1520,6 +1539,7 @@
 }
 - (void)DisplayBtnClicked:(id)sender{
     
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
     
     DisplayViewController *vc = [[DisplayViewController alloc] init];
 
@@ -1533,6 +1553,8 @@
     
     if (![entity.num isEqualToString:@""]) {
         
+        [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+        
         Performance_displayViewController *vc = [[Performance_displayViewController alloc] init];
         vc.user_num = entity.num;
         [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1541,7 +1563,7 @@
 
 #pragma mark - 业内应用推荐
 - (void)recommendedBtnClicked:(id)sender{
-    
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
     //业内应用推荐
     recommendedViewController *vc = [[recommendedViewController alloc] init];
     [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1550,6 +1572,8 @@
 
 #pragma  mark - 小纸条
 - (void)small_piece_paperBtnClicked:(id)sender{
+    
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
     
     small_piece_paperViewController *vc = [[small_piece_paperViewController alloc]init];
     
@@ -1560,6 +1584,8 @@
 #pragma mark - 欠费缴费提醒
 - (void)Payment_arrearsBtnClicked:(id)sender{
     
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     Payment_arrears_listViewController *vc = [[Payment_arrears_listViewController alloc]init];
     
     [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1568,6 +1594,8 @@
 #pragma mark - 客户生日提醒
 - (void)BirthdayBtnClicked:(id)sender{
 
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     Birthday_listViewController *vc = [[Birthday_listViewController alloc]init];
     
     [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1575,6 +1603,8 @@
 #pragma mark - 合同到期
 - (void)Contract_expiresBtnClicked:(id)sender{
   
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     Contract_expiresViewController *vc = [[Contract_expiresViewController alloc]init];
 
     [self.mainVC.navigationController pushViewController:vc animated:YES];
@@ -1583,6 +1613,7 @@
 #pragma mark - APP下载地址分享
 - (void)shareBtnClicked:(id)sender
 {
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
     shareViewController *vc = [[shareViewController alloc] init];
     [self.mainVC.navigationController pushViewController:vc animated:YES];
 }
@@ -1590,12 +1621,16 @@
 #pragma mark - 修改密码
 - (void)changePwdBtnClicked:(id)sender
 {
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     ChangePwdViewController *vc = [[ChangePwdViewController alloc] init];
     [self.mainVC.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - 修改手机号码
 - (void)changePhoneBtnClicked:(id)sender
 {
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     ChangePhoneViewController *vc = [[ChangePhoneViewController alloc] init];
     [self.mainVC.navigationController pushViewController:vc animated:YES];
 }
@@ -1603,6 +1638,8 @@
 //进入省要客业务办理
 - (void)doP_VIP:(id)sender
 {
+    [self.mainVC.navigationController setNavigationBarHidden:NO animated:NO];
+    
     ProvinceVIPViewController *vc = [[ProvinceVIPViewController alloc] init];
     [self.mainVC.navigationController pushViewController:vc animated:YES];
 }
@@ -1613,28 +1650,84 @@
 {
     UserEntity *entity = [UserEntity sharedInstance];
     CommonService *service = [[CommonService alloc] init];
-    /*
-     [titleDataArray count], @"level",
-     [titleDataArray count], @"visit",
-     [titleDataArray count], @"type",
-     [titleDataArray count], @"scope",
-     */
-    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
-                           @"summary", @"method",
-                           entity.user_id, @"user_id",
-                           nil];
+//    /*
+//     [titleDataArray count], @"level",
+//     [titleDataArray count], @"visit",
+//     [titleDataArray count], @"type",
+//     [titleDataArray count], @"scope",
+//     */
+//    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+//                           @"summary", @"method",
+//                           entity.user_id, @"user_id",
+//                           nil];
+//
+//    [service getNetWorkData:param  Successed:^(id entity) {
+//        summaryEntity = [[SummaryEntity alloc]init];
+//        summaryEntity = [summaryEntity initWithAttributes:entity];
+////        [self setViewValue];
+//        [HUD hide:YES];
+//
+////        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:2]
+////                  withRowAnimation:UITableViewRowAnimationNone];
+//    } Failed:^(int errorCode, NSString *message) {
+//        [HUD hide:YES];
+//    }];
     
-    [service getNetWorkData:param  Successed:^(id entity) {
-        summaryEntity = [[SummaryEntity alloc]init];
-        summaryEntity = [summaryEntity initWithAttributes:entity];
-//        [self setViewValue];
-        [HUD hide:YES];
-        
-//        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:2]
-//                  withRowAnimation:UITableViewRowAnimationNone];
-    } Failed:^(int errorCode, NSString *message) {
-        [HUD hide:YES];
-    }];
+    
+//        http://sw.avatek.com.cn/gzcms/cmm_boss.php?method=summary_all&user_id=1208&user_type=0&user_num=88000188&dep_id=1000101
+    
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
+                           @"summary_all", @"method",
+                           entity.user_id, @"user_id",
+                           entity.type_id, @"user_type",
+                           entity.num, @"user_num",
+                           entity.dep_id, @"dep_id",
+                              nil];
+
+   [service getNetWorkData:param  Successed:^(id entity) {
+
+       int state = [entity[@"state"] intValue];
+
+       if (state == 1) {
+
+           summaryEntity = [[SummaryEntity alloc]init];
+           summaryEntity = [summaryEntity initWithAttributes:[[entity objectForKey:@"content"] objectForKey:@"summary"]];
+
+           self.unfinishedDict = entity[@"content"][@"getunfinishnum"];
+           id content = entity[@"content"][@"getunfinishnum"];
+           int num = 0;
+
+           for (NSString *key in [content allKeys]) {
+               num += [content[key] intValue];
+           }
+
+           if (num > 0) {
+
+               [self.mainVC.btnAbout showBadgeWithStyle:WBadgeStyleNumber
+                                                  value:num
+                                          animationType:WBadgeAnimTypeNone];
+           }else{
+
+               [self.mainVC.btnAbout clearBadge];
+           }
+
+           self.birthday_num = entity[@"content"][@"get_birthday_num"];
+
+           NSDictionary *dic = entity[@"content"][@"push_state"];
+           self.push_starttime = [dic objectForKey:@"push_starttime"];
+           self.push_endtime = [dic objectForKey:@"push_endtime"];
+
+       }
+
+       [_tableView reloadData];
+
+       [HUD hide:YES];
+
+   } Failed:^(int errorCode, NSString *message) {
+       [HUD hide:YES];
+   }];
+
+    
 }
 
 #pragma mark -
@@ -1760,36 +1853,38 @@
 //    NSUserDefaults *locationDefaults = [NSUserDefaults standardUserDefaults];
 //    //读取整型int类型的数据
 //    ProvinceVIP_State = [locationDefaults objectForKey:@"ProvinceVIP_State"];
+
     
     [HUD hide:YES];
     super.model = NSStringFromClass([self class]);
-    [self set_logmodel];
+//    [self set_logmodel];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.labelText = @"努力加载中...";
     
-    UserEntity *userInfo = [UserEntity sharedInstance];
-    if ([userInfo.type_id intValue] == ROLE_CUSTOMER) { //客户经理才获取走访执行情况
-        [self getData];
-    }
+//    UserEntity *userInfo = [UserEntity sharedInstance];
+//    if ([userInfo.type_id intValue] == ROLE_CUSTOMER) { //客户经理才获取走访执行情况
+//        [self getData];
+//    }
     
     [self settableviewARR];
     
     if ([ProvinceVIP_State isEqualToString:@"new"]) {
         [self getData_ProvinceVIP];
     }else{
-        [self getUnfinishedNum];
+//        [self getUnfinishedNum];
+        [self getData];
     }
     
 //    [self getUnfinishedNum];
     
 //    [self getEnableFunction];
     
-    [self getSpecialConfig];
+//    [self getSpecialConfig];
     
 //    [self getData_ProvinceVIP];
     
-    [self getThis_month_unvisit];
+//    [self getThis_month_unvisit];
     
 //    [self gettape_num];
 }
@@ -1958,6 +2053,7 @@
         [self getData_ProvinceVIP];
     }else{
         [self getUnfinishedNum];
+//        [self getData];
     }
     
 //    [self gettape_num];

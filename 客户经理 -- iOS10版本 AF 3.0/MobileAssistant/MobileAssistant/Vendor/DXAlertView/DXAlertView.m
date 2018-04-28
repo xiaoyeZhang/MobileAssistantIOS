@@ -588,12 +588,115 @@ double kAlertHeight = 205.0f;
     return self;
 }
 
+- (id)initWithTitle:(NSString *)title user_list:(NSString *)userTitle summaryText:(NSString *)content rightTitle:(NSString *)rigthTitle{
+    
+    if (self = [super init]) {
+        kAlertHeight = 200;
+        kAlertWidth = [UIScreen mainScreen].bounds.size.width - 40;
+        self.layer.cornerRadius = 5.0;
+        self.backgroundColor = [UIColor whiteColor];
+        
+        self.alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kAlertWidth, kTitleHeight)];
+        self.alertTitleLabel.textAlignment = NSTextAlignmentCenter;
+        self.alertTitleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        self.alertTitleLabel.textColor = [UIColor colorWithRed:56.0/255.0 green:64.0/255.0 blue:71.0/255.0 alpha:1];
+        [self addSubview: self.alertTitleLabel];
+        
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset+18,100 , kTitleHeight)];
+        titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+        titleLabel.text = [NSString stringWithFormat:@"%@：",userTitle];
+        titleLabel.textColor = RGBA(175, 175, 175, 1);
+        [self addSubview:titleLabel];
+        
+        self.user_listTextfield = [[UITextField alloc]initWithFrame:CGRectMake(titleLabel.frame.size.width + 8, kTitleYOffset+18, kAlertWidth - titleLabel.frame.size.width - 16, kTitleHeight)];
+        self.user_listTextfield.delegate = self;
+        self.user_listTextfield.font = [UIFont systemFontOfSize:15.0f];
+        self.user_listTextfield.returnKeyType = UIReturnKeyNext;
+        self.user_listTextfield.borderStyle = UITextBorderStyleRoundedRect;
+        [self addSubview:self.user_listTextfield];
+        
+        UILabel *alertContentTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, kTitleYOffset + kTitleHeight + 20, 100 , kTitleHeight)];
+        alertContentTitleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+        alertContentTitleLabel.text = [NSString stringWithFormat:@"%@：",content];
+        alertContentTitleLabel.textColor = RGBA(175, 175, 175, 1);
+        [self addSubview:alertContentTitleLabel];
+        
+        self.alertContentTextView = [[UITextView alloc]initWithFrame:CGRectMake(alertContentTitleLabel.frame.size.width + 8, kTitleYOffset+kTitleHeight+22, kAlertWidth - alertContentTitleLabel.frame.size.width - 16, kTitleHeight + 40)];
+        self.alertContentTextView.delegate = self;
+        self.alertContentTextView.font = [UIFont systemFontOfSize:14.0f];
+        self.alertContentTextView.returnKeyType = UIReturnKeyDone;
+        self.alertContentTextView.keyboardType = UIKeyboardAppearanceDefault;
+        self.alertContentTextView.textAlignment = NSTextAlignmentLeft;
+        
+        self.alertContentTextView.layer.cornerRadius = 5;
+        self.alertContentTextView.layer.borderWidth = 1;
+        self.alertContentTextView.layer.borderColor = RGBA(175, 175, 175, 1).CGColor;
+        
+        self.alertContentTextView.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
+        
+        [self addSubview:self.alertContentTextView];
+        
+        
+        CGRect leftBtnFrame;
+#define kSingleButtonWidth 160.0f
+#define kCoupleButtonWidth 107.0f
+#define kButtonHeight 32.0f
+#define kButtonBottomOffset 10.0f
+    
+        leftBtnFrame = CGRectMake((kAlertWidth - kCoupleButtonWidth)/ 2, kAlertHeight - kButtonBottomOffset - kButtonHeight, kCoupleButtonWidth, kButtonHeight);
+        self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.leftBtn.frame = leftBtnFrame;
+      
+        //        [self.leftBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:227.0/255.0 green:100.0/255.0 blue:83.0/255.0 alpha:1]] forState:UIControlStateNormal];
+        self.leftBtn.backgroundColor = RGBA(66, 187, 233, 1);
+        [self.leftBtn setTitle:rigthTitle forState:UIControlStateNormal];
+        self.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        [self.leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        [self.leftBtn addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        self.leftBtn.layer.masksToBounds = YES;
+        self.leftBtn.layer.cornerRadius = 3.0;
+        [self addSubview:self.leftBtn];
+        
+        self.alertTitleLabel.text = title;
+        
+        UIButton *xButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [xButton setImage:[UIImage imageNamed:@"btn_close_normal.png"] forState:UIControlStateNormal];
+        [xButton setImage:[UIImage imageNamed:@"btn_close_selected.png"] forState:UIControlStateHighlighted];
+        xButton.frame = CGRectMake(kAlertWidth - 32, 0, 32, 32);
+        [self addSubview:xButton];
+        [xButton addTarget:self action:@selector(dismissAlert) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+    }
+    
+    
+    return self;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (textField == self.user_listTextfield){
+     
+        if (self.userBlock) {
+            self.userBlock();
+        }
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     if (textField == self.serviceTextfield) {
         [self.operationsTextfield becomeFirstResponder];
     } else if (textField == self.operationsTextfield) {
         [textField endEditing:YES];
+    } else if (textField == self.user_listTextfield){
+        
     }
     
     return YES;

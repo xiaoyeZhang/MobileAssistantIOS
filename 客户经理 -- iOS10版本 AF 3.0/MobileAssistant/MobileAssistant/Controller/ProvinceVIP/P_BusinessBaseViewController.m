@@ -9,7 +9,7 @@
 #import "P_BusinessBaseViewController.h"
 #import "Utilies.h"
 #import "UIAlertView+Blocks.h"
-
+#
 @interface P_BusinessBaseViewController ()
 {
     BOOL isDone;
@@ -157,6 +157,7 @@
 
 - (void)getBusinessListWithPage:(int)page
 {
+    
     UserEntity *userInfo = [UserEntity sharedInstance];
     
     NSDictionary *dict = @{@"user_id":userInfo.user_id,

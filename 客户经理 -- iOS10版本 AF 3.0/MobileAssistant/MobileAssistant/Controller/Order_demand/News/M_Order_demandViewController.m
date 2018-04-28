@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"订单需求发起";
+    self.navigationItem.title = @"我的订单";
     userEntity = [UserEntity sharedInstance];
     self.arrayCustomerTemp = [[NSMutableArray alloc]init];
     

@@ -75,7 +75,7 @@
 {
     NSInteger rows = 0;
     if (section == 0) {
-        NSArray *arr = [self.device_info componentsSeparatedByString:@";"];
+//        NSArray *arr = [self.device_info componentsSeparatedByString:@";"];
 //        if (arr.count > 0) {
 //            Rows = 5;
 //        }else{

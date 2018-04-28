@@ -60,8 +60,7 @@ static UserEntity * _sharedInstance = nil;
     {
         self.weather = [attributes valueForKeyPath:@"weather"];
     }
-    
-    
+
     NSDictionary *content = [attributes valueForKey:@"content"];
     
     if (content != nil) {

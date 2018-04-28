@@ -180,6 +180,8 @@
 		2E080EA720171A72006059A0 /* Management_business_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E080EA520171A72006059A0 /* Management_business_ListViewController.xib */; };
 		2E080EAB2017367E006059A0 /* Manangement_detailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E080EA92017367D006059A0 /* Manangement_detailListViewController.m */; };
 		2E080EAC2017367E006059A0 /* Manangement_detailListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E080EAA2017367D006059A0 /* Manangement_detailListViewController.xib */; };
+		2E08662D207B4A1300CA1172 /* MaintwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E08662B207B4A1300CA1172 /* MaintwoTableViewCell.m */; };
+		2E08662E207B4A1300CA1172 /* MaintwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E08662C207B4A1300CA1172 /* MaintwoTableViewCell.xib */; };
 		2E08EFD81EDF098400FBD274 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E08EFD71EDF098400FBD274 /* libMobClickLibrary.a */; };
 		2E08EFDD1EE0511100FBD274 /* Business_contacts_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E08EFDB1EE0511100FBD274 /* Business_contacts_ListViewController.m */; };
 		2E08EFDE1EE0511100FBD274 /* Business_contacts_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E08EFDC1EE0511100FBD274 /* Business_contacts_ListViewController.xib */; };
@@ -314,6 +316,8 @@
 		2E74F2AC1FC665ED0028472A /* M_Order_FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E74F2AA1FC665ED0028472A /* M_Order_FormViewController.m */; };
 		2E74F2AD1FC665ED0028472A /* M_Order_FormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E74F2AB1FC665ED0028472A /* M_Order_FormViewController.xib */; };
 		2E74F2B01FC66A860028472A /* M_OrderFormEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E74F2AF1FC66A860028472A /* M_OrderFormEntity.m */; };
+		2E7671F720689BC00063AC26 /* strategy_listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7671F520689BC00063AC26 /* strategy_listTableViewCell.m */; };
+		2E7671F820689BC00063AC26 /* strategy_listTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7671F620689BC00063AC26 /* strategy_listTableViewCell.xib */; };
 		2E78C1141CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E78C1121CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.m */; };
 		2E78C1151CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E78C1131CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib */; };
 		2E78F31C1D40615100285B9D /* P_Vertical_industry_collaborationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E78F31A1D40615100285B9D /* P_Vertical_industry_collaborationDetailViewController.m */; };
@@ -395,6 +399,12 @@
 		2E91D1D31D2E261500C5C776 /* MainBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E91D1D11D2E261500C5C776 /* MainBaseViewController.xib */; };
 		2E9295552060DEE700C3751A /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9295532060DEE700C3751A /* DisplayViewController.m */; };
 		2E9295562060DEE700C3751A /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9295542060DEE700C3751A /* DisplayViewController.xib */; };
+		2E9295602064CBE600C3751A /* Policy_distributionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E92955E2064CBE600C3751A /* Policy_distributionListViewController.m */; };
+		2E9295612064CBE600C3751A /* Policy_distributionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E92955F2064CBE600C3751A /* Policy_distributionListViewController.xib */; };
+		2E9295642064CD6000C3751A /* strategy_listEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9295632064CD6000C3751A /* strategy_listEntity.m */; };
+		2E9295682064DEE600C3751A /* Policy_distribtionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9295662064DEE600C3751A /* Policy_distribtionDetailViewController.m */; };
+		2E9295692064DEE600C3751A /* Policy_distribtionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9295672064DEE600C3751A /* Policy_distribtionDetailViewController.xib */; };
+		2E92956C2064E10200C3751A /* strategy_DetailEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E92956B2064E10200C3751A /* strategy_DetailEntity.m */; };
 		2E92E8FD1D3CA8CB0099A5AD /* Marking_listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E92E8FB1D3CA8CB0099A5AD /* Marking_listTableViewCell.m */; };
 		2E92E8FE1D3CA8CB0099A5AD /* Marking_listTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E92E8FC1D3CA8CB0099A5AD /* Marking_listTableViewCell.xib */; };
 		2E92E9021D3CB5050099A5AD /* Marking_detail_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E92E9001D3CB5050099A5AD /* Marking_detail_ListViewController.m */; };
@@ -538,6 +548,17 @@
 		2EB7AE661C1ACAF500621F84 /* CertificatesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7AE651C1ACAF500621F84 /* CertificatesView.m */; };
 		2EB7AE691C1ACB1500621F84 /* ComprehensiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7AE681C1ACB1500621F84 /* ComprehensiveView.m */; };
 		2EBE3D071D921CA20086FA45 /* SGLNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE3D061D921CA20086FA45 /* SGLNavigationViewController.m */; };
+		2EBE5E52208EDFB00085E306 /* Arrears_task_ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE5E50208EDFB00085E306 /* Arrears_task_ListViewController.m */; };
+		2EBE5E53208EDFB00085E306 /* Arrears_task_ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBE5E51208EDFB00085E306 /* Arrears_task_ListViewController.xib */; };
+		2EBE5E57208F19780085E306 /* Arrear_task_DeatilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE5E55208F19780085E306 /* Arrear_task_DeatilViewController.m */; };
+		2EBE5E58208F19780085E306 /* Arrear_task_DeatilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBE5E56208F19780085E306 /* Arrear_task_DeatilViewController.xib */; };
+		2EBE5E5C209024880085E306 /* Postpaid_Create_listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE5E5A209024880085E306 /* Postpaid_Create_listViewController.m */; };
+		2EBE5E5D209024880085E306 /* Postpaid_Create_listViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBE5E5B209024880085E306 /* Postpaid_Create_listViewController.xib */; };
+		2EBE5E60209028210085E306 /* Postpaid_ListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE5E5F209028210085E306 /* Postpaid_ListEntity.m */; };
+		2EBE5E6420902B980085E306 /* Postpaid_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE5E6220902B980085E306 /* Postpaid_DetailViewController.m */; };
+		2EBE5E6520902B980085E306 /* Postpaid_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBE5E6320902B980085E306 /* Postpaid_DetailViewController.xib */; };
+		2EBE5E69209049350085E306 /* Postpaid_CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE5E67209049350085E306 /* Postpaid_CreateViewController.m */; };
+		2EBE5E6A209049360085E306 /* Postpaid_CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBE5E68209049350085E306 /* Postpaid_CreateViewController.xib */; };
 		2EC15D331C587BC500DE522C /* Product_LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC15D311C587BC500DE522C /* Product_LineViewController.m */; };
 		2EC15D381C58927700DE522C /* ProductLineSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC15D361C58927700DE522C /* ProductLineSubmitViewController.m */; };
 		2EC15D391C58927700DE522C /* ProductLineSubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC15D371C58927700DE522C /* ProductLineSubmitViewController.xib */; };
@@ -1256,6 +1277,9 @@
 		2E080EA82017367D006059A0 /* Manangement_detailListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Manangement_detailListViewController.h; sourceTree = "<group>"; };
 		2E080EA92017367D006059A0 /* Manangement_detailListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manangement_detailListViewController.m; sourceTree = "<group>"; };
 		2E080EAA2017367D006059A0 /* Manangement_detailListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Manangement_detailListViewController.xib; sourceTree = "<group>"; };
+		2E08662A207B4A1300CA1172 /* MaintwoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaintwoTableViewCell.h; sourceTree = "<group>"; };
+		2E08662B207B4A1300CA1172 /* MaintwoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaintwoTableViewCell.m; sourceTree = "<group>"; };
+		2E08662C207B4A1300CA1172 /* MaintwoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaintwoTableViewCell.xib; sourceTree = "<group>"; };
 		2E08EFD71EDF098400FBD274 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		2E08EFDA1EE0511100FBD274 /* Business_contacts_ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business_contacts_ListViewController.h; sourceTree = "<group>"; };
 		2E08EFDB1EE0511100FBD274 /* Business_contacts_ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business_contacts_ListViewController.m; sourceTree = "<group>"; };
@@ -1475,6 +1499,9 @@
 		2E74F2AB1FC665ED0028472A /* M_Order_FormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_Order_FormViewController.xib; sourceTree = "<group>"; };
 		2E74F2AE1FC66A860028472A /* M_OrderFormEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M_OrderFormEntity.h; sourceTree = "<group>"; };
 		2E74F2AF1FC66A860028472A /* M_OrderFormEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M_OrderFormEntity.m; sourceTree = "<group>"; };
+		2E7671F420689BC00063AC26 /* strategy_listTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = strategy_listTableViewCell.h; sourceTree = "<group>"; };
+		2E7671F520689BC00063AC26 /* strategy_listTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = strategy_listTableViewCell.m; sourceTree = "<group>"; };
+		2E7671F620689BC00063AC26 /* strategy_listTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = strategy_listTableViewCell.xib; sourceTree = "<group>"; };
 		2E78C1111CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News_ProviceVip_TwoViewController.h; sourceTree = "<group>"; };
 		2E78C1121CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News_ProviceVip_TwoViewController.m; sourceTree = "<group>"; };
 		2E78C1131CEEE4C9000C0A34 /* News_ProviceVip_TwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News_ProviceVip_TwoViewController.xib; sourceTree = "<group>"; };
@@ -1616,6 +1643,16 @@
 		2E9295522060DEE700C3751A /* DisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
 		2E9295532060DEE700C3751A /* DisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
 		2E9295542060DEE700C3751A /* DisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
+		2E92955D2064CBE600C3751A /* Policy_distributionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Policy_distributionListViewController.h; sourceTree = "<group>"; };
+		2E92955E2064CBE600C3751A /* Policy_distributionListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Policy_distributionListViewController.m; sourceTree = "<group>"; };
+		2E92955F2064CBE600C3751A /* Policy_distributionListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Policy_distributionListViewController.xib; sourceTree = "<group>"; };
+		2E9295622064CD6000C3751A /* strategy_listEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = strategy_listEntity.h; sourceTree = "<group>"; };
+		2E9295632064CD6000C3751A /* strategy_listEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = strategy_listEntity.m; sourceTree = "<group>"; };
+		2E9295652064DEE600C3751A /* Policy_distribtionDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Policy_distribtionDetailViewController.h; sourceTree = "<group>"; };
+		2E9295662064DEE600C3751A /* Policy_distribtionDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Policy_distribtionDetailViewController.m; sourceTree = "<group>"; };
+		2E9295672064DEE600C3751A /* Policy_distribtionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Policy_distribtionDetailViewController.xib; sourceTree = "<group>"; };
+		2E92956A2064E10200C3751A /* strategy_DetailEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = strategy_DetailEntity.h; sourceTree = "<group>"; };
+		2E92956B2064E10200C3751A /* strategy_DetailEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = strategy_DetailEntity.m; sourceTree = "<group>"; };
 		2E92E8FA1D3CA8CB0099A5AD /* Marking_listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marking_listTableViewCell.h; sourceTree = "<group>"; };
 		2E92E8FB1D3CA8CB0099A5AD /* Marking_listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marking_listTableViewCell.m; sourceTree = "<group>"; };
 		2E92E8FC1D3CA8CB0099A5AD /* Marking_listTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Marking_listTableViewCell.xib; sourceTree = "<group>"; };
@@ -1836,6 +1873,23 @@
 		2EBE3D041D911B6F0086FA45 /* MobileAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileAssistant.entitlements; sourceTree = "<group>"; };
 		2EBE3D051D921CA20086FA45 /* SGLNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLNavigationViewController.h; sourceTree = "<group>"; };
 		2EBE3D061D921CA20086FA45 /* SGLNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLNavigationViewController.m; sourceTree = "<group>"; };
+		2EBE5E4F208EDFB00085E306 /* Arrears_task_ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Arrears_task_ListViewController.h; sourceTree = "<group>"; };
+		2EBE5E50208EDFB00085E306 /* Arrears_task_ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Arrears_task_ListViewController.m; sourceTree = "<group>"; };
+		2EBE5E51208EDFB00085E306 /* Arrears_task_ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Arrears_task_ListViewController.xib; sourceTree = "<group>"; };
+		2EBE5E54208F19780085E306 /* Arrear_task_DeatilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Arrear_task_DeatilViewController.h; sourceTree = "<group>"; };
+		2EBE5E55208F19780085E306 /* Arrear_task_DeatilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Arrear_task_DeatilViewController.m; sourceTree = "<group>"; };
+		2EBE5E56208F19780085E306 /* Arrear_task_DeatilViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Arrear_task_DeatilViewController.xib; sourceTree = "<group>"; };
+		2EBE5E59209024880085E306 /* Postpaid_Create_listViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Postpaid_Create_listViewController.h; sourceTree = "<group>"; };
+		2EBE5E5A209024880085E306 /* Postpaid_Create_listViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Postpaid_Create_listViewController.m; sourceTree = "<group>"; };
+		2EBE5E5B209024880085E306 /* Postpaid_Create_listViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Postpaid_Create_listViewController.xib; sourceTree = "<group>"; };
+		2EBE5E5E209028210085E306 /* Postpaid_ListEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Postpaid_ListEntity.h; sourceTree = "<group>"; };
+		2EBE5E5F209028210085E306 /* Postpaid_ListEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Postpaid_ListEntity.m; sourceTree = "<group>"; };
+		2EBE5E6120902B980085E306 /* Postpaid_DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Postpaid_DetailViewController.h; sourceTree = "<group>"; };
+		2EBE5E6220902B980085E306 /* Postpaid_DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Postpaid_DetailViewController.m; sourceTree = "<group>"; };
+		2EBE5E6320902B980085E306 /* Postpaid_DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Postpaid_DetailViewController.xib; sourceTree = "<group>"; };
+		2EBE5E66209049350085E306 /* Postpaid_CreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Postpaid_CreateViewController.h; sourceTree = "<group>"; };
+		2EBE5E67209049350085E306 /* Postpaid_CreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Postpaid_CreateViewController.m; sourceTree = "<group>"; };
+		2EBE5E68209049350085E306 /* Postpaid_CreateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Postpaid_CreateViewController.xib; sourceTree = "<group>"; };
 		2EC15D301C587BC500DE522C /* Product_LineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product_LineViewController.h; sourceTree = "<group>"; };
 		2EC15D311C587BC500DE522C /* Product_LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product_LineViewController.m; sourceTree = "<group>"; };
 		2EC15D351C58927700DE522C /* ProductLineSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLineSubmitViewController.h; sourceTree = "<group>"; };
@@ -3674,6 +3728,26 @@
 			path = Display;
 			sourceTree = "<group>";
 		};
+		2E92955C2064CBCE00C3751A /* Policy_distribution */ = {
+			isa = PBXGroup;
+			children = (
+				2E92955D2064CBE600C3751A /* Policy_distributionListViewController.h */,
+				2E92955E2064CBE600C3751A /* Policy_distributionListViewController.m */,
+				2E92955F2064CBE600C3751A /* Policy_distributionListViewController.xib */,
+				2E9295652064DEE600C3751A /* Policy_distribtionDetailViewController.h */,
+				2E9295662064DEE600C3751A /* Policy_distribtionDetailViewController.m */,
+				2E9295672064DEE600C3751A /* Policy_distribtionDetailViewController.xib */,
+				2E9295622064CD6000C3751A /* strategy_listEntity.h */,
+				2E9295632064CD6000C3751A /* strategy_listEntity.m */,
+				2E92956A2064E10200C3751A /* strategy_DetailEntity.h */,
+				2E92956B2064E10200C3751A /* strategy_DetailEntity.m */,
+				2E7671F420689BC00063AC26 /* strategy_listTableViewCell.h */,
+				2E7671F520689BC00063AC26 /* strategy_listTableViewCell.m */,
+				2E7671F620689BC00063AC26 /* strategy_listTableViewCell.xib */,
+			);
+			path = Policy_distribution;
+			sourceTree = "<group>";
+		};
 		2E92E9161D3E1E230099A5AD /* case */ = {
 			isa = PBXGroup;
 			children = (
@@ -3998,6 +4072,21 @@
 				2ECDBDFC1CCDE297008B2B46 /* Arrears_DetailViewController.h */,
 				2ECDBDFD1CCDE297008B2B46 /* Arrears_DetailViewController.m */,
 				2ECDBDFE1CCDE297008B2B46 /* Arrears_DetailViewController.xib */,
+				2EBE5E4F208EDFB00085E306 /* Arrears_task_ListViewController.h */,
+				2EBE5E50208EDFB00085E306 /* Arrears_task_ListViewController.m */,
+				2EBE5E51208EDFB00085E306 /* Arrears_task_ListViewController.xib */,
+				2EBE5E54208F19780085E306 /* Arrear_task_DeatilViewController.h */,
+				2EBE5E55208F19780085E306 /* Arrear_task_DeatilViewController.m */,
+				2EBE5E56208F19780085E306 /* Arrear_task_DeatilViewController.xib */,
+				2EBE5E66209049350085E306 /* Postpaid_CreateViewController.h */,
+				2EBE5E67209049350085E306 /* Postpaid_CreateViewController.m */,
+				2EBE5E68209049350085E306 /* Postpaid_CreateViewController.xib */,
+				2EBE5E59209024880085E306 /* Postpaid_Create_listViewController.h */,
+				2EBE5E5A209024880085E306 /* Postpaid_Create_listViewController.m */,
+				2EBE5E5B209024880085E306 /* Postpaid_Create_listViewController.xib */,
+				2EBE5E6120902B980085E306 /* Postpaid_DetailViewController.h */,
+				2EBE5E6220902B980085E306 /* Postpaid_DetailViewController.m */,
+				2EBE5E6320902B980085E306 /* Postpaid_DetailViewController.xib */,
 				2EA56DC51FBE841C00D40D19 /* Payment_arrears_listTableViewCell.h */,
 				2EA56DC61FBE841C00D40D19 /* Payment_arrears_listTableViewCell.m */,
 				2EA56DC71FBE841C00D40D19 /* Payment_arrears_listTableViewCell.xib */,
@@ -4017,6 +4106,8 @@
 				2ECDBDF21CCDC00C008B2B46 /* Payment_arrears_listEntity.m */,
 				2ECDBDF91CCDCBF5008B2B46 /* Arrears_taskEntity.h */,
 				2ECDBDFA1CCDCBF5008B2B46 /* Arrears_taskEntity.m */,
+				2EBE5E5E209028210085E306 /* Postpaid_ListEntity.h */,
+				2EBE5E5F209028210085E306 /* Postpaid_ListEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4984,6 +5075,7 @@
 		D9F3AE8B19C3DB0500AAF0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2E92955C2064CBCE00C3751A /* Policy_distribution */,
 				2EA377E41FA6FB3C003B0684 /* Performance_display */,
 				2EA36F551F984D0400206816 /* Cen_management */,
 				2ED1123D1F383E2700B8ED3F /* SA_Special */,
@@ -5319,6 +5411,9 @@
 				2EA377EA1FA8240B003B0684 /* MainCollectionReusableViewHeadView.h */,
 				2EA377EB1FA8240B003B0684 /* MainCollectionReusableViewHeadView.m */,
 				2EA377EC1FA8240B003B0684 /* MainCollectionReusableViewHeadView.xib */,
+				2E08662A207B4A1300CA1172 /* MaintwoTableViewCell.h */,
+				2E08662B207B4A1300CA1172 /* MaintwoTableViewCell.m */,
+				2E08662C207B4A1300CA1172 /* MaintwoTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5448,6 +5543,7 @@
 				2EDA646F1CA24D6300B0F428 /* News_ProviceVIP_DetailViewController.xib in Resources */,
 				2E6A0AD91C21340A0086E333 /* UpDownLabelTableViewCell.xib in Resources */,
 				2E1FA68B2023F3D400009F0F /* News_ProvinceVip_ListTwoViewController.xib in Resources */,
+				2E08662E207B4A1300CA1172 /* MaintwoTableViewCell.xib in Resources */,
 				2EA192DC1DC6F48600D13FC5 /* Order_Demand_DetailViewController.xib in Resources */,
 				1485464F1BBA239F00257580 /* btn_close_normal.png in Resources */,
 				1485463F1BBA239F00257580 /* touch_focus_x.png in Resources */,
@@ -5460,6 +5556,7 @@
 				148546381BBA239F00257580 /* shot_h@2x.png in Resources */,
 				2EEA26A11F0E05D00085573D /* LocationViewViewController.xib in Resources */,
 				148546D61BBA257100257580 /* icon_rightarrow.png in Resources */,
+				2E9295692064DEE600C3751A /* Policy_distribtionDetailViewController.xib in Resources */,
 				2ED057701EE7C3B2008FEE72 /* Business_change_DetailViewController.xib in Resources */,
 				2E2257881EA5B405009EAB8E /* M_OrderUserViewController.xib in Resources */,
 				148546621BBA239F00257580 /* PKImageBundle.bundle in Resources */,
@@ -5474,6 +5571,7 @@
 				2E74F2AD1FC665ED0028472A /* M_Order_FormViewController.xib in Resources */,
 				41CF61351BC002B400A19D8C /* P_StockSubmitViewController.xib in Resources */,
 				148546261BBA239F00257580 /* meizi.jpg in Resources */,
+				2EBE5E6520902B980085E306 /* Postpaid_DetailViewController.xib in Resources */,
 				2EA0F5EA1D1A5B1100306608 /* Handling_tasksTableViewCell.xib in Resources */,
 				2EAF7B5F1D45AF97007188F2 /* Houston_querySubmitViewController.xib in Resources */,
 				419D3C681BBD17890072E35F /* P_APPointViewController.xib in Resources */,
@@ -5566,6 +5664,7 @@
 				D9F74DBF19CDDF68005AD7A9 /* TaskTableViewCell.xib in Resources */,
 				2E5712971F20857000A14C9F /* Product_Visit_ActionViewController.xib in Resources */,
 				2E64C9E81C1EB39100F7597A /* Bussiness_productViewController.xib in Resources */,
+				2E9295612064CBE600C3751A /* Policy_distributionListViewController.xib in Resources */,
 				2EA0F5E51D17D64E00306608 /* Product_classification_DetailViewController.xib in Resources */,
 				2E05A5401CE566E400851BD7 /* White_query_Detail_listViewController.xib in Resources */,
 				2EEA26CD1F0E1D060085573D /* LICENSE in Resources */,
@@ -5614,6 +5713,7 @@
 				2E91CD881D11507800F15BEA /* Matching_SectgionView.xib in Resources */,
 				148546601BBA239F00257580 /* MWPhotoBrowser.bundle in Resources */,
 				2EFD754A1C1A659B00C2F8EA /* Bussiness_CustomerTableViewCell.xib in Resources */,
+				2E7671F820689BC00063AC26 /* strategy_listTableViewCell.xib in Resources */,
 				2E64CA131C1FA64D00F7597A /* Business_StopOpenViewController.xib in Resources */,
 				D9ADFDB719D6584D00316935 /* ContactViewController.xib in Resources */,
 				2E85365E1CBB984300921774 /* Contract_expiresViewController.xib in Resources */,
@@ -5627,6 +5727,7 @@
 				2E91D1CE1D2BA0F700C5C776 /* MainTableViewCell.xib in Resources */,
 				1485468B1BBA239F00257580 /* chack.png in Resources */,
 				2ECDBE191CCF544A008B2B46 /* daily_managementViewController.xib in Resources */,
+				2EBE5E6A209049360085E306 /* Postpaid_CreateViewController.xib in Resources */,
 				14E54B4C1BD0C5DD00114D60 /* ChangePwdViewController.xib in Resources */,
 				1485464D1BBA239F00257580 /* SVProgressHUD.bundle in Resources */,
 				2EA377E91FA6FB62003B0684 /* Performance_displayViewController.xib in Resources */,
@@ -5640,6 +5741,7 @@
 				2EF98C0E1C2BFC1F00B10311 /* Business_Add_Group_V_NetContactViewController.xib in Resources */,
 				2E64CA061C1EC94F00F7597A /* TwolabelTableViewCell.xib in Resources */,
 				D954E7E319DE8C6C00330D43 /* NewsDetailViewController.xib in Resources */,
+				2EBE5E5D209024880085E306 /* Postpaid_Create_listViewController.xib in Resources */,
 				2EDCCA2A1F01F72900BBCA0C /* Exam_history_DetailViewController.xib in Resources */,
 				D9F3AE9519C3DB9600AAF0C9 /* MainViewController.xib in Resources */,
 				D92C534219E44C6000F64EC0 /* CoustomerAddViewController.xib in Resources */,
@@ -5666,10 +5768,12 @@
 				D971E52B19E1A2930085BA20 /* SuggestViewController.xib in Resources */,
 				2EF98BE81C292D1900B10311 /* Business_Group_V_Net_ContactViewController.xib in Resources */,
 				2E93726F1D07CD1800CB4083 /* mapapi.bundle in Resources */,
+				2EBE5E58208F19780085E306 /* Arrear_task_DeatilViewController.xib in Resources */,
 				148546371BBA239F00257580 /* shot_h.png in Resources */,
 				148546341BBA239F00257580 /* flashing_on@2x.png in Resources */,
 				2EF98C2A1C312CAC00B10311 /* Business_Group_DirectoruyListViewController.xib in Resources */,
 				2E4B91B3204F8C7D00E5ADED /* Special_line_platformDetailViewController.xib in Resources */,
+				2EBE5E53208EDFB00085E306 /* Arrears_task_ListViewController.xib in Resources */,
 				2E6A0B001C22B2B60086E333 /* Business_ProductDetailViewController.xib in Resources */,
 				2E9B21631DAE0A1A00E1A794 /* New_MyGroup_baseMessageViewController.xib in Resources */,
 				2EECF8841DD1B7EB00661E7E /* visit_task_summaryTableViewCell.xib in Resources */,
@@ -5774,6 +5878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E92956C2064E10200C3751A /* strategy_DetailEntity.m in Sources */,
 				2E6BF0991E5EBDFD008F6CF2 /* AFURLResponseSerialization.m in Sources */,
 				2EC15D381C58927700DE522C /* ProductLineSubmitViewController.m in Sources */,
 				2E9B21441DA9D34900E1A794 /* News_MyGroup_MessageViewController.m in Sources */,
@@ -5823,6 +5928,7 @@
 				2EF98C241C31162F00B10311 /* Business_Coloring_RingDetailViewController.m in Sources */,
 				2E61AD531CE431680028931E /* White_list_queryViewController.m in Sources */,
 				2E64C9F11C1EBB4600F7597A /* Business_DetailViewController.m in Sources */,
+				2E9295682064DEE600C3751A /* Policy_distribtionDetailViewController.m in Sources */,
 				148546611BBA239F00257580 /* OpenUDID.m in Sources */,
 				148546421BBA239F00257580 /* SCCaptureSessionManager.m in Sources */,
 				2EB0F4781F1060D100F8F498 /* UIColor+Random.m in Sources */,
@@ -5888,6 +5994,7 @@
 				2EDA647F1CA294E000B0F428 /* News_ProviceVIP_SubmitViewController.m in Sources */,
 				2E08EFF51EE3E0A100FBD274 /* Trouble_call_DetailViewController.m in Sources */,
 				D90D572919CD6468002C1AC0 /* MBProgressHUD.m in Sources */,
+				2EBE5E60209028210085E306 /* Postpaid_ListEntity.m in Sources */,
 				2E57127F1F1F462300A14C9F /* Product_VisitListViewController.m in Sources */,
 				41CF611C1BBFB0C700A19D8C /* XYTableBaseViewController.m in Sources */,
 				2ECE65D81CB665BA004721A4 /* sms_ListEntity.m in Sources */,
@@ -5922,6 +6029,7 @@
 				2E86A4C91D20DA5D00856AF1 /* P_RefundSubmitViewController.m in Sources */,
 				2ECDBE0E1CCF51C4008B2B46 /* Sales_supportViewController.m in Sources */,
 				2EA36F5E1F98707000206816 /* Central_manageCollectionViewCell.m in Sources */,
+				2E9295602064CBE600C3751A /* Policy_distributionListViewController.m in Sources */,
 				2EEA26DA1F0E1D070085573D /* PNRadarChartDataItem.m in Sources */,
 				2E86A52F1D2503E100856AF1 /* MASConstraintMaker.m in Sources */,
 				2EF98C171C30FF2000B10311 /* Business_Add_Coloring_RingViewController.m in Sources */,
@@ -5934,7 +6042,9 @@
 				2E9BB2371D36135E00092E31 /* small_piece_paperSubmitViewController.m in Sources */,
 				2EA366691CD8857100443BE9 /* No_visit_sumListView.m in Sources */,
 				2EF98BCE1C23C93B00B10311 /* DatePicker.m in Sources */,
+				2E08662D207B4A1300CA1172 /* MaintwoTableViewCell.m in Sources */,
 				2EEA26D51F0E1D070085573D /* PNLineChartData.m in Sources */,
+				2EBE5E69209049350085E306 /* Postpaid_CreateViewController.m in Sources */,
 				149A87DC1BBB8AA000CEFA50 /* BusinessDetailModel.m in Sources */,
 				2EA3666C1CD88E9F00443BE9 /* No_visit_baselistEntity.m in Sources */,
 				2EDCCA211F01F1F300BBCA0C /* Exam_historylistViewController.m in Sources */,
@@ -6088,6 +6198,7 @@
 				2E873F521F15C6E9008F5641 /* Information_visit_listEntity.m in Sources */,
 				2EDA64871CA390DC00B0F428 /* News_CustomerViewController.m in Sources */,
 				2EA3665F1CD8740100443BE9 /* No_visit_TaskTableViewCell.m in Sources */,
+				2E9295642064CD6000C3751A /* strategy_listEntity.m in Sources */,
 				419D3C821BBD1FDC0072E35F /* P_BillListViewController.m in Sources */,
 				2EA366501CD8571200443BE9 /* No_visit_listEntity.m in Sources */,
 				2EA366831CDAEF1D00443BE9 /* Product_classificationViewController.m in Sources */,
@@ -6134,6 +6245,7 @@
 				148546881BBA239F00257580 /* CalendarMonthCollectionViewLayout.m in Sources */,
 				2E6BF0A21E5EBDFE008F6CF2 /* UIProgressView+AFNetworking.m in Sources */,
 				2E86A54B1D26137100856AF1 /* UIWebView+SFHFStringMetrics.m in Sources */,
+				2EBE5E6420902B980085E306 /* Postpaid_DetailViewController.m in Sources */,
 				2E6A0AF71C22648E0086E333 /* Business_MarkingPlanListViewController.m in Sources */,
 				2EA56DCD1FBEB60100D40D19 /* Arrears_taskTableViewCell.m in Sources */,
 				2E686D77205650EE00DF7B67 /* Overtime_work_childlistViewController.m in Sources */,
@@ -6143,6 +6255,7 @@
 				2E5158641DB5F12B000469E3 /* Task_Two_CreateViewController.m in Sources */,
 				149A87E31BBB909D00CEFA50 /* TwoLablesTableViewCell.m in Sources */,
 				2EDEE84D1F2992F7003A82A3 /* Focus_ListViewController.m in Sources */,
+				2EBE5E5C209024880085E306 /* Postpaid_Create_listViewController.m in Sources */,
 				2EEA26DB1F0E1D070085573D /* PNScatterChart.m in Sources */,
 				149A87901BBA8B5E00CEFA50 /* UIActionSheet+Block.m in Sources */,
 				2E90AECF1CAA7BD800E71FFD /* Reommended_DetailViewController.m in Sources */,
@@ -6175,6 +6288,7 @@
 				148546851BBA239F00257580 /* CalendarDayModel.m in Sources */,
 				2EEA26DD1F0E1D070085573D /* PNScatterChartDataItem.m in Sources */,
 				148546861BBA239F00257580 /* CalendarHomeViewController.m in Sources */,
+				2E7671F720689BC00063AC26 /* strategy_listTableViewCell.m in Sources */,
 				2E92E9241D3E2AD30099A5AD /* Case_DetailViewController.m in Sources */,
 				1485464B1BBA239F00257580 /* DCTextView.m in Sources */,
 				149A86C31BBA3C2900CEFA50 /* FunctionListModel.m in Sources */,
@@ -6191,9 +6305,11 @@
 				D90D572419CD6319002C1AC0 /* StringHelper.m in Sources */,
 				2E92E9021D3CB5050099A5AD /* Marking_detail_ListViewController.m in Sources */,
 				2EDCCA2D1F01F95900BBCA0C /* Exam_History_DetailEntity.m in Sources */,
+				2EBE5E57208F19780085E306 /* Arrear_task_DeatilViewController.m in Sources */,
 				D9F3AFA919C4152800AAF0C9 /* EScrollerView.m in Sources */,
 				2E86A54A1D26137100856AF1 /* SFHFHUDView.m in Sources */,
 				2E90AEE11CABB25F00E71FFD /* IconCollectionViewCell.m in Sources */,
+				2EBE5E52208EDFB00085E306 /* Arrears_task_ListViewController.m in Sources */,
 				2ED0577A1EE8F1D3008FEE72 /* ExaminationViewController.m in Sources */,
 				2E9B215D1DACDB6600E1A794 /* New_Contacts_MessageViewController.m in Sources */,
 				2E6A0AE81C215CA10086E333 /* Business_ProdInstInfoViewController.m in Sources */,
