@@ -37,6 +37,7 @@
     
     NSString *submitDesc;//处理意见
     NSString *Y_Or_N;//是否新建账户
+    NSString *num; // 账号数量
     NSString *next_processor_name; //下级执行人
     NSString *next_processor_id;
     
@@ -77,6 +78,7 @@
     additionalArr = [NSMutableArray array];
     submitDesc = @"";
     Y_Or_N = @"";
+    num = @"";
     next_processor_name = @"";
     next_processor_id = @"";
     groupId = @"";
@@ -214,6 +216,19 @@
                             [additionalArr addObject:@{@"title":form_nameArr.firstObject,@"type":@"0",@"message":@""}];
                             
                             [additionalArr addObject:@{@"title":form_nameArr.lastObject,@"type":@"5",@"message":@""}];
+                            
+                        }else if ([[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"4"]) {
+                            //type = 5 :下拉框
+                            
+                            NSArray *form_nameArr = [[[contentDic objectForKey:@"opreator"] objectForKey:@"form_name"] componentsSeparatedByString:@";"];
+                            
+                            if (form_nameArr.count >= 3) {
+                                [additionalArr addObject:@{@"title":form_nameArr.firstObject,@"type":@"0",@"message":@""}];
+                                
+                                [additionalArr addObject:@{@"title":form_nameArr[1],@"type":@"0",@"message":@""}];
+                                
+                                [additionalArr addObject:@{@"title":form_nameArr.lastObject,@"type":@"5",@"message":@""}];
+                            }
                             
                         }else{
                             
@@ -371,6 +386,15 @@
         NSArray *form_nameArr = [[[contentDic objectForKey:@"opreator"] objectForKey:@"form_name"] componentsSeparatedByString:@";"];
         
         remarks = [NSString stringWithFormat:@"%@：%@;%@：%@",form_nameArr.firstObject,submitDesc,form_nameArr.lastObject,Y_Or_N];
+        
+    }else if ([[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"4"]) {
+        
+        NSArray *form_nameArr = [[[contentDic objectForKey:@"opreator"] objectForKey:@"form_name"] componentsSeparatedByString:@";"];
+        
+        if (form_nameArr.count>=3) {
+            remarks = [NSString stringWithFormat:@"%@：%@;%@：%@;%@：%@",form_nameArr.firstObject,submitDesc,form_nameArr[1],num,form_nameArr.lastObject,Y_Or_N];
+
+        }
         
     }else{
         remarks = [NSString stringWithFormat:@"%@:%@",[[contentDic objectForKey:@"opreator"] objectForKey:@"form_name"],submitDesc];
@@ -626,9 +650,14 @@
                 
                 cell2.titleLbl.text = [[additionalArr objectAtIndex:indexPath.row - form_infoArr.count - 1] objectForKey:@"title"];
                 
-                cell2.txtField.placeholder = @"请填写处理意见";
-                
-                cell2.txtField.text = submitDesc;
+                if ([additionalArr[indexPath.row - form_infoArr.count - 1][@"title"] isEqualToString:@"办理数量"]){
+                    
+                    cell2.txtField.text = num;
+                }else{
+                    
+                    cell2.txtField.placeholder = @"请填写处理意见";
+                    cell2.txtField.text = submitDesc;
+                }
                 
                 cell2.downArrowImageView.hidden = YES;
                 
@@ -668,7 +697,7 @@
                 cell2.titleLbl.text = [[additionalArr objectAtIndex:indexPath.row - form_infoArr.count - 1] objectForKey:@"title"];
                 cell2.txtField.placeholder = [NSString stringWithFormat:@"请选择%@",cell2.titleLbl.text];
                 
-                if ([[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"3"]) {
+                if ([[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"3"] || [[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"4"]) {
                     cell2.txtField.text = Y_Or_N;
                 }else{
                     cell2.txtField.text = submitDesc;
@@ -903,7 +932,7 @@
                                          }
                                          
 
-                                     }else if ([[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"3"]) {
+                                     }else if ([[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"3"] || [[[contentDic objectForKey:@"opreator"] objectForKey:@"form_type"] isEqualToString:@"4"]) {
                                          
                                           Y_Or_N = data_arr[i];
                                          
@@ -931,7 +960,15 @@
     [textField resignFirstResponder];
     
     if ([additionalArr[textField.tag - form_infoArr.count - 1][@"type"] isEqualToString:@"0"]) {
-        submitDesc = textField.text;
+        
+        if ([additionalArr[textField.tag - form_infoArr.count - 1][@"title"] isEqualToString:@"办理数量"]){
+            
+            num = textField.text;
+            
+        }else{
+            submitDesc = textField.text;
+            
+        }
     }
     
 }
